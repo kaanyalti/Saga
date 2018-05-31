@@ -1,14 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 
-class KairosTrigger extends React {
+class KairosTrigger extends React.Component {
   constructor(props){
     super(props);
     this.callKairos = this.callKairos.bind(this)
   }
 
   callKairos(){
-    axios.get('http//localhost:3001/api/kairos')
+    axios.get('/api/kairos').then((response)=> console.log(response)).catch(err => console.log("error: ", err));
   }
 
   render(){

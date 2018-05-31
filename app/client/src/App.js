@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
-import KairosTrigger from './components/test'
+import KairosTrigger from './components/kairosTrigger'
 
 class App extends Component {
   chartStyle = {
