@@ -1,0 +1,3 @@
+class KairosController < ApplicationController
+
+end
