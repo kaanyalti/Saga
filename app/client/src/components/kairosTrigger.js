@@ -13,9 +13,9 @@ class KairosTrigger extends React {
 
   render(){
     return(
-      <div>
         <button onClick={this.callKairos}>Call Kairos</button>
-      </div>
     )
   }
 }
+
+export default KairosTrigger
