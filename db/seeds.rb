@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-UserVideo.delete_all
-Video.delete_all
-User.delete_all
+UserVideo.destroy_all
+Video.destroy_all
+User.destroy_all
 
 5.times do
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::StarWars.character, isCreator:true)
@@ -24,12 +24,12 @@ videos.each do |video|
   video.users.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::StarWars.character, isCreator:false)
 end
 
+viewers = User.where(isCreator:false)
+viewerIDs = viewers.map do |v|
+              v["id"]
+            end
+viewersInUserVideos = UserVideo.where(id: viewerIDs)
 
-# viewers = User.joins(:user_videos).where(isCreator:false)
-# viewerIDs = viewers.map {|v| v["id"]}
-
-# viewerVideos = UserVideo.where(user_id: viewerIDs)
-
-# viewerVideos.each do |v|
-#   v["reaction"] = {"happy":"10", "sad":"1"}
-# end
+viewersInUserVideos.each do |v|
+  v.update_attribute(:reaction,{"time":"10", "happy":"10", "sad":"1"})
+end
