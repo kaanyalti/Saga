@@ -10,29 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530212627) do
+ActiveRecord::Schema.define(version: 20180531205330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "user_videos", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "reactions", force: :cascade do |t|
     t.bigint "video_id"
-    t.json "reaction"
+    t.json "apiData"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_videos_on_user_id"
-    t.index ["video_id"], name: "index_user_videos_on_video_id"
+    t.index ["video_id"], name: "index_reactions_on_video_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
-    t.boolean "isCreator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "oauth_token"
+    t.datetime "oauth_token_expires_at"
   end
 
   create_table "videos", force: :cascade do |t|
@@ -40,8 +37,10 @@ ActiveRecord::Schema.define(version: 20180530212627) do
     t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
-  add_foreign_key "user_videos", "users"
-  add_foreign_key "user_videos", "videos"
+  add_foreign_key "reactions", "videos"
+  add_foreign_key "videos", "users"
 end
