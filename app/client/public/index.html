@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com">
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script type="text/javascript">
-    
+
     window.onload = function () {
-      
+
       var chart = new CanvasJS.Chart("chartContainer",
       {
         title:{
           text: "A Stacked Area Chart"
-          
-        },   
-        data: [{        
+
+        },
+        data: [{
           type: "stackedArea", //or stackedColumn
           dataPoints: [
           { x: 10, y: 171 },
@@ -25,7 +27,7 @@
           { x: 80, y: 134 },
           { x: 90, y: 114}
           ]
-        },{        
+        },{
           type: "stackedArea", //or stackedColumn
           dataPoints: [
           { x: 10, y: 101 },
@@ -41,9 +43,9 @@
         }
         ]
       });
-      
+
       chart.render();
-      
+
     }
   </script>
   <meta charset="utf-8">
@@ -59,7 +61,7 @@
     Notice the use of %PUBLIC_URL% in the tags above.
     It will be replaced with the URL of the `public` folder during the build.
     Only files inside the `public` folder can be referenced from the HTML.
-    
+
     Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
     work correctly both with client-side routing and a non-root public URL.
     Learn how to configure a non-root public URL by running `npm run build`.
@@ -86,12 +88,21 @@
           themecolor: "red"
         }
       });
-      
+
       recorder.activate();
     });
     console.log(ZiggeoApi.Videos.source("videotoken"))
   </script>
-  
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <script type="text/javascript">
+    function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+  </script>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
@@ -100,13 +111,12 @@
   <!--
     This HTML file is a template.
     If you open it directly in the browser, you will see an empty page.
-    
+
     You can add webfonts, meta tags, or analytics to this file.
     The build step will place the bundled scripts into the <body> tag.
-      
+
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
   </html>
-  
