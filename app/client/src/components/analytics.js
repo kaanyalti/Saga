@@ -12,7 +12,7 @@ class EmotionsChart extends Component {
   };
   componentDidMount() {
     axios
-      .get("http://localhost:3001/api/home")
+      .get("http://localhost/api/home")
       .then(res => {
         console.log("response: ", res);
       })

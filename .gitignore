@@ -15,5 +15,5 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/config/local_env.yml
 .byebug_history
