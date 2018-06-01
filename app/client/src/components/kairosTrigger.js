@@ -1,21 +1,22 @@
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
 class KairosTrigger extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.callKairos = this.callKairos.bind(this)
+    this.callKairos = this.callKairos.bind(this);
   }
 
-  callKairos(){
-    axios.get('/api/kairos').then((response)=> console.log(response)).catch(err => console.log("error: ", err));
+  callKairos() {
+    axios
+      .get("/api/kairos")
+      .then(response => console.log(response))
+      .catch(err => console.log("error: ", err));
   }
 
-  render(){
-    return(
-        <button onClick={this.callKairos}>Call Kairos</button>
-    )
+  render() {
+    return <button onClick={this.callKairos}>Call Kairos</button>;
   }
 }
 
-export default KairosTrigger
+export default KairosTrigger;
