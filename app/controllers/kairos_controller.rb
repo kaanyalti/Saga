@@ -1,43 +1,26 @@
 class KairosController < ApplicationController
 
   def index
-    # connection = Faraday.new(url: 'http://api.kairos.com') do |faraday|
-    #   faraday.request  :url_encoded
-    #   faraday.response :response
-    #   faraday.adapter  Faraday.default_adapter
-    # end
-    # response = connection.post do |req|
-    #   req.url '/detect'
-    #   req.headers['app_id'] = '5031fc46'
-    #   req.headers['app_key'] = '60d086ae62d5e9db3942bd8aba620381'
-    #   req.headers['Content-Type'] = 'application/json'
-    #   req.body = '{"image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg/1200px-Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg"}'
-    # end
-    # render json: response
-
     headers = {
       "Content-Type" => "application/json",
-      "app_id" => "5031fc46",
-      "app_key" => "60d086ae62d5e9db3942bd8aba620381"
+      "app_id" => ENV["KAIROS_ID"],
+      "app_key" => ENV["KAIROS_KEY"]
     }
 
-    body = '{
-      "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Patrick_Stewart_Met_Opera_2010_Shankbone.jpg/220px-Patrick_Stewart_Met_Opera_2010_Shankbone.jpg",
-      "selector" : "ROLL"
-    }'
-
-    # response = HTTParty.get('http://api.stackexchange.com/2.2/questions?site=stackoverflow')
-    # puts response.body
+    source = "http://media.kairos.com/test.flv"
 
     response = HTTParty.post(
-      "http://api.kairos.com/detect",
-      :body => body,
+      "http://api.kairos.com/v2/media?source=#{source}",
       :headers => headers
     )
+    # puts "time: #{response["frames"][0]["time"]}, emotions: #{response["frames"][0]["people"][0]["emotions"]}, attention: #{response["frames"][0]["people"][0]["tracking"]["attention"]}"
 
-    puts response.body
 
-    render nothing: true
+    response["frames"].each do |f|
+      puts "time: #{f["time"]}, emotions: #{f["people"][0]["emotions"]}, attention: #{f["people"][0]["tracking"]["attention"]}"
+    end
+
+    render json: response
 
   end
 end

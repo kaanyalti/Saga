@@ -8,7 +8,7 @@ class KairosTrigger extends React.Component {
   }
 
   callKairos(){
-    axios.get('/api/kairos').then((response)=> console.log(response)).catch(err => console.log("error: ", err));
+    axios.get('/api/kairos').then((response)=> console.log(response.data)).catch(err => console.log("error: ", err));
   }
 
   render(){
