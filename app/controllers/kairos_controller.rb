@@ -21,9 +21,10 @@ class KairosController < ApplicationController
       "app_key" => "60d086ae62d5e9db3942bd8aba620381"
     }
 
-    body = {
-      "image" => "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg/1200px-Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg"
-    }
+    body = '{
+      "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Patrick_Stewart_Met_Opera_2010_Shankbone.jpg/220px-Patrick_Stewart_Met_Opera_2010_Shankbone.jpg",
+      "selector" : "ROLL"
+    }'
 
     # response = HTTParty.get('http://api.stackexchange.com/2.2/questions?site=stackoverflow')
     # puts response.body
