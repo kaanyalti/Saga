@@ -15,7 +15,6 @@ class App extends Component {
           Chart below can be edited by handling events in the form creation
           srcipt
         </p>
-        <EmotionsChart />
       </div>
     );
   }

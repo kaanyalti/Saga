@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 class EmotionsChart extends Component {
   chartStyle = {
     height: "180px",
