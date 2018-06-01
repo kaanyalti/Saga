@@ -9,12 +9,12 @@ Rails.application.routes.draw do
 
   root to: "home#show"
 
-namespace :api do
-  namespace :v1 do
+scope '/api' do
+
     # resources :videos
     # resources :users
     resources :kairos
-  end
+
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
