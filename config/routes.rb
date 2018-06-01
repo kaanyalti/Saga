@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -8,9 +9,12 @@ Rails.application.routes.draw do
 
   root to: "home#show"
 
-  resources :user_videos
-  resources :videos
-  resources :users
-  resources :kairos
+namespace :api do
+  namespace :v1 do
+    # resources :videos
+    # resources :users
+    resources :kairos
+  end
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,15 +1,17 @@
-class KairosController < ApplicationController
-  def index
-    connection = Faraday.new(url: 'http://api.kairos.com') do |faraday|
-      faraday.request  :url_encoded
-      faraday.response :response
-      faraday.adapter  Faraday.default_adapter
-    end
+module Api::V1
+  class KairosController < ApplicationController
+    def index
+      connection = Faraday.new(url: 'http://api.kairos.com') do |faraday|
+        faraday.request  :url_encoded
+        faraday.response :response
+        faraday.adapter  Faraday.default_adapter
+      end
 
-    response = conn.post do |req|
-      req.url '/detect'
-      req.headers{'app_id': '5031fc46', 'app_key': '60d086ae62d5e9db3942bd8aba620381', 'Content'}
-      req.body = {'image' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg/1200px-Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg'}
+      response = conn.post do |req|
+        req.url '/detect'
+        req.headers{'app_id': '5031fc46', 'app_key': '60d086ae62d5e9db3942bd8aba620381', 'Content'}
+        req.body = {'image' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg/1200px-Patrick_Stewart_Photo_Call_Logan_Berlinale_2017_%28cropped%29.jpg'}
+      end
     end
   end
 end
