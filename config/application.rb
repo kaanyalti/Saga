@@ -15,8 +15,9 @@ require "action_cable/engine"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
-
+config.action_dispatch.default_headers = {
+    'Access-Control-Allow-Origin' => 'http://localhost:3000/',
+  }
 module FinalProject
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -30,8 +31,5 @@ module FinalProject
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end
