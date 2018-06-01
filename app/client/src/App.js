@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import EmotionsChart from "./components/analytics";
 
 class App extends Component {
-  chartStyle = {
-    height: "180px",
-    width: "30%",
-    margin: "auto"
-  };
   render() {
     return (
       <div className="App">
@@ -16,10 +12,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          Chart below can be edited by handling events in the "head" of
-          app/client/public/index.html
+          Chart below can be edited by handling events in the form creation
+          srcipt
         </p>
-        <div id="chartContainer" style={this.chartStyle} />
+        <EmotionsChart />
       </div>
     );
   }
