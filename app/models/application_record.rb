@@ -1,5 +1,5 @@
 class ApplicationRecord < ActiveRecord::Base
-  protect_from_forgery with: :exception
+  include ActionController::Helpers
   helper_method :current_user
 
   self.abstract_class = true

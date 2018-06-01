@@ -1,4 +1,4 @@
-class KairosController < ApplicationController
+class Api::KairosController < ApplicationController
 
   def index
     headers = {
@@ -17,7 +17,12 @@ class KairosController < ApplicationController
 
 
     response["frames"].each do |f|
-      puts "time: #{f["time"]}, emotions: #{f["people"][0]["emotions"]}, attention: #{f["people"][0]["tracking"]["attention"]}"
+      puts
+      puts "time: #{f["time"]}"
+      f["people"].each do |p|
+        puts "emotions: #{p["emotions"]}, attention: #{p["tracking"]["attention"]}"
+      end
+
     end
 
     render json: response

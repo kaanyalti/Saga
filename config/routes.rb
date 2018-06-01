@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: "home#show"
 
-scope '/api' do
+namespace :api do
 
     # resources :videos
     # resources :users
