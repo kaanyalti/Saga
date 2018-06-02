@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import KairosTrigger from "./components/kairosTrigger";
+import ZiggeoRecorder from "./components/ziggeoRecorder";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 
@@ -18,6 +19,7 @@ class App extends Component {
         <KairosTrigger />
         <GoogleSignIn />
         <GoogleSignOut />
+        <ZiggeoRecorder />
       </div>
     );
   }
