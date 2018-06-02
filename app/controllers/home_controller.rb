@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
  
   def show
-    
-    render nothing: true
+    dbtest = User.all
+    render json: dbtest
+    puts dbtest
+    # render nothing: true
   end
 
   

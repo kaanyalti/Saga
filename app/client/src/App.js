@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <KairosTrigger />
-        <EmotionsChart />
+        <EmotionsChart title="neuts" />
       </div>
     );
   }
