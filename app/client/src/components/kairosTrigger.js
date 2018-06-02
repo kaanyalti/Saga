@@ -11,9 +11,10 @@ class KairosTrigger extends React.Component {
   }
 
   callKairos() {
-    const source_url = window.ZiggeoApi.Videos.source(this.state.video_token)
+
+    // const source_url = window.ZiggeoApi.Videos.source(this.state.video_token)
     axios
-      .get(`/api/kairos?source=${source_url}`)
+      .get("/api/kairos")
       .then(response => console.log(response))
       .catch(err => console.log("error: ", err));
   }

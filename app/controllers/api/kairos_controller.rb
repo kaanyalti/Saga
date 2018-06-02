@@ -7,25 +7,47 @@ class Api::KairosController < ApplicationController
       "app_key" => ENV["KAIROS_KEY"]
     }
 
-    source = "http://media.kairos.com/test.flv"
+    def uploadMedia (url)
+      response = HTTParty.post(
 
-    response = HTTParty.post(
-      "http://api.kairos.com/v2/media?source=#{source}",
-      :headers => headers
-    )
+      )
+    end
+    # puts request.body.read
+
+    # url = "http://media.kairos.com/test.flv"
+    url = "https://embed-cdn.ziggeo.com/v1/applications/120e5271e3f8259cc47311e11e135c46/videos/b22a0044b9398de3dad66bd73c0f7869/streams/3b450800f39b842906f67c0d7afe828c/video.flv"
+    # response = HTTParty.post(
+    #   "http://api.kairos.com/v2/media?source=#{url}",
+    #   :headers => headers
+    # )
     # puts "time: #{response["frames"][0]["time"]}, emotions: #{response["frames"][0]["people"][0]["emotions"]}, attention: #{response["frames"][0]["people"][0]["tracking"]["attention"]}"
 
+    puts response
 
-    response["frames"].each do |f|
+    analyzed = HTTParty.get(
+      "http://api.kairos.com/v2/media/3088829a7d65d1bcdd454393",
+      :headers => headers
+    )
+
+    # puts "time: #{analyzed["frames"]}"
+    analyzed["frames"].each do |a|
       puts
-      puts "time: #{f["time"]}"
-      f["people"].each do |p|
+      puts "time: #{a["time"]}"
+      a["people"].each do |p|
         puts "emotions: #{p["emotions"]}, attention: #{p["tracking"]["attention"]}"
       end
-
     end
+    # response["frames"].each do |f|
+    #   puts
+    #   puts "time: #{f["time"]}"
+    #   f["people"].each do |p|
+    #     puts "emotions: #{p["emotions"]}, attention: #{p["tracking"]["attention"]}"
+    #   end
 
-    render json: response
+    # end
 
+    # render json: response
+
+    render nothing: true
   end
 end
