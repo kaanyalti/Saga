@@ -6,8 +6,7 @@ class EmotionsChart extends Component {
     super(props);
     this.state = {
       title: props.title,
-      x: this.props.x,
-      y: this.props.y
+      points: { x: this.props.x, y: this.props.y }
     };
   }
   chartStyle = {
@@ -28,12 +27,12 @@ class EmotionsChart extends Component {
         }
       ]
     });
-    chart.render();
     axios.get("/api/").then(res => {
       let index = 0;
       res.data.forEach(result => {
-        console.log("Axios call: ", chart.options.data[0].dataPoints);
+        console.log("Axios call: ", chart);
         chart.options.data[0].dataPoints.push({ x: result.id, y: result.id });
+        chart.render();
       });
     });
   }
