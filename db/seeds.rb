@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Reaction.destroy_all
 Video.destroy_all
 User.destroy_all
-Reaction.destroy_all
+
 
 5.times do
   User.create!(

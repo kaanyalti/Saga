@@ -6,7 +6,7 @@ class KairosTrigger extends React.Component {
     super(props);
     this.callKairos = this.callKairos.bind(this);
   }
-
+  
   callKairos() {
     axios
       .get("/api/kairos")
