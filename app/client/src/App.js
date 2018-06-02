@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
-import KairosTrigger from './components/kairosTrigger'
+import KairosTrigger from "./components/kairosTrigger";
+import GoogleSignIn from "./components/googleSignIn";
+import GoogleSignOut from "./components/googleSignOut";
 
 class App extends Component {
   chartStyle = {
@@ -12,8 +14,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div id="chartContainer" style={this.chartStyle} ></div>
-        <KairosTrigger/>
+        <div id="chartContainer" style={this.chartStyle} />
+        <KairosTrigger />
+        <GoogleSignIn />
+        <GoogleSignOut />
       </div>
     );
   }
