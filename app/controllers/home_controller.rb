@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
  
   def show
-    dbtest = User.all
+    dbtest = Reaction.all
     render json: dbtest
-    puts dbtest
+    dbtest.each 
+    pp dbtest
     # render nothing: true
   end
 
