@@ -24,8 +24,12 @@ class googleSignOut extends React.Component {
   }
 
   render() {
-    return (<GoogleLogout buttonText="Logout" onLogoutSuccess={this.forceMyOwnLogout}>
-    </GoogleLogout>)
+    return (
+      <GoogleLogout
+        buttonText="Logout"
+        onLogoutSuccess={this.forceMyOwnLogout}
+      />
+    );
   }
 }
 
