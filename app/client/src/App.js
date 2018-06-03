@@ -4,7 +4,6 @@ import "./App.css";
 import KairosTrigger from "./components/kairosTrigger";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
-import renderVideos from "./components/renderVideos";
 
 class App extends Component {
   chartStyle = {
