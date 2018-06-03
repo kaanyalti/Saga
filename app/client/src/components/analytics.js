@@ -43,8 +43,12 @@ class EmotionsChart extends Component {
       ]
     });
     axios.get("/api/").then(res => {
+      console.log("Chart (analytics) component props: ", this.props);
       res.data.forEach(result => {
-        chart.options.data[0].dataPoints.push({ x: result.id, y: result.id });
+        chart.options.data[0].dataPoints.push({
+          x: this.props.x,
+          y: this.props.y
+        });
         chart.render();
       });
     });

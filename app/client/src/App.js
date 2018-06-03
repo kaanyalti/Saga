@@ -5,11 +5,21 @@ import KairosTrigger from "./components/kairosTrigger";
 import EmotionsChart from "./components/analytics";
 
 class App extends Component {
+  getCoord() {
+    let x = 45,
+      y = 50;
+    let coordinates = { x: x, y: y };
+    return (coordinates = { x: x, y: y });
+  }
   render() {
     return (
       <div className="App">
         <KairosTrigger />
-        <EmotionsChart title="title from App.js props" x="40" y="65" />
+        <EmotionsChart
+          title="Title given by KairosTrigger component"
+          x={this.getCoord().x}
+          y={this.getCoord().y}
+        />
       </div>
     );
   }
