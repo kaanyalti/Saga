@@ -15,6 +15,7 @@ class EmotionsChart extends Component {
   };
 
   componentDidMount() {
+    console.log("props: ", this.props);
     var recorder = new window.ZiggeoApi.V2.Recorder({
       element: document.getElementById("replace_me-v2_recorder"),
       attrs: {
@@ -27,13 +28,8 @@ class EmotionsChart extends Component {
 
     recorder.activate();
 
-    console.log("Zigeo: ", window.ZiggeoApi.Videos.source("videotoken"));
-
     let title = this.state.title;
-
     let chart = new window.CanvasJS.Chart("chartContainer", {
-      //you will need one per form
-
       title: { text: title },
       data: [
         {

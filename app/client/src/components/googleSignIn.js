@@ -63,9 +63,9 @@ class googleSignIn extends React.Component {
           width="560"
           height="315"
           src={videoSrc}
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; encrypted-media"
-          allowfullscreen
+          allowFullScreen
         />
       </div>
     );
