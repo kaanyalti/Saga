@@ -7,20 +7,33 @@ class KairosTrigger extends React.Component {
     this.state = {
       video_token: "b22a0044b9398de3dad66bd73c0f7869"
     }
-    this.callKairos = this.callKairos.bind(this);
+    this.uploadKairos = this.uploadKairos.bind(this);
+    this.retrieveKairos = this.retrieveKairos.bind(this);
   }
 
-  callKairos() {
-
-    // const source_url = window.ZiggeoApi.Videos.source(this.state.video_token)
+  uploadKairos() {
     axios
-      .get("/api/kairos")
-      .then(response => console.log(response))
+      .get("/api/kairos?kairos_method=upload")
+      .then(response => console.log("successfully connected to the server"))
       .catch(err => console.log("error: ", err));
   }
 
+
+  retrieveKairos() {
+    axios
+      .get("/api/kairos?kairos_method=retrieve")
+      .then(() => console.log("successfully connected to the server"))
+      .catch(err => console.log("error: ", err));
+  }
+
+
   render() {
-    return <button onClick={this.callKairos}>Call Kairos</button>;
+    return(
+      <div>
+        <button onClick={this.uploadKairos}>Upload to Kairos</button>
+        <button onClick={this.retrieveKairos}>Retrieve Data</button>
+      </div>
+    )
   }
 }
 

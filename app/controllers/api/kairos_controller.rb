@@ -10,7 +10,7 @@ class Api::KairosController < ApplicationController
     def uploadMedia (source_url)
       response = HTTParty.post(
         "http://api.kairos.com/v2/media?source=#{source_url}",
-        :headers => kairos_headers
+        :headers => @kairos_headers
       )
       render json: response
     end
@@ -33,42 +33,21 @@ class Api::KairosController < ApplicationController
                     end
       pp cleanedData
       render json: cleanedData
-      # pp apiData
     end
 
+    # pp request.query_parameters
 
-
-    # analyzed["frames"].each do |a|
-    #   puts
-    #   puts "time: #{a["time"]}"
-    #   a["people"].each do |p|
-    #     puts "emotions: #{p["emotions"]}, attention: #{p["tracking"]["attention"]}"
-    #   end
+    # params.each do |key, value|
+    #   puts "key => #{key}, value => #{value}"
     # end
 
     url = "https://embed-cdn.ziggeo.com/v1/applications/120e5271e3f8259cc47311e11e135c46/videos/b22a0044b9398de3dad66bd73c0f7869/streams/3b450800f39b842906f67c0d7afe828c/video.flv"
 
+    if params["kairos_method"] == "retrieve"
+      retrieveData("3088829a7d65d1bcdd454393")
+    else
+      uploadMedia(url)
+    end
 
-
-    retrieveData("3088829a7d65d1bcdd454393")
-
-    # analyzed = HTTParty.get(
-    #   "http://api.kairos.com/v2/media/3088829a7d65d1bcdd454393",
-    #   :headers => headers
-    # )
-
-    # puts "time: #{analyzed["frames"]}"
-    # response["frames"].each do |f|
-    #   puts
-    #   puts "time: #{f["time"]}"
-    #   f["people"].each do |p|
-    #     puts "emotions: #{p["emotions"]}, attention: #{p["tracking"]["attention"]}"
-    #   end
-
-    # end
-
-    # render json: response
-
-    # render nothing: true
   end
 end
