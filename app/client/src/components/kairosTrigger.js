@@ -11,6 +11,7 @@ class KairosTrigger extends React.Component {
     this.retrieveKairos = this.retrieveKairos.bind(this);
   }
 
+
   uploadKairos() {
     axios
       .get("/api/kairos?kairos_method=upload")
