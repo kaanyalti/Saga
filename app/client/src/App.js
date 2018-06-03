@@ -7,6 +7,7 @@ import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 import EmotionsChart from "./components/analytics";
 
+
 class App extends Component {
 
   constructor(){

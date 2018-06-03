@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import * as Kairos from "../modules/kariosMethods"
 
 class ziggeoRecorder extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class ziggeoRecorder extends React.Component {
         console.log(data.application.videos)
 
         var videoToken = data.application.videos.__cache[Object.keys(data.application.videos.__cache)[0]].data.token
+
 
         // var newDiv = document.createElement("div");
         // var newContent = document.createTextNode(videoToken);
