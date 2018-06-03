@@ -4,20 +4,27 @@ import "./App.css";
 import KairosTrigger from "./components/kairosTrigger";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
+import EmotionsChart from "./components/analytics";
 
 class App extends Component {
-  chartStyle = {
-    height: "180px",
-    width: "30%",
-    margin: "auto"
-  };
+  getCoord() {
+    let x = 45,
+      y = 50;
+    let coordinates = { x: x, y: y };
+    return (coordinates = { x: x, y: y });
+  }
   render() {
     return (
       <div className="App">
         <div id="chartContainer" style={this.chartStyle} />
-        <KairosTrigger />
         <GoogleSignIn />
         <GoogleSignOut />
+        <KairosTrigger />
+        <EmotionsChart
+          title="Title given by KairosTrigger component"
+          x={this.getCoord().x}
+          y={this.getCoord().y}
+        />
       </div>
     );
   }
