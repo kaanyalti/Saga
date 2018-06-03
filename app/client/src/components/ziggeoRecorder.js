@@ -27,18 +27,6 @@ class ziggeoRecorder extends React.Component {
       });
   }
 
-  // callZiggeo() {
-  //   // axios
-  //   //   .get(
-  //   //     `https://www.googleapis.com/youtube/v3/channels?access_token=${
-  //   //       response.accessToken
-  //   //     }&part=snippet&mine=true`
-  //   //   )
-  //   //   .then(res => {
-  //   //     console.log(res);
-  //   //   });
-  // }
-
   render() {
     return <ziggeorecorder ziggeo-width="320" ziggeo-height="240" ziggeo-theme="modern" ziggeo-themecolor="red"> </ziggeorecorder>;
   }
