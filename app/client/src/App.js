@@ -23,12 +23,9 @@ class App extends Component {
     });
   }
 
-
-
   render() {
     return (
       <div className="App">
-        <div id="chartContainer" style={this.chartStyle} />
         <KairosTrigger />
         <GoogleSignIn addNewVideoID={this.addNewVideoID} videoIDs={this.state.videoIDs}/>
         <GoogleSignOut />
