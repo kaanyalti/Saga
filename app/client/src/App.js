@@ -6,6 +6,7 @@ import ZiggeoRecorder from "./components/ziggeoRecorder";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 import EmotionsChart from "./components/analytics";
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
 
 class App extends Component {
   getCoord() {
