@@ -15,20 +15,6 @@ class EmotionsChart extends Component {
   };
 
   componentDidMount() {
-    var recorder = new window.ZiggeoApi.V2.Recorder({
-      element: document.getElementById("replace_me-v2_recorder"),
-      attrs: {
-        width: 320,
-        height: 240,
-        theme: "modern",
-        themecolor: "red"
-      }
-    });
-
-    recorder.activate();
-
-    console.log("Zigeo: ", window.ZiggeoApi.Videos.source("videotoken"));
-
     let title = this.state.title;
 
     let chart = new window.CanvasJS.Chart("chartContainer", {
