@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import KairosTrigger from "./components/kairosTrigger";
+import ZiggeoRecorder from "./components/ziggeoRecorder";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 import EmotionsChart from "./components/analytics";
@@ -25,6 +26,7 @@ class App extends Component {
           x={this.getCoord().x}
           y={this.getCoord().y}
         />
+        <ZiggeoRecorder />
       </div>
     );
   }
