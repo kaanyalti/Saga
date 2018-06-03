@@ -6,9 +6,9 @@ class googleSignIn extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      videoIDs: []
-    };
+    // this.state = {
+    //   videoIDs: []
+    // };
     this.responseGoogle = this.responseGoogle.bind(this);
   }
 
@@ -36,11 +36,16 @@ class googleSignIn extends React.Component {
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
               )
               .then(res => {
-                const { videoIDs } = this.state;
+                // const { videoIDs } = this.state;
                 // TODO: Map through the data.items array to get ALL UPLOADS
-                const videoID = res.data.items[0].snippet.resourceId.videoId;
-                this.setState({ videoIDs: [...videoIDs, videoID] });
-                console.log(videoID);
+                // const videoIDs = res.data.items[0].snippet.resourceId.videoId;
+                const videoIDs = res.data.items.map(items => {
+                  return items.snippet.resourceId.videoId
+                })
+                this.props.addNewVideoID(videoIDs);
+                console.log(videoIDs)
+                // this.setState({ videoIDs: [...videoIDs, videoID] });
+                // console.log(videoID);
               });
             console.log(uploadsID);
           });
@@ -49,7 +54,7 @@ class googleSignIn extends React.Component {
   }
 
   render() {
-    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`;
+    const videoSrc = `https://www.youtube.com/embed/${this.props.videoIDs[0]}`;
     return (
       <div>
         <GoogleLogin

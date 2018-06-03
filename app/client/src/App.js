@@ -8,23 +8,30 @@ import GoogleSignOut from "./components/googleSignOut";
 import EmotionsChart from "./components/analytics";
 
 class App extends Component {
-  getCoord() {
-    let x = 45,
-      y = 50;
-    let coordinates = { x: x, y: y };
-    return (coordinates = { x: x, y: y });
+
+  constructor(){
+    super();
+    this.state = {
+      videoIDs: [],
+    }
+    this.addNewVideoID = this.addNewVideoID.bind(this)
   }
+
+  addNewVideoID(newIDs) {
+    this.setState((prevState) => {
+      return {videoIDs: [...prevState.videoIDs, ...newIDs]};
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <div id="chartContainer" style={this.chartStyle} />
-        <GoogleSignIn />
+        <KairosTrigger />
+        <GoogleSignIn addNewVideoID={this.addNewVideoID} videoIDs={this.state.videoIDs}/>
         <GoogleSignOut />
         <KairosTrigger />
         <EmotionsChart
           title="Title given by KairosTrigger component"
-          x={this.getCoord().x}
-          y={this.getCoord().y}
         />
         <ZiggeoRecorder />
       </div>
