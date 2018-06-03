@@ -30,25 +30,10 @@
 </head>
 <body>
   <script>
+    // moved ziggy to component
     ZiggeoApi.Events.on("submitted", function (data) {
       alert("The video with token " + data.video.token + " has been submitted!");
     });
-  </script>
-  <div id="replace_me-v2_recorder"></div> <script>
-    ZiggeoApi.Events.on("system_ready", function() {
-      var recorder = new ZiggeoApi.V2.Recorder({
-        element: document.getElementById("replace_me-v2_recorder"),
-        attrs: {
-          width: 320,
-          height: 240,
-          theme: "modern",
-          themecolor: "red"
-        }
-      });
-
-      recorder.activate();
-    });
-    console.log(ZiggeoApi.Videos.source("videotoken"))
   </script>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
   <script type="text/javascript">
