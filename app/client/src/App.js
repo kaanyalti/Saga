@@ -5,8 +5,10 @@ import KairosTrigger from "./components/kairosTrigger";
 import ZiggeoRecorder from "./components/ziggeoRecorder";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
+import EmotionsChart from "./components/analytics";
 
 class App extends Component {
+
   constructor(){
     super();
     this.state = {
@@ -22,11 +24,7 @@ class App extends Component {
   }
 
 
-  chartStyle = {
-    height: "180px",
-    width: "30%",
-    margin: "auto"
-  };
+
   render() {
     return (
       <div className="App">
@@ -34,6 +32,10 @@ class App extends Component {
         <KairosTrigger />
         <GoogleSignIn addNewVideoID={this.addNewVideoID} videoIDs={this.state.videoIDs}/>
         <GoogleSignOut />
+        <KairosTrigger />
+        <EmotionsChart
+          title="Title given by KairosTrigger component"
+        />
         <ZiggeoRecorder />
       </div>
     );
