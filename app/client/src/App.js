@@ -1,31 +1,33 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 import KairosTrigger from "./components/kairosTrigger";
 import ZiggeoRecorder from "./components/ziggeoRecorder";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 import EmotionsChart from "./components/analytics";
+import Navbar from "./components/navBar.jsx";
 
+// class App extends Component {
+// import Component from './Dashboard/nameOfComponent.jsx'
+//   render() {
+//     return (
+//       <Component />
+//     )
+//   }
+// }
 class App extends Component {
-  getCoord() {
-    let x = 45,
-      y = 50;
-    let coordinates = { x: x, y: y };
-    return (coordinates = { x: x, y: y });
-  }
   render() {
     return (
       <div className="App">
-        <div id="chartContainer" style={this.chartStyle} />
-        <GoogleSignIn />
-        <GoogleSignOut />
+        <Navbar />
+        <div className="google-buttons">
+          <GoogleSignIn />
+          <GoogleSignOut />
+        </div>
+        <div className="Chart">
+          <EmotionsChart title="Title given by KairosTrigger component" />
+        </div>
         <KairosTrigger />
-        <EmotionsChart
-          title="Title given by KairosTrigger component"
-          x={this.getCoord().x}
-          y={this.getCoord().y}
-        />
         <ZiggeoRecorder />
       </div>
     );

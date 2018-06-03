@@ -1,30 +1,33 @@
 import React from "react";
 import axios from "axios";
 
-class ziggeoRecorder extends React.Component {
+class ZiggeoRecorder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       application_token: "120e5271e3f8259cc47311e11e135c46",
       video_token: "b22a0044b9398de3dad66bd73c0f7869"
-    }
+    };
     // this.callZiggeo = this.callZiggeo.bind(this);
   }
 
   componentDidMount() {
     var embedding = new window.ZiggeoApi.V2.Application({
-        token: "120e5271e3f8259cc47311e11e135c46"
+      token: "120e5271e3f8259cc47311e11e135c46"
     });
 
     embedding.embed_events.on("processed", function(data) {
-        console.log('processed')
-        console.log(data.application.videos)
+      console.log("processed");
+      console.log(data.application.videos);
 
-        var videoToken = data.application.videos.__cache[Object.keys(data.application.videos.__cache)[0]].data.token
+      var videoToken =
+        data.application.videos.__cache[
+          Object.keys(data.application.videos.__cache)[0]
+        ].data.token;
 
-        // var newDiv = document.createElement("div");
-        // var newContent = document.createTextNode(videoToken);
-      });
+      // var newDiv = document.createElement("div");
+      // var newContent = document.createTextNode(videoToken);
+    });
   }
 
   // callZiggeo() {
@@ -40,8 +43,17 @@ class ziggeoRecorder extends React.Component {
   // }
 
   render() {
-    return <ziggeorecorder ziggeo-width="320" ziggeo-height="240" ziggeo-theme="modern" ziggeo-themecolor="red"> </ziggeorecorder>;
+    return (
+      <ziggeorecorder
+        ziggeo-width="320"
+        ziggeo-height="240"
+        ziggeo-theme="modern"
+        ziggeo-themecolor="red"
+      >
+        {" "}
+      </ziggeorecorder>
+    );
   }
 }
 
-export default ziggeoRecorder;
+export default ZiggeoRecorder;
