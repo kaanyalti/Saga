@@ -13,16 +13,17 @@ class ziggeoRecorder extends React.Component {
   }
 
   componentDidMount() {
-    var embedding = new window.ZiggeoApi.V2.Application({
+    const embedding = new window.ZiggeoApi.V2.Application({
         token: "120e5271e3f8259cc47311e11e135c46"
     });
 
-    embedding.embed_events.on("processed", function(data) {
+    embedding.embed_events.on("processed", (data) => {
         console.log('processed')
         console.log(data.application.videos)
 
-        var videoToken = data.application.videos.__cache[Object.keys(data.application.videos.__cache)[0]].data.token
+        const videoToken = data.application.videos.__cache[Object.keys(data.application.videos.__cache)[0]].data.token
 
+        Kairos.uploadKairos(videoToken, this.state.application_token)
 
         // var newDiv = document.createElement("div");
         // var newContent = document.createTextNode(videoToken);
