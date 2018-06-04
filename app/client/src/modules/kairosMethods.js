@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const uploadKairos = (videoToken, applicationToken) => {
+export const uploadKairos = (videoToken) => {
   axios
       .get(`/api/kairos?kairos_method=upload&video_token=${videoToken}`)
       .then(response => console.log("successfully connected to the server"))

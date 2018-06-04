@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import * as Kairos from "../modules/kariosMethods"
+import * as Kairos from "../modules/kairosMethods"
 
 class ziggeoRecorder extends React.Component {
   constructor(props) {
@@ -17,13 +17,14 @@ class ziggeoRecorder extends React.Component {
         token: "120e5271e3f8259cc47311e11e135c46"
     });
 
-    embedding.embed_events.on("processed", (data) => {
-        console.log('processed')
+    embedding.embed_events.on("verified", (data) => {
+        console.log('verified')
         console.log(data.application.videos)
 
-        const videoToken = data.application.videos.__cache[Object.keys(data.application.videos.__cache)[0]].data.token
+        const videoToken = data.__cache[Object.keys(data.__cache)[0]]
 
-        Kairos.uploadKairos(videoToken, this.state.application_token)
+        console.log(videoToken)
+        Kairos.uploadKairos(videoToken)
 
         // var newDiv = document.createElement("div");
         // var newContent = document.createTextNode(videoToken);

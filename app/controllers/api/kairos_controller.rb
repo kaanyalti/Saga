@@ -55,12 +55,18 @@ class Api::KairosController < ApplicationController
     #   puts "key => #{key}, value => #{value}"
     # end
 
-    url = "https://embed-cdn.ziggeo.com/v1/applications/120e5271e3f8259cc47311e11e135c46/videos/b22a0044b9398de3dad66bd73c0f7869/streams/3b450800f39b842906f67c0d7afe828c/video.flv"
+    # url = "https://embed-cdn.ziggeo.com/v1/applications/120e5271e3f8259cc47311e11e135c46/videos/b22a0044b9398de3dad66bd73c0f7869/streams/3b450800f39b842906f67c0d7afe828c/video.flv"
+
+
+    stream_token_access_url = stream_token_url(params["video_token"])
+    stream_token = retrieve_stream_token(stream_token_access_url)
+    source_url = upload_stream_url(params["video_token"], stream_token)
+
 
     if params["kairos_method"] == "retrieve"
       retrieve_data("3088829a7d65d1bcdd454393")
     else
-      upload_media(url)
+      upload_media(source_url)
     end
 
   end
