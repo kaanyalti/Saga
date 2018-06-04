@@ -17,9 +17,3 @@ const Video = (props) => {
 }
 
 export default Video
-/*
-
-<h1>{player.name} (#{player.number})</h1>
-      <h2>Position: {player.position}</h2>
-
-*/

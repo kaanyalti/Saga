@@ -1,11 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import videoIDs from '../../fakeYouTubeRes.js'
-// import Video from './Video'
 
-
-// The AdminMain component matches one of two different routes
-// depending on the full pathname
 const AdminMain = () => (
   <div>
     <ul>
