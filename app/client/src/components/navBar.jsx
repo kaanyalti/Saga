@@ -19,6 +19,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-light">
         <ul className="nav navbar-nav">
           <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">Login</Link></li>
           <li><Link to="/admin">Dashboard</Link></li>
         </ul>
        </nav>
