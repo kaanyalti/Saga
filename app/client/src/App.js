@@ -6,14 +6,15 @@ import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 import NavBar from "./components/NavBar.jsx";
 import Graph from "./CreatorDashboard/VideoAnalytics/Graphs";
-import LandingPage from "./LandingPage/text.jsx";
+import LoginPage from "./LandingPage/text.jsx";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <NavBar />
-        <LandingPage />
+        <LoginPage />
+        {/* <LandingPage /> */}
         {/* <Graph title="Title given by KairosTrigger component" /> */}
         {/* <KairosTrigger /> */}
         {/* <ZiggeoRecorder /> */}
