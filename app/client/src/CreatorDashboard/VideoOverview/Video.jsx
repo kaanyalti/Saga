@@ -16,6 +16,7 @@ const Video = (props) => {
   )
 }
 
+export default Video
 /*
 
 <h1>{player.name} (#{player.number})</h1>
