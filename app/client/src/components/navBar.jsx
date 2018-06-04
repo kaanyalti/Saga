@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import GoogleSignIn from "./googleSignIn";
 import GoogleSignOut from "./googleSignOut";
+import {Navbar} from "react-bootstrap"
 
-class Navbar extends Component {
+class NavBar extends Component { //not the bootsrap component Navbar
   navStyle = {
-    position: "fixed",
-    width: "100%",
-    overlay: "hidden",
-    top: "0",
-    zIndex: "9999"
+    marginBottom: "0",
+    paddingBottom: "10px"
   }
   
   spanStyle = {
@@ -20,15 +18,20 @@ class Navbar extends Component {
   }
   
   LoginStyle = {
-    float: "right",
     color: "grey",
-    marginRight: "10px"
+    position: "absolute",
+    right: "10px",
+    paddingTop: "10px"
   }
 
-  ButtonStyle = {
-    marginLeft: "10px",
-    marginRight: "10px"
+  HomeStyle = {
+    color: "grey",
+    position: "absolute",
+    paddingTop: "10px",
+    right: "65px"
   }
+
+ 
 
   UnderlineHome = {
     marginRight: "5px",
@@ -52,23 +55,23 @@ class Navbar extends Component {
   
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light" style={this.navStyle}>
+      <Navbar style={this.navStyle}>
       <span style={this.spanStyle}> Sága</span>
-      <span style={this.LoginStyle}> 
-      <a style={this.ButtonStyle}>Home</a>
-      <a style={this.LoginStyle}>Login</a>
+      <span> 
+      <Navbar.Link style={this.HomeStyle}>Home</Navbar.Link>
+      <Navbar.Link style={this.LoginStyle}>Login</Navbar.Link>
       <div className="log-buttons">
-      <div style={this.UnderlineHome}>
-      </div>
-      <div style={this.UnderlineLogin}>
-      </div>
+      {/* <div style={this.UnderlineHome}> */}
+      {/* </div> */}
+      {/* <div style={this.UnderlineLogin}> */}
+      {/* </div> */}
       </div>
       </span>
       {/* <GoogleSignIn /> */}
       {/* <GoogleSignOut /> */}
-      </nav>
+      </Navbar>
     );
   }
 }
 
-export default Navbar;
+export default NavBar;
