@@ -6,7 +6,7 @@ class ziggeoRecorder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      application_token: "120e5271e3f8259cc47311e11e135c46",
+      application_token: "452fbaf69e31787137de2d2b6f027eea",
       video_token: "b22a0044b9398de3dad66bd73c0f7869"
     }
     // this.callZiggeo = this.callZiggeo.bind(this);
@@ -14,7 +14,7 @@ class ziggeoRecorder extends React.Component {
 
   componentDidMount() {
     const embedding = new window.ZiggeoApi.V2.Application({
-        token: "120e5271e3f8259cc47311e11e135c46"
+        token: "452fbaf69e31787137de2d2b6f027eea"
     });
 
     embedding.embed_events.on("verified", (data) => {
