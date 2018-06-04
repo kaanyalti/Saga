@@ -13,9 +13,7 @@ class Api::KairosController < ApplicationController
 
     def retrieve_stream_token (stream_token_url)
       response = HTTParty.get(stream_token_url)
-      pp response
-      # pp response["streams"][1]["token"]
-      # response["streams"][1]["token"]
+      response["streams"][1]["token"]
     end
 
     def upload_stream_url (video_token,stream_token)
@@ -27,15 +25,16 @@ class Api::KairosController < ApplicationController
         "http://api.kairos.com/v2/media?source=#{source_url}",
         :headers => @kairos_headers
       )
-      pp(response.accessToken)
-      render json: response
+      # render json: response
     end
 
     def retrieve_data (media_id)
+      puts "RETRIEVE DATA"
       api_data = HTTParty.get(
         "http://api.kairos.com/v2/media/#{media_id}",
         :headers => @kairos_headers
       )
+
       cleaned_data = api_data["frames"].map do |a|
                       data_entry ={}
                       data_entry["time"] = a["time"]
@@ -51,19 +50,16 @@ class Api::KairosController < ApplicationController
       render json: cleaned_data
     end
 
-
-    # source_url = upload_stream_url(params["video_token"], stream_token)
-
-    pp "VIDEO TOKEN: #{params["video_token"]}"
     stream_token_access_url = stream_token_url(params["video_token"])
-    pp "STREAM TOKEN URL: #{stream_token_access_url}"
     stream_token = retrieve_stream_token(stream_token_access_url)
+    source_url = upload_stream_url(params["video_token"], stream_token)
 
-    # if params["kairos_method"] == "retrieve"
-    #   retrieve_data("3088829a7d65d1bcdd454393")
-    # else
-    #   upload_media(source_url)
-    # end
+    if params["kairos_method"] == "retrieve"
+      retrieve_data("3088829a7d65d1bcdd454393")
+    else
+      upload_media(source_url)
+    end
 
+    render nothing: true
   end
 end
