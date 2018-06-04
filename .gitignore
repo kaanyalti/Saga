@@ -29,7 +29,7 @@
 
 # production
 /build
-/app/client/env.js
+/app/client/src/env.js
 # misc
 .DS_Store
 .env.local
