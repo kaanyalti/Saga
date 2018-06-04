@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 import KairosTrigger from "./components/kairosTrigger";
 import ZiggeoRecorder from "./components/ziggeoRecorder";
@@ -21,14 +20,17 @@ const Login = () => (
     <h2>Login</h2>
   </div>
 )
+import Navbar from "./components/NavBar.jsx";
 
+// class App extends Component {
+// import Component from './Dashboard/nameOfComponent.jsx'
+//   render() {
+//     return (
+//       <Component />
+//     )
+//   }
+// }
 class App extends Component {
-  getCoord() {
-    let x = 45,
-      y = 50;
-    let coordinates = { x: x, y: y };
-    return (coordinates = { x: x, y: y });
-  }
   render() {
     return (
       <div>
@@ -57,18 +59,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-
-  <div id="chartContainer" style={this.chartStyle} />
-        <GoogleSignIn />
-        <GoogleSignOut />
-        <KairosTrigger />
-        <EmotionsChart
-          title="Title given by KairosTrigger component"
-          x={this.getCoord().x}
-          y={this.getCoord().y}
-        />
-        <ZiggeoRecorder />
-
-*/
