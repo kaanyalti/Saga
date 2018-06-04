@@ -7,14 +7,14 @@ class LandingPage extends Component {
     borderRadius: "0"
   }
   
-  NavBarStyle = {
-    marginBottom: "0"
+  titleStyle = {
+    fontSize: "3em"
   }
   
  
   VideoStyle = {
     width: "75%",
-    backgroundColor: "grey",
+    backgroundColor: "#d8d8d8",
     height: "60%",
     zIndex: "999",
     position: "fixed",
@@ -24,6 +24,7 @@ class LandingPage extends Component {
     marginBottom: "0"
   }
   
+  
   DescriptionStyle = {
     backgroundColor: "#fcfcfc",
     color: "black",
@@ -31,8 +32,9 @@ class LandingPage extends Component {
     width: "40%",
     textAlign: "center",
     top: "35%",
-    right: "10%",
+    right: "0",
     float: "right",
+    position: "relative",
     borderRadius: "0"
   }
   
@@ -43,10 +45,11 @@ class LandingPage extends Component {
           <Col xs={12} md={8}>
             <Grid style={this.VideoStyle}>
               <Row className="show-grid">
-                <Col xs={12} md={8}>
+                <Col xs={12} md={12}>
                   <Jumbotron style={this.DescriptionStyle}>
-                  Welcome to Sága. We don't know what to say yet
-                  but we will by wednesday night:)
+                    <h1 style={this.titleStyle}>Welcome to Sága.</h1>
+                     We don't know what to say yet
+                    but we will by wednesday night:)
                   </Jumbotron>
                 </Col>
               </Row>

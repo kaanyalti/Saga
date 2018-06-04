@@ -5,14 +5,14 @@ import {Navbar} from "react-bootstrap"
 
 class NavBar extends Component { //not the bootsrap component Navbar
   navStyle = {
+    color: "rgb(215, 236, 239)",
     marginBottom: "0",
-    paddingBottom: "10px",
-    color: "#D7ECEF"
+    border: "0px"
   }
   
   spanStyle = {
     float: "left",
-    color: 'grey',
+    color: 'rgb(20, 139, 157)',
     fontFamily: 'Montserrat',
     fontWeight: "bolder",
     fontSize: "2em"
@@ -21,36 +21,16 @@ class NavBar extends Component { //not the bootsrap component Navbar
   LoginStyle = {
     position: "absolute",
     right: "10px",
-    paddingTop: "10px"
+    paddingTop: "10px",
+    color: "rgb(20, 139, 157)"
   }
-
+  
   HomeStyle = {
     position: "absolute",
     paddingTop: "10px",
-    right: "65px"
-  }
-
- 
-
-  UnderlineHome = {
-    marginRight: "5px",
-    width: "50px",
-    height: "5px",
-    backgroundColor: "#D7ECEF",
-    position: "absolute",
     right: "65px",
+    color: "rgb(20, 139, 157)"
   }
-
-  UnderlineLogin = {
-    marginRight: "5px",
-    marginLeft: "2px",
-    width: "50px",
-    height: "5px",
-    backgroundColor: "#D7ECEF",
-    position: "absolute",
-    right: "13px",
-  }
-  
   
   render() {
     return (
