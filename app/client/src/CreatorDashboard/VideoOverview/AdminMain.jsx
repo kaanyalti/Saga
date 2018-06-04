@@ -14,6 +14,7 @@ const AdminMain = () => (
           <li key={video.id}>
             <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
             <iframe
+              title={video.title}
               width="560"
               height="315"
               src={`https://www.youtube.com/embed/${video.id}`}
