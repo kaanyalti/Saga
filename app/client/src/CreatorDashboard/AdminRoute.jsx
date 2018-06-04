@@ -15,12 +15,15 @@ class AdminRoute extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <Switch>
         <Route
+          exact
           path="/admin"
-          component={VideoList}
+          render={() =>
+            this.props.loggedIn ? <VideoList /> : <Redirect to="/login" />
+          }
         />
         <Route exact path="/admin/videos" component={VideosAll} />
         <Route path="/admin/videos/:video_id" component={VideoDetail} />

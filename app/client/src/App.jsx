@@ -11,12 +11,12 @@ import Main from "./components/Layout/Main.jsx";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       loggedIn: true,
-      videoIDs: [],
-    }
+      videoIDs: []
+    };
   }
   render() {
     return (
