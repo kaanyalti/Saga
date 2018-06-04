@@ -19,11 +19,17 @@ class ziggeoRecorder extends React.Component {
 
     embedding.embed_events.on("verified", (data) => {
         console.log('verified')
+        console.log(data)
         console.log(data.application.videos)
+        const cacheData   = data.application.videos.__cache
+        const cacheKey   = Object.keys(cacheData)[0]
+        const videoData   = cacheData[cacheKey].data
+        const videoToken  = cacheKey
+        // const streams     = videoData.streams
+        // const streamToken = streams[1].token
 
-        const videoToken = data.__cache[Object.keys(data.__cache)[0]]
+        // console.log(`CACHE KEY: ${cacheKey}\nVIDEO TOKEN: ${videoToken}\nSTREAM TOKEN: ${streamToken}`)
 
-        console.log(videoToken)
         Kairos.uploadKairos(videoToken)
 
         // var newDiv = document.createElement("div");
