@@ -7,7 +7,8 @@ class Navbar extends Component {
     position: "fixed",
     width: "100%",
     overlay: "hidden",
-    top: "0"
+    top: "0",
+    zIndex: "9999"
   }
   
   spanStyle = {

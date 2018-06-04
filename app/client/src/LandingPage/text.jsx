@@ -1,16 +1,35 @@
 import React, { Component } from "react";
 
 class LandingPage extends Component {
-  leftSideStyle = {
+  LeftSideStyle = {
     position: "fixed",
     width: "50%",
     height: "100%",
     background: "#D7ECEF",
-    left: "0",
+    float: "left"
+    // zIndex: "1"
   }
-
+  
+  VideoStyle = {
+    backgroundColor: "grey",
+    width: "500px",
+    height: "300px",
+    marginTop: "20%",
+    marginLeft: "15%"
+    // zIndex: "1"
+    
+  }
+  
   render(){
-    return
+    return (
+      <div>
+      <div style={this.VideoStyle}>
+      </div>
+      <div style={this.LeftSideStyle}>
+      </div>
+      
+      </div>
+    )
   }
 }
 
