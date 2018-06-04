@@ -1,6 +1,7 @@
 class UserVideosController < ApplicationController
   before_action :set_user_video, only: [:show, :update, :destroy]
 
+
   # GET /user_videos
   def index
     @user_videos = UserVideo.all

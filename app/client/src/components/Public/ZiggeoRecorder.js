@@ -1,21 +1,23 @@
-import React from "react";
-import axios from "axios";
+import React from 'react'
+import axios from 'axios'
 import * as Kairos from "../modules/kairosMethods"
 import { apiKeys } from '../env.js'
 
-class ziggeoRecorder extends React.Component {
-  constructor(){
+class ZiggeoRecorder extends React.Component {
+  constructor() {
     super();
     this.state = {
       videoToken: ""
     };
+    // this.callZiggeo = this.callZiggeo.bind(this);
   }
-  componentDidMount() {
-    const embedding = new window.ZiggeoApi.V2.Application({
-        token: apiKeys.ziggeoApplicationToken
-    });
 
-    embedding.embed_events.on("processed", (data) => {
+  componentDidMount() {
+    var embedding = new window.ZiggeoApi.V2.Application({
+      token: apiKeys.ziggeoApplicationToken,
+    })
+
+    embedding.embed_events.on('processed', function(data) {
       console.log('processed')
       console.log(data)
       console.log(data.application.videos)
@@ -29,12 +31,21 @@ class ziggeoRecorder extends React.Component {
           return {videoToken: videoToken}
         });
       };
-    });
+    })
   }
 
   render() {
-    return <ziggeorecorder ziggeo-width="320" ziggeo-height="240" ziggeo-theme="modern" ziggeo-themecolor="red"> </ziggeorecorder>;
+    return (
+      <ziggeorecorder
+        ziggeo-width="320"
+        ziggeo-height="240"
+        ziggeo-theme="modern"
+        ziggeo-themecolor="red"
+      >
+        {' '}
+      </ziggeorecorder>
+    )
   }
 }
 
-export default ziggeoRecorder;
+export default ZiggeoRecorder
