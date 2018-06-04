@@ -54,6 +54,8 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jwt (1.5.6)
@@ -154,6 +156,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   faker
+  httparty
   listen (>= 3.0.5, < 3.2)
   omniauth-google-oauth2 (~> 0.2.1)
   pg (>= 0.18, < 2.0)

@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
 
-  root to: "home#show"
-
-  resources :user_videos
-  resources :videos
-  resources :users
+  namespace :api do
+    root to: "home#show"
+    resources :sessions, only: [:create, :destroy]
+    resources :videos do
+      resources :reactions
+    end
+    resources :kairos
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
