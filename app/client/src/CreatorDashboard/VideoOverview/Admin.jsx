@@ -9,10 +9,11 @@ import AdminMain from './AdminMain'
 // depending on the full pathname
 
 const VideosAll = () => (<h1>VideosAll</h1>)
+
 const Admin = () => (
   <Switch>
     <Route exact path='/admin' component={AdminMain}/>
-    <Route path='/admin/videos' component={VideosAll}/>
+    <Route exact path='/admin/videos' component={VideosAll}/>
     <Route path='/admin/videos/:video_id' component={Video}/>
   </Switch>
 )
