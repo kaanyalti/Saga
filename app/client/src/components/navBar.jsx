@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GoogleSignIn from "./googleSignIn";
 import GoogleSignOut from "./googleSignOut";
-import {Navbar} from "react-bootstrap"
+import Navbar from "react-bootstrap"
 
 class NavBar extends Component { //not the bootsrap component Navbar
   navStyle = {

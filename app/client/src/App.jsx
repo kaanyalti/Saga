@@ -19,9 +19,9 @@ class App extends Component {
     };
   }
   render() {
+    debugger
     return (
       <div>
-        {/* DASHBOARD NAVBAR */}
         <Navbar loggedIn={this.state.loggedIn} />
         <Main loggedIn={this.state.loggedIn} />
       </div>
