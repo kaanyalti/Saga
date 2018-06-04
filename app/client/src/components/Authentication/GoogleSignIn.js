@@ -1,19 +1,19 @@
-import React from "react";
-import axios from "axios";
-import GoogleLogin from "react-google-login";
+import React from 'react'
+import axios from 'axios'
+import GoogleLogin from 'react-google-login'
 
 class googleSignIn extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      videoIDs: []
-    };
-    this.responseGoogle = this.responseGoogle.bind(this);
+      videoIDs: [],
+    }
+    this.responseGoogle = this.responseGoogle.bind(this)
   }
 
   responseGoogle(response) {
-    console.log(response);
+    console.log(response)
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
@@ -21,7 +21,7 @@ class googleSignIn extends React.Component {
         }&part=snippet&mine=true`
       )
       .then(res => {
-        const youtubeID = res.data.items[0].id;
+        const youtubeID = res.data.items[0].id
 
         axios
           .get(
@@ -29,27 +29,27 @@ class googleSignIn extends React.Component {
           )
           .then(res => {
             const uploadsID =
-              res.data.items[0].contentDetails.relatedPlaylists.uploads;
+              res.data.items[0].contentDetails.relatedPlaylists.uploads
 
             axios
               .get(
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
               )
               .then(res => {
-                const { videoIDs } = this.state;
+                const { videoIDs } = this.state
                 // TODO: Map through the data.items array to get ALL UPLOADS
-                const videoID = res.data.items[0].snippet.resourceId.videoId;
-                this.setState({ videoIDs: [...videoIDs, videoID] });
-                console.log(videoID);
-              });
-            console.log(uploadsID);
-          });
-        console.log(youtubeID);
-      });
+                const videoID = res.data.items[0].snippet.resourceId.videoId
+                this.setState({ videoIDs: [...videoIDs, videoID] })
+                console.log(videoID)
+              })
+            console.log(uploadsID)
+          })
+        console.log(youtubeID)
+      })
   }
 
   render() {
-    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`;
+    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`
     return (
       <div>
         <GoogleLogin
@@ -68,8 +68,8 @@ class googleSignIn extends React.Component {
           allowFullScreen
         />
       </div>
-    );
+    )
   }
 }
 
-export default googleSignIn;
+export default googleSignIn
