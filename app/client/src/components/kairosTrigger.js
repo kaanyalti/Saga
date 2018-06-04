@@ -6,11 +6,10 @@ class KairosTrigger extends React.Component {
     super(props);
     this.state = {
       video_token: "b22a0044b9398de3dad66bd73c0f7869"
-    }
+    };
     this.uploadKairos = this.uploadKairos.bind(this);
     this.retrieveKairos = this.retrieveKairos.bind(this);
   }
-
 
   uploadKairos() {
     axios
@@ -19,7 +18,6 @@ class KairosTrigger extends React.Component {
       .catch(err => console.log("error: ", err));
   }
 
-
   retrieveKairos() {
     axios
       .get("/api/kairos?kairos_method=retrieve")
@@ -27,14 +25,13 @@ class KairosTrigger extends React.Component {
       .catch(err => console.log("error: ", err));
   }
 
-
   render() {
-    return(
+    return (
       <div>
         <button onClick={this.uploadKairos}>Upload to Kairos</button>
         <button onClick={this.retrieveKairos}>Retrieve Data</button>
       </div>
-    )
+    );
   }
 }
 
