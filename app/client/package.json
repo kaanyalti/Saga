@@ -13,6 +13,7 @@
     "pg": "^7.4.3",
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",
+    "react-bootstrap-sidebar": "0.0.1",
     "react-dom": "^16.4.0",
     "react-google-login": "^3.2.1",
     "react-scripts": "1.1.4"

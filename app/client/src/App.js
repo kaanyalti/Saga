@@ -7,17 +7,21 @@ import GoogleSignOut from "./components/googleSignOut";
 import NavBar from "./components/NavBar.jsx";
 import Graph from "./CreatorDashboard/VideoAnalytics/Graphs";
 import LoginPage from "./LandingPage/text.jsx";
+import SideBar from "./CreatorDashboard/sidebar.jsx";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <NavBar />
-        <LoginPage />
-        {/* <LandingPage /> */}
-        {/* <Graph title="Title given by KairosTrigger component" /> */}
-        {/* <KairosTrigger /> */}
-        {/* <ZiggeoRecorder /> */}
+        <div>
+          <SideBar />
+          {/* <LoginPage /> */}
+          {/* <LandingPage /> */}
+          {/* <Graph title="Title given by KairosTrigger component" /> */}
+          {/* <KairosTrigger /> */}
+          {/* <ZiggeoRecorder /> */}
+        </div>
         <footer> No right reserved </footer>
       </div>
     );

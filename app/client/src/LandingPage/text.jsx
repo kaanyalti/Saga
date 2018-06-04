@@ -94,14 +94,15 @@ class LoginPage extends Component {
     paddingTop: "0px",
     paddingBottom: "0px",
     width: "60%",
-    marginTop: "10%"
-
+    marginTop: "10%",
+    backgroundColor: "white"
   }
 
   ImageStyle = {
     margin: "auto",
     width: "100%",
-    height: "50%"
+    height: "50%",
+    objectFit: "cover"
   }
   
   LoginStyle = { 
@@ -115,7 +116,7 @@ class LoginPage extends Component {
     return (
       <div style={this.style}>
         <Jumbotron style={this.JumbotronStyle}>
-          <img style={this.ImageStyle} src="https://images.pexels.com/photos/230/landscape-nature-forest-trees.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+          <img style={this.ImageStyle} src="https://images.unsplash.com/photo-1521014148220-f40cdadd2455?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c63fb75cb8e4e5c03c00e011aa33110a&auto=format&fit=crop&w=1065&q=80" />
           <span> 
            Google Login
           </span>
