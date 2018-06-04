@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import * as Kairos from "../modules/kairosMethods"
-import { apiKeys } from '../env.js'
+import * as Kairos from "../../modules/kairosMethods"
+import { apiKeys } from '../../env.js'
 
 class ZiggeoRecorder extends React.Component {
   constructor() {
