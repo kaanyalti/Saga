@@ -5,7 +5,7 @@ import ZiggeoRecorder from "./components/ziggeoRecorder";
 import GoogleSignIn from "./components/googleSignIn";
 import GoogleSignOut from "./components/googleSignOut";
 import EmotionsChart from "./components/analytics";
-import Navbar from "./components/navBar.jsx";
+import Navbar from "./components/NavBar.jsx";
 
 // class App extends Component {
 // import Component from './Dashboard/nameOfComponent.jsx'
