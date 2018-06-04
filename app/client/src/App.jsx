@@ -6,7 +6,7 @@ import React, { Component } from "react";
 // import EmotionsChart from "./components/analytics";
 
 import { Link, Route, Switch } from "react-router-dom";
-import Navbar from "./components/NavBar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import Main from "./components/Main.jsx";
 
 // import Video from "./CreatorDashboard/VideoOverview/Video.jsx";
