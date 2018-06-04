@@ -29,12 +29,23 @@ class Navbar extends Component {
     marginRight: "10px"
   }
 
-  UnderlineStyle = {
+  UnderlineHome = {
+    marginRight: "5px",
     width: "50px",
     height: "5px",
     backgroundColor: "#D7ECEF",
     position: "absolute",
     right: "65px",
+  }
+
+  UnderlineLogin = {
+    marginRight: "5px",
+    marginLeft: "2px",
+    width: "50px",
+    height: "5px",
+    backgroundColor: "#D7ECEF",
+    position: "absolute",
+    right: "13px",
   }
   
   
@@ -45,7 +56,12 @@ class Navbar extends Component {
       <span style={this.LoginStyle}> 
       <a style={this.ButtonStyle}>Home</a>
       <a style={this.LoginStyle}>Login</a>
-      <div style={this.UnderlineStyle}></div>
+      <div className="log-buttons">
+      <div style={this.UnderlineHome}>
+      </div>
+      <div style={this.UnderlineLogin}>
+      </div>
+      </div>
       </span>
       {/* <GoogleSignIn /> */}
       {/* <GoogleSignOut /> */}
