@@ -7,7 +7,21 @@ class Api::KairosController < ApplicationController
       "app_key" => ENV["KAIROS_KEY"]
     }
 
-    def uploadMedia (source_url)
+    def stream_token_url (video_token)
+      "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/"
+    end
+
+    def retrieve_stream_token (stream_token_url)
+      response = HTTParty.get(stream_token_url)
+      puts response["streams"][1]["token"]
+      response["streams"][1]["token"]
+    end
+
+    def upload_stream_url (video_token,stream_token)
+      "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/streams/#{stream_token}/video.mp4"
+    end
+
+    def upload_media (source_url)
       response = HTTParty.post(
         "http://api.kairos.com/v2/media?source=#{source_url}",
         :headers => @kairos_headers
@@ -15,24 +29,24 @@ class Api::KairosController < ApplicationController
       render json: response
     end
 
-    def retrieveData (media_id)
-      apiData = HTTParty.get(
+    def retrieve_data (media_id)
+      api_data = HTTParty.get(
         "http://api.kairos.com/v2/media/#{media_id}",
         :headers => @kairos_headers
       )
-      cleanedData = apiData["frames"].map do |a|
-                      dataEntry ={}
-                      dataEntry["time"] = a["time"]
-                      dataEntry["people"] = a["people"].map do |p|
-                                              peopleEntry = {}
-                                              peopleEntry["emotions"] = p["emotions"]
-                                              peopleEntry["attention"] = p["attention"]
-                                              peopleEntry
+      cleaned_data = api_data["frames"].map do |a|
+                      data_entry ={}
+                      data_entry["time"] = a["time"]
+                      data_entry["people"] = a["people"].map do |p|
+                                              people_entry = {}
+                                              people_entry["emotions"] = p["emotions"]
+                                              people_entry["attention"] = p["attention"]
+                                              people_entry
                                             end
-                      dataEntry
+                      data_entry
                     end
-      pp cleanedData
-      render json: cleanedData
+      pp cleaned_data
+      render json: cleaned_data
     end
 
     # pp request.query_parameters
@@ -44,9 +58,9 @@ class Api::KairosController < ApplicationController
     url = "https://embed-cdn.ziggeo.com/v1/applications/120e5271e3f8259cc47311e11e135c46/videos/b22a0044b9398de3dad66bd73c0f7869/streams/3b450800f39b842906f67c0d7afe828c/video.flv"
 
     if params["kairos_method"] == "retrieve"
-      retrieveData("3088829a7d65d1bcdd454393")
+      retrieve_data("3088829a7d65d1bcdd454393")
     else
-      uploadMedia(url)
+      upload_media(url)
     end
 
   end
