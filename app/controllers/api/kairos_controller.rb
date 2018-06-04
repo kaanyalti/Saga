@@ -1,53 +1,115 @@
 class Api::KairosController < ApplicationController
-
-  def index
-    @kairos_headers = {
+  @@kairos_headers = {
       "Content-Type" => "application/json",
       "app_id" => ENV["KAIROS_ID"],
       "app_key" => ENV["KAIROS_KEY"]
     }
 
-    def uploadMedia (source_url)
+  def index
+    def upload_media (source_url)
       response = HTTParty.post(
         "http://api.kairos.com/v2/media?source=#{source_url}",
-        :headers => @kairos_headers
+        :headers => @@kairos_headers
       )
-      render json: response
+      # render json: response
+      puts response["id"]
+      retrieve_data(response["id"])
     end
 
-    def retrieveData (media_id)
-      apiData = HTTParty.get(
-        "http://api.kairos.com/v2/media/#{media_id}",
-        :headers => @kairos_headers
-      )
-      cleanedData = apiData["frames"].map do |a|
-                      dataEntry ={}
-                      dataEntry["time"] = a["time"]
-                      dataEntry["people"] = a["people"].map do |p|
-                                              peopleEntry = {}
-                                              peopleEntry["emotions"] = p["emotions"]
-                                              peopleEntry["attention"] = p["attention"]
-                                              peopleEntry
+    def retrieve_data (media_id)
+      puts "RETRIEVE DATA"
+      status_message = "Analyzing"
+
+      while status_message == "Analyzing" do
+        puts "INSIDE THE LOOP"
+        api_data = HTTParty.get(
+          "http://api.kairos.com/v2/media/#{media_id}",
+          :headers => @@kairos_headers
+        )
+        pp "STATUS MESSAGE BEFORE: #{status_message}"
+        status_message = api_data["status_message"]
+        pp "STATUS MESSAGE AFTER: #{status_message}"
+        pp "COMPARE TO ANALYZING #{status_message == "Analyzing"}"
+        sleep(10)
+      end
+
+      cleaned_data = api_data["frames"].map do |a|
+                      data_entry ={}
+                      data_entry["time"] = a["time"]
+                      data_entry["people"] = a["people"].map do |p|
+                                              people_entry = {}
+                                              people_entry["emotions"] = p["emotions"]
+                                              people_entry["attention"] = p["attention"]
+                                              people_entry
                                             end
-                      dataEntry
+                      data_entry
                     end
-      pp cleanedData
-      render json: cleanedData
+      # pp cleaned_data
+      # render json: cleaned_data
+      cleaned_data
     end
 
-    # pp request.query_parameters
+    stream_token_access_url = stream_token_url(params["video_token"])
+    stream_token = retrieve_stream_token(stream_token_access_url)
+    source_url = upload_stream_url(params["video_token"], stream_token)
 
-    # params.each do |key, value|
-    #   puts "key => #{key}, value => #{value}"
-    # end
+    puts source_url
+    upload_media(source_url)
 
-    url = "https://embed-cdn.ziggeo.com/v1/applications/120e5271e3f8259cc47311e11e135c46/videos/b22a0044b9398de3dad66bd73c0f7869/streams/3b450800f39b842906f67c0d7afe828c/video.flv"
-
-    if params["kairos_method"] == "retrieve"
-      retrieveData("3088829a7d65d1bcdd454393")
-    else
-      uploadMedia(url)
-    end
-
+    render nothing: true
   end
+
+  private
+    def stream_token_url (video_token)
+      "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/"
+    end
+
+    def retrieve_stream_token (stream_token_url)
+      response = HTTParty.get(stream_token_url)
+      response["streams"][1]["token"]
+    end
+
+    def upload_stream_url (video_token,stream_token)
+      "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/streams/#{stream_token}/video.mp4"
+    end
 end
+
+
+
+
+
+# def retrieve_data
+  #   media_id = Video.find(params[:id]).reactions
+
+  #   api_data = HTTParty.get(
+  #     "http://api.kairos.com/v2/media/#{media_id}",
+  #     :headers => @kairos_headers
+  #   )
+
+  #   cleaned_data = api_data["frames"].map do |a|
+  #                   data_entry ={}
+  #                   data_entry["time"] = a["time"]
+  #                   data_entry["people"] = a["people"].map do |p|
+  #                                           people_entry = {}
+  #                                           people_entry["emotions"] = p["emotions"]
+  #                                           people_entry["attention"] = p["attention"]
+  #                                           people_entry
+  #                                         end
+  #                   data_entry
+  #                 end
+  #   pp cleaned_data
+  #   render json: cleaned_data
+  # end
+
+  # def upload_media
+  #   stream_token_access_url = stream_token_url(params["video_token"])
+  #   stream_token = retrieve_stream_token(stream_token_access_url)
+  #   source_url = upload_stream_url(params["video_token"], stream_token)
+
+  #   response = HTTParty.post(
+  #     "http://api.kairos.com/v2/media?source=#{source_url}",
+  #     :headers => @@kairos_headers
+  #   )
+
+  #   render nothing: true
+  # end
