@@ -7,6 +7,9 @@ import Home from "../Public/Home";
 import AdminRoute from "../../CreatorDashboard/AdminRoute.jsx";
 import GoogleSignIn from "../Authentication/GoogleSignIn";
 
+// Public videos
+import PublicVideo from "../Public/PublicVideo";
+
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts
@@ -31,7 +34,7 @@ class Main extends React.Component {
       <Route path="/admin" render={(props) => (<AdminRoute loggedIn={this.props.loggedIn} />)} />
 
       {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
-      <Route path="/v/:video_id" component={publicVideo}  />
+      <Route path="/v/:video_id" component={PublicVideo}  />
     </Switch>
   </main>
       )}
