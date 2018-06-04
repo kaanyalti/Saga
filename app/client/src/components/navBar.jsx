@@ -6,7 +6,8 @@ import {Navbar} from "react-bootstrap"
 class NavBar extends Component { //not the bootsrap component Navbar
   navStyle = {
     marginBottom: "0",
-    paddingBottom: "10px"
+    paddingBottom: "10px",
+    color: "#D7ECEF"
   }
   
   spanStyle = {
@@ -18,14 +19,12 @@ class NavBar extends Component { //not the bootsrap component Navbar
   }
   
   LoginStyle = {
-    color: "grey",
     position: "absolute",
     right: "10px",
     paddingTop: "10px"
   }
 
   HomeStyle = {
-    color: "grey",
     position: "absolute",
     paddingTop: "10px",
     right: "65px"
@@ -61,10 +60,6 @@ class NavBar extends Component { //not the bootsrap component Navbar
       <Navbar.Link style={this.HomeStyle}>Home</Navbar.Link>
       <Navbar.Link style={this.LoginStyle}>Login</Navbar.Link>
       <div className="log-buttons">
-      {/* <div style={this.UnderlineHome}> */}
-      {/* </div> */}
-      {/* <div style={this.UnderlineLogin}> */}
-      {/* </div> */}
       </div>
       </span>
       {/* <GoogleSignIn /> */}

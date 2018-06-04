@@ -28,7 +28,7 @@ class LandingPage extends Component {
     backgroundColor: "#fcfcfc",
     color: "black",
     height: "353.594px",
-    width: "50%",
+    width: "40%",
     textAlign: "center",
     top: "35%",
     right: "10%",
@@ -40,7 +40,6 @@ class LandingPage extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-        <div className="container">
           <Col xs={12} md={8}>
             <Grid style={this.VideoStyle}>
               <Row className="show-grid">
@@ -53,34 +52,15 @@ class LandingPage extends Component {
               </Row>
             </Grid>
           </Col>
-            </div>
         </Row>
-      
-      <Row className="show-grid">
-      <Col xs={6} md={6}>
-      <Jumbotron style={this.LeftSideStyle}>
-      </Jumbotron>   
-      </Col>
-      </Row>
+        <Row className="show-grid">
+          <Col xs={6} md={6}>
+            <Jumbotron style={this.LeftSideStyle}>
+            </Jumbotron>   
+          </Col>
+        </Row>
       </Grid>
-      // <div>
-      // <Grid >
-      // <Row>
-      // <col md={6}>
-      // <code>
-      // <Jumbotron style={this.VideoStyle}>
-      // </Jumbotron>
-      // </code>
-      // </col>
-      // </Row>
-      // <Jumbotron style={this.LeftSideStyle}>
-      // </Jumbotron>
-      // <Jumbotron style={this.DescriptionStyle}>
-      // Welcome to Sága. We don't know what to say yet
-      // but we will by wednesday night:)
-      // </Jumbotron>
-      // </Grid>
-      // </div>
+     
     )
   }
 }
