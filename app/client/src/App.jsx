@@ -6,16 +6,24 @@ import React, { Component } from "react";
 // import EmotionsChart from "./components/analytics";
 
 import { Link, Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import Main from "./components/Main.jsx";
+import Navbar from "./components/Layout/Navbar.jsx";
+import Main from "./components/Layout/Main.jsx";
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loggedIn: true,
+      videoIDs: [],
+    }
+  }
   render() {
     return (
       <div>
         {/* DASHBOARD NAVBAR */}
-        <Navbar />
-        <Main />
+        <Navbar loggedIn={this.state.loggedIn} />
+        <Main loggedIn={this.state.loggedIn} />
       </div>
     );
   }
