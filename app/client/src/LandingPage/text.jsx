@@ -6,12 +6,12 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //     background: "#D7ECEF",
 //     borderRadius: "0"
 //   }
-  
+
 //   titleStyle = {
 //     fontSize: "3em"
 //   }
-  
- 
+
+
 //   VideoStyle = {
 //     width: "75%",
 //     backgroundColor: "#d8d8d8",
@@ -23,8 +23,8 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //     right: "10%",
 //     marginBottom: "0"
 //   }
-  
-  
+
+
 //   DescriptionStyle = {
 //     backgroundColor: "#fcfcfc",
 //     color: "black",
@@ -37,7 +37,7 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //     position: "relative",
 //     borderRadius: "0"
 //   }
-  
+
 //   render(){
 //     return (
 //       <Grid>
@@ -63,7 +63,7 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //           </Col>
 //         </Row>
 //       </Grid>
-     
+
 //     )
 //   }
 // }
@@ -77,35 +77,52 @@ class LoginPage extends Component {
     width: "100%",
     position: "absolute"
   }
+  
+  ContainerStyle = {
+    margin: "auto",
+    width: "60%",
+    height: "200px"
+  }
+
+  JumbotronStyle = {
+    lineHeight: "3",
+    textAlign: "center",
+    color: "red",
+    fontSize: "3em",
+    margin: "auto",
+    height: "60%",
+    paddingTop: "0px",
+    paddingBottom: "0px",
+    width: "60%",
+    marginTop: "10%"
+
+  }
 
   ImageStyle = {
     margin: "auto",
-    width: "20%",
-    heigth: "10%",
+    width: "100%",
+    height: "50%"
   }
-
+  
   LoginStyle = { 
-    // for login page component
     backgroundColor: "white",
     color: "red",
-    width: "20%",
+    width: "40%",
     margin: "auto",
     height: "15%"
   }
-render(){
-  return (
-  <div style={this.style}>
-    <div>
-      <img style={this.ImageStyle} src="https://images.unsplash.com/photo-1493970866116-fe0cad1a5727?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a4a7a7bdfb162f53881a39a1a5a6a148&auto=format&fit=crop&w=1050&q=80" />
-    </div>
-    <Jumbotron style={this.LoginStyle}>
-      <span> 
-        Google Login
-      </span>
-    </Jumbotron>
-  </div>
-  )
-}
+  render(){
+    return (
+      <div style={this.style}>
+        <Jumbotron style={this.JumbotronStyle}>
+          <img style={this.ImageStyle} src="https://images.pexels.com/photos/230/landscape-nature-forest-trees.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+          <span> 
+           Google Login
+          </span>
+        </Jumbotron>
+      </div>
+    )
+  }
 }
 
 export default LoginPage
