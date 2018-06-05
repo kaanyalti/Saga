@@ -6,7 +6,7 @@ class googleSignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoIDs: []
+      videoData: []
     };
     this.responseGoogle = this.responseGoogle.bind(this);
   }
@@ -41,23 +41,23 @@ class googleSignIn extends React.Component {
               .then(res => {
                 console.log(`GOING TO GET VIDEO IDs`);
                 console.log(res.data.items);
-                const videoIDs = res.data.items.map(item => {
+                const videoData = res.data.items.map(item => {
                   return { id: item.snippet.resourceId.videoId, title: item.snippet.title };
                 });
                 this.setState(prevState => {
-                  return { videoIDs: [...prevState.videoIDs, ...videoIDs] };
+                  return { videoData: [...prevState.videoData, ...videoData] };
                 });
 
-                console.log(this.state.videoIDs);
+                console.log(this.state.videoData);
 
-                data.videoIDs = this.state.videoIDs;
+                data.videoData = this.state.videoData;
 
                 this.props.handleLogin(data);
 
                 debugger;
                 axios
                   .post("/api/users", {
-                    videoIDs: videoIDs,
+                    videoData: videoData,
                     email: email
                   })
                   .then(res => {

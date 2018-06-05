@@ -17,7 +17,7 @@ class App extends Component {
       loggedIn: false,
       userEmail: null,
       firstName: null,
-      videoIDs: null
+      videoData: null
     };
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -29,7 +29,7 @@ class App extends Component {
       userEmail: data.email,
       firstName: data.firstName,
       loggedIn: true,
-      videoIDs: data.videoIDs
+      videoData: data.videoData
     });
   }
 
@@ -40,7 +40,7 @@ class App extends Component {
         <Navbar loggedIn={this.state.loggedIn} />
         <Main
           loggedIn={this.state.loggedIn}
-          videoIDs={this.state.videoIDs}
+          videoData={this.state.videoData}
           handleLogin={this.handleLogin}
         />
       </div>
