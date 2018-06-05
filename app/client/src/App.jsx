@@ -15,6 +15,8 @@ class App extends Component {
 
     this.state = {
       loggedIn: true,
+      userEmail: '',
+      userFullName: '',
       videoIDs: []
     };
   }
