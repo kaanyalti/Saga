@@ -11,7 +11,6 @@ class Api::KairosController < ApplicationController
         "http://api.kairos.com/v2/media?source=#{source_url}",
         :headers => @@kairos_headers
       )
-      # render json: response
       puts response["id"]
       retrieve_data(response["id"])
     end
