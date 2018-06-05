@@ -26,7 +26,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "eject": "react-scripts eject"
   },
-
   "devDependencies": {
     "prettier": "1.13.4"
   }
