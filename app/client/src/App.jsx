@@ -17,7 +17,7 @@ class App extends Component {
       loggedIn: false,
       userEmail: null,
       firstName: null,
-      videoIDs: null,
+      videoIDs: null
     };
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -38,7 +38,11 @@ class App extends Component {
       <div>
         {/* DASHBOARD NAVBAR */}
         <Navbar loggedIn={this.state.loggedIn} />
-        <Main loggedIn={this.state.loggedIn} videoIDs={this.state.videoIDs} handleLogin={this.handleLogin}/>
+        <Main
+          loggedIn={this.state.loggedIn}
+          videoIDs={this.state.videoIDs}
+          handleLogin={this.handleLogin}
+        />
       </div>
     );
   }

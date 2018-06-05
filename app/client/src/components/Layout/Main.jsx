@@ -37,7 +37,12 @@ class Main extends React.Component {
           />
           <Route
             path="/admin"
-            render={props => <AdminRoute loggedIn={this.props.loggedIn} videoIDs={this.props.videoIDs}/>}
+            render={props => (
+              <AdminRoute
+                loggedIn={this.props.loggedIn}
+                videoIDs={this.props.videoIDs}
+              />
+            )}
           />
 
           {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
