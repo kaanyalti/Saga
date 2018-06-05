@@ -14,6 +14,8 @@ class googleSignIn extends React.Component {
 
   responseGoogle(response) {
     console.log(response)
+
+    const email = response.profileObj.email
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
@@ -21,9 +23,11 @@ class googleSignIn extends React.Component {
         }&part=snippet&mine=true`
       )
       .then(res => {
+        // Youtube ID of the person
         const youtubeID = res.data.items[0].id
 
         axios
+        //  Gets a playlist ID of uploads of a user
           .get(
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
@@ -36,11 +40,13 @@ class googleSignIn extends React.Component {
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
               )
               .then(res => {
-                const { videoIDs } = this.state
-                // TODO: Map through the data.items array to get ALL UPLOADS
-                const videoID = res.data.items[0].snippet.resourceId.videoId
-                this.setState({ videoIDs: [...videoIDs, videoID] })
-                console.log(videoID)
+                console.log(`GOING TO GET VIDEO IDs`)
+                console.log(res.data.items)
+                const videoIDs = res.data.items.map(item => item.snippet.resourceId.videoId)
+                this.setState(prevState => {
+                  return { videoIDs: [...prevState.videoIDs, ...videoIDs] }
+                })
+                console.log(this.state.videoIDs)
               })
             console.log(uploadsID)
           })

@@ -9,13 +9,16 @@ class ZiggeoRecorder extends React.Component {
     this.state = {
       videoToken: ""
     };
-    // this.callZiggeo = this.callZiggeo.bind(this);
   }
+
+
 
   componentDidMount() {
     var embedding = new window.ZiggeoApi.V2.Application({
-      token: apiKeys.ziggeoApplicationToken,
+      token: apiKeys.ziggeoApplicationToken
     })
+
+    const recorder = this
 
     embedding.embed_events.on('processed', function(data) {
       console.log('processed')
@@ -25,9 +28,9 @@ class ZiggeoRecorder extends React.Component {
       const cacheKey    = Object.keys(cacheData)[0]
       const videoToken  = cacheKey
 
-      if (this.state.videoToken == ""){
+      if (!recorder.state.videoToken){
         Kairos.uploadKairos(videoToken);
-        this.setState(() => {
+        recorder.setState(() => {
           return {videoToken: videoToken}
         });
       };
