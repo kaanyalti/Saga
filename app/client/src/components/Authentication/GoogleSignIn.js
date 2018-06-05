@@ -19,8 +19,6 @@ class googleSignIn extends React.Component {
     const data = { email: email, firstName: firstName };
     console.log(this.props);
 
-
-
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
@@ -48,7 +46,7 @@ class googleSignIn extends React.Component {
                 console.log(`GOING TO GET VIDEO IDs`);
                 console.log(res.data.items);
                 const videoIDs = res.data.items.map(
-                  item => item.snippet.resourceId.videoId
+                  item => {return {id: item.snippet.resourceId.videoId}}
                 );
                 this.setState(prevState => {
                   return { videoIDs: [...prevState.videoIDs, ...videoIDs] };
@@ -77,8 +75,6 @@ class googleSignIn extends React.Component {
           });
         console.log(youtubeID);
       });
-
-
   }
 
   render() {

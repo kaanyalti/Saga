@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import videoIDs from "../fakeYouTubeRes.js";
+// import videoIDs from "../fakeYouTubeRes.js";
 import VideoDetail from "./VideoOverview/VideoDetail";
 import VideoList from "./VideoOverview/VideoList";
 
@@ -22,7 +22,11 @@ class AdminRoute extends React.Component {
           exact
           path="/admin"
           render={() =>
-            this.props.loggedIn ? <VideoList /> : <Redirect to="/login" />
+            this.props.loggedIn ? (
+              <VideoList videoIDs={this.props.videoIDs} />
+            ) : (
+              <Redirect to="/login" />
+            )
           }
         />
         <Route exact path="/admin/videos" component={VideosAll} />
