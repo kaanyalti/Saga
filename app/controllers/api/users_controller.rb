@@ -15,19 +15,20 @@ class Api::UsersController < ApplicationController
 
   # POST /users
   def create
-    # @user = User.new(user_params)
-
-    # if @user.save
-    #   render json: @user, status: :created, location: @user
-    # else
-    #   render json: @user.errors, status: :unprocessable_entity
-    # end
-    pp params[:user]
     user = User.new({email: params[:email]})
     if user.save
-      puts "Success"
+      puts "User successfuly created"
+      # saving user's youtube videos
+      params[:videoIDs].each do |v|
+        user.videos.create({youtube_id: v})
+      end
     else
-      puts "Unsuccessful"
+      puts "User already exists"
+      user = User.find_by_email(params[:email])
+      # saving new youtube videos
+      params[:videoIDs].each do |v|
+        user.videos.create({youtube_id: v})
+      end
     end
     render nothing: true
   end
