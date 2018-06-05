@@ -12,12 +12,8 @@ class googleSignIn extends React.Component {
   }
 
   responseGoogle(response) {
-    console.log(response);
-
-    const email = response.profileObj.email;
-    const firstName = response.profileObj.givenName;
+    const { email, firstName } = response.profileObj
     const data = { email: email, firstName: firstName };
-    console.log(this.props);
 
     axios
       .get(
@@ -45,16 +41,16 @@ class googleSignIn extends React.Component {
               .then(res => {
                 console.log(`GOING TO GET VIDEO IDs`);
                 console.log(res.data.items);
-                const videoIDs = res.data.items.map(
-                  item => {return {id: item.snippet.resourceId.videoId}}
-                );
+                const videoIDs = res.data.items.map(item => {
+                  return { id: item.snippet.resourceId.videoId, title: item.snippet.title };
+                });
                 this.setState(prevState => {
                   return { videoIDs: [...prevState.videoIDs, ...videoIDs] };
                 });
 
                 console.log(this.state.videoIDs);
 
-                data.videoIDs = this.state.videoIDs
+                data.videoIDs = this.state.videoIDs;
 
                 this.props.handleLogin(data);
 

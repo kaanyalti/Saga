@@ -13,9 +13,9 @@ class VideoList extends React.Component {
         <ul>
           {this.props.videoIDs.map(video => (
             <li key={video.id}>
-              <Link to={`/admin/videos/${video.id}`}>{video.id}</Link>
+              <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
               <iframe
-                title={video.id}
+                title={video.title}
                 width="560"
                 height="315"
                 src={`https://www.youtube.com/embed/${video.id}`}
