@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :videos
+  validates :email, uniqueness: true
+
 
   # Take the data that Google returns and persist it to the database.
   # If the user does not exist, a new one will be created
