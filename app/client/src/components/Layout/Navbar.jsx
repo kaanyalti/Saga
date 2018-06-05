@@ -6,7 +6,8 @@ class Navbar extends Component {
     // position: "fixed",
     width: "100%",
     paddingTop: "10px",
-    backgroundColor: "rgba(0,0,0,0.0)"
+    backgroundColor: "rgba(0,0,0,0.0)",
+    zIndex: "1"
   }
 
   LogoStyle ={
@@ -25,7 +26,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <span style={this.navStyle} className="navbar navbar-light">
+      <div style={this.navStyle} className="navbar navbar-light">
       <span style={this.LogoStyle}> Sága </span>
         <ul style={this.ButtonStyle} className="nav navbar-nav">
           <li>
@@ -38,7 +39,7 @@ class Navbar extends Component {
             <Link to="/admin">Dashboard</Link>
           </li>
         </ul>
-      </span>
+      </div>
     );
   }
 }

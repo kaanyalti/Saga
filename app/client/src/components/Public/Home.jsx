@@ -9,7 +9,9 @@ class Home extends Component {
     borderRadius: "0",
     position: "fixed",
     width: "50%",
-    left: "0px"
+    left: "0px",
+    top: "0px",
+    zIndex: "0"
   }
 
   TitleStyle = {
