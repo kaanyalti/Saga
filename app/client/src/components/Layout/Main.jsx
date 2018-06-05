@@ -1,6 +1,8 @@
 // React and React Router
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
+
 
 // Navbar components
 import Home from "../Public/Home";
@@ -20,21 +22,25 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  
+  MainStyle = {
+    backgroundColor: "white"
+  }
+  
   render() {
     console.log(this.props)
     return (
-      <main>
-    <Switch>
+      <main style = {this.MainStyle}>
+      <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/login" component={GoogleSignIn} />
       <Route path="/admin" render={(props) => (<AdminRoute loggedIn={this.props.loggedIn} />)} />
-
       {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
       <Route path="/v/:video_id" component={publicVideo}  />
-    </Switch>
-  </main>
-      )}
+      </Switch>
+      </main>
+    )}
   }
-
-export default Main;
+  
+  export default Main;
+  

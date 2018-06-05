@@ -2,6 +2,8 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import VideoIDs from "../fakeYouTubeRes.js";
 import VideoList from "./VideoOverview/VideoList";
+import VideoDetail from "./VideoOverview/VideoDetail";
+
 
 // The VideoList component matches one of two different routes
 // depending on the full pathname

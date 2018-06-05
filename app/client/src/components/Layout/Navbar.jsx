@@ -3,21 +3,31 @@ import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   navStyle = {
-    position: "fixed",
-    width: "100%"
-  };
+    // position: "fixed",
+    width: "100%",
+    paddingTop: "10px",
+    backgroundColor: "rgba(0,0,0,0.0)"
+  }
 
-  spanStyle = {
+  LogoStyle ={
     float: "left",
+    color: "black",
+    fontWeight: "bolder",
+    fontSize: "3em"
+  }
+
+  ButtonStyle = {
+    float: "right",
     color: "rgba(193, 193, 193, 0.8)",
-    fontFamily: "Montserrat",
     fontWeight: "bolder",
     fontSize: "2em"
-  };
+  }
+
   render() {
     return (
-      <nav className="navbar navbar-light">
-        <ul className="nav navbar-nav">
+      <span style={this.navStyle} className="navbar navbar-light">
+      <span style={this.LogoStyle}> Sága </span>
+        <ul style={this.ButtonStyle} className="nav navbar-nav">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -28,7 +38,7 @@ class Navbar extends Component {
             <Link to="/admin">Dashboard</Link>
           </li>
         </ul>
-      </nav>
+      </span>
     );
   }
 }

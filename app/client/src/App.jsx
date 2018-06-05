@@ -19,7 +19,6 @@ class App extends Component {
     };
   }
   render() {
-    debugger
     return (
       <div>
         <Navbar loggedIn={this.state.loggedIn} />
