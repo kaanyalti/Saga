@@ -8,7 +8,6 @@
     }
   },
   "dependencies": {
-    "ajv": "^6.5.0",
     "axios": "^0.18.0",
     "canvasjs": "^1.8.1",
     "pg": "^7.4.3",
@@ -23,7 +22,7 @@
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
