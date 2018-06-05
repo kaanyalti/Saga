@@ -7,16 +7,18 @@ import ZiggeoRecorder from "./ZiggeoRecorder"
 // depending on the full pathname
 
 const PublicVideo = props => {
+  const youtubeVideoID = props.match.params.video_id
+  console.log(youtubeVideoID)
   const video = videoIDs.get(props.match.params.video_id);
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log(props);
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log(props.match.params.video_id);
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  // console.log(props);
+  // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  // console.log(props.match.params.video_id);
+  // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
     return (
-      <ZiggeoRecorder />
+      <ZiggeoRecorder youtubeVideoID={youtubeVideoID}/>
     );
 }
 

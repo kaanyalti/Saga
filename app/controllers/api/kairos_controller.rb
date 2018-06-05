@@ -12,10 +12,10 @@ class Api::KairosController < ApplicationController
         :headers => @@kairos_headers
       )
       puts response["id"]
-      retrieve_data(response["id"])
+      retrieve_data_from_kairos(response["id"])
     end
 
-    def retrieve_data (media_id)
+    def retrieve_data_from_kairos (media_id)
       puts "RETRIEVE DATA"
       status_message = "Analyzing"
 
@@ -45,9 +45,12 @@ class Api::KairosController < ApplicationController
                     end
       # pp cleaned_data
       # render json: cleaned_data
-      cleaned_data
+      video = Video.find_by(youtube_id: @youtube_video_id)
+      video.reactions.create({apiData: cleaned_data})
+      true
     end
 
+    @youtube_video_id = params[:youtube_video_id]
     stream_token_access_url = stream_token_url(params["video_token"])
     stream_token = retrieve_stream_token(stream_token_access_url)
     source_url = upload_stream_url(params["video_token"], stream_token)
@@ -57,23 +60,22 @@ class Api::KairosController < ApplicationController
 
     render nothing: true
   end
-
-  private
-    def stream_token_url (video_token)
-      "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/"
-    end
-
-    def retrieve_stream_token (stream_token_url)
-      response = HTTParty.get(stream_token_url)
-      response["streams"][1]["token"]
-    end
-
-    def upload_stream_url (video_token,stream_token)
-      "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/streams/#{stream_token}/video.mp4"
-    end
 end
 
 
+private
+  def stream_token_url (video_token)
+    "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/"
+  end
+
+  def retrieve_stream_token (stream_token_url)
+    response = HTTParty.get(stream_token_url)
+    response["streams"][1]["token"]
+  end
+
+  def upload_stream_url (video_token,stream_token)
+    "https://embed-cdn.ziggeo.com/v1/applications/#{ENV["ZIGGEO_KEY"]}/videos/#{video_token}/streams/#{stream_token}/video.mp4"
+  end
 
 
 

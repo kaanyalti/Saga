@@ -19,7 +19,7 @@ class ZiggeoRecorder extends React.Component {
     })
 
     const recorder = this
-
+    const youtubeVideoID = this.props.youtubeVideoID
     embedding.embed_events.on('processed', function(data) {
       console.log('processed')
       console.log(data)
@@ -29,7 +29,7 @@ class ZiggeoRecorder extends React.Component {
       const videoToken  = cacheKey
 
       if (!recorder.state.videoToken){
-        Kairos.uploadKairos(videoToken);
+        Kairos.uploadKairos(videoToken, youtubeVideoID);
         recorder.setState(() => {
           return {videoToken: videoToken}
         });
