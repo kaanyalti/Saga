@@ -14,18 +14,30 @@ class App extends Component {
     super(props);
 
     this.state = {
-      loggedIn: true,
-      userEmail: '',
-      userFullName: '',
+      loggedIn: false,
+      userEmail: null,
+      firstName: null,
       videoIDs: []
     };
+    this.handleLogin = this.handleLogin.bind(this);
   }
+
+  handleLogin(data) {
+    const { userEmail, firstName, loggedIn } = this.state;
+    console.log("Client has logged in");
+    this.setState({
+      userEmail: data.email,
+      firstName: data.firstName,
+      loggedIn: true
+    });
+  }
+
   render() {
     return (
       <div>
         {/* DASHBOARD NAVBAR */}
         <Navbar loggedIn={this.state.loggedIn} />
-        <Main loggedIn={this.state.loggedIn} />
+        <Main loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} />
       </div>
     );
   }
