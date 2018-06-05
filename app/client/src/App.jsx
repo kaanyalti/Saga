@@ -38,7 +38,7 @@ class App extends Component {
       <div>
         {/* DASHBOARD NAVBAR */}
         <Navbar loggedIn={this.state.loggedIn} />
-        <Main loggedIn={this.state.loggedIn} handleLogin={this.handleLogin} />
+        <Main loggedIn={this.state.loggedIn} videoIDs={this.state.videoIDs} handleLogin={this.handleLogin}/>
       </div>
     );
   }
