@@ -17,7 +17,7 @@ class App extends Component {
       loggedIn: false,
       userEmail: null,
       firstName: null,
-      videoIDs: []
+      videoIDs: null,
     };
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -28,7 +28,8 @@ class App extends Component {
     this.setState({
       userEmail: data.email,
       firstName: data.firstName,
-      loggedIn: true
+      loggedIn: true,
+      videoIDs: data.videoIDs
     });
   }
 

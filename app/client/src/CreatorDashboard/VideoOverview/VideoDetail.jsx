@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Video = props => {
   const video = videoIDs.get(props.match.params.video_id);
   if (!video) {
-    return <div>Sorry, but the video was not found</div>;
+    return <div>Sorry, the video was not found</div>;
   }
   return (
     <div>

@@ -82,7 +82,6 @@ class googleSignIn extends React.Component {
   }
 
   render() {
-    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`;
     return (
       <div>
         <GoogleLogin
@@ -91,14 +90,6 @@ class googleSignIn extends React.Component {
           scope="https://www.googleapis.com/auth/youtube.readonly"
           onSuccess={this.responseGoogle}
           onFailure={this.responseGoogle}
-        />
-        <iframe
-          width="560"
-          height="315"
-          src={videoSrc}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
         />
       </div>
     );
