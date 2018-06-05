@@ -8,6 +8,12 @@ import ZiggeoRecorder from "./ZiggeoRecorder"
 
 const PublicVideo = props => {
   const video = videoIDs.get(props.match.params.video_id);
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  console.log(props);
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  console.log(props.match.params.video_id);
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
     return (
       <ZiggeoRecorder />
