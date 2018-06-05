@@ -40,7 +40,7 @@ class Main extends React.Component {
             render={props => (
               <AdminRoute
                 loggedIn={this.props.loggedIn}
-                videoIDs={this.props.videoIDs}
+                videoData={this.props.videoData}
               />
             )}
           />
