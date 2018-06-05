@@ -28,6 +28,7 @@ class googleSignIn extends React.Component {
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
+            console.log("second call response: ");
             const uploadsID =
               res.data.items[0].contentDetails.relatedPlaylists.uploads;
 

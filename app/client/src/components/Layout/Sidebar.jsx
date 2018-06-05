@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
+import {Jumbotron, Grid, Row, Col} from "react-bootstrap";
 
 class SideBar extends Component {
   Sidebarstyle = {
@@ -8,9 +8,10 @@ class SideBar extends Component {
     width: "30%",
     height: "100%",
     textAlign: "left",
-    position: "absolute",
-    left: "0px",
-    fontSize: "1.2em"
+    position: "fixed",
+    fontSize: "1.2em",
+    paddingTop: "7%",
+    top: "0px"
   }
   render (){
     return (

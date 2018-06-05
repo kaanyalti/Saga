@@ -18,18 +18,21 @@ class AdminRoute extends React.Component {
     super(props);
   }
 
-style = {
-  backgroundColor: "white",
-  color: "grey"
+
+StickLeft = {
+  marginLeft: "0px"
 }
-  
+
+test = {
+height: "100vh"}
+
   render() {
     console.log(this.props);
     return (
       <Switch>
-        <Grid>
-          <Row>
-            <Col>
+        <Grid style={this.StickLeft}>
+          <Row >
+            <Col style={ this.test}>
               <Sidebar />
             </Col>
           </Row>

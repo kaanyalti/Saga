@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   navStyle = {
-    // position: "fixed",
+    position: "fixed",
     width: "100%",
     paddingTop: "10px",
     backgroundColor: "rgba(0,0,0,0.0)",
-    zIndex: "1"
+    zIndex: "10"
   }
 
   LogoStyle ={

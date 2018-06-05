@@ -26,8 +26,8 @@ class Main extends React.Component {
   MainStyle = {
     backgroundColor: "white"
   }
-  
-  render() {
+
+render() {
     console.log(this.props)
     return (
       <main style = {this.MainStyle}>
