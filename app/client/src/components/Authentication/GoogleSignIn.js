@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
-import GoogleLogin from 'react-google-login';
+import React from "react";
+import axios from "axios";
+import GoogleLogin from "react-google-login";
 
 class googleSignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoIDs: [],
+      videoIDs: []
     };
     this.responseGoogle = this.responseGoogle.bind(this);
   }
@@ -15,6 +15,12 @@ class googleSignIn extends React.Component {
     console.log(response);
 
     const email = response.profileObj.email;
+    const firstName = response.profileObj.givenName;
+    const data = { email: email, firstName: firstName };
+    console.log(this.props);
+
+
+
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
@@ -26,13 +32,13 @@ class googleSignIn extends React.Component {
         const youtubeID = res.data.items[0].id;
 
         axios
-        //  Gets a playlist ID of uploads of a user
+          //  Gets a playlist ID of uploads of a user
           .get(
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
             const uploadsID =
-              res.data.items[0].contentDetails.relatedPlaylists.uploads
+              res.data.items[0].contentDetails.relatedPlaylists.uploads;
 
             axios
               .get(
@@ -41,30 +47,41 @@ class googleSignIn extends React.Component {
               .then(res => {
                 console.log(`GOING TO GET VIDEO IDs`);
                 console.log(res.data.items);
-                const videoIDs = res.data.items.map(item => item.snippet.resourceId.videoId);
+                const videoIDs = res.data.items.map(
+                  item => item.snippet.resourceId.videoId
+                );
                 this.setState(prevState => {
                   return { videoIDs: [...prevState.videoIDs, ...videoIDs] };
                 });
+
                 console.log(this.state.videoIDs);
-                axios.post('/api/users', {
-                  videoIDs: videoIDs,
-                  email: email
-                })
-                .then(res => {
-                  console.log(res);
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-              })
+
+                data.videoIDs = this.state.videoIDs
+
+                this.props.handleLogin(data);
+
+                debugger;
+                axios
+                  .post("/api/users", {
+                    videoIDs: videoIDs,
+                    email: email
+                  })
+                  .then(res => {
+                    console.log(res);
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              });
             console.log(uploadsID);
-          })
+          });
         console.log(youtubeID);
-      })
+      });
+
+
   }
 
   render() {
-    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`;
     return (
       <div>
         <GoogleLogin
@@ -74,17 +91,9 @@ class googleSignIn extends React.Component {
           onSuccess={this.responseGoogle}
           onFailure={this.responseGoogle}
         />
-        <iframe
-          width="560"
-          height="315"
-          src={videoSrc}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
       </div>
     );
   }
 }
 
-export default googleSignIn
+export default googleSignIn;
