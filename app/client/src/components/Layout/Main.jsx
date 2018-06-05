@@ -31,13 +31,13 @@ class Main extends React.Component {
     console.log(this.props)
     return (
       <main style = {this.MainStyle}>
-      <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/login" component={GoogleSignIn} />
-      <Route path="/admin" render={(props) => (<AdminRoute loggedIn={this.props.loggedIn} />)} />
-      {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
-      <Route path="/v/:video_id" component={publicVideo}  />
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={GoogleSignIn} />
+          <Route path="/admin" render={(props) => (<AdminRoute loggedIn={this.props.loggedIn} />)} />
+          {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
+          <Route path="/v/:video_id" component={publicVideo}  />
+        </Switch>
       </main>
     )}
   }
