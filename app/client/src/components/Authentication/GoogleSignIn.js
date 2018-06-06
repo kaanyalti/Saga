@@ -54,7 +54,6 @@ class googleSignIn extends React.Component {
 
                 this.props.handleLogin(data);
 
-                debugger;
                 axios
                   .post("/api/users", {
                     videoData: videoData,
