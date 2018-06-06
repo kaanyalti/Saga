@@ -13,7 +13,7 @@ class VideoComponent extends React.Component{
   }
 
   onPlayerReady(event) {
-    // event.target.playVideo();
+    console.log("player is ready")
   }
 
   onPlayerStateChange(event) {
