@@ -23,10 +23,11 @@ class SideBar extends Component {
     fontWeight: "bolder",
     marginLeft: "-5px",
     paddingLeft: "5px"
+    
   };
 
   Color = {
-    color: "#66b8ff"
+    color: "rgb(0, 121, 226)"
   };
 
   render() {
@@ -43,8 +44,8 @@ class SideBar extends Component {
                 Dashboard
               </a>{" "}
             </li>
-            <li style={this.ItemStyle}> <a> Get A Quote </a></li>
-            <li style={this.ItemStyle}> <a> My Orders </a> </li>
+            <li style={this.ItemStyle}> <a style={this.Color}> Get A Quote </a></li>
+            <li style={this.ItemStyle}> <a style={this.Color}> My Orders </a> </li>
           </ul>
         </div>
       </div>

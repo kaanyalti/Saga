@@ -14,14 +14,10 @@ class AdminRoute extends React.Component {
   constructor(props) {
     super(props);
 
-
-  //   const test = {
-  //     height: "100vh"
-  //   };
   }
 
   render() {
-    console.log(this.props);
+    console.log("video props",this.props);
     return (
       <Switch> 
         <Sidebar />
