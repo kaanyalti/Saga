@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import videoIDs from "../../fakeYouTubeRes.js";
+import VideoComponent from './VideoComponent'
 
 class VideoList extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class VideoList extends React.Component {
               />
             </li>
           ))}
+          <VideoComponent videoId = {"TKMj7eZ_rD0"}/>
         </ul>
       </div>
     );
