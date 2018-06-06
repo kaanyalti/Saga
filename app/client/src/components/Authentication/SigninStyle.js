@@ -43,6 +43,8 @@ export const SigninStyle = {
     width: "40%",
     margin: "auto",
     height: "50%",
-    position: "relative"
+    position: "relative",
+    border: "0",
+    fontSize: "2em"
   }
 };

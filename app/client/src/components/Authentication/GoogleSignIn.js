@@ -93,10 +93,10 @@ class googleSignIn extends React.Component {
   render() {
     return (
       <div className="background" style={SigninStyle.Style}>
-        <Jumbotron style={SigninStyle.ContainerStyle}>
+        <Jumbotron style={SigninStyle.JumbotronStyle}>
           <img
             style={SigninStyle.ImageStyle}
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74be18f074e19e06a51221f0f09969df&auto=format&fit=crop&w=1052&q=80"
+            src="https://images.unsplash.com/photo-1506585345028-d9d1525ecb21?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b472feb6fb5a1ff6e911a4401db7baab&auto=format&fit=crop&w=1950&q=80"
           />
           <GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
