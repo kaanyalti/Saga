@@ -1,5 +1,4 @@
 import React from "react";
-import videoIDs from "../../fakeYouTubeRes.js";
 import { Link } from "react-router-dom";
 
 const Video = props => {
