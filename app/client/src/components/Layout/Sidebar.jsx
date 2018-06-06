@@ -14,7 +14,8 @@ class SideBar extends Component {
     lineHeight: "4",
     fontSize: "2em",
     listStyle: "none",
-    paddingLeft: "5px"
+    paddingLeft: "5px",
+    left: "0"
   };
 
   TitleStyle = {

@@ -23,7 +23,8 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     const MainStyle = {
-      backgroundColor: "white"
+      backgroundColor: "white",
+      margin: "0 0 0 0"
     };
   }
 

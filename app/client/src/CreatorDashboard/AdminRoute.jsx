@@ -14,27 +14,17 @@ class AdminRoute extends React.Component {
   constructor(props) {
     super(props);
 
-    const StickLeft = {
-      marginLeft: "0px"
-    };
 
-    const test = {
-      height: "100vh"
-    };
+  //   const test = {
+  //     height: "100vh"
+  //   };
   }
 
   render() {
     console.log(this.props);
     return (
-      <Switch>
-        <Grid style={this.StickLeft}>
-          <Row>
-            <Col style={this.test}>
-              <Sidebar />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
+      <Switch> 
+        <Sidebar />
               <Route
                 exact
                 path="/admin"
@@ -48,9 +38,6 @@ class AdminRoute extends React.Component {
               />
               <Route exact path="/admin/videos" component={VideosAll} />
               <Route path="/admin/videos/:video_id" component={VideoDetail} />
-            </Col>
-          </Row>
-        </Grid>
       </Switch>
     );
   }

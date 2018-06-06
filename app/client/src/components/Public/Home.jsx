@@ -4,10 +4,10 @@ import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 class Home extends Component {
   LeftSideStyle = {
     height: "100%",
-    background: "#D7ECEF",
+    background: "linear-gradient(90deg, rgba(215,236,239,1) 50%, rgba(255,255,255,1) 50%)",
     borderRadius: "0",
     position: "fixed",
-    width: "50%",
+    width: "100%",
     left: "0px",
     top: "0px",
     zIndex: "0"
@@ -33,11 +33,10 @@ class Home extends Component {
     backgroundColor: "#fcfcfc",
     color: "black",
     height: "100%",
-    width: "42.6%",
+    width: "35%",
+    right: "0",
     textAlign: "center",
-    top: "35%",
-    float: "right",
-    position: "relative",
+    position: "absolute",
     borderRadius: "0"
   };
 
@@ -45,10 +44,10 @@ class Home extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-          <Col xs={12} md={8}>
+          <Col>
             <Grid style={this.VideoStyle}>
               <Row className="show-grid">
-                <Col xs={12} md={12}>
+                <Col>
                   <Jumbotron style={this.DescriptionStyle}>
                     <h1 style={this.TitleStyle}>Welcome to Sága.</h1>
                     We don't know what to say yet but we will by wednesday
@@ -60,9 +59,7 @@ class Home extends Component {
           </Col>
         </Row>
         <Row className="show-grid">
-          <Col xs={6} md={6}>
-            <Jumbotron style={this.LeftSideStyle} />
-          </Col>
+            <div style={this.LeftSideStyle} />
         </Row>
       </Grid>
     );

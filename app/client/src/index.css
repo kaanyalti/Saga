@@ -3,3 +3,47 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+@media only screen and (min-width : 320px) {
+  #root {
+    font-size: 0.4rem !important;
+  }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+  #root {
+    display: flex !important;
+    font-size: 0.5rem !important;
+    flex-direction: column !important;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  #root {
+    display: flex !important;
+    font-size: 0.7rem !important;
+    flex-direction: column !important;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  #root {
+    display: flex !important;
+    font-size: 1rem !important;
+    flex-direction: row !important;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  #root {
+    display: flex !important;
+    font-size: 1.3rem !important;
+    flex-direction: row !important;
+  }
+}
+
+

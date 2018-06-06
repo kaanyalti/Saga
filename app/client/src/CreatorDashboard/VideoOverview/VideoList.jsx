@@ -24,7 +24,7 @@ class VideoList extends React.Component {
     };
 
     const LinkStyle = {
-      padding: "0 10px",
+      padding: "0 0 !important",
       fontSize: "1.5em",
       textAlign: "center",
       display: "block",
@@ -33,8 +33,8 @@ class VideoList extends React.Component {
       background: "#00dfff",
       width: "100%",
       height: "45px",
-      marginBottom: "10px",
-      lineHeight: "2"
+      margin: "0 !important",
+      lineHeight: "2",
     };
 
     const VideoStyle = {
@@ -43,7 +43,8 @@ class VideoList extends React.Component {
       verticalAlign: "middle",
       background: "black",
       padding: "12px",
-      border: "0"
+      border: "0",
+      marginLeft: "0"
     };
 
     const BulletStyle = {
@@ -55,8 +56,6 @@ class VideoList extends React.Component {
     return (
       <div style={this.ListStyle} className="video-list">
         <div id="cheat" style={this.CheatStyle} />
-        <Row>
-          <Col>
             <ul style={this.BulletStyle}>
               {this.props.videoData.map(video => (
                 <li key={video.id}>
@@ -76,8 +75,6 @@ class VideoList extends React.Component {
                 </li>
               ))}
             </ul>
-          </Col>
-        </Row>
       </div>
     );
   }

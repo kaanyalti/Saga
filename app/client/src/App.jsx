@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Grid, Row, Col } from "react-bootstrap";
+
 // import KairosTrigger from "./components/kairosTrigger";
 // import ZiggeoRecorder from "./components/ziggeoRecorder";
 // import GoogleSignIn from "./components/googleSignIn";
