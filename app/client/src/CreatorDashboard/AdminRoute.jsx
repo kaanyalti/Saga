@@ -1,8 +1,17 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+<<<<<<< HEAD
 // import videoIDs from "../fakeYouTubeRes.js";
 import VideoDetail from "./VideoOverview/VideoDetail";
+=======
+import VideoIDs from "../fakeYouTubeRes.js";
+>>>>>>> origin/style-for-production
 import VideoList from "./VideoOverview/VideoList";
+import VideoDetail from "./VideoOverview/VideoDetail";
+import Sidebar from "../components/Layout/Sidebar.jsx";
+import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
+
+
 
 // The VideoList component matches one of two different routes
 // depending on the full pathname
@@ -14,10 +23,19 @@ class AdminRoute extends React.Component {
     super(props);
   }
 
+
+StickLeft = {
+  marginLeft: "0px"
+}
+
+test = {
+height: "100vh"}
+
   render() {
     console.log(this.props);
     return (
       <Switch>
+<<<<<<< HEAD
         <Route
           exact
           path="/admin"
@@ -31,6 +49,28 @@ class AdminRoute extends React.Component {
         />
         <Route exact path="/admin/videos" component={VideosAll} />
         <Route path="/admin/videos/:video_id" component={VideoDetail} />
+=======
+        <Grid style={this.StickLeft}>
+          <Row >
+            <Col style={ this.test}>
+              <Sidebar />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Route
+              exact
+              path="/admin"
+              render={() =>
+                this.props.loggedIn ? <VideoList /> : <Redirect to="/login" />
+              }
+              />
+              <Route exact path="/admin/videos" component={VideosAll} />
+              <Route path="/admin/videos/:video_id" component={VideoDetail} />
+            </Col>
+          </Row>
+        </Grid>
+>>>>>>> origin/style-for-production
       </Switch>
     );
   }
