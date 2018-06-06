@@ -4,8 +4,7 @@ class VideoComponent extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      player: null,
-      done: false
+      player: null
     };
     this.onPlayerReady = this.onPlayerReady.bind(this);
     this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
@@ -20,18 +19,23 @@ class VideoComponent extends React.Component{
     switch(event.data) {
       case window.YT.PlayerState.ENDED:
         console.log("video ended");
+        this.props.handleChangedVideoState("ended");
         break;
       case window.YT.PlayerState.PLAYING:
         console.log("video is playing");
+        this.props.handleChangedVideoState("playing");
         break;
       case window.YT.PlayerState.PAUSED:
         console.log("video is paused");
+        this.props.handleChangedVideoState("paused");
         break;
       case window.YT.PlayerState.BUFFERING:
         console.log("buffering");
+        this.props.handleChangedVideoState("buffering");
         break;
       case window.YT.PlayerState.CUED:
         console.log("video is cued");
+        this.props.handleChangedVideoState("cued")
         break;
       default:
         console.log("default");
