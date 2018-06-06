@@ -27,6 +27,7 @@
 .container {
   margin: 0;
   padding:0;
+  margin-left: 0px;
 }
 
 @keyframes App-logo-spin {
@@ -35,14 +36,3 @@
 }
 
 
-/* footer { for landing page
-  position: relative;
-  margin: auto;
-  /* top: 25%; */
-  /* bottom: 15px; */
-/* }  */
-
-/* for login page */
-/* footer {
- 
-} */

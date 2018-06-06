@@ -1,19 +1,43 @@
-import React from 'react'
-import axios from 'axios'
-import GoogleLogin from 'react-google-login'
+import React from "react";
+import axios from "axios";
+import GoogleLogin from "react-google-login";
+import { Redirect } from "react-router-dom";
+import { SigninStyle } from "./SigninStyle";
+import { Jumbotron } from "react-bootstrap";
+import lottie from "lottie-web";
 
 class googleSignIn extends React.Component {
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
-      videoIDs: [],
-    }
-    this.responseGoogle = this.responseGoogle.bind(this)
+      videoData: [],
+      redirect: false
+    };
+    this.responseGoogle = this.responseGoogle.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // debugger
+    this.setState({ redirect: true });
+
+    this.state = {
+      videoIDs: []
+    };
+    this.responseGoogle = this.responseGoogle.bind(this);
+  }
+  componentDidMount() {
+    lottie.loadAnimation({
+      container: document.getElementById("thumb"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: SigninStyle.FingerPrint
+    });
+  }
   responseGoogle(response) {
-    console.log(response)
+    const { email, firstName } = response.profileObj;
+    const data = { email: email, firstName: firstName };
+
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
@@ -21,55 +45,74 @@ class googleSignIn extends React.Component {
         }&part=snippet&mine=true`
       )
       .then(res => {
-        const youtubeID = res.data.items[0].id
+        // Youtube ID of the person
+        const youtubeID = res.data.items[0].id;
 
         axios
+          //  Gets a playlist ID of uploads of a user
           .get(
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
+            console.log("second call response: ");
             const uploadsID =
-              res.data.items[0].contentDetails.relatedPlaylists.uploads
+              res.data.items[0].contentDetails.relatedPlaylists.uploads;
 
             axios
               .get(
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
               )
               .then(res => {
-                const { videoIDs } = this.state
-                // TODO: Map through the data.items array to get ALL UPLOADS
-                const videoID = res.data.items[0].snippet.resourceId.videoId
-                this.setState({ videoIDs: [...videoIDs, videoID] })
-                console.log(videoID)
-              })
-            console.log(uploadsID)
-          })
-        console.log(youtubeID)
-      })
+                console.log(`GOING TO GET VIDEO IDs`);
+                console.log(res.data.items);
+                const videoData = res.data.items.map(item => {
+                  return {
+                    id: item.snippet.resourceId.videoId,
+                    title: item.snippet.title
+                  };
+                });
+                this.setState(prevState => {
+                  return { videoData: [...prevState.videoData, ...videoData] };
+                });
+
+                data.videoData = this.state.videoData;
+
+                this.props.handleLogin(data);
+
+                axios
+                  .post("/api/users", {
+                    videoData: videoData,
+                    email: email
+                  })
+                  .then(res => {})
+                  .catch(err => {
+                    console.log(err);
+                  });
+              });
+          });
+      });
   }
 
   render() {
-    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`
-    return (
-      <div>
-        <GoogleLogin
-          clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
-          buttonText="Login"
-          scope="https://www.googleapis.com/auth/youtube.readonly"
-          onSuccess={this.responseGoogle}
-          onFailure={this.responseGoogle}
-        />
-        <iframe
-          width="560"
-          height="315"
-          src={videoSrc}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
+    const { redirect } = this.state;
+    return redirect ? (
+      <Redirect to="/admin" />
+    ) : (
+      <div className="background" style={SigninStyle.Style}>
+        <Jumbotron style={SigninStyle.JumbotronStyle}>
+          <div id="thumb" style={SigninStyle.ImageStyle} />
+          <GoogleLogin
+            clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
+            buttonText="Login"
+            scope="https://www.googleapis.com/auth/youtube.readonly"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+            style={SigninStyle.LoginStyle}
+          />
+        </Jumbotron>
       </div>
-    )
+    );
   }
 }
 
-export default googleSignIn
+export default googleSignIn;

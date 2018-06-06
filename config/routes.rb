@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     root to: "home#show"
+    resources :users, only: [:create]
     resources :sessions, only: [:create, :destroy]
     resources :videos do
       resources :reactions

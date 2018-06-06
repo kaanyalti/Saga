@@ -13,7 +13,7 @@ class Graph extends Component {
     height: "120px",
     margin: "auto",
     marginTop: "15%"
-  }
+  };
 
   componentDidMount() {
     let title = this.state.title;
@@ -31,7 +31,7 @@ class Graph extends Component {
   }
   render() {
     return <div id="chartContainer" style={this.GraphStyle} />;
-  } 
+  }
 }
 
-export default Graph
+export default Graph;
