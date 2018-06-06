@@ -33,8 +33,8 @@ class Home extends Component {
   DescriptionStyle = {
     backgroundColor: "#fcfcfc",
     color: "black",
-    height: "353.594px",
-    width: "40.6%",
+    height: "392.594px",
+    width: "42.6%",
     textAlign: "center",
     top: "35%",
     float: "right",

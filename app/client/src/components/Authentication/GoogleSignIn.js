@@ -3,6 +3,7 @@ import axios from "axios";
 import GoogleLogin from "react-google-login";
 import { SigninStyle } from "./SigninStyle";
 import { Jumbotron } from "react-bootstrap";
+import lottie from "lottie-web";
 
 class googleSignIn extends React.Component {
   constructor(props) {
@@ -13,47 +14,15 @@ class googleSignIn extends React.Component {
     };
     this.responseGoogle = this.responseGoogle.bind(this);
   }
-  // style ={
-  //   background: "#D7ECEF",
-  //   height: "90%",
-  //   width: "100%",
-  //   position: "absolute"
-  // }
-
-  // ContainerStyle = {
-  //   margin: "auto",
-  //   width: "60%",
-  //   height: "200px"
-  // }
-
-  // JumbotronStyle = {
-  //   lineHeight: "3",
-  //   textAlign: "center",
-  //   color: "red",
-  //   fontSize: "3em",
-  //   margin: "auto",
-  //   height: "60%",
-  //   paddingTop: "0px",
-  //   paddingBottom: "0px",
-  //   width: "60%",
-  //   marginTop: "10%",
-  //   backgroundColor: "white"
-  // }
-
-  // ImageStyle = {
-  //   margin: "auto",
-  //   width: "100%",
-  //   height: "50%",
-  //   objectFit: "cover"
-  // }
-
-  // LoginStyle = {
-  //   backgroundColor: "white",
-  //   color: "red",
-  //   width: "40%",
-  //   margin: "auto",
-  //   height: "15%"
-  // }
+  componentDidMount() {
+    lottie.loadAnimation({
+      container: document.getElementById("thumb"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: SigninStyle.FingerPrint
+    });
+  }
   responseGoogle(response) {
     axios
       .get(
@@ -94,10 +63,7 @@ class googleSignIn extends React.Component {
     return (
       <div className="background" style={SigninStyle.Style}>
         <Jumbotron style={SigninStyle.JumbotronStyle}>
-          <img
-            style={SigninStyle.ImageStyle}
-            src="https://images.unsplash.com/photo-1506585345028-d9d1525ecb21?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b472feb6fb5a1ff6e911a4401db7baab&auto=format&fit=crop&w=1950&q=80"
-          />
+          <div id="thumb" style={SigninStyle.ImageStyle} />
           <GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
             buttonText="Login"

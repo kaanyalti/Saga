@@ -7,7 +7,8 @@ class Navbar extends Component {
     width: "100%",
     paddingTop: "10px",
     backgroundColor: "rgba(0,0,0,0.0)",
-    zIndex: "10"
+    zIndex: "10",
+    paddingLeft: "10px"
   }
 
   Black = {
