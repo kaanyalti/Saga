@@ -1,18 +1,26 @@
 import React from "react";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
+import { Redirect } from "react-router-dom";
 
 class googleSignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoData: []
+      videoData: [],
+      redirect: false
     };
     this.responseGoogle = this.responseGoogle.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // debugger
+    this.setState({ redirect: true })
+
+  }
+
   responseGoogle(response) {
-    const { email, firstName } = response.profileObj
+    const { email, firstName } = response.profileObj;
     const data = { email: email, firstName: firstName };
 
     axios
@@ -42,13 +50,14 @@ class googleSignIn extends React.Component {
                 console.log(`GOING TO GET VIDEO IDs`);
                 console.log(res.data.items);
                 const videoData = res.data.items.map(item => {
-                  return { id: item.snippet.resourceId.videoId, title: item.snippet.title };
+                  return {
+                    id: item.snippet.resourceId.videoId,
+                    title: item.snippet.title
+                  };
                 });
                 this.setState(prevState => {
                   return { videoData: [...prevState.videoData, ...videoData] };
                 });
-
-                console.log(this.state.videoData);
 
                 data.videoData = this.state.videoData;
 
@@ -60,29 +69,27 @@ class googleSignIn extends React.Component {
                     email: email
                   })
                   .then(res => {
-                    console.log(res);
                   })
                   .catch(err => {
                     console.log(err);
                   });
               });
-            console.log(uploadsID);
           });
-        console.log(youtubeID);
       });
   }
 
   render() {
-    return (
-      <div>
-        <GoogleLogin
-          clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
-          buttonText="Login"
-          scope="https://www.googleapis.com/auth/youtube.readonly"
-          onSuccess={this.responseGoogle}
-          onFailure={this.responseGoogle}
-        />
-      </div>
+    const { redirect } = this.state;
+    return redirect ? (
+      <Redirect to="/admin" />
+    ) : (
+      <GoogleLogin
+        clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
+        buttonText="Login"
+        scope="https://www.googleapis.com/auth/youtube.readonly"
+        onSuccess={this.responseGoogle}
+        onFailure={this.responseGoogle}
+      />
     );
   }
 }
