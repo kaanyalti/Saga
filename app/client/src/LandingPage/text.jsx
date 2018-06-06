@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
+import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 // class LandingPage extends Component {
 //   LeftSideStyle = {
 //     height: "505px",
@@ -10,7 +10,6 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //   titleStyle = {
 //     fontSize: "3em"
 //   }
-
 
 //   VideoStyle = {
 //     width: "75%",
@@ -23,7 +22,6 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //     right: "10%",
 //     marginBottom: "0"
 //   }
-
 
 //   DescriptionStyle = {
 //     backgroundColor: "#fcfcfc",
@@ -59,7 +57,7 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 //         <Row className="show-grid">
 //           <Col xs={6} md={6}>
 //             <Jumbotron style={this.LeftSideStyle}>
-//             </Jumbotron>   
+//             </Jumbotron>
 //           </Col>
 //         </Row>
 //       </Grid>
@@ -71,18 +69,18 @@ import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
 // export default LandingPage
 
 class LoginPage extends Component {
-  style ={
+  style = {
     background: "#D7ECEF",
     height: "90%",
     width: "100%",
     position: "absolute"
-  }
-  
+  };
+
   ContainerStyle = {
     margin: "auto",
     width: "60%",
     height: "200px"
-  }
+  };
 
   JumbotronStyle = {
     lineHeight: "3",
@@ -96,34 +94,35 @@ class LoginPage extends Component {
     width: "60%",
     marginTop: "10%",
     backgroundColor: "white"
-  }
+  };
 
   ImageStyle = {
     margin: "auto",
     width: "100%",
     height: "50%",
     objectFit: "cover"
-  }
-  
-  LoginStyle = { 
+  };
+
+  LoginStyle = {
     backgroundColor: "white",
     color: "red",
     width: "40%",
     margin: "auto",
     height: "15%"
-  }
-  render(){
+  };
+  render() {
     return (
       <div style={this.style}>
         <Jumbotron style={this.JumbotronStyle}>
-          <img style={this.ImageStyle} src="https://images.unsplash.com/photo-1521014148220-f40cdadd2455?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c63fb75cb8e4e5c03c00e011aa33110a&auto=format&fit=crop&w=1065&q=80" />
-          <span> 
-           Google Login
-          </span>
+          <img
+            style={this.ImageStyle}
+            src="https://images.unsplash.com/photo-1521014148220-f40cdadd2455?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c63fb75cb8e4e5c03c00e011aa33110a&auto=format&fit=crop&w=1065&q=80"
+          />
+          <span>Google Login</span>
         </Jumbotron>
       </div>
-    )
+    );
   }
 }
 
-export default LoginPage
+export default LoginPage;

@@ -9,40 +9,45 @@ class Navbar extends Component {
     backgroundColor: "rgba(0,0,0,0.0)",
     zIndex: "10",
     paddingLeft: "10px"
-  }
+  };
 
   Black = {
     color: "black"
-  }
+  };
 
-  LogoStyle ={
+  LogoStyle = {
     float: "left",
     color: "black",
     fontWeight: "bolder",
     fontSize: "3em"
-  }
+  };
 
   ButtonStyle = {
     float: "right",
     color: "black",
     fontWeight: "bolder",
     fontSize: "2em"
-    
-  }
+  };
 
   render() {
     return (
       <div style={this.navStyle} className="navbar navbar-light">
-      <span style={this.LogoStyle}> Sága </span>
+        <span style={this.LogoStyle}> Sága </span>
         <ul style={this.ButtonStyle} className="nav navbar-nav">
           <li>
-            <Link to="/" style={this.Black}>Home</Link>
+            <Link to="/" style={this.Black}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/login" style={this.Black}>Login</Link>
+            <Link to="/login" style={this.Black}>
+              Login
+            </Link>
           </li>
           <li>
-            <Link to="/admin" style={this.Black}>Dashboard</Link>
+            <Link to="/admin" style={this.Black}>
+              Dashboard
+            </Link>
           </li>
         </ul>
       </div>

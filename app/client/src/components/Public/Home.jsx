@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import {Jumbotron, Grid, Row, Col} from "react-bootstrap"
+import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 class Home extends Component {
-
   LeftSideStyle = {
     height: "100%",
     background: "#D7ECEF",
@@ -12,11 +11,11 @@ class Home extends Component {
     left: "0px",
     top: "0px",
     zIndex: "0"
-  }
+  };
 
   TitleStyle = {
     fontSize: "3em"
-  }
+  };
 
   VideoStyle = {
     width: "75%",
@@ -28,7 +27,7 @@ class Home extends Component {
     borderRadius: "0px",
     marginBottom: "0",
     padding: "0"
-  }
+  };
 
   DescriptionStyle = {
     backgroundColor: "#fcfcfc",
@@ -40,9 +39,9 @@ class Home extends Component {
     float: "right",
     position: "relative",
     borderRadius: "0"
-  }
+  };
 
-  render(){
+  render() {
     return (
       <Grid>
         <Row className="show-grid">
@@ -52,8 +51,8 @@ class Home extends Component {
                 <Col xs={12} md={12}>
                   <Jumbotron style={this.DescriptionStyle}>
                     <h1 style={this.TitleStyle}>Welcome to Sága.</h1>
-                     We don't know what to say yet
-                    but we will by wednesday night:)
+                    We don't know what to say yet but we will by wednesday
+                    night:)
                   </Jumbotron>
                 </Col>
               </Row>
@@ -62,13 +61,11 @@ class Home extends Component {
         </Row>
         <Row className="show-grid">
           <Col xs={6} md={6}>
-            <Jumbotron style={this.LeftSideStyle}>
-            </Jumbotron>
+            <Jumbotron style={this.LeftSideStyle} />
           </Col>
         </Row>
       </Grid>
-
-    )
+    );
   }
 }
 

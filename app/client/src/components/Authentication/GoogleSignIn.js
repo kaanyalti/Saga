@@ -18,7 +18,7 @@ class googleSignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     // debugger
-    this.setState({ redirect: true })
+    this.setState({ redirect: true });
 
     this.state = {
       videoIDs: []
@@ -84,16 +84,14 @@ class googleSignIn extends React.Component {
                     videoData: videoData,
                     email: email
                   })
-                  .then(res => {
-                  })
+                  .then(res => {})
                   .catch(err => {
                     console.log(err);
                   });
               });
           });
-            console.log(uploadsID);
-          });
-    }
+      });
+  }
 
   render() {
     const { redirect } = this.state;
@@ -112,7 +110,8 @@ class googleSignIn extends React.Component {
             style={SigninStyle.LoginStyle}
           />
         </Jumbotron>
-      </div>)
+      </div>
+    );
   }
 }
 
