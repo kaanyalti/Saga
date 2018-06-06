@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
+import { SigninStyle } from "./SigninStyle";
+import { Jumbotron } from "react-bootstrap";
 
 class googleSignIn extends React.Component {
   constructor(props) {
@@ -11,9 +13,48 @@ class googleSignIn extends React.Component {
     };
     this.responseGoogle = this.responseGoogle.bind(this);
   }
+  // style ={
+  //   background: "#D7ECEF",
+  //   height: "90%",
+  //   width: "100%",
+  //   position: "absolute"
+  // }
 
+  // ContainerStyle = {
+  //   margin: "auto",
+  //   width: "60%",
+  //   height: "200px"
+  // }
+
+  // JumbotronStyle = {
+  //   lineHeight: "3",
+  //   textAlign: "center",
+  //   color: "red",
+  //   fontSize: "3em",
+  //   margin: "auto",
+  //   height: "60%",
+  //   paddingTop: "0px",
+  //   paddingBottom: "0px",
+  //   width: "60%",
+  //   marginTop: "10%",
+  //   backgroundColor: "white"
+  // }
+
+  // ImageStyle = {
+  //   margin: "auto",
+  //   width: "100%",
+  //   height: "50%",
+  //   objectFit: "cover"
+  // }
+
+  // LoginStyle = {
+  //   backgroundColor: "white",
+  //   color: "red",
+  //   width: "40%",
+  //   margin: "auto",
+  //   height: "15%"
+  // }
   responseGoogle(response) {
-    console.log(response);
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
@@ -50,24 +91,22 @@ class googleSignIn extends React.Component {
   }
 
   render() {
-    const videoSrc = `https://www.youtube.com/embed/${this.state.videoIDs[0]}`;
     return (
-      <div>
-        <GoogleLogin
-          clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
-          buttonText="Login"
-          scope="https://www.googleapis.com/auth/youtube.readonly"
-          onSuccess={this.responseGoogle}
-          onFailure={this.responseGoogle}
-        />
-        <iframe
-          width="560"
-          height="315"
-          src={videoSrc}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
+      <div className="background" style={SigninStyle.Style}>
+        <Jumbotron style={SigninStyle.ContainerStyle}>
+          <img
+            style={SigninStyle.ImageStyle}
+            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74be18f074e19e06a51221f0f09969df&auto=format&fit=crop&w=1052&q=80"
+          />
+          <GoogleLogin
+            clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
+            buttonText="Login"
+            scope="https://www.googleapis.com/auth/youtube.readonly"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+            style={SigninStyle.LoginStyle}
+          />
+        </Jumbotron>
       </div>
     );
   }

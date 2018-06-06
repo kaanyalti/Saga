@@ -8,7 +8,8 @@ const ListStyle = {
   backgroundCollor: "#D7ECEF",
   margin: "auto",
   position: "absolute",
-  left: "40%"
+  top: "10%",
+  left: "30%"
 };
 
 const CheatStyle = {
@@ -22,20 +23,38 @@ const CheatStyle = {
 }
 
 const LinkStyle = {
-  padding: "10px 0",
+  padding: "0 10px",
   fontSize: "1.5em",
-  textAlign: "start",
+  textAlign: "center",
   display: "block",
-  color: "#8d848"
+  color: "white",
+  fontSize: "1.5em",
+  background: "#00dfff",
+  width: "100%",
+  height: "45px",
+  marginBottom: "10px",
+  lineHeight: "2"
 };
+
+const VideoStyle = {
+  width: "100%",
+  height: "20%",
+  verticalAlign: "middle",
+  background: "black",
+  padding: "12px",
+  border: "0"
+}
+
+const BulletStyle = {
+  listStyle: "none"
+}
 
 const AdminMain = () => (
   <div style = {ListStyle} className = "video-list">
     <div id="cheat" style={CheatStyle}></div>
-    <Grid>
-      <Row>
-        <Col xs={12} md={8}>
-          <ul>
+      <Row >
+        <Col >
+          <ul style={BulletStyle}>
             {videoIDs.all().map(video => (
               <li key = {video.id}>
                 <iframe
@@ -46,21 +65,15 @@ const AdminMain = () => (
                   frameBorder = "0"
                   allow = "autoplay; encrypted-media"
                   allowFullScreen
-                 />
+                 style={VideoStyle}/>
                 <Link to = {`/admin/videos/${video.id}`} style = {LinkStyle}>{video.title}</Link>
               </li>
+               
             ))}
           </ul>
         </Col>
-        <Col xs={12} md={4}>
-            <ul>
-              <li>
-                include in loop for matching details
-              </li>
-            </ul>
-        </Col>
+        
       </Row>
-    </Grid>
   </div>
 );
 

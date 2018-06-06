@@ -10,6 +10,10 @@ class Navbar extends Component {
     zIndex: "10"
   }
 
+  Black = {
+    color: "black"
+  }
+
   LogoStyle ={
     float: "left",
     color: "black",
@@ -19,9 +23,10 @@ class Navbar extends Component {
 
   ButtonStyle = {
     float: "right",
-    color: "rgba(193, 193, 193, 0.8)",
+    color: "black",
     fontWeight: "bolder",
     fontSize: "2em"
+    
   }
 
   render() {
@@ -30,13 +35,13 @@ class Navbar extends Component {
       <span style={this.LogoStyle}> Sága </span>
         <ul style={this.ButtonStyle} className="nav navbar-nav">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" style={this.Black}>Home</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" style={this.Black}>Login</Link>
           </li>
           <li>
-            <Link to="/admin">Dashboard</Link>
+            <Link to="/admin" style={this.Black}>Dashboard</Link>
           </li>
         </ul>
       </div>
