@@ -2,6 +2,9 @@ import React from "react";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
+import { SigninStyle } from "./SigninStyle";
+import { Jumbotron } from "react-bootstrap";
+import lottie from "lottie-web";
 
 class googleSignIn extends React.Component {
   constructor(props) {
@@ -15,10 +18,22 @@ class googleSignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     // debugger
-    this.setState({ redirect: true })
+    this.setState({ redirect: true });
 
+    this.state = {
+      videoIDs: []
+    };
+    this.responseGoogle = this.responseGoogle.bind(this);
   }
-
+  componentDidMount() {
+    lottie.loadAnimation({
+      container: document.getElementById("thumb"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: SigninStyle.FingerPrint
+    });
+  }
   responseGoogle(response) {
     const { email, firstName } = response.profileObj;
     const data = { email: email, firstName: firstName };
@@ -39,6 +54,7 @@ class googleSignIn extends React.Component {
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
+            console.log("second call response: ");
             const uploadsID =
               res.data.items[0].contentDetails.relatedPlaylists.uploads;
 
@@ -68,8 +84,7 @@ class googleSignIn extends React.Component {
                     videoData: videoData,
                     email: email
                   })
-                  .then(res => {
-                  })
+                  .then(res => {})
                   .catch(err => {
                     console.log(err);
                   });
@@ -83,13 +98,19 @@ class googleSignIn extends React.Component {
     return redirect ? (
       <Redirect to="/admin" />
     ) : (
-      <GoogleLogin
-        clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
-        buttonText="Login"
-        scope="https://www.googleapis.com/auth/youtube.readonly"
-        onSuccess={this.responseGoogle}
-        onFailure={this.responseGoogle}
-      />
+      <div className="background" style={SigninStyle.Style}>
+        <Jumbotron style={SigninStyle.JumbotronStyle}>
+          <div id="thumb" style={SigninStyle.ImageStyle} />
+          <GoogleLogin
+            clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
+            buttonText="Login"
+            scope="https://www.googleapis.com/auth/youtube.readonly"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+            style={SigninStyle.LoginStyle}
+          />
+        </Jumbotron>
+      </div>
     );
   }
 }

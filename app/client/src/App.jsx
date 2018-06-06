@@ -36,7 +36,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* DASHBOARD NAVBAR */}
         <Navbar loggedIn={this.state.loggedIn} />
         <Main
           loggedIn={this.state.loggedIn}

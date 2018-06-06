@@ -1,6 +1,6 @@
 import React from "react";
 
-class VideoComponent extends React.Component{
+class VideoComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,11 +13,11 @@ class VideoComponent extends React.Component{
   }
 
   onPlayerReady(event) {
-    console.log("player is ready")
+    console.log("player is ready");
   }
 
   onPlayerStateChange(event) {
-    switch(event.data) {
+    switch (event.data) {
       case window.YT.PlayerState.ENDED:
         console.log("video ended");
         break;
@@ -36,33 +36,34 @@ class VideoComponent extends React.Component{
       default:
         console.log("default");
     }
-
   }
 
   stopVideo() {
     this.state.player.stopVideo();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let player = new window.YT.Player(this.anchor, {
-      height: this.props.height || '390',
-      width: this.props.widht || '640',
+      height: this.props.height || "390",
+      width: this.props.widht || "640",
       videoId: this.props.videoId,
       events: {
-        'onReady': this.onPlayerReady,
-        'onStateChange': this.onPlayerStateChange
+        onReady: this.onPlayerReady,
+        onStateChange: this.onPlayerStateChange
       }
-    })
-    this.setState({player: player})
+    });
+    this.setState({ player: player });
   }
 
   render() {
     return (
-      <div ref={(r) => {this.anchor = r}}></div>
-    )
+      <div
+        ref={r => {
+          this.anchor = r;
+        }}
+      />
+    );
   }
-
 }
-
 
 export default VideoComponent;

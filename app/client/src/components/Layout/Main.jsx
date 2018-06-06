@@ -1,6 +1,7 @@
 // React and React Router
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 // Navbar components
 import Home from "../Public/Home";
@@ -21,12 +22,15 @@ const publicVideo = () => <h1>Video viewable to public</h1>;
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    const MainStyle = {
+      backgroundColor: "white"
+    };
   }
 
   render() {
     // console.log(this.props);
     return (
-      <main>
+      <main style={this.MainStyle}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
