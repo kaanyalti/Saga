@@ -30,7 +30,10 @@ class AdminRoute extends React.Component {
           }
         />
         <Route exact path="/admin/videos" component={VideosAll} />
-        <Route path="/admin/videos/:video_id" component={VideoDetail} />
+        <Route
+          path="/admin/videos/:video_id"
+          render={() => <VideoDetail videoData={this.props.videoData} />}
+        />
       </Switch>
     );
   }
