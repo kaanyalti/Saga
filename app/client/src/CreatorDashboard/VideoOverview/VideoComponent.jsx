@@ -13,14 +13,30 @@ class VideoComponent extends React.Component{
   }
 
   onPlayerReady(event) {
-    event.target.playVideo();
+    // event.target.playVideo();
   }
 
   onPlayerStateChange(event) {
-    if(event.data == window.YT.PlayerState.PLAYING && !this.state.done){
-      setTimeout(this.stopVideo, 6000);
-      this.setState({done: true});
+    switch(event.data) {
+      case window.YT.PlayerState.ENDED:
+        console.log("video ended");
+        break;
+      case window.YT.PlayerState.PLAYING:
+        console.log("video is playing");
+        break;
+      case window.YT.PlayerState.PAUSED:
+        console.log("video is paused");
+        break;
+      case window.YT.PlayerState.BUFFERING:
+        console.log("buffering");
+        break;
+      case window.YT.PlayerState.CUED:
+        console.log("video is cued");
+        break;
+      default:
+        console.log("default");
     }
+
   }
 
   stopVideo() {
