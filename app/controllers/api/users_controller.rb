@@ -19,15 +19,15 @@ class Api::UsersController < ApplicationController
     if user.save
       puts "User successfuly created"
       # saving user's youtube videos
-      params[:videoIDs].each do |v|
-        user.videos.create({youtube_id: v})
+      params[:videoData].each do |v|
+        user.videos.create({youtube_id: v["id"], title: v["title"]})
       end
     else
       puts "User already exists"
       user = User.find_by_email(params[:email])
       # saving new youtube videos
-      params[:videoIDs].each do |v|
-        user.videos.create({youtube_id: v})
+      params[:videoData].each do |v|
+        user.videos.create({youtube_id: v["id"], title: v["title"]})
       end
     end
     render nothing: true
