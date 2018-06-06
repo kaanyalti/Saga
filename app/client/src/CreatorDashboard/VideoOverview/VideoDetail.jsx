@@ -1,8 +1,7 @@
 import React from "react";
-import axios from 'axios'
+import axios from "axios";
 import { Link } from "react-router-dom";
-import * as Reactions from "../../modules/getVideoDataMethods"
-
+import * as Reactions from "../../modules/getVideoDataMethods";
 
 // Reactions.retrieveVideoData(videoID)
 
@@ -10,17 +9,14 @@ class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   // const video = videoIDs.get(props.match.params.video_id);
   render() {
-    const video = this.
+    const video = "";
     if (!video) {
       return <div>Sorry, the video was not found</div>;
     } else {
