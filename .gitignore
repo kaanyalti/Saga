@@ -6,7 +6,7 @@
 
 #.ENV
 .env
-*/env.js
+env.js
 
 .DS_Store
 
