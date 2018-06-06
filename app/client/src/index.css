@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+li:hover {
+  font-weight: bolder !important;
+  background-color: black !important;
+}
+
 @media only screen and (min-width : 320px) {
   #root {
     font-size: 0.4rem !important;
@@ -14,8 +19,12 @@ body {
 @media only screen and (min-width : 480px) {
   #root {
     display: flex !important;
-    font-size: 0.5rem !important;
+    font-size: 0.6rem !important;
     flex-direction: column !important;
+  }
+  .container {
+    left: 10%;
+    position: fixed;
   }
 }
 
@@ -23,7 +32,7 @@ body {
 @media only screen and (min-width : 768px) {
   #root {
     display: flex !important;
-    font-size: 0.7rem !important;
+    font-size: 0.8rem !important;
     flex-direction: column !important;
   }
 }
