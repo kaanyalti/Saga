@@ -29,8 +29,8 @@ class PublicVideo extends React.Component {
   render() {
     return (
       <div>
-        <VideoComponent  />
-        <ZiggeoRecorder handleVideoState={this.changeVideoState} youtubeVideoID={this.state.youtubeVideoID} />;
+        <VideoComponent handleVideoState={this.changeVideoState}/>
+        <ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoID}/>;
       </div>
     );
   };
