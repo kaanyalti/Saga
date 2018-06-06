@@ -32,8 +32,8 @@ const AdminRoute = props => {
               exact
               path="/admin"
               render={() =>
-                this.props.loggedIn ? (
-                  <VideoList videoData={this.props.videoData} />
+                props.loggedIn ? (
+                  <VideoList videoData={props.videoData} />
                 ) : (
                   <Redirect to="/login" />
                 )
