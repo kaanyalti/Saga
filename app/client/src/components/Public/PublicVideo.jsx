@@ -19,7 +19,7 @@ class PublicVideo extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.state.youtubeVideoID)
+    console.log("YOUTUBE ID", this.state.youtubeVideoID)
   }
 
   handleChangedVideoState(newVideoState) {
@@ -31,7 +31,6 @@ class PublicVideo extends React.Component {
     return (
       <div>
         <VideoComponent youtubeVideoID={this.state.youtubeVideoID} handleChangedVideoState={this.handleChangedVideoState}/>
-        {/*<ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>;*/}
         <ZiggeoJSRecorder  youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>
       </div>
     );
