@@ -19,8 +19,10 @@ class AdminRoute extends React.Component {
   render() {
     console.log("video props",this.props);
     return (
+      <div>
+      <Sidebar />
       <Switch> 
-        <Sidebar />
+        
               <Route
                 exact
                 path="/admin"
@@ -35,6 +37,7 @@ class AdminRoute extends React.Component {
               <Route exact path="/admin/videos" component={VideosAll} />
               <Route path="/admin/videos/:video_id" component={VideoDetail} />
       </Switch>
+      </div>
     );
   }
 }
