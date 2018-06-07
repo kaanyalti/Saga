@@ -8,7 +8,6 @@ import NotFoundAnimation from "./NotFoundAnimation.jsx";
 class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
-    
     this.state = {
       data: null
     };

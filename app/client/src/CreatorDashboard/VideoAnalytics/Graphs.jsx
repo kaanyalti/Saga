@@ -31,7 +31,7 @@ class Graph extends Component {
   }
 
   PopulateGraph () {
-    console.log("Using 3 layered loop to update Graph:")
+    console.log("Using 3 layered loop to update Graph:", this.props.data)
     if ( this.props.data){
     this.props.data.data.forEach(item => {
       item.forEach( object => {
