@@ -12,27 +12,29 @@ class PublicVideo extends React.Component {
     super(props);
     this.state = {
       youtubeVideoID: this.props.match.params.video_id,
-      videoState: null
+      youtubeVideoState: null
     }
     this.handleChangedVideoState = this.handleChangedVideoState.bind(this);
   }
 
+
   // const youtubeVideoID = props.match.params.video_id;
   // console.log(youtubeVideoID);
   // const video = videoIDs.get(props.match.params.video_id);
+  componentDidMount(){
+    console.log(this.state.youtubeVideoID)
+  }
 
   handleChangedVideoState(newVideoState) {
-    console.log(newVideoState);
-    this.setState((newVideoState) => {
-      return {videoState: newVideoState};
-    });
+    console.log("NEW VIDEO STATE",newVideoState);
+    this.setState({youtubeVideoState: newVideoState});
   }
 
   render() {
     return (
       <div>
-        <VideoComponent handleChangedVideoState={this.handleChangedVideoState}/>
-        <ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoID}/>;
+        <VideoComponent youtubeVideoID={this.state.youtubeVideoID} handleChangedVideoState={this.handleChangedVideoState}/>
+        <ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>;
       </div>
     );
   }
