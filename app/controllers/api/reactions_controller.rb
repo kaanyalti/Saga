@@ -10,6 +10,7 @@ class Api::ReactionsController < ApplicationController
     end.reject(&:blank?)
 
     render json: @filtered, status: :ok
+    pp "filtered reactions #{@filtered}"
   end
 
   private

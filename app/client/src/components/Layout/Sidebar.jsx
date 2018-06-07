@@ -14,19 +14,20 @@ class SideBar extends Component {
     lineHeight: "4",
     fontSize: "2em",
     listStyle: "none",
-    paddingLeft: "5px"
+    paddingLeft: "5px",
+    left: "0"
   };
 
-  TitleStyle = {
+  ItemStyle = {
     fontSize: "1.3em",
     fontWeight: "bolder",
-    backgroundColor: "black",
     marginLeft: "-5px",
     paddingLeft: "5px"
+    
   };
 
   Color = {
-    color: "#66b8ff"
+    color: "rgb(0, 121, 226)"
   };
 
   render() {
@@ -34,7 +35,7 @@ class SideBar extends Component {
       <div>
         <div id="sidebar-wrapper">
           <ul style={this.Sidebarstyle} className="sidebar-nav">
-            <li style={this.TitleStyle}>
+            <li style={this.ItemStyle}>
               {" "}
               <a
                 style={this.Color}
@@ -43,8 +44,8 @@ class SideBar extends Component {
                 Dashboard
               </a>{" "}
             </li>
-            <li>Get A Quote</li>
-            <li>My Orders</li>
+            <li style={this.ItemStyle}> <a style={this.Color}> Get A Quote </a></li>
+            <li style={this.ItemStyle}> <a style={this.Color}> My Orders </a> </li>
           </ul>
         </div>
       </div>

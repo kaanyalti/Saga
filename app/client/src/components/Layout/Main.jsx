@@ -10,6 +10,7 @@ import GoogleSignIn from "../Authentication/GoogleSignIn";
 
 // Public videos
 import PublicVideo from "../Public/PublicVideo";
+import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent.jsx";
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -23,12 +24,12 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     const MainStyle = {
-      backgroundColor: "white"
+      backgroundColor: "white",
+      margin: "0 0 0 0"
     };
   }
 
   render() {
-    // console.log(this.props);
     return (
       <main style={this.MainStyle}>
         <Switch>
@@ -48,8 +49,7 @@ class Main extends React.Component {
               />
             )}
           />
-
-          {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
+          <Route path="/videos/:video_id" component={VideoComponent}/>
           <Route path="/v/:video_id" component={PublicVideo} />
         </Switch>
       </main>
