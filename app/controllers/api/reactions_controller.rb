@@ -2,10 +2,11 @@ class Api::ReactionsController < ApplicationController
 
   # GET /reactions
   def index
-    @reactions = Video.find_by(youtube_id: params[:video_id]).reactions.to_a
+    @reactions = Video.find_by(youtube_id: params[:video_id]).reactions
 
     @filtered = @reactions.map do |reaction|
-      filter(reaction[:apiData])
+      h = {}
+      h.merge!(reactions: filter(reaction), average_reactions: reaction[:average_reactions])
     end.reject(&:blank?)
 
     render json: @filtered, status: :ok
@@ -14,7 +15,7 @@ class Api::ReactionsController < ApplicationController
   private
 
   def filter(res)
-    res.map do |entry|
+    res[:apiData].map do |entry|
       entry["people"].map do |mood|
         if mood["emotions"].values.inject { |a, b| a + b } > 0
           entry
