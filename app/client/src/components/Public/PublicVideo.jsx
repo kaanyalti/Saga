@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import videoIDs from "../../fakeYouTubeRes.js";
 import ZiggeoRecorder from "./ZiggeoRecorder";
+import ZiggeoJSRecorder from "./ZiggeoJSRecorder"
 import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent";
 
 // The VideoList component matches one of two different routes
@@ -34,7 +35,8 @@ class PublicVideo extends React.Component {
     return (
       <div>
         <VideoComponent youtubeVideoID={this.state.youtubeVideoID} handleChangedVideoState={this.handleChangedVideoState}/>
-        <ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>;
+        {/*<ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>;*/}
+        <ZiggeoJSRecorder/>
       </div>
     );
   }
