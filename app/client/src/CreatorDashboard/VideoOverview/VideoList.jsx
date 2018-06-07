@@ -69,6 +69,7 @@ class VideoList extends React.Component {
                   <Link to={`/admin/videos/${video.id}`} style={this.LinkStyle}>
                     {video.title}
                   </Link>
+                  <div className = "chart"> hold mini chart here </div> 
                 </li>
               ))}
             </ul>
