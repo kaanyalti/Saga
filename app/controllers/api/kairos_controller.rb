@@ -6,16 +6,17 @@ class Api::KairosController < ApplicationController
     }
 
   def index
-    def upload_media (source_url)
+    def upload_media(source_url)
       response = HTTParty.post(
         "http://api.kairos.com/v2/media?source=#{source_url}",
         :headers => @@kairos_headers
       )
       puts response["id"]
       retrieve_data_from_kairos(response["id"])
+      retrieve_overall_reactions(response["id"])
     end
 
-    def retrieve_data_from_kairos (media_id)
+    def retrieve_data_from_kairos(media_id)
       puts "RETRIEVE DATA"
       status_message = "Analyzing"
 
@@ -46,8 +47,17 @@ class Api::KairosController < ApplicationController
       # pp cleaned_data
       # render json: cleaned_data
       video = Video.find_by(youtube_id: @youtube_video_id)
-      video.reactions.create({apiData: cleaned_data})
+
+      average_reactions = retrieve_overall_reactions(media_id)
+      video.reactions.create({apiData: cleaned_data, average_reactions: average_reactions})
       true
+    end
+
+    def retrieve_overall_reactions(media_id)
+      return api_data = HTTParty.get(
+          "https://api.kairos.com/v2/analytics/#{media_id}",
+          :headers => @@kairos_headers
+        )
     end
 
     @youtube_video_id = params[:youtube_video_id]
