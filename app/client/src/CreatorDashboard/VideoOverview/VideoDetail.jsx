@@ -12,22 +12,32 @@ class VideoDetail extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const videoID = this.props.match.params.video_id
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    console.log(videoID);
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-  // const video = videoIDs.get(props.match.params.video_id);
+    axios
+    .get(`/api/videos/${videoID}/reactions`)
+    .then(() => console.log("Successfully got video reactions data"))
+    .catch(err => console.log("error: ", err));
+  }
+
+
   render() {
-    const video = "";
-    if (!video) {
-      return <div>Sorry, the video was not found</div>;
-    } else {
+    // const video = "";
+    // if (!video) {
+    //   return <div>Sorry, the video was not found</div>;
+    // } else {
       return (
         <div>
           <h1>Individual video page</h1>
-          <h2>{video.title}</h2>
+          {/*<h2>{video.title}</h2>*/}
           <Link to="/videos">Back</Link>
         </div>
       );
-    }
+    // }
   }
 }
 

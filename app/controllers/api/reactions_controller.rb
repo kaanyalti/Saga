@@ -1,4 +1,4 @@
-class Api::ReactionController < ApplicationController
+class Api::ReactionsController < ApplicationController
 
   # GET /reactions
   def index
