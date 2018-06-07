@@ -7,53 +7,45 @@ import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 // The VideoList component matches one of two different routes
 // depending on the full pathname
-
 const VideosAll = () => <h1>VideosAll</h1>;
 
-class AdminRoute extends React.Component {
-  constructor(props) {
-    super(props);
+const AdminRoute = props => {
+  const StickLeft = {
+    marginLeft: "0px"
+  };
 
-    const StickLeft = {
-      marginLeft: "0px"
-    };
+  const test = {
+    height: "100vh"
+  };
 
-    const test = {
-      height: "100vh"
-    };
-  }
-
-  render() {
-    console.log(this.props);
-    return (
-      <Switch>
-        <Grid style={this.StickLeft}>
-          <Row>
-            <Col style={this.test}>
-              <Sidebar />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Route
-                exact
-                path="/admin"
-                render={() =>
-                  this.props.loggedIn ? (
-                    <VideoList videoData={this.props.videoData} />
-                  ) : (
-                    <Redirect to="/login" />
-                  )
-                }
-              />
-              <Route exact path="/admin/videos" component={VideosAll} />
-              <Route path="/admin/videos/:video_id" component={VideoDetail} />
-            </Col>
-          </Row>
-        </Grid>
-      </Switch>
-    );
-  }
-}
+  return (
+    <Switch>
+      <Grid style={this.StickLeft}>
+        <Row>
+          <Col style={this.test}>
+            <Sidebar />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Route
+              exact
+              path="/admin"
+              render={() =>
+                props.loggedIn ? (
+                  <VideoList videoData={props.videoData} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            <Route exact path="/admin/videos" component={VideosAll} />
+            <Route path="/admin/videos/:video_id" component={VideoDetail} />
+          </Col>
+        </Row>
+      </Grid>
+    </Switch>
+  );
+};
 
 export default AdminRoute;
