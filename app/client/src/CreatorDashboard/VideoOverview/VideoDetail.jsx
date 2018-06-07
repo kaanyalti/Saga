@@ -20,7 +20,7 @@ class VideoDetail extends React.Component {
 
     axios
     .get(`/api/videos/${videoID}/reactions`)
-    .then(() => console.log("Successfully got video reactions data"))
+    .then((data) => console.log(data))
     .catch(err => console.log("error: ", err));
   }
 
