@@ -53,6 +53,13 @@ class ZiggeoJSRecorder extends React.Component{
     this.recorder.activate();
     this.embedding.embed_events.on("processed", (data) => {
       console.log("processed")
+      const cacheData = data.application.videos.__cache;
+      const cacheKey = Object.keys(cacheData)[0];
+      const videoToken = cacheKey;
+      if(this.processedCount === 0){
+        Kairos.uploadKairos(videoToken, this.props.youtubeVideoID);
+        this.processedCount ++;
+      }
     });
   };
 

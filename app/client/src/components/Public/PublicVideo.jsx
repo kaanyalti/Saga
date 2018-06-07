@@ -18,12 +18,8 @@ class PublicVideo extends React.Component {
     this.handleChangedVideoState = this.handleChangedVideoState.bind(this);
   }
 
-
-  // const youtubeVideoID = props.match.params.video_id;
-  // console.log(youtubeVideoID);
-  // const video = videoIDs.get(props.match.params.video_id);
   componentDidMount(){
-    console.log(this.state.youtubeVideoID)
+    console.log("YOUTUBE ID", this.state.youtubeVideoID)
   }
 
   handleChangedVideoState(newVideoState) {
@@ -35,7 +31,6 @@ class PublicVideo extends React.Component {
     return (
       <div>
         <VideoComponent youtubeVideoID={this.state.youtubeVideoID} handleChangedVideoState={this.handleChangedVideoState}/>
-        {/*<ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>;*/}
         <ZiggeoJSRecorder  youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>
       </div>
     );
