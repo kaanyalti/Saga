@@ -18,10 +18,6 @@ class PublicVideo extends React.Component {
     this.handleChangedVideoState = this.handleChangedVideoState.bind(this);
   }
 
-
-  // const youtubeVideoID = props.match.params.video_id;
-  // console.log(youtubeVideoID);
-  // const video = videoIDs.get(props.match.params.video_id);
   componentDidMount(){
     console.log(this.state.youtubeVideoID)
   }
