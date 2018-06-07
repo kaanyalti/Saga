@@ -1,21 +1,57 @@
 import React from "react";
-import videoIDs from "../../fakeYouTubeRes.js";
-import { Link } from "react-router-dom";
-import lottie from "lottie-web";
+import axios from "axios";
+import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
+// import * as Reactions from "../../modules/getVideoDataMethods";
 
-class Video extends React.Component {
-  constructor ( props ) {
-    super ( props)
+class VideoDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      data: null
+    };
+    
+    this.FoundOrNot = this.FoundOrNot.bind(this)
   }
-
-   NotFoundStyle = {
+  
+  componentDidMount() {
+    const videoID = this.props.match.params.video_id;
+    axios
+    .get(`/api/videos/${videoID}/reactions`)
+    .then(data => {
+      this.setState({ data: data });
+      console.log("VideoDetails state: ", this.state)
+      console.log( data)
+    })
+    .catch(err => console.log("error: ", err));
+  }
+  
+  
+  NotFoundStyle = {
     position: "fixed",
     left: "50%",
     top: "50%",
     fontSize: "2em",
     color: "grey"
   }
+  
+  ContainerStyle = {
+    position: "absolute",
+    display: "flex",
+    width: "30%",
+    left: "40%",
+    top: "15%"
+  }
+
+  VideoStyle = {
+    width: "70%",
+    height: "10%",
+    flexDirection: "row",
+    padding: "10px",
+    background: "#e0e0e0"
+  }
+
 
   PStyle = {
     textAlign: "center",
@@ -26,29 +62,22 @@ class Video extends React.Component {
   }
   
   FoundOrNot = () => {
-    if (videoIDs.videoIDs[0].id !== this.props.match.params.video_id) {
-      console.log("Params are different from youtube data");
-        return <div style = {this.NotFoundStyle}>
-        <div> <NotFoundAnimation/> </div>
-        <p style={this.PStyle} > Sorry, the video was not found. </p> 
-        </div>;
-      }
+    return this.state.data
   }
-  mapfunc = videoIDs.videoIDs.map( v => {
-    console.log(v.id);
-    return v.id
-  })
-
-  render (){
-    this.mapfunc
-    return (
-      <div>
-        <h1>Individual video page</h1>
-        {/* <h2>{videoIDs}</h2> */}
-        {this.FoundOrNot()}
-        <Link to="/videos">Back</Link>
+  
+  render() {
+    if (!this.FoundOrNot) {
+      return (
+      <div style = {this.NotFoundStyle}>
+        <div> <NotFoundAnimation/> </div>
+          <p style={this.PStyle} > Sorry, the video was not found. </p> 
       </div>
-    );
-};
+      )
+    } else {
+      return <div className = "video-container" style = {this.ContainerStyle}> <VideoComponent style = {this.VideoStyle}/> </div>
+    }
+  }    
+  
 }
-export default Video;
+
+export default VideoDetail;

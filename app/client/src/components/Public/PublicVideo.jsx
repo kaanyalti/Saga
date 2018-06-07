@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import videoIDs from "../../fakeYouTubeRes.js";
 import ZiggeoRecorder from "./ZiggeoRecorder";
+import ZiggeoJSRecorder from "./ZiggeoJSRecorder"
 import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent";
 
 // The VideoList component matches one of two different routes
@@ -12,28 +13,30 @@ class PublicVideo extends React.Component {
     super(props);
     this.state = {
       youtubeVideoID: this.props.match.params.video_id,
-      videoState: null
-    };
-    this.changeVideoState = this.changeVideoState.bind(this);
+      youtubeVideoState: null
+    }
+    this.handleChangedVideoState = this.handleChangedVideoState.bind(this);
   }
+
 
   // const youtubeVideoID = props.match.params.video_id;
   // console.log(youtubeVideoID);
   // const video = videoIDs.get(props.match.params.video_id);
-  changeVideoState(newVideoState) {
-    this.setState(newVideoState => {
-      return { videoState: newVideoState };
-    });
+  componentDidMount(){
+    console.log(this.state.youtubeVideoID)
+  }
+
+  handleChangedVideoState(newVideoState) {
+    console.log("NEW VIDEO STATE",newVideoState);
+    this.setState({youtubeVideoState: newVideoState});
   }
 
   render() {
     return (
       <div>
-        <VideoComponent handleVideoState={this.changeVideoState} />
-        <ZiggeoRecorder
-          youtubeVideoID={this.state.youtubeVideoID}
-          youtubeVideoState={this.state.youtubeVideoID}
-        />;
+        <VideoComponent youtubeVideoID={this.state.youtubeVideoID} handleChangedVideoState={this.handleChangedVideoState}/>
+        {/*<ZiggeoRecorder youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>;*/}
+        <ZiggeoJSRecorder  youtubeVideoID={this.state.youtubeVideoID} youtubeVideoState={this.state.youtubeVideoState}/>
       </div>
     );
   }

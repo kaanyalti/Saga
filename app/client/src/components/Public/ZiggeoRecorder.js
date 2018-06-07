@@ -4,28 +4,36 @@ import * as Kairos from "../../modules/kairosMethods";
 import { apiKeys } from "../../env.js";
 
 class ZiggeoRecorder extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       videoToken: ""
     };
-  }
-
-  componentDidMount() {
-    var embedding = new window.ZiggeoApi.V2.Application({
+    this.embedding = new window.ZiggeoApi.V2.Application({
       token: apiKeys.ziggeoApplicationToken
     });
+    this.ref = React.createRef();
+    this.recorderElement = null;
+    this.node = null;
+  }
 
+  componentDidUpdate(){
+    console.log(this.props.youtubeVideoState);
+    switch(this.props.youtubeVideoState){
+      case "playing":
+        console.log("ZIGGEO SHOULD RECORD")
+        this.recorderElement.record();
+    }
+  }
+
+
+  componentDidMount() {
     const recorder = this;
     const youtubeVideoID = this.props.youtubeVideoID;
-    embedding.embed_events.on("processed", function(data) {
-      console.log("processed");
-      console.log(data);
-      console.log(data.application.videos);
+    this.embedding.embed_events.on("processed", function(data) {
       const cacheData = data.application.videos.__cache;
       const cacheKey = Object.keys(cacheData)[0];
       const videoToken = cacheKey;
-
       if (!recorder.state.videoToken) {
         Kairos.uploadKairos(videoToken, youtubeVideoID);
         recorder.setState(() => {
@@ -33,6 +41,10 @@ class ZiggeoRecorder extends React.Component {
         });
       }
     });
+    this.node = this.ref.current;
+    this.recorderElement = window.ZiggeoApi.V2.Recorder.findByElement(this.node);
+    debugger;
+    console.log("GOT THE RECORDER ELEMENT", this.recorderElement);
   }
 
   render() {
@@ -42,6 +54,9 @@ class ZiggeoRecorder extends React.Component {
         ziggeo-height="240"
         ziggeo-theme="modern"
         ziggeo-themecolor="red"
+        ziggeo-countdown="0"
+        ziggeo-skipinitial="true"
+        ref = {this.ref}
       >
         {" "}
       </ziggeorecorder>
