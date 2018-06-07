@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Graph from "../VideoAnalytics/Graphs.jsx";
 import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
 // import * as Reactions from "../../modules/getVideoDataMethods";
@@ -21,8 +22,7 @@ class VideoDetail extends React.Component {
     .get(`/api/videos/${videoID}/reactions`)
     .then(data => {
       this.setState({ data: data });
-      console.log("VideoDetails state: ", this.state)
-      console.log( data)
+      console.log( "Data :", data)
     })
     .catch(err => console.log("error: ", err));
   }
@@ -45,13 +45,16 @@ class VideoDetail extends React.Component {
   }
 
   VideoStyle = {
-    width: "70%",
+    width: "50%",
     height: "10%",
     flexDirection: "row",
     padding: "10px",
     background: "#e0e0e0"
   }
 
+  GraphStyle = {
+
+  }
 
   PStyle = {
     textAlign: "center",
@@ -66,6 +69,7 @@ class VideoDetail extends React.Component {
   }
   
   render() {
+    console.log("Parent component passes down these props: ", this.state)
     if (!this.FoundOrNot) {
       return (
       <div style = {this.NotFoundStyle}>
@@ -74,7 +78,10 @@ class VideoDetail extends React.Component {
       </div>
       )
     } else {
-      return <div className = "video-container" style = {this.ContainerStyle}> <VideoComponent style = {this.VideoStyle}/> </div>
+      return <div className = "video-container" style = {this.ContainerStyle}> 
+      <VideoComponent style = {this.VideoStyle}/> 
+      <Graph data = {this.state.data} title = "Video Respons Data"/>
+      </div>
     }
   }    
   

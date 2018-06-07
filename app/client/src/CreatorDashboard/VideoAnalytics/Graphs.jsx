@@ -4,7 +4,7 @@ class Graph extends Component {
     super(props);
     this.state = {
       title: props.title,
-      points: { x: this.props.x, y: this.props.y }
+      points: {joy: 1, sadness: 3, suprise: 5, disgust: 15}
     };
   }
 
@@ -15,6 +15,12 @@ class Graph extends Component {
     marginTop: "15%"
   };
 
+  PopulateGraph () {
+    this.props.data.forEach(item => {
+      console.log("graph loop", item)
+    })
+  }
+
   componentDidMount() {
     let title = this.state.title;
     let chart = new window.CanvasJS.Chart("chartContainer", {
@@ -22,7 +28,7 @@ class Graph extends Component {
       data: [
         {
           type: "stackedArea",
-          dataPoints: []
+          dataPoints: [this.state.points]
         }
       ]
     });
@@ -30,6 +36,7 @@ class Graph extends Component {
     chart.render();
   }
   render() {
+    // console.log("Graph props", this.props)
     return <div id="chartContainer" style={this.GraphStyle} />;
   }
 }
