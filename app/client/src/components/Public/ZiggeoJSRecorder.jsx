@@ -46,7 +46,7 @@ class ZiggeoJSRecorder extends React.Component{
         themecolor: this.props.temecolor || "red",
         countdown: 0,
         skipinitial: true,
-        "custom-covershots": false,
+        picksnapshots: false,
         application: apiKeys.ziggeoApplicationToken
       }
     });
