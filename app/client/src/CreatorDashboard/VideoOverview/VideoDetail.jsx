@@ -9,13 +9,21 @@ class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      data: null
+    };
   }
 
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
 
-    Reactions.retrieveVideoData(videoID).then(data => console.log(data));
+    axios
+      .get(`/api/videos/${videoID}/reactions`)
+      .then(data => {
+        this.setState({ data: data });
+        console.log(this.state.data)
+      })
+      .catch(err => console.log("error: ", err));
   }
 
   render() {
