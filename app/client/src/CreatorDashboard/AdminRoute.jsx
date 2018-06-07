@@ -25,7 +25,7 @@ class AdminRoute extends React.Component {
                 exact
                 path="/admin"
                 render={() =>
-                  this.props.loggedIn ? (
+                  this.props.loggedIn? (
                     <VideoList videoData={this.props.videoData} />
                   ) : (
                     <Redirect to="/login" />

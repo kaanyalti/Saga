@@ -52,6 +52,9 @@ class VideoList extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log("mount props", this.props)
+  }
   render() {
     return (
       <div style={this.ListStyle} className="video-list">
