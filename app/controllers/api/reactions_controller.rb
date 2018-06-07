@@ -3,7 +3,7 @@ class Api::ReactionController < ApplicationController
   # GET /reactions
   def index
     puts "INSIDE GET REQUEST"
-    @reactions = Reaction.all
+    @reactions = Video.find_by(youtube_id: params[:video_id]).reactions
 
     render json: @reactions, status: :ok
   end
