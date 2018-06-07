@@ -54,7 +54,8 @@ class Api::KairosController < ApplicationController
     end
 
     def retrieve_overall_reactions(media_id)
-      return api_data = HTTParty.get(
+      puts "RETRIEVING OVERALL DATA"
+      pp api_data = HTTParty.get(
           "https://api.kairos.com/v2/analytics/#{media_id}",
           :headers => @@kairos_headers
         )
