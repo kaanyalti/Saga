@@ -30,8 +30,6 @@ class DonutChart extends Component {
     // data is an array
     const { data } = this.props;
 
-    // Only gets emotion scores if available
-    if (data) {
       const averageReactions = {
         anger: [],
         sadness: [],
@@ -51,7 +49,6 @@ class DonutChart extends Component {
         });
       });
       return averageReactions;
-    }
   }
 
   generateDataPoints() {
@@ -60,8 +57,9 @@ class DonutChart extends Component {
     const dataPoints = [];
     for (const emotion in averageReactions) {
       const averageScore = this.getAverage(averageReactions[emotion]);
-      debugger;
-      dataPoints.push({ y: averageScore, indexLabel: emotion });
+      if (averageScore > 0){
+        dataPoints.push({ y: averageScore, indexLabel: emotion });
+      }
     }
     return dataPoints;
   }
@@ -71,7 +69,7 @@ class DonutChart extends Component {
     return (
       emotionScores.reduce(
         (accumulator, currentValue) => accumulator + currentValue
-      ) / emotionScores.length
+      , 0) / emotionScores.length
     );
   }
 
