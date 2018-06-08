@@ -32,7 +32,7 @@ class AdminRoute extends React.Component {
           <Route exact path="/admin/videos" component={VideosAll} />
           <Route
             path="/admin/videos/:video_id"
-            // Pass props to receive :video_id prop
+            // Pass props to render to receive :video_id prop
             render={(props) => <VideoDetail videoData={this.props.videoData} {...props} />}
           />
         </Switch>

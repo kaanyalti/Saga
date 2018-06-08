@@ -50,7 +50,7 @@ class VideoComponent extends React.Component {
     console.log(this.props.youtubeVideoID);
     let player = new window.YT.Player(this.anchor, {
       height: this.props.height || "390",
-      width: this.props.widht || "640",
+      width: this.props.width || "640",
       videoId: this.props.youtubeVideoID,
       events: {
         onReady: this.onPlayerReady,
