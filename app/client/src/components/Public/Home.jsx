@@ -4,7 +4,8 @@ import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 class Home extends Component {
   LeftSideStyle = {
     height: "100%",
-    background: "linear-gradient(90deg, rgba(215,236,239,1) 50%, rgba(255,255,255,1) 50%)",
+    background:
+      "linear-gradient(90deg, rgba(215,236,239,1) 50%, rgba(255,255,255,1) 50%)",
     borderRadius: "0",
     position: "fixed",
     width: "100%",
@@ -59,7 +60,7 @@ class Home extends Component {
           </Col>
         </Row>
         <Row className="show-grid">
-            <div style={this.LeftSideStyle} />
+          <div style={this.LeftSideStyle} />
         </Row>
       </Grid>
     );

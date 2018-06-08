@@ -35,10 +35,10 @@ class VideoComponent extends React.Component {
         break;
       case window.YT.PlayerState.CUED:
         // console.log("video is cued");
-        this.props.handleChangedVideoState("cued")
+        this.props.handleChangedVideoState("cued");
         break;
       default:
-        // console.log("default");
+      // console.log("default");
     }
   }
 
@@ -47,7 +47,7 @@ class VideoComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.youtubeVideoID)
+    console.log(this.props.youtubeVideoID);
     let player = new window.YT.Player(this.anchor, {
       height: this.props.height || "390",
       width: this.props.widht || "640",
