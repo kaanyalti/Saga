@@ -12,8 +12,6 @@ class VideoDetail extends React.Component {
     this.state = {
       data: null
     };
-
-    // this.FoundOrNot = this.FoundOrNot.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +36,8 @@ class VideoDetail extends React.Component {
   ContainerStyle = {
     position: "absolute",
     display: "flex",
-    width: "30%",
+    flexDirection: "column",
+    width: "100%",
     left: "40%",
     top: "15%"
   };
