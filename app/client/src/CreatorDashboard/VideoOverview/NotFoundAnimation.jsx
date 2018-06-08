@@ -9,10 +9,11 @@ componentDidMount(){
     renderer: "svg",
     loop: true,
     autoplay: true,
-    animationData: NotFoundEmoji
+    animationData: NotFoundEmoji,
 })
 }
-render () {
+render () { 
+   lottie.setSpeed(3)
   return (
     <div id = "not-found"> </div>
   )
