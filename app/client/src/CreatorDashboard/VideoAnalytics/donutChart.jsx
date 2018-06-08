@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class DonutChart extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   GraphStyle = {};
@@ -26,8 +25,6 @@ class DonutChart extends Component {
 
     chart.render();
   }
-
-  generateChart() {}
 
   getEmotionScores() {
     // data is an array
@@ -53,28 +50,19 @@ class DonutChart extends Component {
           }
         });
       });
-      console.log(averageReactions);
       return averageReactions;
     }
   }
 
   generateDataPoints() {
-    debugger;
     const averageReactions = this.getEmotionScores();
     console.log(averageReactions);
     const dataPoints = [];
-    debugger;
     for (const emotion in averageReactions) {
-      debugger;
-      console.log(emotion);
-
       const averageScore = this.getAverage(averageReactions[emotion]);
       debugger;
-      console.log(averageScore);
       dataPoints.push({ y: averageScore, indexLabel: emotion });
     }
-    debugger;
-    console.log(dataPoints);
     return dataPoints;
   }
 
@@ -88,7 +76,6 @@ class DonutChart extends Component {
   }
 
   render() {
-    this.getEmotionScores();
     return <div id="chartContainer" style={this.GraphStyle} />;
   }
 }
