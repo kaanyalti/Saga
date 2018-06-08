@@ -49,7 +49,7 @@ class Main extends React.Component {
               />
             )}
           />
-          <Route path="/videos/:video_id" component={VideoComponent}/>
+          <Route path="/videos/:video_id" component={VideoComponent} />
           <Route path="/v/:video_id" component={PublicVideo} />
         </Switch>
       </main>

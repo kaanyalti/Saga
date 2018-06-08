@@ -37,6 +37,7 @@ class Graph extends Component {
   name: "disgust",
   dataPoints: []
 }]
+
   GraphStyle = {
     width: "100%",
     margin: "auto",
@@ -44,23 +45,26 @@ class Graph extends Component {
   };
   
   componentDidUpdate() {
+
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme:"light",
 	    animationEnabled: true,
       title: { text: "Emotions over time" },
       axisX: this.state.axisX,
       axisY :this.state.axisY,
+
       toolTip: {
         shared: "true"
       },
-      legend:{
-        cursor:"pointer"
+      legend: {
+        cursor: "pointer"
       },
       data:this.UpdateState
     });
     // console.log("did update props: ", this.props)
     console.log("did update updateState", this.UpdateState)
     this.PopulateGraph()
+
     chart.render();
 
   }
@@ -68,11 +72,12 @@ class Graph extends Component {
 
   PopulateGraph () {
     if ( this.props.data.data){
+
       // console.log("Using nested loop to update Graph with the following:")
       // console.log("Reaction figures :", this.props.data.data.data[0].reactions);
 
       this.props.data.data.data[0].reactions.forEach(array => {
-        array.forEach( object => {
+        array.forEach(object => {
           var time = object.time;
           // console.log("Emotion group time stamp: ", time);
 
@@ -107,8 +112,16 @@ class Graph extends Component {
     render() {
       console.log( "Update State: ", this.UpdateState)
       return <div id="chartContainer"  />;
+
     }
+    console.log("test");
   }
-  
-  export default Graph;
-  
+
+  render() {
+    this.PopulateGraph();
+    console.log("test", this.arrayMod);
+    return <div id="chartContainer" style={this.GraphStyle} />;
+  }
+}
+
+export default Graph;
