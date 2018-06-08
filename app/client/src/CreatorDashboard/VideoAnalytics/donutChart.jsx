@@ -8,7 +8,7 @@ class DonutChart extends Component {
 
   GraphStyle = {};
 
-  //myArray.find(x => x.id === '45').foo;
+  // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
     const { title } = this.props;
     const dataPoints = this.generateDataPoints();
@@ -86,16 +86,6 @@ class DonutChart extends Component {
       ) / emotionScores.length
     );
   }
-
-  // populateDonutChart() {
-  //   const data = this.props.data
-
-  //   // Verifies if video has reactions
-  //   if(data) {
-  //     // Loops through impressions of each person (in the event that there is > 1)
-  //     data.average_reactions.impressions.map
-  //   }
-  // }
 
   render() {
     this.getEmotionScores();
