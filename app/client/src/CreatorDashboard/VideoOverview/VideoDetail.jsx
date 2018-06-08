@@ -21,7 +21,7 @@ class VideoDetail extends React.Component {
     .get(`/api/videos/${videoID}/reactions`)
     .then(data => {
       this.setState({ data: data });
-      console.log( "Data :", data)
+      console.log( "Data from VideoDetails :", data)
     })
     .catch(err => console.log("error: ", err));
   }
@@ -79,7 +79,7 @@ class VideoDetail extends React.Component {
     } else {
       return <div className = "video-container" style = {this.ContainerStyle}> 
       <VideoComponent style = {this.VideoStyle}/> 
-      <Graph data = {this.state.data} title = "Video Respons Data"/>
+      <Graph data = {this.state} title = "Video Respons Data"/>
       </div>
     }
   }    
