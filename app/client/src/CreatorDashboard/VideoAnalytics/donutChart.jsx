@@ -4,22 +4,16 @@ class DonutChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      datapoints: [],
-      axisX: {
-        title: "Time (ms)",
-        tickLength: 10,
-        minimum: 0,
-        maximum: 5000
-      }
+
     };
   }
 
   GraphStyle = {};
 
   //myArray.find(x => x.id === '45').foo;
-
-  componentDidMount() {
-    const { title } = this.props;
+componentDidUpdate() {
+  const { title } = this.props;
+    const dataPoints = this.generateDataPoints()
     const chart = new window.CanvasJS.Chart("chartContainer", {
       title: {
         text: title
@@ -27,26 +21,22 @@ class DonutChart extends Component {
       data: [
         {
           type: "doughnut",
-          dataPoints: [
-            { y: 53.37, indexLabel: "Anger" },
-            { y: 35.0, indexLabel: "Sadness" },
-            { y: 7, indexLabel: "Fear" },
-            { y: 2, indexLabel: "Disgust" },
-            { y: 5, indexLabel: "Joy" },
-            { y: 5, indexLabel: "Surprise" }
-          ]
+          dataPoints: dataPoints
         }
       ]
     });
 
     chart.render();
-  }
+}
 
-  generateDataPoints() {}
+  generateChart() {
+
+  }
 
   getEmotionScores() {
     // data is an array
     const { data } = this.props;
+
     // Only gets emotion scores if available
     if (data) {
       const averageReactions = {
@@ -67,8 +57,29 @@ class DonutChart extends Component {
           }
         });
       });
+      console.log(averageReactions)
       return averageReactions;
     }
+  }
+
+  generateDataPoints() {
+    debugger
+    const averageReactions = this.getEmotionScores();
+    console.log(averageReactions)
+    const dataPoints = [];
+    debugger
+    for (const emotion in averageReactions) {
+      debugger
+      console.log(emotion)
+
+      const averageScore = this.getAverage(averageReactions[emotion])
+      debugger
+      console.log(averageScore)
+      dataPoints.push({y: averageScore, indexLabel: emotion})
+    }
+    debugger
+    console.log(dataPoints)
+    return dataPoints
   }
 
   // emotionScores is an array of emotion scores of the same type (e.g. disgust)
@@ -92,7 +103,7 @@ class DonutChart extends Component {
 
   render() {
     this.getEmotionScores();
-    return <div id="chartContainer" style={this.GraphStyle} />;
+    return (<div id="chartContainer" style={this.GraphStyle} />)
   }
 }
 
