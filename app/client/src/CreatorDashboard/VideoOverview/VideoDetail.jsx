@@ -8,14 +8,14 @@ import NotFoundAnimation from "./NotFoundAnimation.jsx";
 class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       data: null
     };
-    
+
     this.FoundOrNot = this.FoundOrNot.bind(this)
   }
-  
+
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
@@ -26,8 +26,8 @@ class VideoDetail extends React.Component {
     })
     .catch(err => console.log("error: ", err));
   }
-  
-  
+
+
   NotFoundStyle = {
     position: "fixed",
     left: "50%",
@@ -35,13 +35,15 @@ class VideoDetail extends React.Component {
     fontSize: "2em",
     color: "grey"
   }
-  
+
   ContainerStyle = {
     position: "absolute",
     display: "flex",
-    width: "30%",
+    flexDirection: "column",
+    width: "100%",
     left: "40%",
-    top: "15%"
+    top: "15%",
+    border: "1px solid red"
   }
 
   VideoStyle = {
@@ -63,28 +65,30 @@ class VideoDetail extends React.Component {
     top: "0px",
     fontWeight: "bolder"
   }
-  
+
   FoundOrNot = () => {
     return this.state.data
   }
-  
+
   render() {
     console.log("Parent component passes down these props: ", this.state)
     if (!this.FoundOrNot) {
       return (
       <div style = {this.NotFoundStyle}>
         <div> <NotFoundAnimation/> </div>
-          <p style={this.PStyle} > Sorry, the video was not found. </p> 
+          <p style={this.PStyle} > Sorry, the video was not found. </p>
       </div>
       )
     } else {
-      return <div className = "video-container" style = {this.ContainerStyle}> 
-      <VideoComponent style = {this.VideoStyle}/> 
-      <Graph data = {this.state.data} title = "Video Respons Data"/>
-      </div>
+      return (
+        <div className = "video-container" style = {this.ContainerStyle}>
+          <VideoComponent style = {this.VideoStyle}/>
+          <Graph data = {this.state.data} title = "Video Respons Data"/>
+        </div>
+      )
     }
-  }    
-  
+  }
+
 }
 
 export default VideoDetail;
