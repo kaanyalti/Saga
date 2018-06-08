@@ -33,7 +33,9 @@ class AdminRoute extends React.Component {
           <Route
             path="/admin/videos/:video_id"
             // Pass props to render to receive :video_id prop
-            render={(props) => <VideoDetail videoData={this.props.videoData} {...props} />}
+            render={props => (
+              <VideoDetail videoData={this.props.videoData} {...props} />
+            )}
           />
         </Switch>
       </div>

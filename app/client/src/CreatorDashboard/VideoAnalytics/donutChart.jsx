@@ -3,17 +3,15 @@ import React, { Component } from "react";
 class DonutChart extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   GraphStyle = {};
 
   //myArray.find(x => x.id === '45').foo;
-componentDidUpdate() {
-  const { title } = this.props;
-    const dataPoints = this.generateDataPoints()
+  componentDidUpdate() {
+    const { title } = this.props;
+    const dataPoints = this.generateDataPoints();
     const chart = new window.CanvasJS.Chart("chartContainer", {
       title: {
         text: title
@@ -27,11 +25,9 @@ componentDidUpdate() {
     });
 
     chart.render();
-}
-
-  generateChart() {
-
   }
+
+  generateChart() {}
 
   getEmotionScores() {
     // data is an array
@@ -57,29 +53,29 @@ componentDidUpdate() {
           }
         });
       });
-      console.log(averageReactions)
+      console.log(averageReactions);
       return averageReactions;
     }
   }
 
   generateDataPoints() {
-    debugger
+    debugger;
     const averageReactions = this.getEmotionScores();
-    console.log(averageReactions)
+    console.log(averageReactions);
     const dataPoints = [];
-    debugger
+    debugger;
     for (const emotion in averageReactions) {
-      debugger
-      console.log(emotion)
+      debugger;
+      console.log(emotion);
 
-      const averageScore = this.getAverage(averageReactions[emotion])
-      debugger
-      console.log(averageScore)
-      dataPoints.push({y: averageScore, indexLabel: emotion})
+      const averageScore = this.getAverage(averageReactions[emotion]);
+      debugger;
+      console.log(averageScore);
+      dataPoints.push({ y: averageScore, indexLabel: emotion });
     }
-    debugger
-    console.log(dataPoints)
-    return dataPoints
+    debugger;
+    console.log(dataPoints);
+    return dataPoints;
   }
 
   // emotionScores is an array of emotion scores of the same type (e.g. disgust)
@@ -103,7 +99,7 @@ componentDidUpdate() {
 
   render() {
     this.getEmotionScores();
-    return (<div id="chartContainer" style={this.GraphStyle} />)
+    return <div id="chartContainer" style={this.GraphStyle} />;
   }
 }
 

@@ -78,14 +78,14 @@ class VideoDetail extends React.Component {
     //     </div>
     //   );
     // } else {
-      return (
-        <div className="video-container" style={this.ContainerStyle}>
-          <VideoComponent youtubeVideoID={this.props.match.params.video_id}/>
-          {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
-          <DonutChart data={this.state.data} videoData={this.props.videoData} />
-        </div>
-      );
-    }
+    return (
+      <div className="video-container" style={this.ContainerStyle}>
+        <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
+        {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
+        <DonutChart data={this.state.data} videoData={this.props.videoData} />
+      </div>
+    );
   }
+}
 
 export default VideoDetail;
