@@ -21,7 +21,7 @@ class VideoDetail extends React.Component {
     .get(`/api/videos/${videoID}/reactions`)
     .then(data => {
       this.setState({ data: data });
-      console.log( "Data from VideoDetails :", data)
+      // console.log( "Data from VideoDetails :", data)
     })
     .catch(err => console.log("error: ", err));
   }
@@ -40,20 +40,18 @@ class VideoDetail extends React.Component {
     display: "flex",
     width: "30%",
     left: "40%",
-    top: "15%"
+    top: "15%",
+    flexDirection: "column",
+
   }
 
   VideoStyle = {
     width: "50%",
     height: "10%",
-    flexDirection: "row",
     padding: "10px",
     background: "#e0e0e0"
   }
 
-  GraphStyle = {
-
-  }
 
   PStyle = {
     textAlign: "center",
@@ -79,7 +77,7 @@ class VideoDetail extends React.Component {
     } else {
       return <div className = "video-container" style = {this.ContainerStyle}> 
       <VideoComponent style = {this.VideoStyle}/> 
-      <Graph data = {this.state} title = "Video Respons Data"/>
+      <Graph data = {this.state}/>
       </div>
     }
   }    
