@@ -20,7 +20,7 @@ class VideoDetail extends React.Component {
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
         this.setState({ data: res.data });
-        console.log( "Data from VideoDetails :", res.data)
+        console.log("Data from VideoDetails :", res.data);
       })
       .catch(err => console.log("error: ", err));
   }
@@ -40,17 +40,15 @@ class VideoDetail extends React.Component {
     width: "100%",
     left: "40%",
     top: "15%",
-    flexDirection: "column",
-
-  }
+    flexDirection: "column"
+  };
 
   VideoStyle = {
     width: "50%",
     height: "10%",
     padding: "10px",
     background: "#e0e0e0"
-  }
-
+  };
 
   PStyle = {
     textAlign: "center",
@@ -65,7 +63,7 @@ class VideoDetail extends React.Component {
   // };
 
   render() {
-    console.log("Parent component passes down these props: ", this.state)
+    console.log("Parent component passes down these props: ", this.state);
     console.log("Props passed to this componet", this.props);
     // if (!this.FoundOrNot) {
     //   return (
@@ -75,22 +73,22 @@ class VideoDetail extends React.Component {
     //   </div>
     //   )
     // } else {
-      return (
-        <div className = "video-container" style = {this.ContainerStyle}>
+    return (
+      <div className="video-container" style={this.ContainerStyle}>
         <iframe
-                src={`https://www.youtube.com/embed/${this.props.match.params.video_id}`}
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-              />
+          src={`https://www.youtube.com/embed/${
+            this.props.match.params.video_id
+          }`}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        />
         <DonutChart
           data={this.state.data}
           videoData={this.props.videoData}
           youtubeVideoID={this.props.match.params.video_id}
         />
-        <SplineChart
-          data={this.state}
-        />
+        <SplineChart data={this.state} />
       </div>
     );
   }

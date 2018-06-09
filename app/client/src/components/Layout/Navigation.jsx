@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from "react-bootstrap";
 
 class Navigation extends Component {
-
   // navStyle = {
   //   position: "fixed",
   //   width: "100%",
@@ -34,24 +33,20 @@ class Navigation extends Component {
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-          <Link to="/">
-              Sága
-            </Link>
+            <Link to="/">Sága</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-        <Nav pullRight>
-          <NavItem>
-            <Link to="/">
-              Home
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/login">Login</Link>
-          </NavItem>
-        </Nav>
-      </Navbar.Collapse>
+          <Nav pullRight>
+            <NavItem>
+              <Link to="/">Home</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/login">Login</Link>
+            </NavItem>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     );
   }

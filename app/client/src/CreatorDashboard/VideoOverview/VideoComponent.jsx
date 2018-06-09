@@ -14,14 +14,13 @@ class VideoComponent extends React.Component {
     this.loadYT;
   }
 
-
-  downloadApi(){
-    console.log("downloading API")
-    const tag = document.createElement('script');
+  downloadApi() {
+    console.log("downloading API");
+    const tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
+    const firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    console.log("downloaded API")
+    console.log("downloaded API");
   }
 
   onPlayerReady(event) {
@@ -54,20 +53,18 @@ class VideoComponent extends React.Component {
     this.state.player.stopVideo();
   }
 
-
-
   componentDidMount() {
-    if(!this.loadYT){
-      this.loadYT = new Promise((resolve) => {
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        const firstScriptTag = document.getElementsByTagName('script')[0];
+    if (!this.loadYT) {
+      this.loadYT = new Promise(resolve => {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName("script")[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         window.onYouTubeIframeAPIReady = () => resolve(window.YT);
-      })
+      });
     }
-    this.loadYT.then((YT) => {
-      this.player = new YT.Player(this.anchor,{
+    this.loadYT.then(YT => {
+      this.player = new YT.Player(this.anchor, {
         height: this.props.height || "390",
         width: this.props.width || "640",
         videoId: this.props.youtubeVideoID,
@@ -75,10 +72,9 @@ class VideoComponent extends React.Component {
           onReady: this.onPlayerReady,
           onStateChange: this.onPlayerStateChange
         }
-      })
-    })
+      });
+    });
   }
-
 
   render() {
     return (

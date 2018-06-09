@@ -5,6 +5,17 @@ import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
 import { Jumbotron } from "react-bootstrap";
 import lottie from "lottie-web";
+import {
+  Card,
+  CardBlock,
+  CardFooter,
+  CardTitle,
+  CardText,
+} from 'react-bootstrap-card';
+import {
+  Col,
+  Row,
+} from 'react-bootstrap';
 
 class googleSignIn extends React.Component {
   constructor(props) {
