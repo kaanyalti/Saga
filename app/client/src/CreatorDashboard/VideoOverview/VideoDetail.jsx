@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Graph from "../VideoAnalytics/Graphs.jsx";
+import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
 import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
