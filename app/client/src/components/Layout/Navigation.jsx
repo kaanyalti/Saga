@@ -31,14 +31,16 @@ class Navigation extends Component {
 
   render() {
     return (
-      <Navbar>
+      <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
           <Link to="/">
               Sága
             </Link>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
+        <Navbar.Collapse>
         <Nav pullRight>
           <NavItem>
             <Link to="/">
@@ -49,6 +51,7 @@ class Navigation extends Component {
             <Link to="/login">Login</Link>
           </NavItem>
         </Nav>
+      </Navbar.Collapse>
       </Navbar>
     );
   }
