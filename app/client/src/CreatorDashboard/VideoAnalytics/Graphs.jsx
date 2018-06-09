@@ -13,61 +13,80 @@ class Graph extends Component {
     };
   }
   
-  UpdateState = [{type: "spline",
-  visible: true,
-  showInLegend: true,
-  name: "joy",
-  dataPoints: []
-},
-{type: "spline",
-  visible: true,
-  showInLegend: true,
-  name: "fear",
-  dataPoints: []
-},
-{type: "spline",
-  visible: true,
-  showInLegend: true,
-  name: "anger",
-  dataPoints: []
-},
-{type: "spline",
-  visible: true,
-  showInLegend: true,
-  name: "disgust",
-  dataPoints: []
-}]
-  GraphStyle = {
-    width: "100%",
-    margin: "auto",
-    marginTop: "15%"
+  UpdateState = [
+    {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "joy",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "fear",
+    dataPoints: []
+  },
+  {type: "spline",
+    visible: true,
+    showInLegend: true,
+    name: "anger",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "disgust",
+    dataPoints: []
+  }]
+    GraphStyle = {
+      width: "100%",
+      margin: "auto",
+      marginTop: "15%"
   };
   
   componentDidUpdate() {
     const chart = new window.CanvasJS.Chart("chartContainer", {
-      theme:"light",
-	    animationEnabled: true,
+      theme:"light3",
+      animationEnabled: true,
+      animationDuration: 5000, 
       title: { text: "Emotions over time" },
       axisX: this.state.axisX,
       axisY :this.state.axisY,
       toolTip: {
         shared: "true"
       },
+      interactivityEnabled: "true",
+      zoomEnabled:true,
+      markerType: "none",
+      legend:{
+        cursor:"pointer",
+        itemclick : ToggleDataSeries
+      },
       legend:{
         cursor:"pointer"
       },
       data:this.UpdateState
     });
+    
+    function ToggleDataSeries(e) {
+      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
+        e.dataSeries.visible = false;
+      } else {
+        e.dataSeries.visible = true;
+      }
+      chart.render();
+    };
     // console.log("did update props: ", this.props)
     console.log("did update updateState", this.UpdateState)
     this.PopulateGraph()
     chart.render();
-
+    
   }
   
-  CollectAllReactions () {
-
-  }
+  
   PopulateGraph () {
     console.log("incoming props ", this.props.data.data)//All reactions videos array
     
