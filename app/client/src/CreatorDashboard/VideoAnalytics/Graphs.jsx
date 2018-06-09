@@ -46,7 +46,7 @@ class Graph extends Component {
       margin: "auto",
       marginTop: "15%"
   };
-  
+   
   componentDidUpdate() {
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme:"light3",
