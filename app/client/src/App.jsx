@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "./components/Layout/Navbar.jsx";
+import Navigation from "./components/Layout/Navigation.jsx";
 import Main from "./components/Layout/Main.jsx";
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar loggedIn={this.state.loggedIn} />
+        <Navigation loggedIn={this.state.loggedIn} />
         <Main
           loggedIn={this.state.loggedIn}
           videoData={this.state.videoData}
