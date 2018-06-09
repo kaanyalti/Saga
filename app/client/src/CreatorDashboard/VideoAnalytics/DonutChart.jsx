@@ -61,10 +61,11 @@ class DonutChart extends Component {
       const averageScore = this.getAverage(averageReactions[emotion]);
       const percentage = (averageScore / total) * 100
 
+      const twoSigFigs = this.twoSigFigs(percentage)
       debugger
 
       if (averageScore > 0){
-        dataPoints.push({ y: percentage, indexLabel: emotion });
+        dataPoints.push({ y: twoSigFigs, indexLabel: `${this.capitaliseString(emotion)} (${twoSigFigs}%)` });
       }
     }
     return dataPoints;
@@ -81,6 +82,14 @@ class DonutChart extends Component {
     return allReactionScores.reduce(
         (accumulator, currentValue) => accumulator + currentValue
       , 0)
+  }
+
+  twoSigFigs(number) {
+    return parseFloat(Math.round(number * 100) / 100).toFixed(2);
+  }
+
+  capitaliseString(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   // emotionScores is an array of emotion scores of the same type (e.g. disgust)
