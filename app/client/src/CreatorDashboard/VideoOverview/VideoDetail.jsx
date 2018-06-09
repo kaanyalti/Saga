@@ -4,16 +4,19 @@ import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
 import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group"; 
+import { CSSTransition, transit } from "react-css-transition";
 // import * as Reactions from "../../modules/getVideoDataMethods";
 
 class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
+      data: null,
+      loading: true
     };
   }
-
+  
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
@@ -76,13 +79,23 @@ class VideoDetail extends React.Component {
     //   )
     // } else {
       return (
+        
         <div className = "video-container" style = {this.ContainerStyle}>
+        <CSSTransition
+          defaultStyle={{ transform: "translate(0, 0)" }}
+          enterStyle={{ transform: transit("translate(50px, 0)", 500, "ease-in-out") }}
+          leaveStyle={{ transform: transit("translate(0, 0)", 500, "ease-in-out") }}
+          activeStyle={{ transform: "translate(50px, 0)" }}
+          active={this.state.active}
+          >
         <iframe
                 src={`https://www.youtube.com/embed/${this.props.match.params.video_id}`}
                 frameBorder="0"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />
+        </CSSTransition>
+
         <DonutChart
           data={this.state.data}
           videoData={this.props.videoData}
@@ -92,6 +105,9 @@ class VideoDetail extends React.Component {
           data={this.state}
         />
       </div>
+     
+
+     
     );
   }
   // }

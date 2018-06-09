@@ -17,7 +17,6 @@ class googleSignIn extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // debugger
     this.setState({ redirect: true });
 
     this.state = {
@@ -34,6 +33,7 @@ class googleSignIn extends React.Component {
       animationData: SigninStyle.FingerPrint
     });
   }
+
   responseGoogle(response) {
     const { email, firstName } = response.profileObj;
     const data = { email: email, firstName: firstName };

@@ -13,7 +13,6 @@ class NotFoundAnimation extends React.Component {
     });
   }
   render() {
-    lottie.setSpeed(3);
     return <div id="not-found"> </div>;
   }
 }
