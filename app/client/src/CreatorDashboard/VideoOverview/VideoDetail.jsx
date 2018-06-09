@@ -79,6 +79,13 @@ class VideoDetail extends React.Component {
         <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
         <Graph data = {this.state} title = "Video Response Data"/>
         {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
+
+        {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
+        <DonutChart
+          data={this.state.data}
+          videoData={this.props.videoData}
+          youtubeVideoID={this.props.match.params.video_id}
+        />
       </div>
     );
   }
@@ -86,3 +93,13 @@ class VideoDetail extends React.Component {
 }
 
 export default VideoDetail;
+         {/*<iframe
+        //         width="100%"
+        //         height="100%"
+        //         src={`https://www.youtube.com/embed/${this.props.match.params.video_id}`}
+        //         frameBorder="0"
+        //         allow="autoplay; encrypted-media"
+        //         allowFullScreen
+        //         // style={this.VideoStyle}
+        //       />
+      */}
