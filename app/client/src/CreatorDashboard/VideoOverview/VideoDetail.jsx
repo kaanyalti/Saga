@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Graph from "../VideoAnalytics/Graphs.jsx";
+import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
 import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
@@ -71,21 +71,20 @@ class VideoDetail extends React.Component {
     //   return (
     //   <div style = {this.NotFoundStyle}>
     //     <div> <NotFoundAnimation/> </div>
-    //       <p style={this.PStyle} > Sorry, the video was not found. </p> 
+    //       <p style={this.PStyle} > Sorry, the video was not found. </p>
     //   </div>
     //   )
     // } else {
-      return (<div className = "video-container" style = {this.ContainerStyle}> 
+      return (<div className = "video-container" style = {this.ContainerStyle}>
         <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
-        <Graph data = {this.state} title = "Video Response Data"/>
-        {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
-
-        {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
-        <DonutChart
+        {/* <DonutChart
           data={this.state.data}
           videoData={this.props.videoData}
           youtubeVideoID={this.props.match.params.video_id}
-        />
+        /> */}
+        <SplineChart data = {this.state} title = "Video Response Data"/>
+        {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
+       
       </div>
     );
   }
