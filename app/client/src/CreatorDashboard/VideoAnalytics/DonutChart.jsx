@@ -15,7 +15,7 @@ class DonutChart extends Component {
         video => video.id === this.props.youtubeVideoID
       ).title;
       const dataPoints = this.generateDataPoints();
-      const chart = new window.CanvasJS.Chart("chartContainer", {
+      const chart = new window.CanvasJS.Chart("chartContainer2", {
         title: {
           text: `Overall reactions for ${title}`,
           fontFamily: "Lato"
@@ -106,7 +106,7 @@ class DonutChart extends Component {
   }
 
   render() {
-    return <div id="chartContainer" style={this.GraphStyle} />;
+    return <div id="chartContainer2" style={this.GraphStyle} />;
   }
 }
 

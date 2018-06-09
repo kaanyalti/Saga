@@ -6,9 +6,11 @@ class SplineChart extends Component {
       data: [],//every object below is a single spline for its emotion
       axisX:{
         title: "Time (seconds)",
+        minimum: "0"
       },
       axisY: {
-        title: "Score"
+        title: "Score",
+        minimum: "0"
       }
     };
   }
@@ -29,6 +31,7 @@ class SplineChart extends Component {
     dataPoints: []
   },
   {type: "spline",
+    markerType: "none",
     visible: true,
     showInLegend: true,
     name: "anger",
@@ -41,7 +44,8 @@ class SplineChart extends Component {
     name: "disgust",
     dataPoints: []
   }]
-    GraphStyle = {
+
+  GraphStyle = {
       width: "100%",
       margin: "auto",
       marginTop: "15%"
