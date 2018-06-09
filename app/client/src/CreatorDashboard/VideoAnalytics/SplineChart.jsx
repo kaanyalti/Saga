@@ -6,9 +6,11 @@ class SplineChart extends Component {
       data: [],//every object below is a single spline for its emotion
       axisX:{
         title: "Time (seconds)",
+        minimum: "0"
       },
       axisY: {
-        title: "Score"
+        title: "Score",
+        minimum: "0"
       }
     };
   }
@@ -29,6 +31,21 @@ class SplineChart extends Component {
     dataPoints: []
   },
   {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "sadness",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "surprise",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
     visible: true,
     showInLegend: true,
     name: "anger",
@@ -41,7 +58,8 @@ class SplineChart extends Component {
     name: "disgust",
     dataPoints: []
   }]
-    GraphStyle = {
+
+  GraphStyle = {
       width: "100%",
       margin: "auto",
       marginTop: "15%"
@@ -64,7 +82,7 @@ class SplineChart extends Component {
       markerType: "none",
       legend:{
         cursor:"pointer",
-        itemclick : ToggleDataSeries
+        itemclick : toggleDataSeries
       },
       legend:{
         cursor:"pointer"
@@ -72,7 +90,7 @@ class SplineChart extends Component {
       data:this.UpdateState
     });
 
-    function ToggleDataSeries(e) {
+    function toggleDataSeries(e) {
       if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
         e.dataSeries.visible = false;
       } else {
@@ -81,7 +99,7 @@ class SplineChart extends Component {
       chart.render();
     };
     // console.log("did update props: ", this.props)
-    console.log("did update updateState", this.UpdateState)
+    // console.log("did update updateState", this.UpdateState)
     this.PopulateGraph()
     chart.render();
 
@@ -106,7 +124,7 @@ class SplineChart extends Component {
             // console.log("labels and value to plug in graph: ", nested.emotions);
 
             for (let emotion in nested.emotions){
-              if (nested.emotions[emotion] > 0) {
+              // if (nested.emotions[emotion] > 0) {
               // console.log("single emotion and time: ", emotion, nested.emotions[emotion], time);
 
               for ( let entry of this.UpdateState){
@@ -119,7 +137,7 @@ class SplineChart extends Component {
                     {label: time, y:nested.emotions[emotion]}
                   )//end of array.push method
                 }//end of state loop
-              }//end of if statement
+              // }//end of if statement
             }
             })
           })
