@@ -11,7 +11,7 @@ class DonutChart extends Component {
   componentDidUpdate() {
     const { title } = this.props;
     const dataPoints = this.generateDataPoints();
-    const chart = new window.CanvasJS.Chart("chartContainer", {
+    const chart = new window.CanvasJS.Chart("chartContainer2", {
       title: {
         text: title
       },
@@ -54,14 +54,13 @@ class DonutChart extends Component {
     const averageReactions = this.getEmotionScores();
     const total = this.getTotal(averageReactions)
 
-    debugger
 
     const dataPoints = [];
     for (const emotion in averageReactions) {
       const averageScore = this.getAverage(averageReactions[emotion]);
       const percentage = (averageScore / total) * 100
 
-      debugger
+      
 
       if (averageScore > 0){
         dataPoints.push({ y: percentage, indexLabel: emotion });
@@ -73,7 +72,7 @@ class DonutChart extends Component {
   getTotal(averageReactions) {
     const allReactionScores = []
 
-    debugger
+    
 
     for (const reaction in averageReactions) {
       allReactionScores.push(...averageReactions[reaction])
@@ -93,7 +92,7 @@ class DonutChart extends Component {
   }
 
   render() {
-    return <div id="chartContainer" style={this.GraphStyle} />;
+    return <div id="chartContainer2" style={this.GraphStyle} />;
   }
 }
 

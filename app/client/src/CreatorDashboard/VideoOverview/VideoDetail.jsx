@@ -78,7 +78,7 @@ class VideoDetail extends React.Component {
       return (<div className = "video-container" style = {this.ContainerStyle}> 
         <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
         <Graph data = {this.state} title = "Video Response Data"/>
-        {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
+        <DonutChart data={this.state.data} videoData={this.props.videoData} />     
       </div>
     );
   }
