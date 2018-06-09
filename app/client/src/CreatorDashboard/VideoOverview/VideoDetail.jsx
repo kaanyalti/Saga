@@ -17,12 +17,13 @@ class VideoDetail extends React.Component {
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
-      .get(`/api/videos/${videoID}/reactions`)
-      .then(res => {
-        this.setState({ data: res.data });
-        // console.log( "Data from VideoDetails :", res.data)
-      })
-      .catch(err => console.log("error: ", err));
+    .get(`/api/videos/${videoID}/reactions`)
+    .then(data => {
+      this.setState({ data: data });
+      // console.log( "Data from VideoDetails :", data)
+    })
+    .catch(err => console.log("error: ", err));
+
   }
 
   NotFoundStyle = {
@@ -39,18 +40,20 @@ class VideoDetail extends React.Component {
     flexDirection: "column",
     width: "100%",
     left: "40%",
-    top: "15%"
-  };
+    top: "15%",
+    flexDirection: "column",
+
+  }
+
 
   VideoStyle = {
     width: "50%",
     height: "10%",
-    flexDirection: "row",
     padding: "10px",
     background: "#e0e0e0"
-  };
+  }
 
-  GraphStyle = {};
+
 
   PStyle = {
     textAlign: "center",
