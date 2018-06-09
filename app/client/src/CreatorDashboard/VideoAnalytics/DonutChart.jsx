@@ -11,7 +11,9 @@ class DonutChart extends Component {
   componentDidUpdate() {
     // Uses youtubeVideoID to find title in videoData array
     if (this.props.videoData) {
-      const title = this.props.videoData.find(video => video.id === this.props.youtubeVideoID).title || "This should be an actual title"
+      const title = this.props.videoData.find(
+        video => video.id === this.props.youtubeVideoID
+      ).title;
       const dataPoints = this.generateDataPoints();
       const chart = new window.CanvasJS.Chart("chartContainer", {
         title: {
@@ -53,8 +55,6 @@ class DonutChart extends Component {
   }
 
   generateDataPoints() {
-
-
     const averageReactions = this.getEmotionScores();
     const total = this.getTotal(averageReactions);
 
