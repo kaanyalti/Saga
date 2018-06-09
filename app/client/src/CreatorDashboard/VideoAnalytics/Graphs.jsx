@@ -63,7 +63,7 @@ class Graph extends Component {
       markerType: "none",
       legend:{
         cursor:"pointer",
-        itemclick : ToggleDataSeries
+        itemclick : toggleDataSeries
       },
       legend:{
         cursor:"pointer"
@@ -71,7 +71,7 @@ class Graph extends Component {
       data:this.UpdateState
     });
     
-    function ToggleDataSeries(e) {
+    function toggleDataSeries(e) {
       if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
         e.dataSeries.visible = false;
       } else {
