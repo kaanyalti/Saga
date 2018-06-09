@@ -17,10 +17,12 @@ class DonutChart extends Component {
       const dataPoints = this.generateDataPoints();
       const chart = new window.CanvasJS.Chart("chartContainer", {
         title: {
-          text: `Overall reactions for ${title}`
+          text: `Overall reactions for ${title}`,
+          fontFamily: "Lato"
         },
         data: [
           {
+            indexLabelFontFamily: "Lato",
             type: "doughnut",
             dataPoints: dataPoints
           }
