@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 class VideoList extends React.Component {
   constructor(props) {

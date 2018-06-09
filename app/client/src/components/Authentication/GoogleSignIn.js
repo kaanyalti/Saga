@@ -3,7 +3,7 @@ import axios from "axios";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
-import { Jumbotron } from "react-bootstrap";
+// import { Jumbotron } from "react-bootstrap";
 import lottie from "lottie-web";
 
 
@@ -100,7 +100,7 @@ class googleSignIn extends React.Component {
       <Redirect to="/admin" />
     ) : (
       <div className="background" style={SigninStyle.Style}>
-        <Jumbotron style={SigninStyle.JumbotronStyle}>
+        {/*<Jumbotron style={SigninStyle.JumbotronStyle}>*/}
           <div id="thumb" style={SigninStyle.ImageStyle} />
           <GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
@@ -110,7 +110,7 @@ class googleSignIn extends React.Component {
             onFailure={this.responseGoogle}
             style={SigninStyle.LoginStyle}
           />
-        </Jumbotron>
+        {/*</Jumbotron>*/}
       </div>
     );
   }

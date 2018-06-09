@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 class Home extends Component {
   // LeftSideStyle = {
@@ -43,26 +43,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row className="show-grid">
-          <Col>
-            <Grid style={this.VideoStyle}>
-              <Row className="show-grid">
-                <Col>
-                  <Jumbotron style={this.DescriptionStyle}>
-                    <h1 style={this.TitleStyle}>Welcome to Sága.</h1>
-                    We don't know what to say yet but we will by wednesday
-                    night:)
-                  </Jumbotron>
-                </Col>
-              </Row>
-            </Grid>
-          </Col>
-        </Row>
-        <Row className="show-grid">
-          <div style={this.LeftSideStyle} />
-        </Row>
-      </Grid>
+      <h1>Welcome to Sága.</h1>
     );
   }
 }

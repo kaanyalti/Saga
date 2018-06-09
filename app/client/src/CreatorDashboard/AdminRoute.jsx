@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import VideoList from "./VideoOverview/VideoList";
 import VideoDetail from "./VideoOverview/VideoDetail";
 import Sidebar from "../components/Layout/Sidebar.jsx";
-import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 // The VideoList component matches one of two different routes
 // depending on the full pathname
