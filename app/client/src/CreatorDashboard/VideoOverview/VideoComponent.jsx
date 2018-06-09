@@ -10,14 +10,17 @@ class VideoComponent extends React.Component {
     this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
     this.stopVideo = this.stopVideo.bind(this);
     this.downloadApi = this.downloadApi.bind(this);
+    this.anchor = React.createRef();
   }
 
 
   downloadApi(){
+    console.log("downloading API")
     const tag = document.createElement('script');
-    tag.src = "http://www.youtube.com/iframe_api";
+    tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    console.log("downloaded API")
   }
 
   onPlayerReady(event) {
@@ -50,9 +53,12 @@ class VideoComponent extends React.Component {
     this.state.player.stopVideo();
   }
 
+
+
   componentDidMount() {
     this.downloadApi();
-    window.onYoutubeIframeAPIReady = (event) => {
+    window.onYouTubeIframeAPIReady = (event) => {
+      this.YT = window.YT;
       const player = new window.YT.Player(this.anchor, {
         height: this.props.height || "390",
         width: this.props.width || "640",
