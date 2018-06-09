@@ -3,94 +3,137 @@ class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.title,
-      datapoints: [],
-      axisX: {
-        title: "Time (ms)",
-        tickLength: 10,
-        minimum: 0,
-        maximum: 5000
+      data: [],//every object below is a single spline for its emotion
+      axisX:{
+        title: "Time (seconds)",
+      },
+      axisY: {
+        title: "Score"
       }
     };
   }
-
-  GraphStyle = {
-    width: "25%",
-    height: "120px",
-    margin: "auto",
-    marginTop: "15%"
+  
+  UpdateState = [
+    {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "joy",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "fear",
+    dataPoints: []
+  },
+  {type: "spline",
+    visible: true,
+    showInLegend: true,
+    name: "anger",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "disgust",
+    dataPoints: []
+  }]
+    GraphStyle = {
+      width: "100%",
+      margin: "auto",
+      marginTop: "15%"
   };
-
-  componentDidMount() {
-    let title = this.state.title;
+   
+  componentDidUpdate() {
     const chart = new window.CanvasJS.Chart("chartContainer", {
-      title: { text: title },
+      theme:"light3",
+      animationEnabled: true,
+      animationDuration: 5000, 
+      title: { text: "Emotions over time" },
       axisX: this.state.axisX,
-      axisY: {
-        includeZero: false,
-        title: "Emotion meter"
-      },
+      axisY :this.state.axisY,
       toolTip: {
         shared: "true"
       },
-      legend: {
-        cursor: "pointer"
+      interactivityEnabled: "true",
+      zoomEnabled:true,
+      markerType: "none",
+      legend:{
+        cursor:"pointer",
+        itemclick : ToggleDataSeries
       },
-      data: [
-        {
-          type: "spline",
-          dataPoints: this.state.datapoints
-        }
-      ]
+      legend:{
+        cursor:"pointer"
+      },
+      data:this.UpdateState
     });
-
+    
+    function ToggleDataSeries(e) {
+      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
+        e.dataSeries.visible = false;
+      } else {
+        e.dataSeries.visible = true;
+      }
+      chart.render();
+    };
+    // console.log("did update props: ", this.props)
+    console.log("did update updateState", this.UpdateState)
+    this.PopulateGraph()
     chart.render();
+    
   }
-
-  arrayMod = [];
-  PopulateGraph() {
-    if (this.props.data.data) {
+  
+  
+  PopulateGraph () {
+    console.log("incoming props ", this.props.data.data)//All reactions videos array
+    
+    this.props.data.data.forEach(recording => {
+    // if ( this.props.data.data[0]){
       // console.log("Using nested loop to update Graph with the following:")
-      console.log("Reaction figures :", this.props.data.data.data[0].reactions);
-      this.props.data.data.data[0].reactions.forEach(array => {
-        array.forEach(object => {
-          var time = object.time;
-          console.log("Emotion group time stamp: ", time);
-          object.people.forEach(nested => {
-            console.log("labels and value to plug in graph: ", nested.emotions);
-            for (let emotion in nested.emotions) {
+      // console.log("Reaction figures :", this.props);
+
+      recording.reactions.forEach(array => {
+        console.log("recording/reactions/array var: ", array)
+        array.forEach( object => {
+          var time = object.time / 1000;
+          // console.log("Emotion group time stamp: ", time);
+
+          object.people.forEach( nested => {
+            // console.log("labels and value to plug in graph: ", nested.emotions);
+
+            for (let emotion in nested.emotions){
               if (nested.emotions[emotion] > 0) {
-                console.log(
-                  "single emotion and metric (time?): ",
-                  emotion,
-                  nested.emotions[emotion],
-                  time
-                );
-                this.arrayMod.push({
-                  datapoints: [
-                    {
-                      type: "spline",
-                      visible: false,
-                      showInLegend: false,
-                      name: emotion,
-                      dataPoints: [{ label: time, y: nested.emotions[emotion] }]
-                    }
-                  ]
-                }); //end of array.push method
-              } //end of if statement
+              // console.log("single emotion and time: ", emotion, nested.emotions[emotion], time);
+
+              for ( let entry of this.UpdateState){
+                // console.log("this.state.data array loop: ", entry);
+                if (entry.name === emotion)
+                  // console.log("Single emotion name matched this object from the state : ", this.state.data[this.state.data.indexOf(entry)])
+                  // console.log("stuff to push: ", nested.emotions);
+                  
+                  this.UpdateState[this.UpdateState.indexOf(entry)].dataPoints.push(
+                    {label: time, y:nested.emotions[emotion]}
+                  )//end of array.push method
+                }//end of state loop
+              }//end of if statement
             }
-          });
-        });
-      });
+            })
+          })
+        })
+      // }
+    })
     }
-    console.log("test");
+    
+    // style={this.GraphStyle}
+    
+    render() {
+      console.log( "Update State: ", this.UpdateState)
+      return <div id="chartContainer"  />;
+    }
   }
-
-  render() {
-    this.PopulateGraph();
-    console.log("test", this.arrayMod);
-    return <div id="chartContainer" style={this.GraphStyle} />;
-  }
-}
-
-export default Graph;
+  
+  export default Graph;
+  

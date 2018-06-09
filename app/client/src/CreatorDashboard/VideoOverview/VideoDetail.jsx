@@ -19,8 +19,9 @@ class VideoDetail extends React.Component {
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
+        console.log
         this.setState({ data: res.data });
-        // console.log( "Data from VideoDetails :", res.data)
+        console.log( "Data from VideoDetails :", res.data)
       })
       .catch(err => console.log("error: ", err));
   }
@@ -39,18 +40,18 @@ class VideoDetail extends React.Component {
     flexDirection: "column",
     width: "100%",
     left: "40%",
-    top: "15%"
-  };
+    top: "15%",
+    flexDirection: "column",
+
+  }
 
   VideoStyle = {
     width: "50%",
     height: "10%",
-    flexDirection: "row",
     padding: "10px",
     background: "#e0e0e0"
-  };
+  }
 
-  GraphStyle = {};
 
   PStyle = {
     textAlign: "center",
@@ -65,21 +66,19 @@ class VideoDetail extends React.Component {
   // };
 
   render() {
-    // console.log("Parent component passes down these props: ", this.state)
+    console.log("Parent component passes down these props: ", this.state)
     // if (!this.FoundOrNot) {
     //   return (
-    //     <div style={this.NotFoundStyle}>
-    //       <div>
-    //         {" "}
-    //         <NotFoundAnimation />{" "}
-    //       </div>
-    //       <p style={this.PStyle}> Sorry, the video was not found. </p>
-    //     </div>
-    //   );
+    //   <div style = {this.NotFoundStyle}>
+    //     <div> <NotFoundAnimation/> </div>
+    //       <p style={this.PStyle} > Sorry, the video was not found. </p> 
+    //   </div>
+    //   )
     // } else {
-    return (
-      <div className="video-container" style={this.ContainerStyle}>
+      return (<div className = "video-container" style = {this.ContainerStyle}> 
         <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
+        <Graph data = {this.state} title = "Video Response Data"/>
+        {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
 
         {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
         <DonutChart
@@ -90,6 +89,7 @@ class VideoDetail extends React.Component {
       </div>
     );
   }
+  // }
 }
 
 export default VideoDetail;
