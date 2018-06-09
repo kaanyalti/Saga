@@ -9,13 +9,14 @@ class DonutChart extends Component {
 
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
+    console.log("Props in component did update", this.props);
     // Uses youtubeVideoID to find title in videoData array
     if (this.props.videoData) {
       const title = this.props.videoData.find(
         video => video.id === this.props.youtubeVideoID
       ).title;
       const dataPoints = this.generateDataPoints();
-      const chart = new window.CanvasJS.Chart("chartContainer2", {
+      const chart = new window.CanvasJS.Chart("chartContainer-donut", {
         title: {
           text: `Overall reactions for ${title}`,
           fontFamily: "Lato"
@@ -106,7 +107,7 @@ class DonutChart extends Component {
   }
 
   render() {
-    return <div id="chartContainer2" style={this.GraphStyle} />;
+    return <div id="chartContainer-donut" style={this.GraphStyle} />;
   }
 }
 
