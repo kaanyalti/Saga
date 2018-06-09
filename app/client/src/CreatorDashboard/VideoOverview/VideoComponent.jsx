@@ -9,6 +9,18 @@ class VideoComponent extends React.Component {
     this.onPlayerReady = this.onPlayerReady.bind(this);
     this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
     this.stopVideo = this.stopVideo.bind(this);
+    this.downloadApi = this.downloadApi.bind(this);
+    this.anchor = React.createRef();
+  }
+
+
+  downloadApi(){
+    console.log("downloading API")
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    console.log("downloaded API")
   }
 
   onPlayerReady(event) {
@@ -18,27 +30,22 @@ class VideoComponent extends React.Component {
   onPlayerStateChange(event) {
     switch (event.data) {
       case window.YT.PlayerState.ENDED:
-        // console.log("video ended");
         this.props.handleChangedVideoState("ended");
         break;
       case window.YT.PlayerState.PLAYING:
-        // console.log("video is playing");
         this.props.handleChangedVideoState("playing");
         break;
       case window.YT.PlayerState.PAUSED:
-        // console.log("video is paused");
         this.props.handleChangedVideoState("paused");
         break;
       case window.YT.PlayerState.BUFFERING:
-        // console.log("buffering");
         this.props.handleChangedVideoState("buffering");
         break;
       case window.YT.PlayerState.CUED:
-        // console.log("video is cued");
         this.props.handleChangedVideoState("cued");
         break;
       default:
-      // console.log("default");
+        console.log("default case");
     }
   }
 
@@ -46,17 +53,23 @@ class VideoComponent extends React.Component {
     this.state.player.stopVideo();
   }
 
+
+
   componentDidMount() {
-    const player = new window.YT.Player(this.anchor, {
-      height: this.props.height || "390",
-      width: this.props.width || "640",
-      videoId: this.props.youtubeVideoID,
-      events: {
-        onReady: this.onPlayerReady,
-        onStateChange: this.onPlayerStateChange
-      }
-    });
-    this.setState({ player: player });
+    this.downloadApi();
+    window.onYouTubeIframeAPIReady = (event) => {
+      this.YT = window.YT;
+      const player = new window.YT.Player(this.anchor, {
+        height: this.props.height || "390",
+        width: this.props.width || "640",
+        videoId: this.props.youtubeVideoID,
+        events: {
+          onReady: this.onPlayerReady,
+          onStateChange: this.onPlayerStateChange
+        }
+      });
+      this.setState({ player: player });
+    }
   }
 
   render() {
