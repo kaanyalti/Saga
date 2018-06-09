@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-class Graph extends Component {
+class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ class Graph extends Component {
       }
     };
   }
-  
+
   UpdateState = [
     {type: "spline",
     markerType: "none",
@@ -46,12 +46,12 @@ class Graph extends Component {
       margin: "auto",
       marginTop: "15%"
   };
-   
+
   componentDidUpdate() {
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme:"light3",
       animationEnabled: true,
-      animationDuration: 5000, 
+      animationDuration: 5000,
       title: { text: "Emotions over time" },
       axisX: this.state.axisX,
       axisY :this.state.axisY,
@@ -70,7 +70,7 @@ class Graph extends Component {
       },
       data:this.UpdateState
     });
-    
+
     function ToggleDataSeries(e) {
       if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
         e.dataSeries.visible = false;
@@ -83,13 +83,13 @@ class Graph extends Component {
     console.log("did update updateState", this.UpdateState)
     this.PopulateGraph()
     chart.render();
-    
+
   }
-  
-  
+
+
   PopulateGraph () {
     console.log("incoming props ", this.props.data.data)//All reactions videos array
-    
+
     this.props.data.data.forEach(recording => {
     // if ( this.props.data.data[0]){
       // console.log("Using nested loop to update Graph with the following:")
@@ -113,7 +113,7 @@ class Graph extends Component {
                 if (entry.name === emotion)
                   // console.log("Single emotion name matched this object from the state : ", this.state.data[this.state.data.indexOf(entry)])
                   // console.log("stuff to push: ", nested.emotions);
-                  
+
                   this.UpdateState[this.UpdateState.indexOf(entry)].dataPoints.push(
                     {label: time, y:nested.emotions[emotion]}
                   )//end of array.push method
@@ -126,14 +126,13 @@ class Graph extends Component {
       // }
     })
     }
-    
+
     // style={this.GraphStyle}
-    
+
     render() {
       console.log( "Update State: ", this.UpdateState)
       return <div id="chartContainer"  />;
     }
   }
-  
-  export default Graph;
-  
+
+  export default SplineChart;

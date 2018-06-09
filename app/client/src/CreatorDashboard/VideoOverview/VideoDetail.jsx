@@ -71,13 +71,13 @@ class VideoDetail extends React.Component {
     //   return (
     //   <div style = {this.NotFoundStyle}>
     //     <div> <NotFoundAnimation/> </div>
-    //       <p style={this.PStyle} > Sorry, the video was not found. </p> 
+    //       <p style={this.PStyle} > Sorry, the video was not found. </p>
     //   </div>
     //   )
     // } else {
-      return (<div className = "video-container" style = {this.ContainerStyle}> 
+      return (<div className = "video-container" style = {this.ContainerStyle}>
         <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
-        <Graph data = {this.state} title = "Video Response Data"/>
+        <SplineChart data = {this.state} title = "Video Response Data"/>
         {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
 
         {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
