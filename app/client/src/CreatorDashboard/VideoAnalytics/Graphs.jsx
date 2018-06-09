@@ -65,15 +65,18 @@ class Graph extends Component {
 
   }
   
+  CollectAllReactions () {
 
+  }
   PopulateGraph () {
-    if ( this.props.data.data){
+    console.log("incoming props ", this.props.data.data)//All reactions videos array
+    if ( this.props.data.data[0]){
       // console.log("Using nested loop to update Graph with the following:")
-      // console.log("Reaction figures :", this.props.data.data.data[0].reactions);
+      // console.log("Reaction figures :", this.props);
 
-      this.props.data.data.data[0].reactions.forEach(array => {
+      this.props.data.data[0].reactions.forEach(array => {
         array.forEach( object => {
-          var time = object.time;
+          var time = object.time / 1000;
           // console.log("Emotion group time stamp: ", time);
 
           object.people.forEach( nested => {
