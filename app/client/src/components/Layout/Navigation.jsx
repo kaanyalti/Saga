@@ -1,8 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from "react-bootstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 class Navigation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   // navStyle = {
   //   position: "fixed",
   //   width: "100%",
@@ -30,23 +54,25 @@ class Navigation extends Component {
 
   render() {
     return (
-      <Navbar collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to="/">Sága</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand tag={Link} to="/">
+          Sága
+        </NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to="/">Home</Link>
+              <NavLink tag={Link} to="/">
+                Home
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/login">Login</Link>
+              <NavLink tag={Link} to="/login">
+                Login
+              </NavLink>
             </NavItem>
           </Nav>
-        </Navbar.Collapse>
+        </Collapse>
       </Navbar>
     );
   }
