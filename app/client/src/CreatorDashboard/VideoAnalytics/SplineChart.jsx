@@ -48,6 +48,7 @@ class SplineChart extends Component {
   };
 
   componentDidUpdate() {
+    console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme:"light3",
       animationEnabled: true,

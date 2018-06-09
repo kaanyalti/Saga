@@ -19,7 +19,6 @@ class VideoDetail extends React.Component {
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        console.log
         this.setState({ data: res.data });
         console.log( "Data from VideoDetails :", res.data)
       })
@@ -67,6 +66,7 @@ class VideoDetail extends React.Component {
 
   render() {
     console.log("Parent component passes down these props: ", this.state)
+    console.log("Props passed to this componet", this.props);
     // if (!this.FoundOrNot) {
     //   return (
     //   <div style = {this.NotFoundStyle}>
@@ -75,16 +75,21 @@ class VideoDetail extends React.Component {
     //   </div>
     //   )
     // } else {
-      return (<div className = "video-container" style = {this.ContainerStyle}>
-        <VideoComponent youtubeVideoID={this.props.match.params.video_id} />
-        <SplineChart data = {this.state} title = "Video Response Data"/>
-        {/* <DonutChart data={this.state.data} videoData={this.props.videoData} />      */}
-
-        {/*<Graph data = {this.state} title = "Video Respons Data"/>*/}
+      return (
+        <div className = "video-container" style = {this.ContainerStyle}>
+        <iframe
+                src={`https://www.youtube.com/embed/${this.props.match.params.video_id}`}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
         <DonutChart
           data={this.state.data}
           videoData={this.props.videoData}
           youtubeVideoID={this.props.match.params.video_id}
+        />
+        <SplineChart
+          data={this.state}
         />
       </div>
     );
@@ -93,13 +98,3 @@ class VideoDetail extends React.Component {
 }
 
 export default VideoDetail;
-         {/*<iframe
-        //         width="100%"
-        //         height="100%"
-        //         src={`https://www.youtube.com/embed/${this.props.match.params.video_id}`}
-        //         frameBorder="0"
-        //         allow="autoplay; encrypted-media"
-        //         allowFullScreen
-        //         // style={this.VideoStyle}
-        //       />
-      */}

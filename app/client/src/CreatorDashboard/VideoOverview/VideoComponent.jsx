@@ -11,6 +11,7 @@ class VideoComponent extends React.Component {
     this.stopVideo = this.stopVideo.bind(this);
     this.downloadApi = this.downloadApi.bind(this);
     this.anchor = React.createRef();
+    this.loadYT;
   }
 
 
@@ -56,10 +57,17 @@ class VideoComponent extends React.Component {
 
 
   componentDidMount() {
-    this.downloadApi();
-    window.onYouTubeIframeAPIReady = (event) => {
-      this.YT = window.YT;
-      const player = new window.YT.Player(this.anchor, {
+    if(!this.loadYT){
+      this.loadYT = new Promise((resolve) => {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        window.onYouTubeIframeAPIReady = () => resolve(window.YT);
+      })
+    }
+    this.loadYT.then((YT) => {
+      this.player = new YT.Player(this.anchor,{
         height: this.props.height || "390",
         width: this.props.width || "640",
         videoId: this.props.youtubeVideoID,
@@ -67,10 +75,10 @@ class VideoComponent extends React.Component {
           onReady: this.onPlayerReady,
           onStateChange: this.onPlayerStateChange
         }
-      });
-      this.setState({ player: player });
-    }
+      })
+    })
   }
+
 
   render() {
     return (
