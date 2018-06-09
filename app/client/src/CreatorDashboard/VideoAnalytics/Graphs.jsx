@@ -70,11 +70,14 @@ class Graph extends Component {
   }
   PopulateGraph () {
     console.log("incoming props ", this.props.data.data)//All reactions videos array
-    if ( this.props.data.data[0]){
+    
+    this.props.data.data.forEach(recording => {
+    // if ( this.props.data.data[0]){
       // console.log("Using nested loop to update Graph with the following:")
       // console.log("Reaction figures :", this.props);
 
-      this.props.data.data[0].reactions.forEach(array => {
+      recording.reactions.forEach(array => {
+        console.log("recording/reactions/array var: ", array)
         array.forEach( object => {
           var time = object.time / 1000;
           // console.log("Emotion group time stamp: ", time);
@@ -101,8 +104,8 @@ class Graph extends Component {
             })
           })
         })
-      }
-      // this.setState({data: this.UpdateState})
+      // }
+    })
     }
     
     // style={this.GraphStyle}
