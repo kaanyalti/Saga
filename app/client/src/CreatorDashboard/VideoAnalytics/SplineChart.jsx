@@ -34,6 +34,20 @@ class SplineChart extends Component {
     markerType: "none",
     visible: true,
     showInLegend: true,
+    name: "sadness",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
+    name: "surprise",
+    dataPoints: []
+  },
+  {type: "spline",
+    markerType: "none",
+    visible: true,
+    showInLegend: true,
     name: "anger",
     dataPoints: []
   },
@@ -85,7 +99,7 @@ class SplineChart extends Component {
       chart.render();
     };
     // console.log("did update props: ", this.props)
-    console.log("did update updateState", this.UpdateState)
+    // console.log("did update updateState", this.UpdateState)
     this.PopulateGraph()
     chart.render();
 
@@ -110,7 +124,7 @@ class SplineChart extends Component {
             // console.log("labels and value to plug in graph: ", nested.emotions);
 
             for (let emotion in nested.emotions){
-              if (nested.emotions[emotion] > 0) {
+              // if (nested.emotions[emotion] > 0) {
               // console.log("single emotion and time: ", emotion, nested.emotions[emotion], time);
 
               for ( let entry of this.UpdateState){
@@ -123,7 +137,7 @@ class SplineChart extends Component {
                     {label: time, y:nested.emotions[emotion]}
                   )//end of array.push method
                 }//end of state loop
-              }//end of if statement
+              // }//end of if statement
             }
             })
           })
