@@ -1,22 +1,10 @@
 class Api::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
-  # GET /users
-  def index
-    @users = User.all
-
-    render json: @users
-  end
-
-  # GET /users/1
-  def show
-    render json: @user
-  end
-
   # POST /users
   def create
     user = User.new({email: params[:email]})
-    if user.save
+    if user.before_save
       puts "User successfuly created"
       # saving user's youtube videos
       params[:videoData].each do |v|

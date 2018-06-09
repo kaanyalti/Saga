@@ -35,29 +35,30 @@ class googleSignIn extends React.Component {
     });
   }
   responseGoogle(response) {
+    console.log(response)
     const { email, firstName } = response.profileObj;
     const data = { email: email, firstName: firstName };
-
+    axios
+      .post('/api/sessions', {
+        googleResponse: response
+      })
+      .then((response) => {console.log(response)})
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${
           response.accessToken
         }&part=snippet&mine=true`
       )
-      .then(res => {
-        // Youtube ID of the person
+      .then(res => {// Youtube ID of the person
         const youtubeID = res.data.items[0].id;
-
         axios
-          //  Gets a playlist ID of uploads of a user
-          .get(
+          .get(//  Gets a playlist ID of uploads of a user
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
             console.log("second call response: ");
             const uploadsID =
               res.data.items[0].contentDetails.relatedPlaylists.uploads;
-
             axios
               .get(
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
@@ -74,11 +75,8 @@ class googleSignIn extends React.Component {
                 this.setState(prevState => {
                   return { videoData: [...prevState.videoData, ...videoData] };
                 });
-
                 data.videoData = this.state.videoData;
-
                 this.props.handleLogin(data);
-
                 axios
                   .post("/api/users", {
                     videoData: videoData,
