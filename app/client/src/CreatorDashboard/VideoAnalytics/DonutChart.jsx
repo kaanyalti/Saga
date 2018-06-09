@@ -22,7 +22,6 @@ class DonutChart extends Component {
         }
       ]
     });
-
     chart.render();
   }
 
@@ -53,15 +52,35 @@ class DonutChart extends Component {
 
   generateDataPoints() {
     const averageReactions = this.getEmotionScores();
-    console.log(averageReactions);
+    const total = this.getTotal(averageReactions)
+
+    debugger
+
     const dataPoints = [];
     for (const emotion in averageReactions) {
       const averageScore = this.getAverage(averageReactions[emotion]);
+      const percentage = (averageScore / total) * 100
+
+      debugger
+
       if (averageScore > 0){
-        dataPoints.push({ y: averageScore, indexLabel: emotion });
+        dataPoints.push({ y: percentage, indexLabel: emotion });
       }
     }
     return dataPoints;
+  }
+
+  getTotal(averageReactions) {
+    const allReactionScores = []
+
+    debugger
+
+    for (const reaction in averageReactions) {
+      allReactionScores.push(...averageReactions[reaction])
+    }
+    return allReactionScores.reduce(
+        (accumulator, currentValue) => accumulator + currentValue
+      , 0)
   }
 
   // emotionScores is an array of emotion scores of the same type (e.g. disgust)
@@ -69,7 +88,7 @@ class DonutChart extends Component {
     return (
       emotionScores.reduce(
         (accumulator, currentValue) => accumulator + currentValue
-      , 0) / emotionScores.length
+      , 0)
     );
   }
 
