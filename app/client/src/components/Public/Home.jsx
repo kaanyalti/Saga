@@ -53,14 +53,18 @@ class Home extends Component {
     height: "50vh"
   };
 
-
+  splashDescription = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around"
+  }
 
   render() {
     return (
       <Container style={this.containerStyle}>
         <Row>
           <Col md="8" style={this.splashImg} />
-          <Col md="4">
+          <Col md="4" style={this.splashDescription}>
             <h1>Video analytics made easy.</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod

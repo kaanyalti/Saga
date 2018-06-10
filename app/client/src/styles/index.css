@@ -3,13 +3,26 @@
   letter-spacing: 0.01rem;
 }
 
+body {
+  background: #d7ecef
+/*  background: linear-gradient(
+    to right,
+    #d7ecef 0%,
+    #d7ecef 50%,
+    #fff 50%,
+    #fff 100%
+  );
+  height: 100vh;*/
+}
+
+
 h1 {
   font-weight: 300;
+  margin: 1.5rem 0;
 }
 
 p {
   font-weight: 300;
-  line-height: 1rem;
 }
 
 /*li:hover {

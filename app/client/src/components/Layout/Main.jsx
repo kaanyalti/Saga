@@ -18,20 +18,14 @@ import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent.
 // with /roster or /schedule. The / route will only match
 // when the pathname is exactly the string "/"
 
-const publicVideo = () => <h1>Video viewable to public</h1>;
-
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    const MainStyle = {
-      backgroundColor: "white",
-      margin: "0 0 0 0"
-    };
   }
 
   render() {
     return (
-      <main style={this.MainStyle}>
+      <main>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
