@@ -59,8 +59,8 @@ a:hover {
 
   a:hover:before {
     visibility: visible;
-    -webkit-transform: scaleX(0.75);
-    transform: scaleX(0.75);
+    -webkit-transform: scaleX(0.78);
+    transform: scaleX(0.78);
   }
 
   .active:before {
@@ -72,8 +72,8 @@ a:hover {
     left: 0;
     background-color: #d7ecef;
     visibility: visible;
-    -webkit-transform: scaleX(0.75);
-    transform: scaleX(0.75);
+    -webkit-transform: scaleX(0.78);
+    transform: scaleX(0.78);
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
   }
