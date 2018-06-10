@@ -95,7 +95,9 @@ class googleSignIn extends React.Component {
   containerStyle = {
     backgroundColor: "#fcfcfc",
     marginTop: "5vh",
-    height: "50vh"
+    height: "50vh",
+    display: "flex",
+    flexDirection: "column",
   };
 
   loginImg = {
@@ -103,8 +105,21 @@ class googleSignIn extends React.Component {
       "url(https://images.unsplash.com/photo-1488926445368-4a98469fbe38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d9d84d5e35f7496993138b4191281c20&auto=format&fit=crop&w=1050&q=80)",
     backgroundSize: "cover",
     // backgroundPosition: "center",
-    height: "30vh"
+    minHeight: "30vh"
   };
+
+  loginButtonStyle = {
+    minWidth: "35rem",
+    border: "5px solid red",
+    alignSelf: "flex-end"
+  }
+
+  buttonContainer = {
+    minHeight: "20vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
+  }
 
   render() {
     const { redirect } = this.state;
@@ -118,12 +133,13 @@ class googleSignIn extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col><GoogleLogin
+          <Col md={{ offset: 4 }} style={this.buttonContainer}><GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
             buttonText="Login"
             scope="https://www.googleapis.com/auth/youtube.readonly"
             onSuccess={this.responseGoogle}
             onFailure={this.responseGoogle}
+            style={this.loginButtonStyle}
           /></Col>
         </Row>
       </Container>
