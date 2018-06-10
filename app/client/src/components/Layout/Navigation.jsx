@@ -40,6 +40,11 @@ class Navigation extends Component {
   };
 
   render() {
+    const linkTo = this.props.loggedIn ? (<NavLink activeClassName="active" tag={RRNavLink} to="/admin">
+                Dashboard
+              </NavLink>) : (<NavLink activeClassName="active" tag={RRNavLink} to="/login">
+                Login
+              </NavLink>)
     return (
       <Navbar color="faded" light expand="md" style={this.navStyle}>
         <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
@@ -54,9 +59,7 @@ class Navigation extends Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink activeClassName="active" tag={RRNavLink} to="/login">
-                Login
-              </NavLink>
+              {linkTo}
             </NavItem>
           </Nav>
         </Collapse>
