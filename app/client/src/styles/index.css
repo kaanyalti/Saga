@@ -13,7 +13,6 @@ body {
   );
 }
 
-
 h1 {
   font-weight: 300;
   margin: 1.5rem 0;
@@ -23,21 +22,11 @@ p {
   font-weight: 300;
 }
 
-/*li:hover {
-  font-weight: bolder !important;
-  color: "#66b8ff";
-}*/
-
 a {
   color: black !important;
   position: relative;
   text-decoration: none;
 }
-
-
-
-
-
 
 a:hover {
   color: rgb(0, 121, 226) !important;
