@@ -8,9 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from "reactstrap";
 
 class Navigation extends Component {
@@ -40,10 +37,10 @@ class Navigation extends Component {
   //   color: "black"
   // };
 
-  LogoStyle = {
-    fontWeight: "bold",
-    fontSize: "3em"
-  };
+  // LogoStyle = {
+  //   fontWeight: "bold",
+  //   fontSize: "3em"
+  // };
 
   // ButtonStyle = {
   //   float: "right",
