@@ -92,14 +92,30 @@ class googleSignIn extends React.Component {
       });
   }
 
+  containerStyle = {
+    backgroundColor: "#fcfcfc",
+    marginTop: "5vh",
+    height: "50vh"
+  };
+
+  loginImg = {
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1488926445368-4a98469fbe38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d9d84d5e35f7496993138b4191281c20&auto=format&fit=crop&w=1050&q=80)",
+    backgroundSize: "cover",
+    // backgroundPosition: "center",
+    height: "30vh"
+  };
+
   render() {
     const { redirect } = this.state;
     return redirect ? (
       <Redirect to="/admin" />
     ) : (
-      <Container>
+      <Container style={this.containerStyle}>
         <Row>
-          <Col><div id="thumb" style={SigninStyle.ImageStyle} /></Col>
+          <Col style={this.loginImg}>
+          <div id="thumb" style={SigninStyle.ImageStyle} />
+          </Col>
         </Row>
         <Row>
           <Col><GoogleLogin

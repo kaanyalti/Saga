@@ -31,11 +31,10 @@ export const SigninStyle = {
   },
 
   ImageStyle: {
-    margin: "auto",
-    background: "#d7a2cb",
-    width: "100%",
-    height: "50%",
-    objectFit: "cover"
+    // margin: "auto",
+    // background: "#d7a2cb",
+    height: "30vh",
+    // objectFit: "cover"
   },
 
   LoginStyle: {
