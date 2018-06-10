@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 class Home extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      
+    }
+  }
   // LeftSideStyle = {
   //   height: "100%",
   //   background:
@@ -60,16 +66,14 @@ class Home extends Component {
     justifyContent: "space-around"
   };
 
-
-  
   render() {
     return (
-      <Container>
+      <Container id="mainpage">
         <Row >
           <Col md="8" style={this.splashImg} />
           <Col md="4" style={this.splashDescription}>
             <h1>Video analytics made easy.</h1>
-            <p>
+            <p >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
               molestiae nostrum perspiciatis consequatur maxime nesciunt eaque!
               Repudiandae a voluptates, nam sed dolorum, dicta officiis!

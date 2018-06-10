@@ -5,6 +5,7 @@ class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       data: [], //every object below is a single entry for its emotion
       axisX: {
         title: "Time (seconds)",
@@ -17,12 +18,12 @@ class SplineChart extends Component {
       },
       
     };
+    this.TurnOff = this.TurnOff.bind(this)
   }
 
   UpdateState = [
-    
     {
-      type: "area",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -30,7 +31,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "area",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -38,7 +39,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "area",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -46,7 +47,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "area",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -54,7 +55,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "area",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -62,7 +63,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "area",
+      type: "line",
       color: "orange",
       markerType: "cricle",
       scatterSize: [],
@@ -72,14 +73,17 @@ class SplineChart extends Component {
       dataPoints: []
     }
   ];
-
-
   GraphStyle = {
     width: "100%",
     margin: "auto",
     marginTop: "15%"
   };
 
+  TurnOff() {
+      console.log("resetting state")
+      this.setState({loading: false})
+    
+  }
   componentDidUpdate() {
     console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
@@ -104,14 +108,11 @@ class SplineChart extends Component {
             } else {
                 e.dataSeries.visible = true;
             }
-
             e.chart.render();
         }
       },
       data: this.UpdateState
     });
-    // console.log("did update props: ", this.props)
-    // console.log("did update updateState", this.UpdateState)
     this.PopulateGraph();
     chart.render();
   }
@@ -140,7 +141,7 @@ class SplineChart extends Component {
                   // console.log("Single emotion name matched this object from the state : ", this.state.data[this.state.data.indexOf(entry)])
                   // console.log("stuff to push: ", nested.emotions);
                   this.UpdateState[
-                    this.UpdateState.indexOf(entry)
+                  this.UpdateState.indexOf(entry)
                   ].dataPoints.push({
                     x: time/1000,
                     y: nested.emotions[emotion]
@@ -156,9 +157,13 @@ class SplineChart extends Component {
     });
   }
 
-  // style={this.GraphStyle}
 
   render() {
+    if(this.state.loading === true){
+      this.TurnOff()
+
+      return <p> LOADING?</p>
+    }
     // console.log("Update State: ", this.UpdateState);
     return <div id="chartContainer" />;
   }
