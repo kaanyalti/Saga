@@ -35,10 +35,13 @@ class googleSignIn extends React.Component {
       animationData: SigninStyle.FingerPrint
     });
   }
+
   responseGoogle(response) {
+    console.log(response)
     const { email, firstName } = response.profileObj;
     const data = { email: email, firstName: firstName };
-
+    console.log(response.Zi.access_token);
+    document.cookie = `email=${response.profileObj.email}`
     axios
       .get(
         `https://www.googleapis.com/youtube/v3/channels?access_token=${

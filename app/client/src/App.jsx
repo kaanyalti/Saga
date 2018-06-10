@@ -13,6 +13,41 @@ class App extends Component {
       videoData: null
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.getCookie = this.getCookie.bind(this);
+  }
+
+
+  getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+  }
+
+
+  componentDidUpdate(){
+    const cookieEmail = this.getCookie("email");
+    console.log("UPDATE", cookieEmail)
+    console.log("UPDATE STATE", this.state.userEmail)
+    console.log("UPDATE", this.state.userEmail === cookieEmail)
+
+  }
+
+  componentDidMount(){
+    const cookieEmail = this.getCookie("email");
+    console.log("MOUNT", cookieEmail)
+    console.log("MOUNT STATE", this.state.userEmail)
+    console.log("MOUNT", this.state.userEmail === cookieEmail)
+
+
   }
 
   handleLogin(data) {
