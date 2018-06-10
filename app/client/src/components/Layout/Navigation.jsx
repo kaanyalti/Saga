@@ -52,9 +52,6 @@ class Navigation extends Component {
   render() {
     return (
       <Navbar color="faded" light expand="md">
-        <NavbarBrand tag={Link} to="/">
-          Sága
-        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
