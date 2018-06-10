@@ -3,7 +3,7 @@ class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [], //every object below is a single spline for its emotion
+      data: [], //every object below is a single entry for its emotion
       axisX: {
         title: "Time (seconds)",
         minimum: "0"
@@ -17,7 +17,7 @@ class SplineChart extends Component {
 
   UpdateState = [
     {
-      type: "spline",
+      type: "scatter",
       // markerType: "none",
       visible: true,
       showInLegend: true,
@@ -25,7 +25,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "spline",
+      type: "scatter",
       markerType: "square",
       visible: true,
       showInLegend: true,
@@ -33,7 +33,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "spline",
+      type: "scatter",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -41,7 +41,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "spline",
+      type: "scatter",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -49,7 +49,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "spline",
+      type: "scatter",
       // markerType: "none",
       visible: true,
       showInLegend: true,
@@ -57,7 +57,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "spline",
+      type: "scatter",
       // markerType: "none",
       visible: true,
       showInLegend: true,
