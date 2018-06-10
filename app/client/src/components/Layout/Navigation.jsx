@@ -76,14 +76,3 @@ class Navigation extends Component {
 }
 
 export default Navigation;
-
-/*
-
-<nav className="navbar navbar-light">
-    <ul className="nav navbar-nav">
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/login">Login</Link></li>
-    </ul>
-</nav>
-
-*/
