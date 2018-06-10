@@ -26,6 +26,10 @@ class App extends Component {
     });
   }
 
+  mainStyle = {
+    display: "flex"
+  }
+
   render() {
     return (
       <div>
