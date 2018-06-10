@@ -42,7 +42,7 @@ class Home extends Component {
   // };
   containerStyle = {
     backgroundColor: "#fcfcfc",
-    marginTop: "10vh"
+    marginTop: "10vh",
   };
 
   splashImg = {
@@ -50,7 +50,7 @@ class Home extends Component {
       "url(https://images.unsplash.com/photo-1465244085115-0c89caa46915?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1bc64c67c45a8dd5d5954183bbc1fd21&auto=format&fit=crop&w=1050&q=80)",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    height: "50vh"
+    minHeight: "50vh"
   };
 
   splashDescription = {
