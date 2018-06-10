@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink as RRNavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -18,6 +18,9 @@ class Navigation extends Component {
     this.state = {
       isOpen: false
     };
+
+    this.removeUnderline = this.removeUnderline.bind(this);
+    this.addUnderline = this.addUnderline.bind(this);
   }
   toggle() {
     this.setState({
@@ -25,38 +28,44 @@ class Navigation extends Component {
     });
   }
 
+  removeUnderline() {
+    this.setState({ isActive: "" });
+  }
+
+  addUnderline() {
+    this.setState({ isActive: "active" });
+  }
+
   navStyle = {
-    margin: "10vh 15vw 0 15vw",
+    margin: "10vh 15vw 0 15vw"
+  };
+
+  navLinks = {
+    fontWeight: "700",
+    textAlign: "right"
   };
 
   logoStyle = {
     fontWeight: "bold",
     fontSize: "1.5em"
-  }
-
-  // ButtonStyle = {
-  //   float: "right",
-  //   color: "black",
-  //   fontWeight: "bolder",
-  //   fontSize: "2em"
-  // };
+  };
 
   render() {
     return (
       <Navbar color="faded" light expand="md" style={this.navStyle}>
-        <NavbarBrand tag={Link} to="/" style={this.logoStyle}>
+        <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
           Sága
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto" navbar style={this.navLinks}>
             <NavItem>
-              <NavLink tag={Link} to="/">
+              <NavLink exact activeClassName="active" tag={RRNavLink} to="/">
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/login">
+              <NavLink activeClassName="active" tag={RRNavLink} to="/login">
                 Login
               </NavLink>
             </NavItem>
