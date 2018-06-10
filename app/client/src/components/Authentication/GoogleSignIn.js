@@ -3,8 +3,9 @@ import axios from "axios";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
-// import { Jumbotron } from "react-bootstrap";
 import lottie from "lottie-web";
+import { Container, Row, Col } from "reactstrap";
+import GoogleButton from "../../btn_google_signin_light_normal_web.png"
 
 
 class googleSignIn extends React.Component {
@@ -18,9 +19,7 @@ class googleSignIn extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // debugger
     this.setState({ redirect: true });
-
     this.state = {
       videoIDs: []
     };
@@ -94,26 +93,63 @@ class googleSignIn extends React.Component {
       });
   }
 
+  containerStyle = {
+    backgroundColor: "#fcfcfc",
+    marginTop: "5vh",
+    height: "50vh",
+    display: "flex",
+    flexDirection: "column",
+  };
+
+  loginImg = {
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1488926445368-4a98469fbe38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d9d84d5e35f7496993138b4191281c20&auto=format&fit=crop&w=1050&q=80)",
+    backgroundSize: "cover",
+    // backgroundPosition: "center",
+    minHeight: "30vh"
+  };
+
+  buttonContainer = {
+    minHeight: "20vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }
+
+  loginButtonStyle = {
+    border: "none",
+    width: "191px",
+    height: "46px",
+    backgroundImage: `url(${GoogleButton})`,
+    backgroundPosition: "center",
+  }
+
   render() {
     const { redirect } = this.state;
     return redirect ? (
       <Redirect to="/admin" />
     ) : (
-      <div className="background" style={SigninStyle.Style}>
-        {/*<Jumbotron style={SigninStyle.JumbotronStyle}>*/}
+      <Container style={this.containerStyle}>
+        <Row>
+          <Col style={this.loginImg}>
           <div id="thumb" style={SigninStyle.ImageStyle} />
-          <GoogleLogin
+          </Col>
+        </Row>
+        <Row style={{display: "block"}}>
+          <Col style={this.buttonContainer}><GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
-            buttonText="Login"
+            buttonText=""
             scope="https://www.googleapis.com/auth/youtube.readonly"
             onSuccess={this.responseGoogle}
             onFailure={this.responseGoogle}
-            style={SigninStyle.LoginStyle}
-          />
-        {/*</Jumbotron>*/}
-      </div>
+            style={this.loginButtonStyle}
+          /></Col>
+        </Row>
+      </Container>
     );
   }
 }
+
+
 
 export default googleSignIn;
