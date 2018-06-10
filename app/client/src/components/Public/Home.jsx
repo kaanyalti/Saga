@@ -42,7 +42,7 @@ class Home extends Component {
   // };
   containerStyle = {
     backgroundColor: "#fcfcfc",
-    marginTop: "10vh",
+    marginTop: "5vh",
   };
 
   splashImg = {
