@@ -41,7 +41,7 @@ class Home extends Component {
   //   borderRadius: "0"
   // };
   containerStyle = {
-    backgroundColor: "#fcfcfc",
+    backgroundColor: "#fafafa",
     marginTop: "10vh",
   };
 
