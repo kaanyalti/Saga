@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
 import lottie from "lottie-web";
 import { Container, Row, Col } from "reactstrap";
+import GoogleButton from "../../btn_google_signin_light_normal_web.png"
 
 
 class googleSignIn extends React.Component {
@@ -108,17 +109,19 @@ class googleSignIn extends React.Component {
     minHeight: "30vh"
   };
 
-  loginButtonStyle = {
-    minWidth: "35rem",
-    border: "5px solid red",
-    alignSelf: "flex-end"
-  }
-
   buttonContainer = {
     minHeight: "20vh",
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center",
+  }
+
+  loginButtonStyle = {
+    border: "none",
+    width: "191px",
+    height: "46px",
+    backgroundImage: `url(${GoogleButton})`,
+    backgroundPosition: "center",
   }
 
   render() {
@@ -132,10 +135,10 @@ class googleSignIn extends React.Component {
           <div id="thumb" style={SigninStyle.ImageStyle} />
           </Col>
         </Row>
-        <Row>
-          <Col md={{ offset: 4 }} style={this.buttonContainer}><GoogleLogin
+        <Row style={{display: "block"}}>
+          <Col style={this.buttonContainer}><GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
-            buttonText="Login"
+            buttonText=""
             scope="https://www.googleapis.com/auth/youtube.readonly"
             onSuccess={this.responseGoogle}
             onFailure={this.responseGoogle}
