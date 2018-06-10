@@ -17,7 +17,7 @@ class SplineChart extends Component {
 
   UpdateState = [
     {
-      type: "scatter",
+      type: "line",
       // markerType: "none",
       visible: true,
       showInLegend: true,
@@ -25,7 +25,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "scatter",
+      type: "line",
       markerType: "square",
       visible: true,
       showInLegend: true,
@@ -33,7 +33,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "scatter",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -41,7 +41,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "scatter",
+      type: "line",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -49,7 +49,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "scatter",
+      type: "line",
       // markerType: "none",
       visible: true,
       showInLegend: true,
@@ -57,8 +57,9 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "scatter",
+      type: "line",
       // markerType: "none",
+      scatterSize: [],
       visible: true,
       showInLegend: true,
       name: "disgust",
@@ -95,6 +96,7 @@ class SplineChart extends Component {
 
     function toggleDataSeries(e) {
       if (typeof e.dataSeries.visible === "undefined" || e.dataSeries.visible) {
+        console.log("argument: ", e)
         e.dataSeries.visible = false;
       } else {
         e.dataSeries.visible = true;
@@ -109,14 +111,12 @@ class SplineChart extends Component {
 
   PopulateGraph() {
     console.log("incoming props ", this.props.data.data); //All reactions videos array
-
     this.props.data.data.forEach(recording => {
       // if ( this.props.data.data[0]){
       // console.log("Using nested loop to update Graph with the following:")
       // console.log("Reaction figures :", this.props);
-
       recording.reactions.forEach(array => {
-        console.log("recording/reactions/array var: ", array);
+        // console.log("recording/reactions/array var: ", array);
         array.forEach(object => {
           // console.log("Emotion group time stamp: ", time);
           object.people.forEach(nested => {
@@ -135,15 +135,13 @@ class SplineChart extends Component {
                   this.UpdateState[
                     this.UpdateState.indexOf(entry)
                   ].dataPoints.push({
-                    label: time,
+                    x: time/1000,
                     y: nested.emotions[emotion]
                   }); //end of array.push method
-                  time = 0;
+                  // time = 0;
               } //end of state loop
-
               // }//end of if statement
             }
-          
           });
         });//array.forEach
       });
