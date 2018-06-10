@@ -41,8 +41,8 @@ class Home extends Component {
   //   borderRadius: "0"
   // };
   containerStyle = {
-    backgroundColor: "#fafafa",
-    marginTop: "10vh",
+    backgroundColor: "#fcfcfc",
+    marginTop: "5vh"
   };
 
   splashImg = {
@@ -57,7 +57,7 @@ class Home extends Component {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around"
-  }
+  };
 
   render() {
     return (
