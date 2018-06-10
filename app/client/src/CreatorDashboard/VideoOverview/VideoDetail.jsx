@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
-import VideoComponent from "./VideoComponent";
-import NotFoundAnimation from "./NotFoundAnimation.jsx";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group"; 
-import { CSSTransition, transit } from "react-css-transition";
+// import VideoComponent from "./VideoComponent";
+// import NotFoundAnimation from "./NotFoundAnimation.jsx";
+// import ReactCSSTransitionGroup from "react-addons-css-transition-group"; 
+// import { CSSTransition, transit } from "react-css-transition";
 // import * as Reactions from "../../modules/getVideoDataMethods";
 
 class VideoDetail extends React.Component {
@@ -23,7 +23,7 @@ class VideoDetail extends React.Component {
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
         this.setState({ data: res.data });
-        console.log( "Data from VideoDetails :", res.data)
+        console.log("Data from VideoDetails :", res.data);
       })
       .catch(err => console.log("error: ", err));
   }
@@ -43,17 +43,15 @@ class VideoDetail extends React.Component {
     width: "100%",
     left: "40%",
     top: "15%",
-    flexDirection: "column",
-
-  }
+    flexDirection: "column"
+  };
 
   VideoStyle = {
     width: "50%",
     height: "10%",
     padding: "10px",
     background: "#e0e0e0"
-  }
-
+  };
 
   PStyle = {
     textAlign: "center",
@@ -68,7 +66,7 @@ class VideoDetail extends React.Component {
   // };
 
   render() {
-    console.log("Parent component passes down these props: ", this.state)
+    console.log("Parent component passes down these props: ", this.state);
     console.log("Props passed to this componet", this.props);
     // if (!this.FoundOrNot) {
     //   return (
@@ -78,32 +76,22 @@ class VideoDetail extends React.Component {
     //   </div>
     //   )
     // } else {
-      return (
-        
-        <div className = "video-container" style = {this.ContainerStyle}>
-        <CSSTransition
-          defaultStyle={{ transform: "translate(0, 0)" }}
-          enterStyle={{ transform: transit("translate(50px, 0)", 500, "ease-in-out") }}
-          leaveStyle={{ transform: transit("translate(0, 0)", 500, "ease-in-out") }}
-          activeStyle={{ transform: "translate(50px, 0)" }}
-          active={this.state.active}
-          >
+    return (
+      <div className="video-container" style={this.ContainerStyle}>
         <iframe
-                src={`https://www.youtube.com/embed/${this.props.match.params.video_id}`}
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-              />
-        </CSSTransition>
-
+          src={`https://www.youtube.com/embed/${
+            this.props.match.params.video_id
+          }`}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        />
         <DonutChart
           data={this.state.data}
           videoData={this.props.videoData}
           youtubeVideoID={this.props.match.params.video_id}
         />
-        <SplineChart
-          data={this.state}
-        />
+        <SplineChart data={this.state} />
       </div>
      
 

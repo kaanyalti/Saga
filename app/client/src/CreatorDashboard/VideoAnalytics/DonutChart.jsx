@@ -63,7 +63,7 @@ class DonutChart extends Component {
 
     const dataPoints = [];
     for (const emotion in averageReactions) {
-      const averageScore = this.getAverage(averageReactions[emotion]);
+      const averageScore = this.getSum(averageReactions[emotion]);
       const percentage = (averageScore / total) * 100;
 
       const twoSigFigs = this.twoSigFigs(percentage);
@@ -99,7 +99,7 @@ class DonutChart extends Component {
   }
 
   // emotionScores is an array of emotion scores of the same type (e.g. disgust)
-  getAverage(emotionScores) {
+  getSum(emotionScores) {
     return emotionScores.reduce(
       (accumulator, currentValue) => accumulator + currentValue,
       0
