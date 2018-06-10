@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink as RRNavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -7,10 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
 } from "reactstrap";
 
 class Navigation extends Component {
@@ -27,47 +24,37 @@ class Navigation extends Component {
       isOpen: !this.state.isOpen
     });
   }
-  // navStyle = {
-  //   position: "fixed",
-  //   width: "100%",
-  //   paddingTop: "10px",
-  //   backgroundColor: "rgba(0,0,0,0.0)",
-  //   zIndex: "10",
-  //   paddingLeft: "10px"
-  // };
 
-  // Black = {
-  //   color: "black"
-  // };
-
-  LogoStyle = {
-    fontWeight: "bold",
-    fontSize: "3em"
+  navStyle = {
+    margin: "10vh 15vw 0 15vw"
   };
 
-  // ButtonStyle = {
-  //   float: "right",
-  //   color: "black",
-  //   fontWeight: "bolder",
-  //   fontSize: "2em"
-  // };
+  navLinks = {
+    fontWeight: "500",
+    textAlign: "right"
+  };
+
+  logoStyle = {
+    fontWeight: "700",
+    fontSize: "1.5em"
+  };
 
   render() {
     return (
-      <Navbar color="light" light expand="md">
-        <NavbarBrand tag={Link} to="/">
+      <Navbar color="faded" light expand="md" style={this.navStyle}>
+        <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
           Sága
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto" navbar style={this.navLinks}>
             <NavItem>
-              <NavLink tag={Link} to="/">
+              <NavLink exact activeClassName="active" tag={RRNavLink} to="/">
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/login">
+              <NavLink activeClassName="active" tag={RRNavLink} to="/login">
                 Login
               </NavLink>
             </NavItem>
@@ -79,14 +66,3 @@ class Navigation extends Component {
 }
 
 export default Navigation;
-
-/*
-
-<nav className="navbar navbar-light">
-    <ul className="nav navbar-nav">
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/login">Login</Link></li>
-    </ul>
-</nav>
-
-*/
