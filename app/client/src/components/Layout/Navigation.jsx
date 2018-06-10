@@ -18,9 +18,6 @@ class Navigation extends Component {
     this.state = {
       isOpen: false
     };
-
-    this.removeUnderline = this.removeUnderline.bind(this);
-    this.addUnderline = this.addUnderline.bind(this);
   }
   toggle() {
     this.setState({
@@ -28,25 +25,17 @@ class Navigation extends Component {
     });
   }
 
-  removeUnderline() {
-    this.setState({ isActive: "" });
-  }
-
-  addUnderline() {
-    this.setState({ isActive: "active" });
-  }
-
   navStyle = {
     margin: "10vh 15vw 0 15vw"
   };
 
   navLinks = {
-    fontWeight: "700",
+    fontWeight: "500",
     textAlign: "right"
   };
 
   logoStyle = {
-    fontWeight: "bold",
+    fontWeight: "700",
     fontSize: "1.5em"
   };
 
