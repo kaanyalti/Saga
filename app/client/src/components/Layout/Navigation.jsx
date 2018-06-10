@@ -24,23 +24,15 @@ class Navigation extends Component {
       isOpen: !this.state.isOpen
     });
   }
-  // navStyle = {
-  //   position: "fixed",
-  //   width: "100%",
-  //   paddingTop: "10px",
-  //   backgroundColor: "rgba(0,0,0,0.0)",
-  //   zIndex: "10",
-  //   paddingLeft: "10px"
-  // };
 
-  // Black = {
-  //   color: "black"
-  // };
+  navStyle = {
+    margin: "10vh 15vw 0 15vw",
+  };
 
-  // LogoStyle = {
-  //   fontWeight: "bold",
-  //   fontSize: "3em"
-  // };
+  logoStyle = {
+    fontWeight: "bold",
+    fontSize: "1.5em"
+  }
 
   // ButtonStyle = {
   //   float: "right",
@@ -51,7 +43,10 @@ class Navigation extends Component {
 
   render() {
     return (
-      <Navbar color="faded" light expand="md">
+      <Navbar color="faded" light expand="md" style={this.navStyle}>
+        <NavbarBrand tag={Link} to="/" style={this.logoStyle}>
+          Sága
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
