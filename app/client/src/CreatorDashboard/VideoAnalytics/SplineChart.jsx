@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// import { CSSTransition, transit } from "react-css-transition";
+
 class SplineChart extends Component {
   constructor(props) {
     super(props);
@@ -8,32 +10,35 @@ class SplineChart extends Component {
         title: "Time (seconds)",
         minimum: "0"
       },
+      
       axisY: {
         title: "Score",
         minimum: "0"
-      }
+      },
+      
     };
   }
 
   UpdateState = [
+    
     {
-      type: "line",
-      // markerType: "none",
+      type: "area",
+      markerType: "circle",
       visible: true,
       showInLegend: true,
       name: "joy",
       dataPoints: []
     },
     {
-      type: "line",
-      markerType: "square",
+      type: "area",
+      markerType: "circle",
       visible: true,
       showInLegend: true,
       name: "fear",
       dataPoints: []
     },
     {
-      type: "line",
+      type: "area",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -41,7 +46,7 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "line",
+      type: "area",
       markerType: "circle",
       visible: true,
       showInLegend: true,
@@ -49,16 +54,17 @@ class SplineChart extends Component {
       dataPoints: []
     },
     {
-      type: "line",
-      // markerType: "none",
+      type: "area",
+      markerType: "circle",
       visible: true,
       showInLegend: true,
       name: "anger",
       dataPoints: []
     },
     {
-      type: "line",
-      // markerType: "none",
+      type: "area",
+      color: "orange",
+      markerType: "cricle",
       scatterSize: [],
       visible: true,
       showInLegend: true,
@@ -66,6 +72,7 @@ class SplineChart extends Component {
       dataPoints: []
     }
   ];
+
 
   GraphStyle = {
     width: "100%",
@@ -87,22 +94,22 @@ class SplineChart extends Component {
       },
       interactivityEnabled: "true",
       zoomEnabled: true,
-      // markerType: "none",
       legend: {
-        cursor: "pointer"
+        cursor: "pointer",
+        itemclick: function (e) {
+            console.log("legend click: " + e.dataPointIndex);
+            console.log(e);
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+
+            e.chart.render();
+        }
       },
       data: this.UpdateState
     });
-
-    function toggleDataSeries(e) {
-      if (typeof e.dataSeries.visible === "undefined" || e.dataSeries.visible) {
-        console.log("argument: ", e)
-        e.dataSeries.visible = false;
-      } else {
-        e.dataSeries.visible = true;
-      }
-      chart.render();
-    }
     // console.log("did update props: ", this.props)
     // console.log("did update updateState", this.UpdateState)
     this.PopulateGraph();
@@ -152,7 +159,7 @@ class SplineChart extends Component {
   // style={this.GraphStyle}
 
   render() {
-    console.log("Update State: ", this.UpdateState);
+    // console.log("Update State: ", this.UpdateState);
     return <div id="chartContainer" />;
   }
 }

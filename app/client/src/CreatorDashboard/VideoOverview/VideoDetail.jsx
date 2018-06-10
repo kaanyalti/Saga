@@ -61,13 +61,14 @@ class VideoDetail extends React.Component {
     fontWeight: "bolder"
   };
 
+ 
   // FoundOrNot = () => {
   //   return this.state.data;
   // };
 
   render() {
-    console.log("Parent component passes down these props: ", this.state);
-    console.log("Props passed to this componet", this.props);
+    // console.log("Parent component passes down these props: ", this.state);
+    // console.log("Props passed to this componet", this.props);
     // if (!this.FoundOrNot) {
     //   return (
     //   <div style = {this.NotFoundStyle}>
