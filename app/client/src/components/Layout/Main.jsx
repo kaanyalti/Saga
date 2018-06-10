@@ -23,9 +23,7 @@ class Main extends React.Component {
     super(props);
   }
 
-  toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active")
-  }
+
 
   render() {
     return (
@@ -50,13 +48,7 @@ class Main extends React.Component {
           <Route path="/videos/:video_id" component={VideoComponent} />
           <Route path="/v/:video_id" component={PublicVideo} />
         </Switch>
-        <button
-          type="button"
-          class="btn btn-info navbar-btn"
-          onClick={this.toggleSidebar.bind(this)}
-        >
-          <span>Toggle Sidebar</span>
-        </button>
+
       </main>
     );
   }
