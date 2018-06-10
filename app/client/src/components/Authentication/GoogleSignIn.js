@@ -3,8 +3,8 @@ import axios from "axios";
 import GoogleLogin from "react-google-login";
 import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
-// import { Jumbotron } from "react-bootstrap";
 import lottie from "lottie-web";
+import { Container, Row, Col } from "reactstrap";
 
 
 class googleSignIn extends React.Component {
@@ -18,9 +18,7 @@ class googleSignIn extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // debugger
     this.setState({ redirect: true });
-
     this.state = {
       videoIDs: []
     };
@@ -99,21 +97,24 @@ class googleSignIn extends React.Component {
     return redirect ? (
       <Redirect to="/admin" />
     ) : (
-      <div className="background" style={SigninStyle.Style}>
-        {/*<Jumbotron style={SigninStyle.JumbotronStyle}>*/}
-          <div id="thumb" style={SigninStyle.ImageStyle} />
-          <GoogleLogin
+      <Container>
+        <Row>
+          <Col><div id="thumb" style={SigninStyle.ImageStyle} /></Col>
+        </Row>
+        <Row>
+          <Col><GoogleLogin
             clientId="123160637177-2spplv6itvp1p3ue1cr06t4e2btd7v4e.apps.googleusercontent.com"
             buttonText="Login"
             scope="https://www.googleapis.com/auth/youtube.readonly"
             onSuccess={this.responseGoogle}
             onFailure={this.responseGoogle}
-            style={SigninStyle.LoginStyle}
-          />
-        {/*</Jumbotron>*/}
-      </div>
+          /></Col>
+        </Row>
+      </Container>
     );
   }
 }
+
+
 
 export default googleSignIn;
