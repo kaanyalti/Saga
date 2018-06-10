@@ -23,9 +23,20 @@ class Main extends React.Component {
     super(props);
   }
 
+  toggleSidebar() {}
+
   render() {
     return (
       <main>
+        <button
+          type="button"
+          id="sidebarCollapse"
+          class="btn btn-info navbar-btn"
+          onClick={this.toggleSidebar.bind(this)}
+        >
+          <i class="glyphicon glyphicon-align-left" />
+          <span>Toggle Sidebar</span>
+        </button>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route

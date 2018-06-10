@@ -52,7 +52,6 @@ class VideoList extends React.Component {
   render() {
     return (
       <div style={this.ListStyle} className="video-list">
-        <div id="cheat" style={this.CheatStyle} />
         <ul style={this.BulletStyle}>
           {this.props.videoData.map(video => (
             <li key={video.id}>

@@ -39,12 +39,18 @@ class Navigation extends Component {
     fontSize: "1.5em"
   };
 
+  toggleSidebar() {}
+
   render() {
-    const linkTo = this.props.loggedIn ? (<NavLink activeClassName="active" tag={RRNavLink} to="/admin">
-                Dashboard
-              </NavLink>) : (<NavLink activeClassName="active" tag={RRNavLink} to="/login">
-                Login
-              </NavLink>)
+    const linkTo = this.props.loggedIn ? (
+      <NavLink activeClassName="active" tag={RRNavLink} to="/admin">
+        Dashboard
+      </NavLink>
+    ) : (
+      <NavLink activeClassName="active" tag={RRNavLink} to="/login">
+        Login
+      </NavLink>
+    );
     return (
       <Navbar color="faded" light expand="md" style={this.navStyle}>
         <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
@@ -58,9 +64,7 @@ class Navigation extends Component {
                 Home
               </NavLink>
             </NavItem>
-            <NavItem>
-              {linkTo}
-            </NavItem>
+            <NavItem>{linkTo}</NavItem>
           </Nav>
         </Collapse>
       </Navbar>
