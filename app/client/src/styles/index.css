@@ -42,7 +42,7 @@ nav a:hover {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  a:before {
+  nav a:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -57,7 +57,7 @@ nav a:hover {
     transition: all 0.3s ease-in-out 0s;
   }
 
-  a:hover:before {
+  nav a:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(0.78);
     transform: scaleX(0.78);

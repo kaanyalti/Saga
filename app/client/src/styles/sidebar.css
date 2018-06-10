@@ -9,7 +9,7 @@
 #sidebar a,
 #sidebar a:hover,
 #sidebar a:focus {
-  color: inherit;
+  /*color: inherit;*/
 }
 
 #sidebar.active {
@@ -58,7 +58,6 @@ a[aria-expanded="true"]::before {
   display: block;
   position: absolute;
   right: 20px;
-  font-family: 'Glyphicons Halflings';
   font-size: 0.6em;
 }
 
