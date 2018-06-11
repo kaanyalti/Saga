@@ -78,9 +78,10 @@ class SplineChart extends Component {
     margin: "auto",
     marginTop: "15%"
   }
-
-  componentDidMount(){
+  componentWillUpdate(){
     this.setState({loading: false})
+  }
+  componentDidMount(){
   }
 
   componentDidUpdate() {
@@ -144,9 +145,17 @@ class SplineChart extends Component {
     });
   }
 
-
+  
   render() {
     // console.log("Update State: ", this.UpdateState);
+    if (this.state.loading === true){
+      return ( 
+        <div id="loading-charts">
+      <h1> Updating Charts </h1>
+      < LoadingAnimation />
+      </div>
+      )
+    }
     return <div id="chartContainer" />;
   }
 }

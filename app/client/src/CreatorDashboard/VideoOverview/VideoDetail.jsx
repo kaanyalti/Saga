@@ -3,7 +3,6 @@ import axios from "axios";
 import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
 import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
-
 // import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
 import Sidebar from "../../components/Layout/Sidebar.jsx";
@@ -18,9 +17,6 @@ class VideoDetail extends React.Component {
       error: false
     };
   }
-  ErrorMsg = {
-    text: ""
-  };
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
@@ -64,12 +60,22 @@ class VideoDetail extends React.Component {
   // };
 
   PStyle = {
+    fontFamily: "Lato",
     textAlign: "center",
     position: "absolute",
     top: "0px",
-    fontWeight: "bolder"
   };
 
+  P2Style = {
+    fontFamily: "Lato",
+    color: "grey",
+    left: "45%",
+    textAlign: "center",
+    position: "absolute",
+    top: "20%",
+    marginBottom: "0"
+
+  }
   toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
@@ -87,7 +93,7 @@ class VideoDetail extends React.Component {
     if (this.state.loading === true) {
       return (
         <div>
-          <h1 > Loading...(if longer than 3s, check server) </h1>
+          <h1 style={this.P2Style}> Loading... </h1>
           <LoadingAnimation />
         </div>
       );
