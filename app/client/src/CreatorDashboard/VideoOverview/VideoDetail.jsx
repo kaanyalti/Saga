@@ -78,12 +78,12 @@ class VideoDetail extends React.Component {
  
   render() {
     console.log("state ", this.state)
-    // if(this.state.ready === false){
-    // return ( <div style={this.NotFoundStyle}> 
-    //   <h1 style={this.PStyle}> Loading...</h1>
-    //   <LoadingAnimation />
-    //   </div>)
-    // } 
+    if(this.state.ready === false){
+    return ( <div style={this.NotFoundStyle}> 
+      <h1 style={this.PStyle}> Loading...</h1>
+      <LoadingAnimation />
+      </div>)
+    } 
      if (this.state.error === true){
       return (<div>
       <h1 style={this.PStyle}> No data found </h1>
