@@ -45,22 +45,32 @@ class PublicVideo extends React.Component {
 
   render() {
     return (
-       <div /*className="container"*/>
-        <div className="row mt-5">
-          <div className="col">
-            <VideoComponent
-              youtubeVideoID={this.state.youtubeVideoID}
-              handleChangedVideoState={this.handleChangedVideoState}
-            />
-          </div>
+      <div className="container-fluid">
+            <div className="row justify-content-center mt-5 mb-5">
+              <div className="col-lg-8 col-md-10 col-sm-12">
+                <div className="card">
+                  <VideoComponent
+                    youtubeVideoID={this.state.youtubeVideoID}
+                    handleChangedVideoState={this.handleChangedVideoState}
+                  />
 
-          <div className="col">
-            <ZiggeoJSRecorder
-              youtubeVideoID={this.state.youtubeVideoID}
-              youtubeVideoState={this.state.youtubeVideoState}
-            />
-          </div>
-        </div>
+                  <div className="card-block">
+                    <div className="row mt-3">
+                      <div className="col">
+                        <ZiggeoJSRecorder
+                          youtubeVideoID={this.state.youtubeVideoID}
+                          youtubeVideoState={this.state.youtubeVideoState}
+                        />
+                      </div>
+                      <div className="col-8">
+                        <h3 className="cardTitle">LOREM</h3>
+                        <p className="card-text">LOREM IPSUM</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
       </div>
     );
   }

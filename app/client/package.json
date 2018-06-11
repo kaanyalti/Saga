@@ -17,6 +17,7 @@
     "react-google-login": "^3.2.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-ziggeo": "^2.4.0",
     "reactstrap": "^6.1.0"
   },
   "scripts": {
