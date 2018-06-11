@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      loggedIn: false,
+      loggedIn: true,
       userEmail: null,
       firstName: null,
       videoData: [

@@ -54,7 +54,7 @@ class googleSignIn extends React.Component {
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
-            console.log("second call response: ");
+            // Gets ID of user's playlist called "Uploads"
             const uploadsID =
               res.data.items[0].contentDetails.relatedPlaylists.uploads;
 
@@ -63,8 +63,7 @@ class googleSignIn extends React.Component {
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
               )
               .then(res => {
-                console.log(`GOING TO GET VIDEO IDs`);
-                console.log(res.data.items);
+                // Getting YouTube video IDs in an array
                 const videoData = res.data.items.map(item => {
                   return {
                     id: item.snippet.resourceId.videoId,
