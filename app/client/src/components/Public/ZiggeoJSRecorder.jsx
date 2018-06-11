@@ -38,8 +38,9 @@ class ZiggeoJSRecorder extends React.Component {
     this.recorder = new window.ZiggeoApi.V2.Recorder({
       element: recorderNode,
       attrs: {
-        width: this.props.width || 320,
-        height: this.props.height || 240,
+        responsive: true,
+        // width: this.props.width || 320,
+        // height: this.props.height || 240,
         theme: this.props.theme || "modern",
         themecolor: this.props.temecolor || "red",
         countdown: 0,

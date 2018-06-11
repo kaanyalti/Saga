@@ -46,7 +46,7 @@ class PublicVideo extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-            <div className="row justify-content-center mt-5 mb-5">
+            <div className="row justify-content-center mt-5 mb-53+">
               <div className="col-lg-8 col-md-10 col-sm-12">
                 <div className="card">
                   <VideoComponent
@@ -56,13 +56,13 @@ class PublicVideo extends React.Component {
 
                   <div className="card-block">
                     <div className="row mt-3">
-                      <div className="col">
+                      <div className="col-md-5 col-sm-12">
                         <ZiggeoJSRecorder
                           youtubeVideoID={this.state.youtubeVideoID}
                           youtubeVideoState={this.state.youtubeVideoState}
                         />
                       </div>
-                      <div className="col-8">
+                      <div className="col-md-7 col-sm-12">
                         <h3 className="cardTitle">LOREM</h3>
                         <p className="card-text">LOREM IPSUM</p>
                       </div>
