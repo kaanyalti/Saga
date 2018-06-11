@@ -7,7 +7,6 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Button,
   Container,
   Row,
   Col
@@ -47,6 +46,7 @@ class VideoList extends React.Component {
                   />
                   <CardBody>
                     <CardTitle>{video.title}</CardTitle>
+                    <CardSubtitle>{video.publishedAt}</CardSubtitle>
                     <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
                   </CardBody>
                 </Card>
