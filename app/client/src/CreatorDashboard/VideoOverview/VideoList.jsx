@@ -58,10 +58,9 @@ class VideoList extends React.Component {
                   <CardImg top width="100%" src={thumbnail.url} alt="Card image cap" />
                   <CardBody>
                     <CardSubtitle />
-                    <CardText>
                       <div style={this.spreadEvenly}>
                         <div className="stats">
-                          <i title="Amount of views" class="fas fa-eye" />{" "}
+                          <i title="Amount of views" className="fas fa-eye" />{" "}
                           <span>{statistics.viewCount}</span>
                         </div>
                         <div className="stats">
@@ -76,7 +75,6 @@ class VideoList extends React.Component {
                           <span>{statistics.dislikeCount}</span>
                         </div>
                       </div>
-                    </CardText>
                   </CardBody>
                   <CardFooter className="text-muted" style={this.spreadEvenly}>
                     <div>
