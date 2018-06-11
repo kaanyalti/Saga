@@ -40,23 +40,6 @@ class VideoDetail extends React.Component {
     color: "grey"
   };
 
-  // ContainerStyle = {
-  //   position: "absolute",
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   width: "100%",
-  //   left: "40%",
-  //   top: "15%",
-  //   flexDirection: "column"
-  // };
-
-  // VideoStyle = {
-  //   width: "50%",
-  //   height: "10%",
-  //   padding: "10px",
-  //   background: "#e0e0e0"
-  // };
-
   PStyle = {
     fontFamily: "Lato",
     textAlign: "center",
@@ -74,12 +57,7 @@ class VideoDetail extends React.Component {
     marginBottom: "0"
 
   }
-  toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-
   render() {
-    console.log("state ", this.state);
     if (this.state.error === true) {
       return (
         <div style={this.NotFoundStyle}>
@@ -112,13 +90,6 @@ class VideoDetail extends React.Component {
           youtubeVideoID={this.props.match.params.video_id}
         />
         <SplineChart data={this.state} />
-        <button
-          type="button"
-          class="btn btn-info navbar-btn"
-          onClick={this.toggleSidebar.bind(this)}
-        >
-          <span>Toggle Sidebar</span>
-        </button>
       </div>
     );
   }

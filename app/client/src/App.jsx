@@ -30,14 +30,16 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ height: "100vh" }}>
+      <div>
         <Navigation loggedIn={this.state.loggedIn} />
-        <Sidebar />
-        <Main
-          loggedIn={this.state.loggedIn}
-          videoData={this.state.videoData}
-          handleLogin={this.handleLogin}
-        />
+        <div className="wrapper">
+          <Sidebar />
+          <Main
+            loggedIn={this.state.loggedIn}
+            videoData={this.state.videoData}
+            handleLogin={this.handleLogin}
+          />
+        </div>
       </div>
     );
   }
