@@ -11,7 +11,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 
 
 class VideoList extends React.Component {
@@ -34,7 +34,7 @@ class VideoList extends React.Component {
       <Container style={this.containerStyle}>
         <Row>
           {this.props.videoData.map(video => {
-            const {id, publishedAt, title} = video
+            const { id, publishedAt, title } = video;
             return (
               <Col md={{ size: 4 }} key={id}>
                 <Card>
@@ -49,7 +49,14 @@ class VideoList extends React.Component {
                   />
                   <CardBody>
                     <CardTitle>{title}</CardTitle>
-                    <CardSubtitle>Posted <Moment fromNow>{publishedAt.substring(0, publishedAt.length - 1)}</Moment></CardSubtitle>
+                    <CardSubtitle>
+                    <i class="fas fa-align-center"></i>
+                      Posted{" "}
+                      <Moment fromNow>
+                        {publishedAt.substring(0, publishedAt.length - 1)}
+                      </Moment>
+                    </CardSubtitle>
+                    <CardText></CardText>
                     <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
                   </CardBody>
                 </Card>
