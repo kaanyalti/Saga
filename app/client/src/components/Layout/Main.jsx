@@ -23,9 +23,8 @@ class Main extends React.Component {
     super(props);
   }
 
-
-
   render() {
+    // document.getElementsByTagName("body")[0].setAttribute("style", "background: #d7ecef")
     return (
       <main>
         <Switch>
@@ -48,7 +47,6 @@ class Main extends React.Component {
           <Route path="/videos/:video_id" component={VideoComponent} />
           <Route path="/v/:video_id" component={PublicVideo} />
         </Switch>
-
       </main>
     );
   }

@@ -9,7 +9,7 @@
 #sidebar a,
 #sidebar a:hover,
 #sidebar a:focus {
-  /*color: inherit;*/
+  color: inherit;
 }
 
 #sidebar.active {

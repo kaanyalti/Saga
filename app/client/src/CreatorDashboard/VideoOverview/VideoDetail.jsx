@@ -64,7 +64,7 @@ class VideoDetail extends React.Component {
   // };
 
   toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active")
+    document.getElementById("sidebar").classList.toggle("active");
   }
 
   render() {
@@ -80,7 +80,7 @@ class VideoDetail extends React.Component {
     // } else {
     return (
       <div className="video-container" style={this.ContainerStyle}>
-      <Sidebar />
+        <Sidebar />
         <iframe
           src={`https://www.youtube.com/embed/${
             this.props.match.params.video_id

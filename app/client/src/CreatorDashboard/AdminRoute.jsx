@@ -16,7 +16,6 @@ class AdminRoute extends React.Component {
   render() {
     return (
       <div>
-
         <Switch>
           <Route
             exact
