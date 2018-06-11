@@ -29,8 +29,6 @@ class VideoDetail extends React.Component {
         this.setState({ loading: false, error: true });
          console.log("error: ", err);
         })
-
-    
   }
 
   NotFoundStyle = {
@@ -100,7 +98,6 @@ class VideoDetail extends React.Component {
     }
     return (
       <div className="video-container" style={this.ContainerStyle}>
-        <Sidebar />
         <iframe
           src={`https://www.youtube.com/embed/${
             this.props.match.params.video_id

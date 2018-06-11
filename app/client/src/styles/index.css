@@ -5,13 +5,14 @@
 }
 
 body {
-  background: linear-gradient(
+  /*background: linear-gradient(
     to right,
     #d7ecef 0%,
     #d7ecef 50%,
     #fff 50%,
     #fff 100%
-  );
+  );*/
+  background: #fff;
 }
 
 h1 {
@@ -43,7 +44,9 @@ i {
 
 
 @media only screen and (min-width : 320px) {
-
+  a.navbar-brand.active:before {
+    visibility: hidden;
+  }
 }
 
 /* Extra Small Devices, Phones */

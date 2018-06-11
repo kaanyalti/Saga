@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navigation from "./components/Layout/Navigation.jsx";
+import Sidebar from "./components/Layout/Sidebar.jsx";
 import Main from "./components/Layout/Main.jsx";
 // import Moment from 'react-moment';
 
@@ -31,6 +32,7 @@ class App extends Component {
     return (
       <div style={{ height: "100vh" }}>
         <Navigation loggedIn={this.state.loggedIn} />
+        <Sidebar />
         <Main
           loggedIn={this.state.loggedIn}
           videoData={this.state.videoData}
