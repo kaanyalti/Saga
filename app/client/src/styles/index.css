@@ -32,6 +32,15 @@ nav a:hover {
   color: rgb(0, 121, 226) !important;
 }
 
+i {
+  color: #a7b6c1;
+}
+
+.stats span, time {
+  font-size: 0.8rem;
+}
+
+
 @media only screen and (min-width : 320px) {
 
 }
