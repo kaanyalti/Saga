@@ -11,6 +11,8 @@ import {
   Row,
   Col
 } from "reactstrap";
+import Moment from 'react-moment';
+
 
 class VideoList extends React.Component {
   constructor(props) {
@@ -46,7 +48,7 @@ class VideoList extends React.Component {
                   />
                   <CardBody>
                     <CardTitle>{video.title}</CardTitle>
-                    <CardSubtitle>{video.publishedAt}</CardSubtitle>
+                    <CardSubtitle><Moment>{video.publishedAt.substring(0, video.publishedAt.length - 1)}</Moment></CardSubtitle>
                     <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
                   </CardBody>
                 </Card>

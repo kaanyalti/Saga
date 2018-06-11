@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "./components/Layout/Navigation.jsx";
 import Main from "./components/Layout/Main.jsx";
+// import Moment from 'react-moment';
 
 class App extends Component {
   constructor(props) {
