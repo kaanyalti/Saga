@@ -91,13 +91,11 @@ class VideoList extends React.Component {
                     </div>
                     <Link to={`/admin/videos/${video.id}`}>
                     <Button color="basic">
-
                         <i
                           title="View data visualisations"
                           className="fas fa-ellipsis-h"
                           style={{ color: "black" }}
                         />
-
                     </Button>
                     </Link>
                   </CardFooter>
