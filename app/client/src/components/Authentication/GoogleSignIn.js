@@ -70,14 +70,43 @@ class googleSignIn extends React.Component {
                     title: item.snippet.title
                   };
                 });
+
+                const completeVideoData = []
+
+                // Gets all info for specific videos
+                videoData.map(video => {
+                  axios
+                  .get(
+                    `https://www.googleapis.com/youtube/v3/videos?id=${video.id}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo&part=snippet,statistics`
+                  ).then((res) => {
+                    const item = res.data.items[0]
+                    const {channelTitle, description, publishedAt, title, thumbnails} = item.snippet
+
+                    // Building complete video object
+                    const additionalVideoData = {}
+                    additionalVideoData.id = item.id
+                    additionalVideoData.title = title
+                    additionalVideoData.description = description
+                    additionalVideoData.channelTitle = channelTitle
+                    additionalVideoData.publishedAt = publishedAt
+                    additionalVideoData.statistics = item.statistics
+                    additionalVideoData.thumbnail = thumbnails.maxres
+
+                    // Pushes complete video data to array to set global state
+                    completeVideoData.push(additionalVideoData)
+                  })
+                })
+
+                // Adds YouTube IDs to current state
                 this.setState(prevState => {
-                  return { videoData: [...prevState.videoData, ...videoData] };
+                  return { videoData: completeVideoData };
                 });
 
+                // Sets global state of videoData
                 data.videoData = this.state.videoData;
-
                 this.props.handleLogin(data);
 
+                // Posts user's video to server
                 axios
                   .post("/api/users", {
                     videoData: videoData,
@@ -87,7 +116,7 @@ class googleSignIn extends React.Component {
                   .catch(err => {
                     console.log(err);
                   });
-              });
+              })
           });
       });
   }
