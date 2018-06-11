@@ -82,7 +82,7 @@ class VideoDetail extends React.Component {
 
   render() {
     console.log("state ", this.state);
-    if (this.state.error === true) {
+    while (this.state.error === true) {
       return (
         <div style={this.NotFoundStyle}>
           <h1 style={this.PStyle}> Hmm...Check your server</h1>
@@ -90,7 +90,7 @@ class VideoDetail extends React.Component {
         </div>
       );
     }
-    if (this.state.loading === true) {
+    while (this.state.loading === true) {
       return (
         <div>
           <h1 style={this.P2Style}> Loading... </h1>
