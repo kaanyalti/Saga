@@ -19,7 +19,7 @@ class VideoList extends React.Component {
 
     this.state = {
       loading: true
-    }
+    };
   }
 
   containerStyle = {
@@ -27,29 +27,35 @@ class VideoList extends React.Component {
   };
 
   render() {
-    return this.props.videoData.length === 0 ? <p>Loading</p> : <Container style={this.containerStyle}>
+    return this.props.videoData.length === 0 ? (
+      <p>Loading...</p>
+    ) : (
+      <Container style={this.containerStyle}>
         <Row>
-          {this.props.videoData.map(video => {return (
-            <Col md={{ size: 4 }}>
-              <Card>
-                <iframe
-                  title={video.title}
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  frameBorder="0"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                />
-                <CardBody>
-                  <CardTitle>{video.title}</CardTitle>
-                  <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
-                </CardBody>
-              </Card>
-            </Col>
-          )})}
+          {this.props.videoData.map(video => {
+            return (
+              <Col md={{ size: 4 }} key={video.id}>
+                <Card>
+                  <iframe
+                    title={video.title}
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${video.id}`}
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                  />
+                  <CardBody>
+                    <CardTitle>{video.title}</CardTitle>
+                    <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
+                  </CardBody>
+                </Card>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
+    );
   }
 }
 
