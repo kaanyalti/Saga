@@ -79,29 +79,32 @@ class VideoDetail extends React.Component {
     //   )
     // } else {
     return (
-      <div className="video-container" style={this.ContainerStyle}>
-        <Sidebar />
-        <iframe
-          src={`https://www.youtube.com/embed/${
-            this.props.match.params.video_id
-          }`}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
-        <DonutChart
-          data={this.state.data}
-          videoData={this.props.videoData}
-          youtubeVideoID={this.props.match.params.video_id}
-        />
-        <SplineChart data={this.state} />
-        <button
-          type="button"
-          class="btn btn-info navbar-btn"
-          onClick={this.toggleSidebar.bind(this)}
-        >
-          <span>Toggle Sidebar</span>
-        </button>
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div className="col-lg-8 col-md-10 col-sm-12 d-flex flex-column">
+            <iframe
+              src={`https://www.youtube.com/embed/${
+                this.props.match.params.video_id
+              }`}
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+            <DonutChart
+              data={this.state.data}
+              videoData={this.props.videoData}
+              youtubeVideoID={this.props.match.params.video_id}
+            />
+            <SplineChart data={this.state} />
+            <button
+              type="button"
+              class="btn btn-info navbar-btn"
+              onClick={this.toggleSidebar.bind(this)}
+            >
+              <span>Toggle Sidebar</span>
+              </button>
+            </div>
+          </div>
       </div>
     );
   }
