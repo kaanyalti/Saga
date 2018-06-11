@@ -67,11 +67,8 @@ class ZiggeoJSRecorder extends React.Component {
   }
 
   render() {
-    return (
-      <div ref={this.recorderRef} />
-    )
+    return <div ref={this.recorderRef} />;
   }
 }
-
 
 export default ZiggeoJSRecorder;
