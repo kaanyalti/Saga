@@ -105,7 +105,9 @@ class DonutChart extends Component {
       0
     );
   }
-
+  componentDidCatch(e){
+    console.log("error test: ", e)
+  }
   render() {
     return <div id="chartContainer-donut" />;
   }

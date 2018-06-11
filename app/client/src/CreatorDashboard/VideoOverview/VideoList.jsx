@@ -68,7 +68,7 @@ class VideoList extends React.Component {
                           <i title="Amount of likes" className="fas fa-heart" /> <span>{statistics.likeCount}</span>
                         </div>
                         <div className="stats">
-                          <i title="Amount of comments" class="fas fa-comments" />{" "}
+                          <i title="Amount of comments" className="fas fa-comments" />{" "}
                           <span>{statistics.commentCount}</span>
                         </div>
                         <div className="stats">

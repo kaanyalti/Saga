@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
-import VideoComponent from "./VideoComponent";
+import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
+// import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
 import Sidebar from "../../components/Layout/Sidebar.jsx";
 // import * as Reactions from "../../modules/getVideoDataMethods";
@@ -11,28 +12,35 @@ class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
+      data: null,
+      loading: true,
+      error: false
     };
   }
-
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        this.setState({ data: res.data });
-        console.log("Data from VideoDetails :", res.data);
+        console.log("Data from VideoDetails axios call :", res.data.length);
+        if (res.data.length > 0) this.setState({ loading: false });
       })
-      .catch(err => console.log("error: ", err));
+      .catch(err => {
+        this.setState({ loading: false, error: true });
+         console.log("error: ", err);
+        })
+
+    
   }
 
-  // NotFoundStyle = {
-  //   position: "fixed",
-  //   left: "50%",
-  //   top: "50%",
-  //   fontSize: "2em",
-  //   color: "grey"
-  // };
+  NotFoundStyle = {
+    width: "20%",
+    position: "fixed",
+    left: "50%",
+    top: "35%",
+    fontSize: "2em",
+    color: "grey"
+  };
 
   // ContainerStyle = {
   //   position: "absolute",
@@ -51,33 +59,45 @@ class VideoDetail extends React.Component {
   //   background: "#e0e0e0"
   // };
 
-  // PStyle = {
-  //   textAlign: "center",
-  //   position: "absolute",
-  //   zIndex: "10",
-  //   top: "0px",
-  //   fontWeight: "bolder"
-  // };
+  PStyle = {
+    fontFamily: "Lato",
+    textAlign: "center",
+    position: "absolute",
+    top: "0px",
+  };
 
-  // FoundOrNot = () => {
-  //   return this.state.data;
-  // };
+  P2Style = {
+    fontFamily: "Lato",
+    color: "grey",
+    left: "45%",
+    textAlign: "center",
+    position: "absolute",
+    top: "20%",
+    marginBottom: "0"
 
+  }
   toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
 
   render() {
-    console.log("Parent component passes down these props: ", this.state);
-    console.log("Props passed to this componet", this.props);
-    // if (!this.FoundOrNot) {
-    //   return (
-    //   <div style = {this.NotFoundStyle}>
-    //     <div> <NotFoundAnimation/> </div>
-    //       <p style={this.PStyle} > Sorry, the video was not found. </p>
-    //   </div>
-    //   )
-    // } else {
+    console.log("state ", this.state);
+    if (this.state.error === true) {
+      return (
+        <div style={this.NotFoundStyle}>
+          <h1 style={this.PStyle}> Hmm...Check your server</h1>
+          <NotFoundAnimation />
+        </div>
+      );
+    }
+    if (this.state.loading === true) {
+      return (
+        <div>
+          <h1 style={this.P2Style}> Loading... </h1>
+          <LoadingAnimation />
+        </div>
+      );
+    }
     return (
       <div className="video-container" style={this.ContainerStyle}>
         <Sidebar />
@@ -105,7 +125,6 @@ class VideoDetail extends React.Component {
       </div>
     );
   }
-  // }
 }
 
 export default VideoDetail;
