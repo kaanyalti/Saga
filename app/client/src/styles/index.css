@@ -5,14 +5,14 @@
 }
 
 body {
-  /*background: linear-gradient(
+  background: linear-gradient(
     to right,
     #d7ecef 0%,
     #d7ecef 50%,
     #fff 50%,
     #fff 100%
-  );*/
-  background: #fff;
+  );
+  /*background: #fff;*/
 }
 
 h1 {
