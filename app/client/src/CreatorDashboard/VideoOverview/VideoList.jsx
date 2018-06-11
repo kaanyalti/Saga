@@ -31,10 +31,7 @@ class VideoList extends React.Component {
 
   cardStyle = {
     marginBottom: "5vh"
-    // border: "none"
   };
-
-  iframeStyle = {};
 
   spreadEvenly = {
     display: "flex",
