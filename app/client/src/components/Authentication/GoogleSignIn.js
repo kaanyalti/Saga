@@ -6,7 +6,6 @@ import { SigninStyle } from "./SigninStyle";
 import lottie from "lottie-web";
 import { Container, Row, Col, Button } from "reactstrap";
 
-
 class googleSignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +31,9 @@ class googleSignIn extends React.Component {
       autoplay: true,
       animationData: SigninStyle.FingerPrint
     });
+    lottie.setSpeed(2);
   }
+
   responseGoogle(response) {
     const { email, firstName } = response.profileObj;
     const data = { email: email, firstName: firstName };
@@ -70,43 +71,50 @@ class googleSignIn extends React.Component {
                   };
                 });
 
-                const completeVideoData = []
+                const completeVideoData = [];
 
                 // Returns a promise
                 const videoPromises = videoData.map(video => {
                   return axios
                     .get(
-                      `https://www.googleapis.com/youtube/v3/videos?id=${video.id}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo&part=snippet,statistics`
-                    ).then((res) => {
-                      const item = res.data.items[0]
-                      const { channelTitle, description, publishedAt, title, thumbnails } = item.snippet
+                      `https://www.googleapis.com/youtube/v3/videos?id=${
+                        video.id
+                      }&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo&part=snippet,statistics`
+                    )
+                    .then(res => {
+                      const item = res.data.items[0];
+                      const {
+                        channelTitle,
+                        description,
+                        publishedAt,
+                        title,
+                        thumbnails
+                      } = item.snippet;
 
                       // Building complete video object
-                      const additionalVideoData = {}
-                      additionalVideoData.id = item.id
-                      additionalVideoData.title = title
-                      additionalVideoData.description = description
-                      additionalVideoData.channelTitle = channelTitle
-                      additionalVideoData.publishedAt = publishedAt
-                      additionalVideoData.statistics = item.statistics
-                      additionalVideoData.thumbnail = thumbnails.maxres
+                      const additionalVideoData = {};
+                      additionalVideoData.id = item.id;
+                      additionalVideoData.title = title;
+                      additionalVideoData.description = description;
+                      additionalVideoData.channelTitle = channelTitle;
+                      additionalVideoData.publishedAt = publishedAt;
+                      additionalVideoData.statistics = item.statistics;
+                      additionalVideoData.thumbnail = thumbnails.maxres;
 
                       // Pushes complete video data to array to set global state
-                      completeVideoData.push(additionalVideoData)
-                      console.log('In promise')
-                    })
-                })
+                      completeVideoData.push(additionalVideoData);
+                      console.log("In promise");
+                    });
+                });
 
                 // Only sets global videoData once all API calls are complete
-                Promise.all(videoPromises).then((res)=> {
+                Promise.all(videoPromises).then(res => {
                   // Adds YouTube IDs to current state
-                    this.setState({ videoData: completeVideoData });
-                    // Sets global state of videoData
-                    data.videoData = this.state.videoData;
-                    this.props.handleLogin(data);
-                })
-
-
+                  this.setState({ videoData: completeVideoData });
+                  // Sets global state of videoData
+                  data.videoData = this.state.videoData;
+                  this.props.handleLogin(data);
+                });
 
                 // Posts user's video to server
                 axios
@@ -118,7 +126,7 @@ class googleSignIn extends React.Component {
                   .catch(err => {
                     console.log(err);
                   });
-              })
+              });
           });
       });
   }
@@ -128,7 +136,7 @@ class googleSignIn extends React.Component {
     marginTop: "5vh",
     height: "50vh",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column"
   };
 
   loginImg = {
@@ -143,8 +151,8 @@ class googleSignIn extends React.Component {
     minHeight: "20vh",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-  }
+    alignItems: "center"
+  };
 
   loginButtonStyle = {
     background: "none",
@@ -160,7 +168,7 @@ class googleSignIn extends React.Component {
       <Container style={this.containerStyle}>
         <Row>
           <Col style={this.loginImg}>
-          <div id="thumb" style={SigninStyle.ImageStyle} />
+            <div id="thumb" style={SigninStyle.ImageStyle} />
           </Col>
         </Row>
         <Row style={{display: "block"}}>
@@ -182,7 +190,5 @@ class googleSignIn extends React.Component {
     );
   }
 }
-
-
 
 export default googleSignIn;

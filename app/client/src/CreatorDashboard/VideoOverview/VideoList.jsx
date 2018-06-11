@@ -62,10 +62,22 @@ class VideoList extends React.Component {
                   />
                   <CardBody>
                     <CardSubtitle />
-                    <div style={this.spreadEvenly}>
-                      <div className="stats">
-                        <i title="Amount of views" className="fas fa-eye" />{" "}
-                        <span>{statistics.viewCount}</span>
+                      <div style={this.spreadEvenly}>
+                        <div className="stats">
+                          <i title="Amount of views" className="fas fa-eye" />{" "}
+                          <span>{statistics.viewCount}</span>
+                        </div>
+                        <div className="stats">
+                          <i title="Amount of likes" className="fas fa-heart" /> <span>{statistics.likeCount}</span>
+                        </div>
+                        <div className="stats">
+                          <i title="Amount of comments" className="fas fa-comments" />{" "}
+                          <span>{statistics.commentCount}</span>
+                        </div>
+                        <div className="stats">
+                          <i title="Amount of dislikes" class="fas fa-thumbs-down" />{" "}
+                          <span>{statistics.dislikeCount}</span>
+                        </div>
                       </div>
                       <div className="stats">
                         <i title="Amount of likes" className="fas fa-heart" />{" "}
