@@ -80,7 +80,7 @@ class googleSignIn extends React.Component {
                     `https://www.googleapis.com/youtube/v3/videos?id=${video.id}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo&part=snippet,statistics`
                   ).then((res) => {
                     const item = res.data.items[0]
-                    const {channelTitle, description, publishedAt, title, thumbnails} = item.snippet
+                    const { channelTitle, description, publishedAt, title, thumbnails } = item.snippet
 
                     // Building complete video object
                     const additionalVideoData = {}
