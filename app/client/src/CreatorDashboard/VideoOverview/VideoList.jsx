@@ -34,21 +34,22 @@ class VideoList extends React.Component {
       <Container style={this.containerStyle}>
         <Row>
           {this.props.videoData.map(video => {
+            const {id, publishedAt, title} = video
             return (
-              <Col md={{ size: 4 }} key={video.id}>
+              <Col md={{ size: 4 }} key={id}>
                 <Card>
                   <iframe
-                    title={video.title}
+                    title={title}
                     width="100%"
                     height="100%"
-                    src={`https://www.youtube.com/embed/${video.id}`}
+                    src={`https://www.youtube.com/embed/${id}`}
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                   />
                   <CardBody>
-                    <CardTitle>{video.title}</CardTitle>
-                    <CardSubtitle><Moment>{video.publishedAt.substring(0, video.publishedAt.length - 1)}</Moment></CardSubtitle>
+                    <CardTitle>{title}</CardTitle>
+                    <CardSubtitle>Posted <Moment fromNow>{publishedAt.substring(0, publishedAt.length - 1)}</Moment></CardSubtitle>
                     <Link to={`/admin/videos/${video.id}`}>{video.title}</Link>
                   </CardBody>
                 </Card>
