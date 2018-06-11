@@ -13,8 +13,10 @@ class AdminRoute extends React.Component {
     super(props);
   }
 
+
   render() {
-    return (
+   console.log("state after: ", this.state)
+      return(
       <div>
         <Sidebar />
         <Switch>
@@ -34,7 +36,7 @@ class AdminRoute extends React.Component {
             path="/admin/videos/:video_id"
             // Pass props to render to receive :video_id prop
             render={props => (
-              <VideoDetail videoData={this.props.videoData} {...props} />
+              <VideoDetail videoData={this.props.videoData} {...props}  />
             )}
           />
         </Switch>

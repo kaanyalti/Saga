@@ -2,8 +2,10 @@ import React from "react";
 import axios from "axios";
 import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
+import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
+
 // import VideoComponent from "./VideoComponent";
-// import NotFoundAnimation from "./NotFoundAnimation.jsx";
+import NotFoundAnimation from "./NotFoundAnimation.jsx";
 // import ReactCSSTransitionGroup from "react-addons-css-transition-group"; 
 // import { CSSTransition, transit } from "react-css-transition";
 // import * as Reactions from "../../modules/getVideoDataMethods";
@@ -13,7 +15,9 @@ class VideoDetail extends React.Component {
     super(props);
     this.state = {
       data: null,
-      loading: true
+      loading: true,
+      ready: false,
+      error: true
     };
   }
   
@@ -22,16 +26,21 @@ class VideoDetail extends React.Component {
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        this.setState({ data: res.data });
         console.log("Data from VideoDetails :", res.data);
+        this.setState({loading:false, ready: true, error: false})
       })
       .catch(err => console.log("error: ", err));
+      this.setState({error:true, ready: false})
   }
 
   NotFoundStyle = {
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
     position: "fixed",
-    left: "50%",
-    top: "50%",
+    width: "100%",
+    left: "20%",
+    top: "30%",
     fontSize: "2em",
     color: "grey"
   };
@@ -46,6 +55,9 @@ class VideoDetail extends React.Component {
     flexDirection: "column"
   };
 
+  IframeStyle = {
+    opacity: "1",
+  }
   VideoStyle = {
     width: "50%",
     height: "10%",
@@ -55,31 +67,33 @@ class VideoDetail extends React.Component {
 
   PStyle = {
     textAlign: "center",
-    position: "absolute",
+    position: "relative",
     zIndex: "10",
     top: "0px",
-    fontWeight: "bolder"
+    fontWeight: "bold",
+    color: "grey"
   };
 
+  
  
-  // FoundOrNot = () => {
-  //   return this.state.data;
-  // };
-
   render() {
-    // console.log("Parent component passes down these props: ", this.state);
-    // console.log("Props passed to this componet", this.props);
-    // if (!this.FoundOrNot) {
-    //   return (
-    //   <div style = {this.NotFoundStyle}>
-    //     <div> <NotFoundAnimation/> </div>
-    //       <p style={this.PStyle} > Sorry, the video was not found. </p>
-    //   </div>
-    //   )
-    // } else {
-    return (
+    console.log("state ", this.state)
+    // if(this.state.ready === false){
+    // return ( <div style={this.NotFoundStyle}> 
+    //   <h1 style={this.PStyle}> Loading...</h1>
+    //   <LoadingAnimation />
+    //   </div>)
+    // } 
+     if (this.state.error === true){
+      return (<div>
+      <h1 style={this.PStyle}> No data found </h1>
+      <NotFoundAnimation/>
+      </div>
+      )
+    }
+      return (
       <div className="video-container" style={this.ContainerStyle}>
-        <iframe
+        <iframe style={this.IframeStyle}
           src={`https://www.youtube.com/embed/${
             this.props.match.params.video_id
           }`}
@@ -92,14 +106,9 @@ class VideoDetail extends React.Component {
           videoData={this.props.videoData}
           youtubeVideoID={this.props.match.params.video_id}
         />
-        <SplineChart data={this.state} />
+        <SplineChart data={this.state} loading={this.state.loading} error={this.state.error}/>
       </div>
-     
-
-     
-    );
-  }
-  // }
+    );}
 }
 
 export default VideoDetail;

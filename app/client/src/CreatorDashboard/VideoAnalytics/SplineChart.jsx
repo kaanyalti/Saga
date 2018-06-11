@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import LoadingAnimation from "./LoadingAnimation";
 // import { CSSTransition, transit } from "react-css-transition";
 
 class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
       data: [], //every object below is a single entry for its emotion
       axisX: {
         title: "Time (seconds)",
@@ -18,7 +18,6 @@ class SplineChart extends Component {
       },
       
     };
-    this.TurnOff = this.TurnOff.bind(this)
   }
 
   UpdateState = [
@@ -77,15 +76,10 @@ class SplineChart extends Component {
     width: "100%",
     margin: "auto",
     marginTop: "15%"
-  };
-
-  TurnOff() {
-      console.log("resetting state")
-      this.setState({loading: false})
-    
   }
+ 
   componentDidUpdate() {
-    console.log("Props in component did update", this.props);
+    // console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme: "light3",
       animationEnabled: true,
@@ -101,8 +95,8 @@ class SplineChart extends Component {
       legend: {
         cursor: "pointer",
         itemclick: function (e) {
-            console.log("legend click: " + e.dataPointIndex);
-            console.log(e);
+            // console.log("legend click: " + e.dataPointIndex);
+            // console.log(e);
             if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
                 e.dataSeries.visible = false;
             } else {
@@ -118,7 +112,7 @@ class SplineChart extends Component {
   }
 
   PopulateGraph() {
-    console.log("incoming props ", this.props.data.data); //All reactions videos array
+    // console.log("props passed to graph ", this.props.data.data.data); //All reactions videos array
     this.props.data.data.forEach(recording => {
       // if ( this.props.data.data[0]){
       // console.log("Using nested loop to update Graph with the following:")
@@ -159,12 +153,11 @@ class SplineChart extends Component {
 
 
   render() {
-    if(this.state.loading === true){
-      this.TurnOff()
-
-      return <p> LOADING?</p>
+    // console.log("props loading state: ", this.props.data.loading)
+    if(this.props.data.loading === true){
+      return <LoadingAnimation/>
     }
-    // console.log("Update State: ", this.UpdateState);
+    console.log("Update State: ", this.UpdateState);
     return <div id="chartContainer" />;
   }
 }

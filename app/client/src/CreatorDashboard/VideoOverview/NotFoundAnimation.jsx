@@ -10,6 +10,7 @@ class NotFoundAnimation extends React.Component {
       loop: true,
       autoplay: true,
       animationData: NotFoundEmoji
+      
     });
   }
   render() {
