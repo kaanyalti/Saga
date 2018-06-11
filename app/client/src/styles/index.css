@@ -1,6 +1,7 @@
 * {
   font-family: "Lato";
   letter-spacing: 0.01rem;
+   border-radius: 0 !important;
 }
 
 body {
