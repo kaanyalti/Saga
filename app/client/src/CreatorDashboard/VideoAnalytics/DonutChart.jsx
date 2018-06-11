@@ -107,7 +107,7 @@ class DonutChart extends Component {
   }
 
   render() {
-    return <div id="chartContainer-donut" style={this.GraphStyle} />;
+    return <div id="chartContainer-donut" />;
   }
 }
 
