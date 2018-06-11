@@ -26,7 +26,9 @@ class Navigation extends Component {
   }
 
   navStyle = {
-    margin: "10vh 15vw 0 15vw"
+    margin: "10vh 15vw 0 15vw",
+    fontFamily: "Lato",
+    fontWeight: "700"
   };
 
   navLinks = {
