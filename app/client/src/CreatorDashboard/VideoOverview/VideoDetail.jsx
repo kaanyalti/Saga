@@ -15,28 +15,28 @@ class VideoDetail extends React.Component {
     this.state = {
       data: null,
       loading: true,
-      ready: false,
       error: false
     };
   }
-  ErrorMsg={
+  ErrorMsg = {
     text: ""
-  }
+  };
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
         console.log("Data from VideoDetails axios call :", res.data.length);
-        if(res.data.length > 0)
-        this.setState({loading:false, ready: true})
+        if (res.data.length > 0) this.setState({ loading: false });
       })
-      .catch(err => console.log("error: ", err));
-      this.setState({error:true, ready: false})
+      .catch(err => {
+        this.setState({ loading: false, error: true });
+         console.log("error: ", err);
+        })
+
+    
   }
 
-  // componentWillUpdate() {
-  // }
   NotFoundStyle = {
     width: "20%",
     position: "fixed",
@@ -75,21 +75,24 @@ class VideoDetail extends React.Component {
   }
 
   render() {
-    console.log("state ", this.state)
-    if(this.state.error === true){
-    return ( <div style={this.NotFoundStyle}> 
-      <h1 style={this.PStyle}> Hmm...Check your server</h1>
-      <NotFoundAnimation/>
-      </div>)
-    } 
-     if (this.state.ready === false){
-      return (<div>
-      <h1 style={this.PStyle}> Loading... </h1>
-      <LoadingAnimation/>
-      </div>
-      )
-    }
+    console.log("state ", this.state);
+    if (this.state.error === true) {
       return (
+        <div style={this.NotFoundStyle}>
+          <h1 style={this.PStyle}> Hmm...Check your server</h1>
+          <NotFoundAnimation />
+        </div>
+      );
+    }
+    if (this.state.loading === true) {
+      return (
+        <div>
+          <h1 > Loading...(if longer than 3s, check server) </h1>
+          <LoadingAnimation />
+        </div>
+      );
+    }
+    return (
       <div className="video-container" style={this.ContainerStyle}>
         <Sidebar />
         <iframe
@@ -114,7 +117,8 @@ class VideoDetail extends React.Component {
           <span>Toggle Sidebar</span>
         </button>
       </div>
-    );}
+    );
+  }
 }
 
 export default VideoDetail;

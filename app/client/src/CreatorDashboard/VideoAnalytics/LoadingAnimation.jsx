@@ -14,12 +14,11 @@ class LoadingAnimation extends React.Component {
   }
 
   AnimationStyle = {
-    width: "25%",
     position: "absolute",
     left: "40%",
-    top: "60%",
+    top: "10%",
   }
-
+  
   render() {
     return <div id="loading-graphs" style={this.AnimationStyle}> </div>;
   }
