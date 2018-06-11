@@ -56,7 +56,7 @@ class ZiggeoRecorder extends React.Component {
         ziggeo-themecolor="red"
         ziggeo-countdown="0"
         ziggeo-skipinitial="true"
-        ref = {this.ref}
+        onRef={ref = {this.ref}}
       >
         {" "}
       </ziggeorecorder>
