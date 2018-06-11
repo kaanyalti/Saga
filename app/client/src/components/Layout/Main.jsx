@@ -23,10 +23,15 @@ class Main extends React.Component {
     super(props);
   }
 
+  mainStyle = {
+    width: "100%",
+    zIndex: "90"
+  }
+
   render() {
     // document.getElementsByTagName("body")[0].setAttribute("style", "background: #d7ecef")
     return (
-      <main>
+      <main id="content" style={this.mainStyle}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
