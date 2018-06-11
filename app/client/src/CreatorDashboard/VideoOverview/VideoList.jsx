@@ -1,79 +1,101 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardHeader,
+  CardFooter,
+  Button,
+  Container,
+  Row,
+  Col
+} from "reactstrap";
+import Moment from "react-moment";
 
 class VideoList extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true
+    };
   }
-  ListStyle = {
-    backgroundCollor: "#D7ECEF",
-    position: "absolute",
-    top: "15%",
-    left: "30%"
+
+  containerStyle = {
+    marginTop: "5vh"
   };
 
-  CheatStyle = {
-    backgroundColor: "white",
-    zIndex: "5",
-    top: "0",
-    position: "fixed",
-    width: "100%",
-    left: "30%",
-    height: "10%"
-  };
+  cardStyle = {
+    marginBottom: "5vh",
+    // border: "none"
+  }
 
-  LinkStyle = {
-    fontSize: "1.5em",
-    textAlign: "center",
-    display: "block",
-    color: "white",
-    fontSize: "1.5em",
-    background: "#00dfff",
-    width: "100%",
-    height: "45px",
-    lineHeight: "2",
-    marginBottom: "20px"
-  };
+  iframeStyle = {
 
-  VideoStyle = {
-    width: "100%",
-    height: "20%",
-    verticalAlign: "middle",
-    background: "black",
-    padding: "12px",
-    border: "0"
-  };
+  }
 
-  BulletStyle = {
-    listStyle: "none"
+  spreadEvenly = {
+    display: "flex",
+    alignItems: "baseline",
+    justifyContent: "space-between"
   };
 
   render() {
-    return (
-      <div style={this.ListStyle} className="video-list">
-        <div id="cheat" style={this.CheatStyle} />
-        <ul style={this.BulletStyle}>
-          {this.props.videoData.map(video => (
-            <li key={video.id}>
-              <iframe
-                title={video.title}
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${video.id}`}
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                style={this.VideoStyle}
-              />
-              <Link to={`/admin/videos/${video.id}`} style={this.LinkStyle}>
-                {video.title}
-              </Link>
-              <div className="chart"> hold mini chart here </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+    return this.props.videoData.length === 0 ? (
+      <p>Loading...</p>
+    ) : (
+      <Container style={this.containerStyle}>
+        <Row>
+          {this.props.videoData.map(video => {
+            const { id, publishedAt, title, statistics, thumbnail } = video;
+            return (
+              <Col md={{ size: 4 }} key={id}>
+                <Card style={this.cardStyle}>
+                  <CardHeader>{title}</CardHeader>
+                  <CardImg top width="100%" src={thumbnail.url} alt="Card image cap" />
+                  <CardBody>
+                    <CardSubtitle />
+                      <div style={this.spreadEvenly}>
+                        <div className="stats">
+                          <i title="Amount of views" className="fas fa-eye" />{" "}
+                          <span>{statistics.viewCount}</span>
+                        </div>
+                        <div className="stats">
+                          <i title="Amount of likes" className="fas fa-heart" /> <span>{statistics.likeCount}</span>
+                        </div>
+                        <div className="stats">
+                          <i title="Amount of comments" className="fas fa-comments" />{" "}
+                          <span>{statistics.commentCount}</span>
+                        </div>
+                        <div className="stats">
+                          <i title="Amount of dislikes" class="fas fa-thumbs-down" />{" "}
+                          <span>{statistics.dislikeCount}</span>
+                        </div>
+                      </div>
+                  </CardBody>
+                  <CardFooter className="text-muted" style={this.spreadEvenly}>
+                    <div>
+                      <i title="Time since published" class="far fa-clock" />{" "}
+                      <span><Moment fromNow>
+                        {publishedAt.substring(0, publishedAt.length - 1)}
+                      </Moment></span>
+                    </div>
+                    <Button color="basic">
+                      <Link to={`/admin/videos/${video.id}`}>
+                        <i title="View data visualisations" className="fas fa-ellipsis-h" style={{color: "black"}}/>
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     );
   }
 }

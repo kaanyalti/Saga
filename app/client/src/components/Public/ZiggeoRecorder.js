@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import * as Kairos from "../../modules/kairosMethods";
 import { apiKeys } from "../../env.js";
+// import {ZiggeoRecorder} from 'react-ziggeo'
 
-class ZiggeoRecorder extends React.Component {
+class RecorderComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +57,7 @@ class ZiggeoRecorder extends React.Component {
         ziggeo-themecolor="red"
         ziggeo-countdown="0"
         ziggeo-skipinitial="true"
-        ref = {this.ref}
+        // onRef={ref = {this.ref}}
       >
         {" "}
       </ziggeorecorder>
@@ -64,4 +65,4 @@ class ZiggeoRecorder extends React.Component {
   }
 }
 
-export default ZiggeoRecorder;
+export default RecorderComponent;

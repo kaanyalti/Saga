@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "canvasjs": "^1.8.1",
     "lottie-web": "^5.1.16",
+    "moment": "^2.22.2",
     "pg": "^7.4.3",
     "react": "^16.4.0",
     "react-addons-css-transition-group": "^15.6.2",
@@ -18,8 +19,10 @@
     "react-dom": "^16.4.0",
     "react-google-login": "^3.2.1",
     "react-loading-animation": "^1.4.0",
+    "react-moment": "^0.7.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-ziggeo": "^2.4.0",
     "reactstrap": "^6.1.0"
   },
   "scripts": {

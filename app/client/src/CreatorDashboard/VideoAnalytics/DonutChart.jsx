@@ -64,7 +64,7 @@ class DonutChart extends Component {
     const dataPoints = [];
     for (const emotion in averageReactions) {
       const averageScore = this.getSum(averageReactions[emotion]);
-      const percentage = (averageScore / total) * 100;
+      const percentage = averageScore / total * 100;
 
       const twoSigFigs = this.twoSigFigs(percentage);
 
@@ -109,7 +109,7 @@ class DonutChart extends Component {
     console.log("error test: ", e)
   }
   render() {
-    return <div id="chartContainer-donut" style={this.GraphStyle} />;
+    return <div id="chartContainer-donut" />;
   }
 }
 

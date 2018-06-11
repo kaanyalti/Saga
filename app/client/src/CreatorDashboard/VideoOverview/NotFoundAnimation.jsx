@@ -13,8 +13,11 @@ class NotFoundAnimation extends React.Component {
       
     });
   }
+  AnimationStyle ={
+    paddingTop: "40%"
+  }
   render() {
-    return <div id="not-found"> </div>;
+    return <div id="not-found" style={this.AnimationStyle}> </div>;
   }
 }
 

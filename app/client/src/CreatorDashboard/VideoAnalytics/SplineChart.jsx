@@ -6,6 +6,7 @@ class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       data: [], //every object below is a single entry for its emotion
       axisX: {
         title: "Time (seconds)",
@@ -77,7 +78,11 @@ class SplineChart extends Component {
     margin: "auto",
     marginTop: "15%"
   }
- 
+
+  componentDidMount(){
+    this.setState({loading: false})
+  }
+
   componentDidUpdate() {
     // console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
@@ -112,28 +117,16 @@ class SplineChart extends Component {
   }
 
   PopulateGraph() {
-    // console.log("props passed to graph ", this.props.data.data.data); //All reactions videos array
+    console.log("props passed to graph ", this.props.data); //All reactions videos array
+    if(this.props.data.data)
     this.props.data.data.forEach(recording => {
-      // if ( this.props.data.data[0]){
-      // console.log("Using nested loop to update Graph with the following:")
-      // console.log("Reaction figures :", this.props);
       recording.reactions.forEach(array => {
-        // console.log("recording/reactions/array var: ", array);
         array.forEach(object => {
-          // console.log("Emotion group time stamp: ", time);
           object.people.forEach(nested => {
           var time = object.time;
-          // console.log("object.people.forEach:")
-          // debugger
-            // console.log("labels and value to plug in graph: ", nested.emotions);
             for (let emotion in nested.emotions) {
-              // if (nested.emotions[emotion] > 0) {
-              // console.log("single emotion and time: ", emotion, nested.emotions[emotion], time);
               for (let entry of this.UpdateState) {
-                // console.log("this.state.data array loop: ", entry);
                 if (entry.name === emotion)
-                  // console.log("Single emotion name matched this object from the state : ", this.state.data[this.state.data.indexOf(entry)])
-                  // console.log("stuff to push: ", nested.emotions);
                   this.UpdateState[
                   this.UpdateState.indexOf(entry)
                   ].dataPoints.push({
@@ -153,11 +146,7 @@ class SplineChart extends Component {
 
 
   render() {
-    // console.log("props loading state: ", this.props.data.loading)
-    if(this.props.data.loading === true){
-      return <LoadingAnimation/>
-    }
-    console.log("Update State: ", this.UpdateState);
+    // console.log("Update State: ", this.UpdateState);
     return <div id="chartContainer" />;
   }
 }

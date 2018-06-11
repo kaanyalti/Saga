@@ -6,8 +6,7 @@ import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
 
 // import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
-// import ReactCSSTransitionGroup from "react-addons-css-transition-group"; 
-// import { CSSTransition, transit } from "react-css-transition";
+import Sidebar from "../../components/Layout/Sidebar.jsx";
 // import * as Reactions from "../../modules/getVideoDataMethods";
 
 class VideoDetail extends React.Component {
@@ -17,83 +16,83 @@ class VideoDetail extends React.Component {
       data: null,
       loading: true,
       ready: false,
-      error: true
+      error: false
     };
   }
-  
+  ErrorMsg={
+    text: ""
+  }
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        console.log("Data from VideoDetails :", res.data);
-        this.setState({loading:false, ready: true, error: false})
+        console.log("Data from VideoDetails axios call :", res.data.length);
+        if(res.data.length > 0)
+        this.setState({loading:false, ready: true})
       })
       .catch(err => console.log("error: ", err));
       this.setState({error:true, ready: false})
   }
 
+  // componentWillUpdate() {
+  // }
   NotFoundStyle = {
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
+    width: "20%",
     position: "fixed",
-    width: "100%",
-    left: "20%",
-    top: "30%",
+    left: "50%",
+    top: "35%",
     fontSize: "2em",
     color: "grey"
   };
 
-  ContainerStyle = {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    left: "40%",
-    top: "15%",
-    flexDirection: "column"
-  };
+  // ContainerStyle = {
+  //   position: "absolute",
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   width: "100%",
+  //   left: "40%",
+  //   top: "15%",
+  //   flexDirection: "column"
+  // };
 
-  IframeStyle = {
-    opacity: "1",
-  }
-  VideoStyle = {
-    width: "50%",
-    height: "10%",
-    padding: "10px",
-    background: "#e0e0e0"
-  };
+  // VideoStyle = {
+  //   width: "50%",
+  //   height: "10%",
+  //   padding: "10px",
+  //   background: "#e0e0e0"
+  // };
 
   PStyle = {
     textAlign: "center",
-    position: "relative",
-    zIndex: "10",
+    position: "absolute",
     top: "0px",
-    fontWeight: "bold",
-    color: "grey"
+    fontWeight: "bolder"
   };
 
-  
- 
+  toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+
   render() {
     console.log("state ", this.state)
-    if(this.state.ready === false){
+    if(this.state.error === true){
     return ( <div style={this.NotFoundStyle}> 
-      <h1 style={this.PStyle}> Loading...</h1>
-      <LoadingAnimation />
+      <h1 style={this.PStyle}> Hmm...Check your server</h1>
+      <NotFoundAnimation/>
       </div>)
     } 
-     if (this.state.error === true){
+     if (this.state.ready === false){
       return (<div>
-      <h1 style={this.PStyle}> No data found </h1>
-      <NotFoundAnimation/>
+      <h1 style={this.PStyle}> Loading... </h1>
+      <LoadingAnimation/>
       </div>
       )
     }
       return (
       <div className="video-container" style={this.ContainerStyle}>
-        <iframe style={this.IframeStyle}
+        <Sidebar />
+        <iframe
           src={`https://www.youtube.com/embed/${
             this.props.match.params.video_id
           }`}
@@ -106,7 +105,14 @@ class VideoDetail extends React.Component {
           videoData={this.props.videoData}
           youtubeVideoID={this.props.match.params.video_id}
         />
-        <SplineChart data={this.state} loading={this.state.loading} error={this.state.error}/>
+        <SplineChart data={this.state} />
+        <button
+          type="button"
+          class="btn btn-info navbar-btn"
+          onClick={this.toggleSidebar.bind(this)}
+        >
+          <span>Toggle Sidebar</span>
+        </button>
       </div>
     );}
 }

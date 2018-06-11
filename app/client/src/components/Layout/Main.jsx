@@ -24,6 +24,7 @@ class Main extends React.Component {
   }
 
   render() {
+    // document.getElementsByTagName("body")[0].setAttribute("style", "background: #d7ecef")
     return (
       <main>
         <Switch>

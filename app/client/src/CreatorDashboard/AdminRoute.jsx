@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import VideoList from "./VideoOverview/VideoList";
 import VideoDetail from "./VideoOverview/VideoDetail";
-import Sidebar from "../components/Layout/Sidebar.jsx";
+
 // import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 // The VideoList component matches one of two different routes
@@ -18,7 +18,6 @@ class AdminRoute extends React.Component {
    console.log("state after: ", this.state)
       return(
       <div>
-        <Sidebar />
         <Switch>
           <Route
             exact
