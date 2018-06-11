@@ -4,6 +4,7 @@ import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
 import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
+import Sidebar from "../../components/Layout/Sidebar.jsx";
 // import * as Reactions from "../../modules/getVideoDataMethods";
 
 class VideoDetail extends React.Component {
@@ -25,42 +26,46 @@ class VideoDetail extends React.Component {
       .catch(err => console.log("error: ", err));
   }
 
-  NotFoundStyle = {
-    position: "fixed",
-    left: "50%",
-    top: "50%",
-    fontSize: "2em",
-    color: "grey"
-  };
+  // NotFoundStyle = {
+  //   position: "fixed",
+  //   left: "50%",
+  //   top: "50%",
+  //   fontSize: "2em",
+  //   color: "grey"
+  // };
 
-  ContainerStyle = {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    left: "40%",
-    top: "15%",
-    flexDirection: "column"
-  };
+  // ContainerStyle = {
+  //   position: "absolute",
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   width: "100%",
+  //   left: "40%",
+  //   top: "15%",
+  //   flexDirection: "column"
+  // };
 
-  VideoStyle = {
-    width: "50%",
-    height: "10%",
-    padding: "10px",
-    background: "#e0e0e0"
-  };
+  // VideoStyle = {
+  //   width: "50%",
+  //   height: "10%",
+  //   padding: "10px",
+  //   background: "#e0e0e0"
+  // };
 
-  PStyle = {
-    textAlign: "center",
-    position: "absolute",
-    zIndex: "10",
-    top: "0px",
-    fontWeight: "bolder"
-  };
+  // PStyle = {
+  //   textAlign: "center",
+  //   position: "absolute",
+  //   zIndex: "10",
+  //   top: "0px",
+  //   fontWeight: "bolder"
+  // };
 
   // FoundOrNot = () => {
   //   return this.state.data;
   // };
+
+  toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
 
   render() {
     console.log("Parent component passes down these props: ", this.state);
@@ -75,6 +80,7 @@ class VideoDetail extends React.Component {
     // } else {
     return (
       <div className="video-container" style={this.ContainerStyle}>
+        <Sidebar />
         <iframe
           src={`https://www.youtube.com/embed/${
             this.props.match.params.video_id
@@ -89,6 +95,13 @@ class VideoDetail extends React.Component {
           youtubeVideoID={this.props.match.params.video_id}
         />
         <SplineChart data={this.state} />
+        <button
+          type="button"
+          class="btn btn-info navbar-btn"
+          onClick={this.toggleSidebar.bind(this)}
+        >
+          <span>Toggle Sidebar</span>
+        </button>
       </div>
     );
   }

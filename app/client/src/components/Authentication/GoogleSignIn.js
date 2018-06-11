@@ -54,7 +54,7 @@ class googleSignIn extends React.Component {
             `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${youtubeID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
           )
           .then(res => {
-            console.log("second call response: ");
+            // Gets ID of user's playlist called "Uploads"
             const uploadsID =
               res.data.items[0].contentDetails.relatedPlaylists.uploads;
 
@@ -63,22 +63,53 @@ class googleSignIn extends React.Component {
                 `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsID}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo`
               )
               .then(res => {
-                console.log(`GOING TO GET VIDEO IDs`);
-                console.log(res.data.items);
+                // Getting YouTube video IDs in an array
                 const videoData = res.data.items.map(item => {
                   return {
                     id: item.snippet.resourceId.videoId,
                     title: item.snippet.title
                   };
                 });
-                this.setState(prevState => {
-                  return { videoData: [...prevState.videoData, ...videoData] };
-                });
 
-                data.videoData = this.state.videoData;
+                const completeVideoData = []
 
-                this.props.handleLogin(data);
+                // Returns a promise
+                const videoPromises = videoData.map(video => {
+                  return axios
+                    .get(
+                      `https://www.googleapis.com/youtube/v3/videos?id=${video.id}&key=AIzaSyDoCKnePcvI1twBioDPAcLHSNv9_YVCLOo&part=snippet,statistics`
+                    ).then((res) => {
+                      const item = res.data.items[0]
+                      const { channelTitle, description, publishedAt, title, thumbnails } = item.snippet
 
+                      // Building complete video object
+                      const additionalVideoData = {}
+                      additionalVideoData.id = item.id
+                      additionalVideoData.title = title
+                      additionalVideoData.description = description
+                      additionalVideoData.channelTitle = channelTitle
+                      additionalVideoData.publishedAt = publishedAt
+                      additionalVideoData.statistics = item.statistics
+                      additionalVideoData.thumbnail = thumbnails.maxres
+
+                      // Pushes complete video data to array to set global state
+                      completeVideoData.push(additionalVideoData)
+                      console.log('In promise')
+                    })
+                })
+
+                // Only sets global videoData once all API calls are complete
+                Promise.all(videoPromises).then((res)=> {
+                  // Adds YouTube IDs to current state
+                    this.setState({ videoData: completeVideoData });
+                    // Sets global state of videoData
+                    data.videoData = this.state.videoData;
+                    this.props.handleLogin(data);
+                })
+
+
+
+                // Posts user's video to server
                 axios
                   .post("/api/users", {
                     videoData: videoData,
@@ -88,7 +119,7 @@ class googleSignIn extends React.Component {
                   .catch(err => {
                     console.log(err);
                   });
-              });
+              })
           });
       });
   }

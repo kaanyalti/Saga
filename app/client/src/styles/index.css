@@ -22,27 +22,27 @@ p {
   font-weight: 300;
 }
 
-a {
+nav a {
   color: black !important;
   position: relative;
   text-decoration: none;
 }
 
-a:hover {
+nav a:hover {
   color: rgb(0, 121, 226) !important;
 }
 
 @media only screen and (min-width : 320px) {
+
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
-
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  a:before {
+  nav a:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -57,10 +57,10 @@ a:hover {
     transition: all 0.3s ease-in-out 0s;
   }
 
-  a:hover:before {
+  nav a:hover:before {
     visibility: visible;
-    -webkit-transform: scaleX(0.75);
-    transform: scaleX(0.75);
+    -webkit-transform: scaleX(0.78);
+    transform: scaleX(0.78);
   }
 
   .active:before {
@@ -72,11 +72,12 @@ a:hover {
     left: 0;
     background-color: #d7ecef;
     visibility: visible;
-    -webkit-transform: scaleX(0.75);
-    transform: scaleX(0.75);
+    -webkit-transform: scaleX(0.78);
+    transform: scaleX(0.78);
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
   }
+
 }
 
 /* Medium Devices, Desktops */
