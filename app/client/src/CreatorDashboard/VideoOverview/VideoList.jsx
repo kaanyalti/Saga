@@ -16,19 +16,20 @@ import {
 class VideoList extends React.Component {
   constructor(props) {
     super(props);
-  }
 
-  componentDidMount() {}
+    this.state = {
+      loading: true
+    }
+  }
 
   containerStyle = {
     marginTop: "5vh"
   };
 
   render() {
-    return (
-      <Container style={this.containerStyle}>
+    return this.props.videoData.length === 0 ? <p>Loading</p> : <Container style={this.containerStyle}>
         <Row>
-          {this.props.videoData.map(video => (
+          {this.props.videoData.map(video => {return (
             <Col md={{ size: 4 }}>
               <Card>
                 <iframe
@@ -46,10 +47,9 @@ class VideoList extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-          ))}
+          )})}
         </Row>
       </Container>
-    );
   }
 }
 
