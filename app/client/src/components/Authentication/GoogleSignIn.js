@@ -94,17 +94,17 @@ class googleSignIn extends React.Component {
 
                     // Pushes complete video data to array to set global state
                     completeVideoData.push(additionalVideoData)
+
+                    // Adds YouTube IDs to current state
+                    this.setState({ videoData: completeVideoData });
+
+                    // Sets global state of videoData
+                    data.videoData = this.state.videoData;
+                    this.props.handleLogin(data);
                   })
                 })
 
-                // Adds YouTube IDs to current state
-                this.setState(prevState => {
-                  return { videoData: completeVideoData };
-                });
 
-                // Sets global state of videoData
-                data.videoData = this.state.videoData;
-                this.props.handleLogin(data);
 
                 // Posts user's video to server
                 axios
