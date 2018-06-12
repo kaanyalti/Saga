@@ -20,6 +20,7 @@ class PublicVideo extends React.Component {
 
   componentDidMount() {
     console.log("YOUTUBE ID", this.state.youtubeVideoID);
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="visible"
   }
 
   handleChangedVideoState(newVideoState) {

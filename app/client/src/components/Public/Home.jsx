@@ -8,6 +8,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.setCurrentPage("home")
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="visible"
   }
 
   containerStyle = {

@@ -27,6 +27,7 @@ class VideoList extends React.Component {
 
   componentDidMount() {
     this.props.setCurrentPage("videoList")
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="visible"
   }
 
   containerStyle = {

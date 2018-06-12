@@ -30,7 +30,9 @@ class VideoDetail extends React.Component {
         console.log("error: ", err);
       });
 
-      this.props.setCurrentPage("videoDetail")
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
+
+    this.props.setCurrentPage("videoDetail")
   }
 
   NotFoundStyle = {
