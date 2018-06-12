@@ -12,12 +12,12 @@ class SplineChart extends Component {
         title: "Time (seconds)",
         minimum: "0"
       },
-      
+
       axisY: {
         title: "Score",
         minimum: "0"
       },
-      
+
     };
   }
 
@@ -81,12 +81,6 @@ class SplineChart extends Component {
   //   marginTop: "15%"
   // };
 
-  componentWillUpdate(){
-    this.setState({loading: false})
-  }
-  componentDidMount(){
-  }
-
 
   componentDidUpdate() {
     // console.log("Props in component did update", this.props);
@@ -149,20 +143,9 @@ class SplineChart extends Component {
     });
   }
 
-  
+
   render() {
-
-    // console.log("Update State: ", this.UpdateState);
-    if (this.state.loading === true){
-      return ( 
-        <div id="loading-charts">
-      <h1> Updating Charts </h1>
-      < LoadingAnimation />
-      </div>
-      )
-    }
     return <div id="chartContainer" style={{widht: "100%"}}/>;
-
   }
 }
 

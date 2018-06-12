@@ -22,13 +22,10 @@ class VideoDetail extends React.Component {
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        console.log("Data from VideoDetails axios call :", res.data.length);
-        if (res.data.length > 0) this.setState({ loading: false });
+        this.setState({ data: res.data });
+        console.log("Data from VideoDetails :", res.data);
       })
-      .catch(err => {
-        this.setState({ loading: false, error: true });
-         console.log("error: ", err);
-        })
+      .catch(err => console.log("error: ", err));
   }
 
   NotFoundStyle = {
@@ -58,22 +55,6 @@ class VideoDetail extends React.Component {
 
   }
   render() {
-    if (this.state.error === true) {
-      return (
-        <div style={this.NotFoundStyle}>
-          <h1 style={this.PStyle}> Hmm...Check your server</h1>
-          <NotFoundAnimation />
-        </div>
-      );
-    }
-    if (this.state.loading === true) {
-      return (
-        <div>
-          <h1 style={this.P2Style}> Loading... </h1>
-          <LoadingAnimation />
-        </div>
-      );
-    }
     return (
 
       <div className="container-fluid ">
@@ -112,7 +93,6 @@ class VideoDetail extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     );
   }
