@@ -153,7 +153,6 @@ class googleSignIn extends React.Component {
     justifyContent: "center",
     alignItems: "center"
   };
-
   loginButtonStyle = {
     border: "none",
     width: "191px",

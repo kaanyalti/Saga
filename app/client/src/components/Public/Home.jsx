@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
+import HomeAnimation from "./HomeAnimation.jsx"
 
 class Home extends Component {
   constructor (props) {
@@ -8,15 +9,7 @@ class Home extends Component {
 
     }
   }
-  SquareStyle ={
-    zIndex: "1",
-    border: "3px solid",
-    position: "absolute",
-    left: "20%",
-    height: "100%",
-    width: "40%"
-  }
-
+ 
   containerStyle = {
     backgroundColor: "#fcfcfc",
     marginTop: "5vh",
@@ -25,7 +18,7 @@ class Home extends Component {
 
   splashImg = {
     backgroundImage:
-      "url(https://images.unsplash.com/photo-1465244085115-0c89caa46915?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1bc64c67c45a8dd5d5954183bbc1fd21&auto=format&fit=crop&w=1050&q=80)",
+      "url(https://images.unsplash.com/photo-1495707800306-e240c5a0d65f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c67444b12873fc59a464db7f7abda2a0&auto=format&fit=crop&w=1190&q=80)",
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "50vh",
@@ -40,11 +33,9 @@ class Home extends Component {
   render() {
     return (
       <Container id="mainpage" style={this.containerStyle}>
-      <div id="home-square" style = { this.SquareStyle}>
-      test 
-      </div>
         <Row >
           <Col md="8" style={this.splashImg} />
+          <HomeAnimation />
           <Col md="4" style={this.splashDescription}>
             <h1>Video analytics made easy.</h1>
             <p >

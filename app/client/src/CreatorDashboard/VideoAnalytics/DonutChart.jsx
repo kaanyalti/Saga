@@ -5,8 +5,6 @@ class DonutChart extends Component {
     super(props);
   }
 
-  // GraphStyle = {};
-
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
     // Uses youtubeVideoID to find title in videoData array
@@ -43,7 +41,6 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-    if (data)
     data.map(averageReaction => {
       averageReaction.average_reactions.impressions.map(averageEmotions => {
         for (let emotion in averageEmotions.average_emotion) {
@@ -108,7 +105,7 @@ class DonutChart extends Component {
   }
   render() {
     return (
-      <div id="chartContainer-donut" style={{widht: "100%"}}/>
+      <div id="chartContainer-donut" style={{width: "100%"}}/>
     )
   }
 }

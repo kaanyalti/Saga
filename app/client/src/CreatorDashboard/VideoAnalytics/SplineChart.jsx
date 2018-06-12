@@ -11,12 +11,12 @@ class SplineChart extends Component {
         title: "Time (seconds)",
         minimum: "0"
       },
-      
+
       axisY: {
         title: "Score",
         minimum: "0"
       },
-      
+
     };
   }
   
@@ -72,6 +72,14 @@ class SplineChart extends Component {
       dataPoints: []
     }
   ];
+
+
+  // GraphStyle = {
+  //   width: "100%",
+  //   margin: "auto",
+  //   marginTop: "15%"
+  // };
+
 
   componentDidUpdate() {
     const chart = new window.CanvasJS.Chart("chartContainer", {
@@ -133,8 +141,7 @@ class SplineChart extends Component {
 
 
   render() {
-    return <div id="chartContainer" style={{widht: "100%"}}/>;
-
+    return <div id="chartContainer" style={{width: "100%"}}/>;
   }
 }
 
