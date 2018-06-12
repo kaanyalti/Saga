@@ -25,6 +25,10 @@ class VideoList extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.setCurrentPage("videoList")
+  }
+
   containerStyle = {
     marginTop: "5vh"
   };

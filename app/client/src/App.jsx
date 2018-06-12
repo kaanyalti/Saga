@@ -31,7 +31,6 @@ class App extends Component {
   }
 
   setCurrentPage(page) {
-
     this.setState({ currentPage: page });
   }
 
@@ -40,7 +39,7 @@ class App extends Component {
       <div>
         <Navigation loggedIn={this.state.loggedIn} />
         <div className="wrapper">
-          {this.state.currentPage === "videoDetail" ? <Sidebar /> : null}
+          {this.state.currentPage === "videoDetail" ? <Sidebar /> : <div></div>}
           <Main
             setCurrentPage={this.setCurrentPage}
             loggedIn={this.state.loggedIn}

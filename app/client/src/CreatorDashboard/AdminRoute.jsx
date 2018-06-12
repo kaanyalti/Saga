@@ -14,10 +14,6 @@ class AdminRoute extends React.Component {
   }
 
   render() {
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    console.log(this.props);
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    console.log("state after: ", this.state);
     return (
       <div>
         <Switch>
@@ -26,18 +22,24 @@ class AdminRoute extends React.Component {
             path="/admin"
             render={() =>
               this.props.loggedIn ? (
-                <VideoList videoData={this.props.videoData} />
+                <VideoList
+                  videoData={this.props.videoData}
+                  setCurrentPage={this.props.setCurrentPage}
+                />
               ) : (
                 <Redirect to="/login" />
               )
             }
           />
-          <Route exact path="/admin/videos" component={VideosAll} />
           <Route
             path="/admin/videos/:video_id"
             // Pass props to render to receive :video_id prop
             render={props => (
-              <VideoDetail videoData={this.props.videoData} {...props} setCurrentPage={this.props.setCurrentPage} />
+              <VideoDetail
+                videoData={this.props.videoData}
+                {...props}
+                setCurrentPage={this.props.setCurrentPage}
+              />
             )}
           />
         </Switch>
