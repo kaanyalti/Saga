@@ -20,7 +20,7 @@ class SplineChart extends Component {
       
     };
   }
-
+  
   UpdateState = [
     {
       type: "line",
@@ -78,11 +78,6 @@ class SplineChart extends Component {
     margin: "auto",
     marginTop: "15%"
   }
-  componentWillUpdate(){
-    this.setState({loading: false})
-  }
-  componentDidMount(){
-  }
 
   componentDidUpdate() {
     // console.log("Props in component did update", this.props);
@@ -119,7 +114,7 @@ class SplineChart extends Component {
 
   PopulateGraph() {
     console.log("props passed to graph ", this.props.data); //All reactions videos array
-    if(this.props.data.data)
+    // if(this.props.data.data)
     this.props.data.data.forEach(recording => {
       recording.reactions.forEach(array => {
         array.forEach(object => {
@@ -145,17 +140,9 @@ class SplineChart extends Component {
     });
   }
 
-  
+
   render() {
     // console.log("Update State: ", this.UpdateState);
-    if (this.state.loading === true){
-      return ( 
-        <div id="loading-charts">
-      <h1> Updating Charts </h1>
-      < LoadingAnimation />
-      </div>
-      )
-    }
     return <div id="chartContainer" />;
   }
 }

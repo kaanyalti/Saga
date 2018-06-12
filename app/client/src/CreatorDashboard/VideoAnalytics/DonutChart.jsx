@@ -5,13 +5,11 @@ class DonutChart extends Component {
     super(props);
   }
 
-  GraphStyle = {};
-
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
-    console.log("Props in component did update", this.props);
     // Uses youtubeVideoID to find title in videoData array
     if (this.props.videoData) {
+    console.log("Props in component did update", this.props);
       const title = this.props.videoData.find(
         video => video.id === this.props.youtubeVideoID
       ).title;
@@ -43,29 +41,26 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-      data.data.map(averageReaction => {
-        averageReaction.average_reactions.impressions.map(averageEmotions => {
-          debugger
-          for (let emotion in averageEmotions.average_emotion) {
-            debugger
-            averageReactions[emotion].push(
-              averageEmotions.average_emotion[emotion]
-            );
-          }
-        });
+    data.map(averageReaction => {
+      averageReaction.average_reactions.impressions.map(averageEmotions => {
+        for (let emotion in averageEmotions.average_emotion) {
+          averageReactions[emotion].push(
+            averageEmotions.average_emotion[emotion]
+          );
+        }
       });
-      return averageReactions;
+    });
+    return averageReactions;
   }
 
   generateDataPoints() {
     const averageReactions = this.getEmotionScores();
     const total = this.getTotal(averageReactions);
-
     const dataPoints = [];
+
     for (const emotion in averageReactions) {
       const averageScore = this.getSum(averageReactions[emotion]);
       const percentage = averageScore / total * 100;
-
       const twoSigFigs = this.twoSigFigs(percentage);
 
       if (averageScore > 0) {
@@ -81,7 +76,7 @@ class DonutChart extends Component {
   getTotal(averageReactions) {
     const allReactionScores = [];
 
-    for (const reaction in averageReactions) {
+    for (let reaction in averageReactions) {
       allReactionScores.push(...averageReactions[reaction]);
     }
     return allReactionScores.reduce(

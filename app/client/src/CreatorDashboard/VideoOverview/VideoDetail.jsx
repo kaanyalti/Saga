@@ -7,7 +7,6 @@ import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
 import Sidebar from "../../components/Layout/Sidebar.jsx";
 // import * as Reactions from "../../modules/getVideoDataMethods";
-
 class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +21,7 @@ class VideoDetail extends React.Component {
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        console.log("Data from VideoDetails axios call :", res.data.length);
+        // console.log("Data from VideoDetails axios call :", res.data.length);
         if (res.data.length > 0) this.setState({ loading: false });
       })
       .catch(err => {
@@ -58,22 +57,23 @@ class VideoDetail extends React.Component {
 
   }
   render() {
-    if (this.state.error === true) {
-      return (
-        <div style={this.NotFoundStyle}>
-          <h1 style={this.PStyle}> Hmm...Check your server</h1>
-          <NotFoundAnimation />
-        </div>
-      );
-    }
-    if (this.state.loading === true) {
-      return (
-        <div>
-          <h1 style={this.P2Style}> Loading... </h1>
-          <LoadingAnimation />
-        </div>
-      );
-    }
+    // if (this.state.error === true) {
+    //   return (
+    //     <div style={this.NotFoundStyle}>
+    //       <h1 style={this.PStyle}> Hmm...Check your server</h1>
+    //       <NotFoundAnimation />
+    //     </div>
+    //   );
+    // }
+    // if (this.state.loading === true) {
+    //   return (
+    //     <div>
+    //       <h1 style={this.P2Style}> Loading... </h1>
+    //       <LoadingAnimation />
+    //     </div>
+    //   );
+    // }
+    console.log( "render videotetails", this.state)
     return (
       <div className="video-container" style={this.ContainerStyle}>
         <iframe
