@@ -17,22 +17,20 @@ class VideoDetail extends React.Component {
       error: false
     };
   }
-
-
   componentDidMount() {
-    // const videoID = this.props.match.params.video_id;
-    const dataPromise = new Promise((resolve, reject ) =>{
-      const videoID = this.props.match.params.video_id;
-      return (axios.get(`/api/videos/${videoID}/reactions`)
+    const videoID = this.props.match.params.video_id;
+    axios
+      .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        resolve(res)
+        console.log("Data from VideoDetails axios call :", res.data.length);
+        if (res.data.length > 0) this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({ loading: false, error: true });
          console.log("error: ", err);
         })
   }
-  
+
   NotFoundStyle = {
     width: "20%",
     position: "fixed",
@@ -41,13 +39,14 @@ class VideoDetail extends React.Component {
     fontSize: "2em",
     color: "grey"
   };
+
   PStyle = {
     fontFamily: "Lato",
     textAlign: "center",
     position: "absolute",
     top: "0px",
   };
-  
+
   P2Style = {
     fontFamily: "Lato",
     color: "grey",
@@ -56,7 +55,7 @@ class VideoDetail extends React.Component {
     position: "absolute",
     top: "20%",
     marginBottom: "0"
-    
+
   }
   render() {
     if (this.state.error === true) {
