@@ -42,7 +42,7 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-    debugger;
+
     data.map(averageReaction => {
       averageReaction.average_reactions.impressions.map(averageEmotions => {
         for (const emotion in averageEmotions.average_emotion) {
@@ -108,9 +108,10 @@ class DonutChart extends Component {
   }
   render() {
     return (
-      <div id="chartContainer-donut" style={{widht: "100%"}}/>
+      <div id="chartContainer-donut"/>
     )
   }
 }
 
 export default DonutChart;
+// comment

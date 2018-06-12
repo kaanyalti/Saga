@@ -145,7 +145,7 @@ class SplineChart extends Component {
 
 
   render() {
-    return <div id="chartContainer" style={{widht: "100%"}}/>;
+    return <div id="chartContainer"/>;
   }
 }
 
