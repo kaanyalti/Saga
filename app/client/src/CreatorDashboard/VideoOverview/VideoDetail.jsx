@@ -12,17 +12,17 @@ class VideoDetail extends React.Component {
     super(props);
     this.state = {
       data: null,
-      loading: true,
+      loading: false,
       error: false
     };
   }
   componentDidMount() {
     const videoID = this.props.match.params.video_id;
+    this.setState({loading:true});
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
         // console.log("Data from VideoDetails axios call :", res.data.length);
-        if (res.data.length > 0) this.setState({ loading: false });
       })
       .catch(err => {
         this.setState({ loading: false, error: true });
@@ -57,22 +57,22 @@ class VideoDetail extends React.Component {
 
   }
   render() {
-    // if (this.state.error === true) {
-    //   return (
-    //     <div style={this.NotFoundStyle}>
-    //       <h1 style={this.PStyle}> Hmm...Check your server</h1>
-    //       <NotFoundAnimation />
-    //     </div>
-    //   );
-    // }
-    // if (this.state.loading === true) {
-    //   return (
-    //     <div>
-    //       <h1 style={this.P2Style}> Loading... </h1>
-    //       <LoadingAnimation />
-    //     </div>
-    //   );
-    // }
+    if (this.state.error === true) {
+      return (
+        <div style={this.NotFoundStyle}>
+          <h1 style={this.PStyle}> Hmm...Check your server</h1>
+          <NotFoundAnimation />
+        </div>
+      );
+    }
+    if (this.state.loading === true) {
+      return (
+        <div>
+          <h1 style={this.P2Style}> Loading... </h1>
+          <LoadingAnimation />
+        </div>
+      );
+    }
     console.log( "render videotetails", this.state)
     return (
 
