@@ -31,6 +31,7 @@ class VideoDetail extends React.Component {
       });
 
     document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
+    document.getElementsByTagName("body")[0].style.background="#ffffff";
 
     this.props.setCurrentPage("videoDetail")
   }
