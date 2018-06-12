@@ -46,7 +46,7 @@ class PublicVideo extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row justify-content-center mt-5 mb-53+">
+        <div className="row justify-content-center mt-5 mb-5">
           <div className="col-lg-8 col-md-10 col-sm-12">
             <div className="card">
               <VideoComponent

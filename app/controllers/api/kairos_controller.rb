@@ -28,13 +28,12 @@ class Api::KairosController < ApplicationController
           :headers => @@kairos_headers
         )
         pp "API DATA"
-        pp api_data
         pp "STATUS MESSAGE BEFORE: #{status_message}"
         status_message = api_data["status_message"]
         pp "STATUS MESSAGE AFTER: #{status_message}"
         pp "COMPARE TO ANALYZING #{status_message == "Analyzing"}"
-        pp "COMPARE TO IN PRORESS #{status_message == "In Progress"}"
-        sleep(60)
+        pp "COMPARE TO IN PROGRESS #{status_message == "In Progress"}"
+        sleep(10)
       end
 
       cleaned_data = api_data["frames"].map do |a|

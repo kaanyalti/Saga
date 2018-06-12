@@ -5,8 +5,6 @@ class DonutChart extends Component {
     super(props);
   }
 
-  GraphStyle = {};
-
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
     console.log("Props in component did update", this.props);
@@ -44,7 +42,7 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-
+    debugger;
     data.map(averageReaction => {
       averageReaction.average_reactions.impressions.map(averageEmotions => {
         for (const emotion in averageEmotions.average_emotion) {
@@ -109,7 +107,9 @@ class DonutChart extends Component {
     console.log("error test: ", e)
   }
   render() {
-    return <div id="chartContainer-donut" />;
+    return (
+      <div id="chartContainer-donut" style={{widht: "100%"}}/>
+    )
   }
 }
 
