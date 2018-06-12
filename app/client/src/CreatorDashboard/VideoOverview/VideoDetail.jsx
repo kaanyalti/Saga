@@ -31,7 +31,10 @@ class VideoDetail extends React.Component {
       });
 
     document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
-    document.getElementsByTagName("body")[0].style.background="#ffffff";
+
+    // setTimeout(()=> {
+    //   document.getElementsByTagName("body")[0].classList.add('turn-white');
+    // }, 1000)
 
     this.props.setCurrentPage("videoDetail")
   }
