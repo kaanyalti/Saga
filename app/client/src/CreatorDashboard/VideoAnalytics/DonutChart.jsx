@@ -5,7 +5,7 @@ class DonutChart extends Component {
     super(props);
   }
 
-  GraphStyle = {};
+  // GraphStyle = {};
 
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
@@ -107,7 +107,7 @@ class DonutChart extends Component {
   }
 
   render() {
-    return <div id="chartContainer-donut" />;
+    return <div id="chartContainer-donut" style={{width: "100%"}}/>;
   }
 }
 
