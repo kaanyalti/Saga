@@ -82,7 +82,7 @@ class VideoDetail extends React.Component {
               <div className="card-block">
                 <div className="row mt-3">
                   <div className="col">
-                    <div style={{"min-height" : "400px"}}>
+                    <div className="mb-2" style={{"min-height" : "400px"}}>
                       <DonutChart
                         data={this.state.data}
                         videoData={this.props.videoData}
@@ -90,7 +90,7 @@ class VideoDetail extends React.Component {
                       />
                     </div>
                     <div className="col" >
-                      <div style={{"min-height" : "400px"}}>
+                      <div  className="mb-2"  style={{ widht:"100%", "min-height" : "400px"}}>
                         <SplineChart data={this.state} />
                       </div>
                     </div>
