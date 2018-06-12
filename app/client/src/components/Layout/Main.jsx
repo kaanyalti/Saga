@@ -26,9 +26,12 @@ class Main extends React.Component {
   mainStyle = {
     width: "100%",
     zIndex: "90"
-  }
+  };
 
   render() {
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    console.log(this.props);
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     // document.getElementsByTagName("body")[0].setAttribute("style", "background: #d7ecef")
     return (
       <main id="content" style={this.mainStyle}>
@@ -46,6 +49,7 @@ class Main extends React.Component {
               <AdminRoute
                 loggedIn={this.props.loggedIn}
                 videoData={this.props.videoData}
+                setCurrentPage={this.props.setCurrentPage}
               />
             )}
           />

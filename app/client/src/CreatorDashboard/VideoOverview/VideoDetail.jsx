@@ -27,8 +27,10 @@ class VideoDetail extends React.Component {
       })
       .catch(err => {
         this.setState({ loading: false, error: true });
-         console.log("error: ", err);
-        })
+        console.log("error: ", err);
+      });
+
+      this.props.setCurrentPage("videoDetail")
   }
 
   NotFoundStyle = {
@@ -44,7 +46,7 @@ class VideoDetail extends React.Component {
     fontFamily: "Lato",
     textAlign: "center",
     position: "absolute",
-    top: "0px",
+    top: "0px"
   };
 
   P2Style = {
@@ -55,8 +57,7 @@ class VideoDetail extends React.Component {
     position: "absolute",
     top: "20%",
     marginBottom: "0"
-
-  }
+  };
   render() {
     if (this.state.error === true) {
       return (

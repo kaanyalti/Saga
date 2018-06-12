@@ -10,14 +10,17 @@ class NotFoundAnimation extends React.Component {
       loop: true,
       autoplay: true,
       animationData: NotFoundEmoji
-      
     });
   }
-  AnimationStyle ={
+  AnimationStyle = {
     paddingTop: "40%"
-  }
+  };
   render() {
-    return <div id="not-found" style={this.AnimationStyle}> </div>;
+    return (
+      <div id="not-found" style={this.AnimationStyle}>
+        {" "}
+      </div>
+    );
   }
 }
 

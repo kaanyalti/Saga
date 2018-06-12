@@ -59,23 +59,30 @@ class VideoList extends React.Component {
                   />
                   <CardBody>
                     <CardSubtitle />
-                      <div style={this.spreadEvenly}>
-                        <div className="stats">
-                          <i title="Amount of views" className="fas fa-eye" />{" "}
-                          <span>{statistics.viewCount}</span>
-                        </div>
-                        <div className="stats">
-                          <i title="Amount of likes" className="fas fa-heart" /> <span>{statistics.likeCount}</span>
-                        </div>
-                        <div className="stats">
-                          <i title="Amount of comments" className="fas fa-comments" />{" "}
-                          <span>{statistics.commentCount}</span>
-                        </div>
-                        <div className="stats">
-                          <i title="Amount of dislikes" class="fas fa-thumbs-down" />{" "}
-                          <span>{statistics.dislikeCount}</span>
-                        </div>
+                    <div style={this.spreadEvenly}>
+                      <div className="stats">
+                        <i title="Amount of views" className="fas fa-eye" />{" "}
+                        <span>{statistics.viewCount}</span>
                       </div>
+                      <div className="stats">
+                        <i title="Amount of likes" className="fas fa-heart" />{" "}
+                        <span>{statistics.likeCount}</span>
+                      </div>
+                      <div className="stats">
+                        <i
+                          title="Amount of comments"
+                          className="fas fa-comments"
+                        />{" "}
+                        <span>{statistics.commentCount}</span>
+                      </div>
+                      <div className="stats">
+                        <i
+                          title="Amount of dislikes"
+                          class="fas fa-thumbs-down"
+                        />{" "}
+                        <span>{statistics.dislikeCount}</span>
+                      </div>
+                    </div>
                   </CardBody>
                   <CardFooter className="text-muted" style={this.spreadEvenly}>
                     <div>
@@ -87,13 +94,13 @@ class VideoList extends React.Component {
                       </span>
                     </div>
                     <Link to={`/admin/videos/${video.id}`}>
-                    <Button color="basic">
+                      <Button color="basic">
                         <i
                           title="View data visualisations"
                           className="fas fa-ellipsis-h"
                           style={{ color: "black" }}
                         />
-                    </Button>
+                      </Button>
                     </Link>
                   </CardFooter>
                 </Card>
