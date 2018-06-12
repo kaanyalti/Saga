@@ -74,15 +74,8 @@ class SplineChart extends Component {
   ];
 
 
-  // GraphStyle = {
-  //   width: "100%",
-  //   margin: "auto",
-  //   marginTop: "15%"
-  // };
-
-
   componentDidUpdate() {
-    const chart = new window.CanvasJS.Chart("chartContainer", {
+    const chart2 = new window.CanvasJS.Chart("chartContainer", {
       theme: "light3",
       animationEnabled: true,
       animationDuration: 2000,
@@ -108,7 +101,7 @@ class SplineChart extends Component {
       data: this.UpdateState
     });
     this.PopulateGraph();
-    chart.render();
+    chart2.render();
   }
 
   PopulateGraph() {
