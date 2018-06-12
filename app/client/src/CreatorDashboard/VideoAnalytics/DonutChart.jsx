@@ -43,6 +43,7 @@ class DonutChart extends Component {
       surprise: []
     };
 
+    if(data){
     data.map(averageReaction => {
       averageReaction.average_reactions.impressions.map(averageEmotions => {
         for (const emotion in averageEmotions.average_emotion) {
@@ -52,6 +53,7 @@ class DonutChart extends Component {
         }
       });
     });
+    }
     return averageReactions;
   }
 
@@ -103,9 +105,7 @@ class DonutChart extends Component {
       0
     );
   }
-  componentDidCatch(e){
-    console.log("error test: ", e)
-  }
+
   render() {
     return (
       <div id="chartContainer-donut"/>
