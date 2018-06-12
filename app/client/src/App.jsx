@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-// import KairosTrigger from "./components/kairosTrigger";
-// import ZiggeoRecorder from "./components/ziggeoRecorder";
-// import GoogleSignIn from "./components/googleSignIn";
-// import GoogleSignOut from "./components/googleSignOut";
-// import EmotionsChart from "./components/analytics";
-
-import { Link, Route, Switch } from "react-router-dom";
-import Navbar from "./components/Layout/Navbar.jsx";
+import Navigation from "./components/Layout/Navigation.jsx";
+import Sidebar from "./components/Layout/Sidebar.jsx";
 import Main from "./components/Layout/Main.jsx";
+// import Moment from 'react-moment';
 
 class App extends Component {
   constructor(props) {
@@ -36,12 +31,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar loggedIn={this.state.loggedIn} />
-        <Main
-          loggedIn={this.state.loggedIn}
-          videoData={this.state.videoData}
-          handleLogin={this.handleLogin}
-        />
+        <Navigation loggedIn={this.state.loggedIn} />
+        <div className="wrapper">
+          <Sidebar />
+          <Main
+            loggedIn={this.state.loggedIn}
+            videoData={this.state.videoData}
+            handleLogin={this.handleLogin}
+          />
+        </div>
       </div>
     );
   }

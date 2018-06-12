@@ -20,16 +20,19 @@ class Api::KairosController < ApplicationController
       puts "RETRIEVE DATA"
       status_message = "Analyzing"
 
-      while status_message == "Analyzing" do
+      while status_message == "Analyzing" || status_message == "In Progress" do
+        puts
         puts "INSIDE THE LOOP"
         api_data = HTTParty.get(
           "http://api.kairos.com/v2/media/#{media_id}",
           :headers => @@kairos_headers
         )
+        pp "API DATA"
         pp "STATUS MESSAGE BEFORE: #{status_message}"
         status_message = api_data["status_message"]
         pp "STATUS MESSAGE AFTER: #{status_message}"
         pp "COMPARE TO ANALYZING #{status_message == "Analyzing"}"
+        pp "COMPARE TO IN PROGRESS #{status_message == "In Progress"}"
         sleep(10)
       end
 

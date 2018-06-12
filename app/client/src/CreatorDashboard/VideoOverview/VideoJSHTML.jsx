@@ -1,6 +1,6 @@
 import React from "react";
 
-class VideoComponent extends React.Component {
+class HybridVideoComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +18,7 @@ class VideoComponent extends React.Component {
   }
 
   onPlayerStateChange(event) {
+    console.log("state change");
     switch (event.data) {
       case window.YT.PlayerState.ENDED:
         this.props.handleChangedVideoState("ended");
@@ -54,8 +55,10 @@ class VideoComponent extends React.Component {
       });
     }
     this.loadYT.then(YT => {
-      this.player = new YT.Player(this.anchor, {
-        videoId: this.props.youtubeVideoID,
+      this.player = new YT.Player("public-video", {
+        // height: this.props.height || "360",
+        // width: this.props.width || "640",
+        // videoId: this.props.youtubeVideoID,
         events: {
           onReady: this.onPlayerReady,
           onStateChange: this.onPlayerStateChange
@@ -66,15 +69,15 @@ class VideoComponent extends React.Component {
 
   render() {
     return (
-      <div className="embed-responsive embed-responsive-16by9">
-        <div
-          ref={r => {
-            this.anchor = r;
-          }}
-        />
-      </div>
+      <iframe
+        id="public-video"
+        width="640"
+        height="360"
+        src={`https://www.youtube.com/embed/${this.props.youtubeVideoID}`}
+        frameBorder="0"
+      />
     );
   }
 }
 
-export default VideoComponent;
+export default HybridVideoComponent;

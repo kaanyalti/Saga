@@ -2,50 +2,46 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import VideoList from "./VideoOverview/VideoList";
 import VideoDetail from "./VideoOverview/VideoDetail";
-import Sidebar from "../components/Layout/Sidebar.jsx";
-import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+
+// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 // The VideoList component matches one of two different routes
 // depending on the full pathname
 const VideosAll = () => <h1>VideosAll</h1>;
+class AdminRoute extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-const AdminRoute = props => {
-  const StickLeft = {
-    marginLeft: "0px"
-  };
 
-  const test = {
-    height: "100vh"
-  };
-
-  return (
-    <Switch>
-      <Grid style={this.StickLeft}>
-        <Row>
-          <Col style={this.test}>
-            <Sidebar />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Route
-              exact
-              path="/admin"
-              render={() =>
-                props.loggedIn ? (
-                  <VideoList videoData={props.videoData} />
-                ) : (
-                  <Redirect to="/login" />
-                )
-              }
-            />
-            <Route exact path="/admin/videos" component={VideosAll} />
-            <Route path="/admin/videos/:video_id" component={VideoDetail} />
-          </Col>
-        </Row>
-      </Grid>
-    </Switch>
-  );
-};
+  render() {
+   console.log("state after: ", this.state)
+      return(
+      <div>
+        <Switch>
+          <Route
+            exact
+            path="/admin"
+            render={() =>
+              this.props.loggedIn ? (
+                <VideoList videoData={this.props.videoData} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route exact path="/admin/videos" component={VideosAll} />
+          <Route
+            path="/admin/videos/:video_id"
+            // Pass props to render to receive :video_id prop
+            render={props => (
+              <VideoDetail videoData={this.props.videoData} {...props}  />
+            )}
+          />
+        </Switch>
+      </div>
+    );
+  }
+}
 
 export default AdminRoute;

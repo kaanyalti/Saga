@@ -3,9 +3,8 @@ import axios from "axios";
 import * as Kairos from "../../modules/kairosMethods";
 import { apiKeys } from "../../env.js";
 
-
-class ZiggeoJSRecorder extends React.Component{
-  constructor(props){
+class ZiggeoJSRecorder extends React.Component {
+  constructor(props) {
     super(props);
     this.recorderRef = React.createRef();
     this.recorder = null;
@@ -16,7 +15,7 @@ class ZiggeoJSRecorder extends React.Component{
   }
 
   componentDidUpdate() {
-    switch(this.props.youtubeVideoState){
+    switch (this.props.youtubeVideoState) {
       case "playing":
         console.log("Should Start Recording Now");
         this.recorder.record();
@@ -34,14 +33,14 @@ class ZiggeoJSRecorder extends React.Component{
     }
   }
 
-
   componentDidMount() {
     const recorderNode = this.recorderRef.current;
     this.recorder = new window.ZiggeoApi.V2.Recorder({
       element: recorderNode,
       attrs: {
-        width: this.props.width || 320,
-        height: this.props.height || 240,
+        responsive: true,
+        // width: this.props.width || 320,
+        // height: this.props.height || 240,
         theme: this.props.theme || "modern",
         themecolor: this.props.temecolor || "red",
         countdown: 0,
@@ -51,29 +50,25 @@ class ZiggeoJSRecorder extends React.Component{
       }
     });
     this.recorder.activate();
-    this.embedding.embed_events.on("processed", (data) => {
-      console.log("processed")
+    this.embedding.embed_events.on("processed", data => {
+      console.log("processed");
       const cacheData = data.application.videos.__cache;
       const cacheKey = Object.keys(cacheData)[0];
       const videoToken = cacheKey;
-      if(this.processedCount === 0){
+      if (this.processedCount === 0) {
         Kairos.uploadKairos(videoToken, this.props.youtubeVideoID);
-        this.processedCount ++;
+        this.processedCount++;
       }
     });
-  };
-
-
-
-
-  render() {
-    return(
-      <div ref={this.recorderRef}></div>
-    )
   }
 
+  componentWillUnmount(){
+    this.recorder.destroy();
+  }
 
+  render() {
+    return <div ref={this.recorderRef} />;
+  }
 }
-
 
 export default ZiggeoJSRecorder;

@@ -1,70 +1,87 @@
 import React, { Component } from "react";
-import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "reactstrap";
 
 class Home extends Component {
-  LeftSideStyle = {
-    height: "100%",
-    background: "#D7ECEF",
-    borderRadius: "0",
-    position: "fixed",
-    width: "50%",
-    left: "0px",
-    top: "0px",
-    zIndex: "0"
-  };
+  constructor (props) {
+    super(props)
+    this.state = {
 
-  TitleStyle = {
-    fontSize: "3em"
-  };
+    }
+  }
+  // LeftSideStyle = {
+  //   height: "100%",
+  //   background:
+  //     "linear-gradient(90deg, rgba(215,236,239,1) 50%, rgba(255,255,255,1) 50%)",
+  //   borderRadius: "0",
+  //   position: "fixed",
+  //   width: "100%",
+  //   left: "0px",
+  //   top: "0px",
+  //   zIndex: "0"
+  // };
 
-  VideoStyle = {
-    width: "75%",
-    backgroundColor: "rgb(220, 220, 220)",
-    height: "60%",
-    zIndex: "999",
-    position: "fixed",
-    top: "20%",
-    borderRadius: "0px",
-    marginBottom: "0",
-    padding: "0"
-  };
+  // TitleStyle = {
+  //   fontSize: "3em"
+  // };
 
-  DescriptionStyle = {
+  // VideoStyle = {
+  //   width: "75%",
+  //   backgroundColor: "rgb(220, 220, 220)",
+  //   height: "60%",
+  //   zIndex: "999",
+  //   position: "fixed",
+  //   top: "20%",
+  //   borderRadius: "0px",
+  //   marginBottom: "0",
+  //   padding: "0"
+  // };
+
+  // DescriptionStyle = {
+  //   backgroundColor: "#fcfcfc",
+  //   color: "black",
+  //   height: "100%",
+  //   width: "35%",
+  //   right: "0",
+  //   textAlign: "center",
+  //   position: "absolute",
+  //   borderRadius: "0"
+  // };
+  containerStyle = {
     backgroundColor: "#fcfcfc",
-    color: "black",
-    height: "100%",
-    width: "42.6%",
-    textAlign: "center",
-    top: "35%",
-    float: "right",
-    position: "relative",
-    borderRadius: "0"
+    marginTop: "5vh",
+    animation: "3s !important"
+  };
+
+  splashImg = {
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1465244085115-0c89caa46915?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1bc64c67c45a8dd5d5954183bbc1fd21&auto=format&fit=crop&w=1050&q=80)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "50vh",
+  };
+
+  splashDescription = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around"
   };
 
   render() {
     return (
-      <Grid>
-        <Row className="show-grid">
-          <Col xs={12} md={8}>
-            <Grid style={this.VideoStyle}>
-              <Row className="show-grid">
-                <Col xs={12} md={12}>
-                  <Jumbotron style={this.DescriptionStyle}>
-                    <h1 style={this.TitleStyle}>Welcome to Sága.</h1>
-                    We don't know what to say yet but we will by wednesday
-                    night:)
-                  </Jumbotron>
-                </Col>
-              </Row>
-            </Grid>
+      <Container id="mainpage" style={this.containerStyle}>
+        <Row >
+          <Col md="8" style={this.splashImg} />
+          <Col md="4" style={this.splashDescription}>
+            <h1>Video analytics made easy.</h1>
+            <p >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
+              molestiae nostrum perspiciatis consequatur maxime nesciunt eaque!
+              Repudiandae a voluptates, nam sed dolorum, dicta officiis!
+              Incidunt explicabo eum quam placeat culpa.
+            </p>
           </Col>
         </Row>
-        <Row className="show-grid">
-          <Col xs={6} md={6}>
-            <Jumbotron style={this.LeftSideStyle} />
-          </Col>
-        </Row>
-      </Grid>
+      </Container>
     );
   }
 }

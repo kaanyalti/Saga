@@ -1,7 +1,7 @@
 // React and React Router
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
+// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 // Navbar components
 import Home from "../Public/Home";
@@ -10,6 +10,7 @@ import GoogleSignIn from "../Authentication/GoogleSignIn";
 
 // Public videos
 import PublicVideo from "../Public/PublicVideo";
+import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent.jsx";
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -17,20 +18,20 @@ import PublicVideo from "../Public/PublicVideo";
 // with /roster or /schedule. The / route will only match
 // when the pathname is exactly the string "/"
 
-const publicVideo = () => <h1>Video viewable to public</h1>;
-
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    const MainStyle = {
-      backgroundColor: "white"
-    };
+  }
+
+  mainStyle = {
+    width: "100%",
+    zIndex: "90"
   }
 
   render() {
-    // console.log(this.props);
+    // document.getElementsByTagName("body")[0].setAttribute("style", "background: #d7ecef")
     return (
-      <main style={this.MainStyle}>
+      <main id="content" style={this.mainStyle}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -48,8 +49,7 @@ class Main extends React.Component {
               />
             )}
           />
-
-          {/* TODO: ADD COMPONENTS FOR PUBLIC VIDEOS */}
+          <Route path="/videos/:video_id" component={VideoComponent} />
           <Route path="/v/:video_id" component={PublicVideo} />
         </Switch>
       </main>
