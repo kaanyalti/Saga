@@ -6,21 +6,20 @@ class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
       data: [], //every object below is a single entry for its emotion
       axisX: {
         title: "Time (seconds)",
         minimum: "0"
       },
-      
+
       axisY: {
         title: "Score",
         minimum: "0"
       },
-      
+
     };
   }
-
+  
   UpdateState = [
     {
       type: "line",
@@ -73,19 +72,16 @@ class SplineChart extends Component {
       dataPoints: []
     }
   ];
-  GraphStyle = {
-    width: "100%",
-    margin: "auto",
-    marginTop: "15%"
-  }
-  componentWillUpdate(){
-    this.setState({loading: false})
-  }
-  componentDidMount(){
-  }
+
+
+  // GraphStyle = {
+  //   width: "100%",
+  //   margin: "auto",
+  //   marginTop: "15%"
+  // };
+
 
   componentDidUpdate() {
-    // console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme: "light3",
       animationEnabled: true,
@@ -101,8 +97,6 @@ class SplineChart extends Component {
       legend: {
         cursor: "pointer",
         itemclick: function (e) {
-            // console.log("legend click: " + e.dataPointIndex);
-            // console.log(e);
             if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
                 e.dataSeries.visible = false;
             } else {
@@ -145,18 +139,9 @@ class SplineChart extends Component {
     });
   }
 
-  
+
   render() {
-    // console.log("Update State: ", this.UpdateState);
-    if (this.state.loading === true){
-      return ( 
-        <div id="loading-charts">
-      <h1> Updating Charts </h1>
-      < LoadingAnimation />
-      </div>
-      )
-    }
-    return <div id="chartContainer" />;
+    return <div id="chartContainer" style={{width: "100%"}}/>;
   }
 }
 

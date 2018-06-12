@@ -5,13 +5,11 @@ class DonutChart extends Component {
     super(props);
   }
 
-  GraphStyle = {};
-
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
-    console.log("Props in component did update", this.props);
     // Uses youtubeVideoID to find title in videoData array
     if (this.props.videoData) {
+    console.log("Props in component did update", this.props);
       const title = this.props.videoData.find(
         video => video.id === this.props.youtubeVideoID
       ).title;
@@ -35,7 +33,6 @@ class DonutChart extends Component {
 
   getEmotionScores() {
     const { data } = this.props;
-
     const averageReactions = {
       anger: [],
       sadness: [],
@@ -44,10 +41,9 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-
     data.map(averageReaction => {
       averageReaction.average_reactions.impressions.map(averageEmotions => {
-        for (const emotion in averageEmotions.average_emotion) {
+        for (let emotion in averageEmotions.average_emotion) {
           averageReactions[emotion].push(
             averageEmotions.average_emotion[emotion]
           );
@@ -60,12 +56,11 @@ class DonutChart extends Component {
   generateDataPoints() {
     const averageReactions = this.getEmotionScores();
     const total = this.getTotal(averageReactions);
-
     const dataPoints = [];
+
     for (const emotion in averageReactions) {
       const averageScore = this.getSum(averageReactions[emotion]);
       const percentage = averageScore / total * 100;
-
       const twoSigFigs = this.twoSigFigs(percentage);
 
       if (averageScore > 0) {
@@ -81,7 +76,7 @@ class DonutChart extends Component {
   getTotal(averageReactions) {
     const allReactionScores = [];
 
-    for (const reaction in averageReactions) {
+    for (let reaction in averageReactions) {
       allReactionScores.push(...averageReactions[reaction]);
     }
     return allReactionScores.reduce(
@@ -109,7 +104,9 @@ class DonutChart extends Component {
     console.log("error test: ", e)
   }
   render() {
-    return <div id="chartContainer-donut" />;
+    return (
+      <div id="chartContainer-donut" style={{width: "100%"}}/>
+    )
   }
 }
 

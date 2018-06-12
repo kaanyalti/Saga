@@ -22,6 +22,7 @@
     "react-moment": "^0.7.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-timeout": "^1.1.1",
     "react-ziggeo": "^2.4.0",
     "reactstrap": "^6.1.0"
   },

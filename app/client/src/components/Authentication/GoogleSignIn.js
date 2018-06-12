@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
 import lottie from "lottie-web";
 import { Container, Row, Col } from "reactstrap";
-import GoogleButton from "../../btn_google_signin_light_normal_web.png";
+// import GoogleButton from "../../btn_google_signin_light_normal_web.png";
 
 class googleSignIn extends React.Component {
   constructor(props) {
@@ -32,7 +32,6 @@ class googleSignIn extends React.Component {
       autoplay: true,
       animationData: SigninStyle.FingerPrint
     });
-    lottie.setSpeed(2);
   }
 
   responseGoogle(response) {
@@ -154,12 +153,11 @@ class googleSignIn extends React.Component {
     justifyContent: "center",
     alignItems: "center"
   };
-
   loginButtonStyle = {
     border: "none",
     width: "191px",
     height: "46px",
-    backgroundImage: `url(${GoogleButton})`,
+    // backgroundImage: `url(${GoogleButton})`,
     backgroundPosition: "center"
   };
 
