@@ -17,22 +17,49 @@ class VideoDetail extends React.Component {
       error: false
     };
   }
+
+
   componentDidMount() {
-    const videoID = this.props.match.params.video_id;
-    axios
-      .get(`/api/videos/${videoID}/reactions`)
+    // const videoID = this.props.match.params.video_id;
+    const dataPromise = new Promise((resolve, reject ) =>{
+      const videoID = this.props.match.params.video_id;
+      return (axios.get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        console.log("Data from VideoDetails axios call :", res.data.length);
-        if (res.data.length > 0) this.setState({ loading: false });
+        resolve(res)
       })
       .catch(err => {
-        this.setState({ loading: false, error: true });
-         console.log("error: ", err);
-        })
-
+        console.log("error: ", err);
+        reject(err)
+      })
+    )});
+    //return
+    dataPromise.then(res => {
+      
+      console.log("Data from VideoDetails axios call :");
+      if (res.data) this.setState({ loading: false, data: res });
+      console.log("state ", this.state);
+    })
+    .catch(err => {
+      console.log("dataPromise err: ", err);
+      this.setState({ loading: false, error: true });
+      
+    })
+    // axios
+    //   .get(`/api/videos/${videoID}/reactions`)
+    //   .then(res => {
+    //     console.log("Data from VideoDetails axios call :", res.data);
+    //     if (res.data) this.setState({ loading: false });
+    //     console.log("state ", this.state);
+    
+    //   })
+    //   .catch(err => {
+    //     this.setState({ loading: false, error: true });
+    //      console.log("error: ", err);
+    //     })
+    
     
   }
-
+  
   NotFoundStyle = {
     width: "20%",
     position: "fixed",
@@ -41,31 +68,15 @@ class VideoDetail extends React.Component {
     fontSize: "2em",
     color: "grey"
   };
-
-  // ContainerStyle = {
-  //   position: "absolute",
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   width: "100%",
-  //   left: "40%",
-  //   top: "15%",
-  //   flexDirection: "column"
-  // };
-
-  // VideoStyle = {
-  //   width: "50%",
-  //   height: "10%",
-  //   padding: "10px",
-  //   background: "#e0e0e0"
-  // };
-
+  
+  
   PStyle = {
     fontFamily: "Lato",
     textAlign: "center",
     position: "absolute",
     top: "0px",
   };
-
+  
   P2Style = {
     fontFamily: "Lato",
     color: "grey",
@@ -74,57 +85,57 @@ class VideoDetail extends React.Component {
     position: "absolute",
     top: "20%",
     marginBottom: "0"
-
+    
   }
   toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
-
+  
   render() {
-    console.log("state ", this.state);
-    while (this.state.error === true) {
-      return (
-        <div style={this.NotFoundStyle}>
-          <h1 style={this.PStyle}> Hmm...Check your server</h1>
-          <NotFoundAnimation />
-        </div>
-      );
-    }
-    while (this.state.loading === true) {
-      return (
-        <div>
-          <h1 style={this.P2Style}> Loading... </h1>
-          <LoadingAnimation />
-        </div>
-      );
-    }
+    // if (this.state.error === true) {
+    //   return (
+    //     <div style={this.NotFoundStyle}>
+    //       <h1 style={this.PStyle}> Hmm...Check your server</h1>
+    //       <NotFoundAnimation />
+    //     </div>
+    //   );
+    // }
+    // if (this.state.loading === true) {
+    //   return (
+    //     <div>
+    //       <h1 style={this.P2Style}> Loading... </h1>
+    //       <LoadingAnimation />
+    //     </div>
+    //   );
+    // } 
+    // if(this.state.loading === false && this.state.error === false)
     return (
       <div className="video-container" style={this.ContainerStyle}>
-        <Sidebar />
-        <iframe
-          src={`https://www.youtube.com/embed/${
-            this.props.match.params.video_id
-          }`}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
-        <DonutChart
-          data={this.state.data}
-          videoData={this.props.videoData}
-          youtubeVideoID={this.props.match.params.video_id}
-        />
-        <SplineChart data={this.state} />
-        <button
-          type="button"
-          class="btn btn-info navbar-btn"
-          onClick={this.toggleSidebar.bind(this)}
-        >
-          <span>Toggle Sidebar</span>
-        </button>
-      </div>
-    );
-  }
+      <Sidebar />
+      <iframe
+      src={`https://www.youtube.com/embed/${
+      this.props.match.params.video_id
+    }`}
+    frameBorder="0"
+    allow="autoplay; encrypted-media"
+    allowFullScreen
+    />
+    <DonutChart
+    data={this.state.data}
+    videoData={this.props.videoData}
+    youtubeVideoID={this.props.match.params.video_id}
+    />
+    <SplineChart data={this.state} />
+    <button
+    type="button"
+    class="btn btn-info navbar-btn"
+    onClick={this.toggleSidebar.bind(this)}
+    >
+    <span>Toggle Sidebar</span>
+    </button>
+    </div>
+  );
+}
 }
 
 export default VideoDetail;

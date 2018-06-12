@@ -120,13 +120,13 @@ class SplineChart extends Component {
   }
 
   PopulateGraph() {
-    console.log("props passed to graph ", this.props.data); //All reactions videos array
-    if(this.props.data.data)
-    this.props.data.data.forEach(recording => {
+    // console.log("props passed to graph ", this.props.data); //All reactions videos array
+    if(this.props.data.data && this.props.data.data.data)
+    this.props.data.data.data.forEach(recording => {
       recording.reactions.forEach(array => {
         array.forEach(object => {
           object.people.forEach(nested => {
-            console.log("neste: ", nested)
+            // console.log("neste: ", nested)
           var time = object.time;
             for (let emotion in nested.emotions) {
               for (let entry of this.UpdateState) {

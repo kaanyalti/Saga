@@ -35,7 +35,6 @@ class DonutChart extends Component {
 
   getEmotionScores() {
     const { data } = this.props;
-
     const averageReactions = {
       anger: [],
       sadness: [],
@@ -44,17 +43,18 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-
-    data.map(averageReaction => {
-      averageReaction.average_reactions.impressions.map(averageEmotions => {
-        for (const emotion in averageEmotions.average_emotion) {
-          averageReactions[emotion].push(
-            averageEmotions.average_emotion[emotion]
-          );
-        }
+      data.data.map(averageReaction => {
+        averageReaction.average_reactions.impressions.map(averageEmotions => {
+          debugger
+          for (let emotion in averageEmotions.average_emotion) {
+            debugger
+            averageReactions[emotion].push(
+              averageEmotions.average_emotion[emotion]
+            );
+          }
+        });
       });
-    });
-    return averageReactions;
+      return averageReactions;
   }
 
   generateDataPoints() {
