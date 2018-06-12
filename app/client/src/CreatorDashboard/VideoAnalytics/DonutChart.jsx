@@ -32,7 +32,7 @@ class DonutChart extends Component {
   }
 
   getEmotionScores() {
-    const { data } = this.props || []
+    const { data } = this.props
 
     const averageReactions = {
       anger: [],
@@ -43,16 +43,17 @@ class DonutChart extends Component {
       surprise: []
     };
 
-
-    data.map(averageReaction => {
-      averageReaction.average_reactions.impressions.map(averageEmotions => {
-        for (const emotion in averageEmotions.average_emotion) {
-          averageReactions[emotion].push(
-            averageEmotions.average_emotion[emotion]
-          );
-        }
+    if(data){
+      data.map(averageReaction => {
+        averageReaction.average_reactions.impressions.map(averageEmotions => {
+          for (const emotion in averageEmotions.average_emotion) {
+            averageReactions[emotion].push(
+              averageEmotions.average_emotion[emotion]
+            );
+          }
+        });
       });
-    });
+    }
     return averageReactions;
   }
 
