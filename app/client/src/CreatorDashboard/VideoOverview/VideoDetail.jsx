@@ -75,21 +75,44 @@ class VideoDetail extends React.Component {
       );
     }
     return (
-      <div className="video-container" style={this.ContainerStyle}>
-        <iframe
-          src={`https://www.youtube.com/embed/${
-            this.props.match.params.video_id
-          }`}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
-        <DonutChart
-          data={this.state.data}
-          videoData={this.props.videoData}
-          youtubeVideoID={this.props.match.params.video_id}
-        />
-        <SplineChart data={this.state} />
+
+      <div className="container-fluid ">
+        <div className="row justify-content-center">
+          <div className="col-lg-8 col-md-10 col-sm-12">
+            <div className="card bg-transparent" style={{"border-width": "0px"}}>
+              <div className="embed-responsive embed-responsive-16by9">
+                <iframe
+                  className="embed-responsive-item"
+                  src={`https://www.youtube.com/embed/${
+                    this.props.match.params.video_id
+                  }`}
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              </div>
+              <div className="card-block">
+                <div className="row mt-3">
+                  <div className="col">
+                    <div style={{"min-height" : "400px"}}>
+                      <DonutChart
+                        data={this.state.data}
+                        videoData={this.props.videoData}
+                        youtubeVideoID={this.props.match.params.video_id}
+                      />
+                    </div>
+                    <div className="col" >
+                      <div style={{"min-height" : "400px"}}>
+                        <SplineChart data={this.state} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }

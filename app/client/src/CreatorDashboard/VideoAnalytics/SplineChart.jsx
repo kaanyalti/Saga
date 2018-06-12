@@ -73,16 +73,20 @@ class SplineChart extends Component {
       dataPoints: []
     }
   ];
-  GraphStyle = {
-    width: "100%",
-    margin: "auto",
-    marginTop: "15%"
-  }
+
+
+  // GraphStyle = {
+  //   width: "100%",
+  //   margin: "auto",
+  //   marginTop: "15%"
+  // };
+
   componentWillUpdate(){
     this.setState({loading: false})
   }
   componentDidMount(){
   }
+
 
   componentDidUpdate() {
     // console.log("Props in component did update", this.props);
@@ -147,6 +151,7 @@ class SplineChart extends Component {
 
   
   render() {
+
     // console.log("Update State: ", this.UpdateState);
     if (this.state.loading === true){
       return ( 
@@ -156,7 +161,8 @@ class SplineChart extends Component {
       </div>
       )
     }
-    return <div id="chartContainer" />;
+    return <div id="chartContainer" style={{widht: "100%"}}/>;
+
   }
 }
 
