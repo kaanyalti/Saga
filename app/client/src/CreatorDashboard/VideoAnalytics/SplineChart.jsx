@@ -74,20 +74,6 @@ class SplineChart extends Component {
     }
   ];
 
-
-  // GraphStyle = {
-  //   width: "100%",
-  //   margin: "auto",
-  //   marginTop: "15%"
-  // };
-
-  componentWillUpdate(){
-    this.setState({loading: false})
-  }
-  componentDidMount(){
-  }
-
-
   componentDidUpdate() {
     // console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
@@ -123,7 +109,7 @@ class SplineChart extends Component {
 
   PopulateGraph() {
     console.log("props passed to graph ", this.props.data); //All reactions videos array
-    // if(this.props.data.data)
+    if(this.props.data.data)
     this.props.data.data.forEach(recording => {
       recording.reactions.forEach(array => {
         array.forEach(object => {

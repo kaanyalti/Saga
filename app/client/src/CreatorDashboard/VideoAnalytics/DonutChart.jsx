@@ -43,6 +43,7 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
+    if (data)
     data.map(averageReaction => {
       averageReaction.average_reactions.impressions.map(averageEmotions => {
         for (let emotion in averageEmotions.average_emotion) {
