@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class SideBar extends Component {
+  toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+
   render() {
     return (
       <aside id="sidebar">
@@ -20,13 +24,12 @@ class SideBar extends Component {
           </li>
         </ul>
 
-        <ul class="list-unstyled CTAs">
+        <ul class="list-unstyled CTAs" onClick={this.toggleSidebar.bind(this)}>
           <li>
             <a
-              href="https://bootstrapious.com/p/bootstrap-sidebar"
               class="article"
             >
-              Back to the article
+              Toggle sidebar
             </a>
           </li>
         </ul>

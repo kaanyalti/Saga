@@ -26,6 +26,14 @@ class VideoDetail extends React.Component {
         console.log("Data from VideoDetails :", res.data);
       })
       .catch(err => console.log("error: ", err));
+    
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
+
+    // setTimeout(()=> {
+    //   document.getElementsByTagName("body")[0].classList.add('turn-white');
+    // }, 1000)
+
+    this.props.setCurrentPage("videoDetail")
   }
 
   NotFoundStyle = {
@@ -41,7 +49,7 @@ class VideoDetail extends React.Component {
     fontFamily: "Lato",
     textAlign: "center",
     position: "absolute",
-    top: "0px",
+    top: "0px"
   };
 
   P2Style = {
@@ -52,8 +60,7 @@ class VideoDetail extends React.Component {
     position: "absolute",
     top: "20%",
     marginBottom: "0"
-
-  }
+  };
   render() {
     return (
 

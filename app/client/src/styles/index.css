@@ -12,7 +12,10 @@ body {
     #fff 50%,
     #fff 100%
   );
-  /*background: #fff;*/
+}
+
+.turn-white {
+  background: #fff;
 }
 
 h1 {

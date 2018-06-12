@@ -12,9 +12,11 @@ class App extends Component {
       loggedIn: false,
       userEmail: null,
       firstName: null,
-      videoData: null
+      videoData: null,
+      currentPage: null
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.setCurrentPage = this.setCurrentPage.bind(this);
   }
 
   handleLogin(data) {
@@ -28,13 +30,18 @@ class App extends Component {
     });
   }
 
+  setCurrentPage(page) {
+    this.setState({ currentPage: page });
+  }
+
   render() {
     return (
       <div>
         <Navigation loggedIn={this.state.loggedIn} />
         <div className="wrapper">
-          <Sidebar />
+          {this.state.currentPage === "videoDetail" ? <Sidebar /> : <div></div>}
           <Main
+            setCurrentPage={this.setCurrentPage}
             loggedIn={this.state.loggedIn}
             videoData={this.state.videoData}
             handleLogin={this.handleLogin}
