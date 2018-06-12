@@ -28,36 +28,9 @@ class VideoDetail extends React.Component {
         resolve(res)
       })
       .catch(err => {
-        console.log("error: ", err);
-        reject(err)
-      })
-    )});
-    //return
-    dataPromise.then(res => {
-      
-      console.log("Data from VideoDetails axios call :");
-      if (res.data) this.setState({ loading: false, data: res });
-      console.log("state ", this.state);
-    })
-    .catch(err => {
-      console.log("dataPromise err: ", err);
-      this.setState({ loading: false, error: true });
-      
-    })
-    // axios
-    //   .get(`/api/videos/${videoID}/reactions`)
-    //   .then(res => {
-    //     console.log("Data from VideoDetails axios call :", res.data);
-    //     if (res.data) this.setState({ loading: false });
-    //     console.log("state ", this.state);
-    
-    //   })
-    //   .catch(err => {
-    //     this.setState({ loading: false, error: true });
-    //      console.log("error: ", err);
-    //     })
-    
-    
+        this.setState({ loading: false, error: true });
+         console.log("error: ", err);
+        })
   }
   
   NotFoundStyle = {
@@ -68,8 +41,6 @@ class VideoDetail extends React.Component {
     fontSize: "2em",
     color: "grey"
   };
-  
-  
   PStyle = {
     fontFamily: "Lato",
     textAlign: "center",
@@ -87,55 +58,42 @@ class VideoDetail extends React.Component {
     marginBottom: "0"
     
   }
-  toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-  
   render() {
-    // if (this.state.error === true) {
-    //   return (
-    //     <div style={this.NotFoundStyle}>
-    //       <h1 style={this.PStyle}> Hmm...Check your server</h1>
-    //       <NotFoundAnimation />
-    //     </div>
-    //   );
-    // }
-    // if (this.state.loading === true) {
-    //   return (
-    //     <div>
-    //       <h1 style={this.P2Style}> Loading... </h1>
-    //       <LoadingAnimation />
-    //     </div>
-    //   );
-    // } 
-    // if(this.state.loading === false && this.state.error === false)
+    if (this.state.error === true) {
+      return (
+        <div style={this.NotFoundStyle}>
+          <h1 style={this.PStyle}> Hmm...Check your server</h1>
+          <NotFoundAnimation />
+        </div>
+      );
+    }
+    if (this.state.loading === true) {
+      return (
+        <div>
+          <h1 style={this.P2Style}> Loading... </h1>
+          <LoadingAnimation />
+        </div>
+      );
+    }
     return (
       <div className="video-container" style={this.ContainerStyle}>
-      <Sidebar />
-      <iframe
-      src={`https://www.youtube.com/embed/${
-      this.props.match.params.video_id
-    }`}
-    frameBorder="0"
-    allow="autoplay; encrypted-media"
-    allowFullScreen
-    />
-    <DonutChart
-    data={this.state.data}
-    videoData={this.props.videoData}
-    youtubeVideoID={this.props.match.params.video_id}
-    />
-    <SplineChart data={this.state} />
-    <button
-    type="button"
-    class="btn btn-info navbar-btn"
-    onClick={this.toggleSidebar.bind(this)}
-    >
-    <span>Toggle Sidebar</span>
-    </button>
-    </div>
-  );
-}
+        <iframe
+          src={`https://www.youtube.com/embed/${
+            this.props.match.params.video_id
+          }`}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        />
+        <DonutChart
+          data={this.state.data}
+          videoData={this.props.videoData}
+          youtubeVideoID={this.props.match.params.video_id}
+        />
+        <SplineChart data={this.state} />
+      </div>
+    );
+  }
 }
 
 export default VideoDetail;

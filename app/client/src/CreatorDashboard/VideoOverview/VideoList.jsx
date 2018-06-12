@@ -30,13 +30,8 @@ class VideoList extends React.Component {
   };
 
   cardStyle = {
-    marginBottom: "5vh",
-    // border: "none"
-  }
-
-  iframeStyle = {
-
-  }
+    marginBottom: "5vh"
+  };
 
   spreadEvenly = {
     display: "flex",
@@ -56,7 +51,12 @@ class VideoList extends React.Component {
               <Col md={{ size: 4 }} key={id}>
                 <Card style={this.cardStyle}>
                   <CardHeader>{title}</CardHeader>
-                  <CardImg top width="100%" src={thumbnail.url} alt="Card image cap" />
+                  <CardImg
+                    top
+                    width="100%"
+                    src={thumbnail.url}
+                    alt="Card image cap"
+                  />
                   <CardBody>
                     <CardSubtitle />
                       <div style={this.spreadEvenly}>
@@ -80,15 +80,21 @@ class VideoList extends React.Component {
                   <CardFooter className="text-muted" style={this.spreadEvenly}>
                     <div>
                       <i title="Time since published" class="far fa-clock" />{" "}
-                      <span><Moment fromNow>
-                        {publishedAt.substring(0, publishedAt.length - 1)}
-                      </Moment></span>
+                      <span>
+                        <Moment fromNow>
+                          {publishedAt.substring(0, publishedAt.length - 1)}
+                        </Moment>
+                      </span>
                     </div>
+                    <Link to={`/admin/videos/${video.id}`}>
                     <Button color="basic">
-                      <Link to={`/admin/videos/${video.id}`}>
-                        <i title="View data visualisations" className="fas fa-ellipsis-h" style={{color: "black"}}/>
-                      </Link>
+                        <i
+                          title="View data visualisations"
+                          className="fas fa-ellipsis-h"
+                          style={{ color: "black" }}
+                        />
                     </Button>
+                    </Link>
                   </CardFooter>
                 </Card>
               </Col>

@@ -6,7 +6,7 @@ class SplineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
+      loading: true,
       data: [], //every object below is a single entry for its emotion
       axisX: {
         title: "Time (seconds)",
@@ -79,7 +79,7 @@ class SplineChart extends Component {
     marginTop: "15%"
   }
   componentWillUpdate(){
-    this.setState({loading: true})
+    this.setState({loading: false})
   }
   componentDidMount(){
   }
@@ -113,20 +113,17 @@ class SplineChart extends Component {
       },
       data: this.UpdateState
     });
-    this.setState({loading:false})
     this.PopulateGraph();
     chart.render();
-
   }
 
   PopulateGraph() {
-    // console.log("props passed to graph ", this.props.data); //All reactions videos array
-    if(this.props.data.data && this.props.data.data.data)
-    this.props.data.data.data.forEach(recording => {
+    console.log("props passed to graph ", this.props.data); //All reactions videos array
+    if(this.props.data.data)
+    this.props.data.data.forEach(recording => {
       recording.reactions.forEach(array => {
         array.forEach(object => {
           object.people.forEach(nested => {
-            // console.log("neste: ", nested)
           var time = object.time;
             for (let emotion in nested.emotions) {
               for (let entry of this.UpdateState) {

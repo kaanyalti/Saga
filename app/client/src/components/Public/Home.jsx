@@ -5,7 +5,7 @@ class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      
+
     }
   }
   // LeftSideStyle = {
@@ -68,7 +68,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Container id="mainpage">
+      <Container id="mainpage" style={this.containerStyle}>
         <Row >
           <Col md="8" style={this.splashImg} />
           <Col md="4" style={this.splashDescription}>

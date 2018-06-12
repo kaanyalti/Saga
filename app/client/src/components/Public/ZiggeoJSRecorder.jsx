@@ -62,12 +62,13 @@ class ZiggeoJSRecorder extends React.Component {
     });
   }
 
+  componentWillUnmount(){
+    this.recorder.destroy();
+  }
+
   render() {
-    return (
-      <div ref={this.recorderRef} />
-    )
+    return <div ref={this.recorderRef} />;
   }
 }
-
 
 export default ZiggeoJSRecorder;

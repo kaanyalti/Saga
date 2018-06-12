@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import ZiggeoRecorder from "./ZiggeoRecorder";
 import ZiggeoJSRecorder from "./ZiggeoJSRecorder";
 import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent";
-import {Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col } from "reactstrap";
 // The VideoList component matches one of two different routes
 // depending on the full pathname
 
@@ -30,18 +30,17 @@ class PublicVideo extends React.Component {
   containerStyle = {
     display: "flex",
     flexDirection: "column"
-  }
+  };
 
   rowStyle = {
     display: "flex",
     flexDirection: "column"
-  }
+  };
 
   colCentered = {
-      float: "none",
-      margin: "0 auto"
-  }
-
+    float: "none",
+    margin: "0 auto"
+  };
 
   render() {
     return (
