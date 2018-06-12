@@ -107,7 +107,9 @@ class DonutChart extends Component {
   }
 
   render() {
-    return <div id="chartContainer-donut" style={{width: "100%"}}/>;
+    return (
+      <div id="chartContainer-donut" style={{widht: "100%"}}/>
+    )
   }
 }
 

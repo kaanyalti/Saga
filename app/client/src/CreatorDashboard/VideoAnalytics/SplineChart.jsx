@@ -157,8 +157,10 @@ class SplineChart extends Component {
   // style={this.GraphStyle}
 
   render() {
-    console.log("Update State: ", this.UpdateState);
-    return <div id="chartContainer" style={{width: "100%"}}/>;
+
+    return (
+      <div id="chartContainer" style={{widht: "100%"}}/>
+    )
   }
 }
 

@@ -80,9 +80,9 @@ class VideoDetail extends React.Component {
     // } else {
     return (
       <div className="container-fluid ">
-        <div className="row justify-content-center mt-5 ">
+        <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10 col-sm-12">
-            <div className="card" style={{"background-color": "rgba(0, 0, 0, 0.5)"}}>
+            <div className="card bg-transparent" style={{"border-width": "0px"}}>
               <div className="embed-responsive embed-responsive-16by9">
                 <iframe
                   className="embed-responsive-item"
@@ -96,17 +96,18 @@ class VideoDetail extends React.Component {
               </div>
               <div className="card-block">
                 <div className="row mt-3">
-                  <div className="col-lg  col-sm-12">
+                  <div className="col">
                     <div style={{"min-height" : "400px"}}>
-                    <DonutChart
-                      data={this.state.data}
-                      videoData={this.props.videoData}
-                      youtubeVideoID={this.props.match.params.video_id}
-                    />
-                  </div>
-                  <div className="col-lg  col-sm-12" >
-                    <div style={{"min-height" : "400px"}}>
-                    <SplineChart data={this.state} />
+                      <DonutChart
+                        data={this.state.data}
+                        videoData={this.props.videoData}
+                        youtubeVideoID={this.props.match.params.video_id}
+                      />
+                    </div>
+                    <div className="col" >
+                      <div style={{"min-height" : "400px"}}>
+                        <SplineChart data={this.state} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -115,7 +116,6 @@ class VideoDetail extends React.Component {
           </div>
         </div>
       </div>
-    </div>
     );
   }
   // }
