@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 class Home extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+
+    }
+  }
   // LeftSideStyle = {
   //   height: "100%",
   //   background:
@@ -42,7 +48,8 @@ class Home extends Component {
   // };
   containerStyle = {
     backgroundColor: "#fcfcfc",
-    marginTop: "5vh"
+    marginTop: "5vh",
+    animation: "3s !important"
   };
 
   splashImg = {
@@ -50,7 +57,7 @@ class Home extends Component {
       "url(https://images.unsplash.com/photo-1465244085115-0c89caa46915?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1bc64c67c45a8dd5d5954183bbc1fd21&auto=format&fit=crop&w=1050&q=80)",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    minHeight: "50vh"
+    minHeight: "50vh",
   };
 
   splashDescription = {
@@ -61,12 +68,12 @@ class Home extends Component {
 
   render() {
     return (
-      <Container style={this.containerStyle}>
-        <Row>
+      <Container id="mainpage" style={this.containerStyle}>
+        <Row >
           <Col md="8" style={this.splashImg} />
           <Col md="4" style={this.splashDescription}>
             <h1>Video analytics made easy.</h1>
-            <p>
+            <p >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
               molestiae nostrum perspiciatis consequatur maxime nesciunt eaque!
               Repudiandae a voluptates, nam sed dolorum, dicta officiis!

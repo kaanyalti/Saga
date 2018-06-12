@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navigation from "./components/Layout/Navigation.jsx";
+import Sidebar from "./components/Layout/Sidebar.jsx";
 import Main from "./components/Layout/Main.jsx";
 // import Moment from 'react-moment';
 
@@ -29,13 +30,16 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ height: "100vh" }}>
+      <div>
         <Navigation loggedIn={this.state.loggedIn} />
-        <Main
-          loggedIn={this.state.loggedIn}
-          videoData={this.state.videoData}
-          handleLogin={this.handleLogin}
-        />
+        <div className="wrapper">
+          <Sidebar />
+          <Main
+            loggedIn={this.state.loggedIn}
+            videoData={this.state.videoData}
+            handleLogin={this.handleLogin}
+          />
+        </div>
       </div>
     );
   }

@@ -1,9 +1,25 @@
+#content {
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
 #sidebar {
+  font-family: Lato, sans-serif;
   min-width: 250px;
   max-width: 250px;
   background: #7386D5;
   color: #fff;
   transition: all 0.3s;
+  min-height: 100vh;
+  z-index: 100;
+  position: fixed;
+  top: 0;
 }
 
 #sidebar a,
@@ -13,7 +29,7 @@
 }
 
 #sidebar.active {
-  margin-left: -195px;
+  margin-left: -250px;
 }
 
 #sidebar .sidebar-header {

@@ -13,8 +13,6 @@ class VideoComponent extends React.Component {
     this.loadYT;
   }
 
-
-
   onPlayerReady(event) {
     console.log("player is ready");
   }
@@ -66,15 +64,14 @@ class VideoComponent extends React.Component {
     });
   }
 
-
   render() {
     return (
-      <div className = "embed-responsive embed-responsive-16by9">
-      <div
-        ref={r => {
-          this.anchor = r;
-        }}
-      />
+      <div className="embed-responsive embed-responsive-16by9">
+        <div
+          ref={r => {
+            this.anchor = r;
+          }}
+        />
       </div>
     );
   }

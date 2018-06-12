@@ -10,11 +10,14 @@ class NotFoundAnimation extends React.Component {
       loop: true,
       autoplay: true,
       animationData: NotFoundEmoji
+      
     });
   }
+  AnimationStyle ={
+    paddingTop: "40%"
+  }
   render() {
-    lottie.setSpeed(3);
-    return <div id="not-found"> </div>;
+    return <div id="not-found" style={this.AnimationStyle}> </div>;
   }
 }
 
