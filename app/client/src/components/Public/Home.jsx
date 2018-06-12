@@ -5,11 +5,14 @@ import HomeAnimation from "./HomeAnimation.jsx"
 class Home extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-
-    }
   }
  
+
+  componentDidMount() {
+    this.props.setCurrentPage("home")
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="visible"
+  }
+
   containerStyle = {
     backgroundColor: "#fcfcfc",
     marginTop: "5vh",

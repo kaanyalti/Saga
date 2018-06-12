@@ -105,9 +105,10 @@ class DonutChart extends Component {
   }
   render() {
     return (
-      <div id="chartContainer-donut" style={{width: "100%"}}/>
+      <div id="chartContainer-donut"/>
     )
   }
 }
 
 export default DonutChart;
+// comment

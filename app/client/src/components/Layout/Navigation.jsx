@@ -60,13 +60,6 @@ class Navigation extends Component {
         <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
           Sága
         </NavbarBrand>
-        <button
-          type="button"
-          class="btn btn-info navbar-btn"
-          onClick={this.toggleSidebar.bind(this)}
-        >
-          <span>Toggle Sidebar</span>
-        </button>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar style={this.navLinks}>

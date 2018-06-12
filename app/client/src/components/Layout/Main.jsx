@@ -26,18 +26,27 @@ class Main extends React.Component {
   mainStyle = {
     width: "100%",
     zIndex: "90"
-  }
+  };
 
   render() {
     // document.getElementsByTagName("body")[0].setAttribute("style", "background: #d7ecef")
     return (
       <main id="content" style={this.mainStyle}>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home setCurrentPage={this.props.setCurrentPage} />
+            )}
+          />
           <Route
             path="/login"
             render={props => (
-              <GoogleSignIn handleLogin={this.props.handleLogin} />
+              <GoogleSignIn
+                handleLogin={this.props.handleLogin}
+                setCurrentPage={this.props.setCurrentPage}
+              />
             )}
           />
           <Route
@@ -46,6 +55,7 @@ class Main extends React.Component {
               <AdminRoute
                 loggedIn={this.props.loggedIn}
                 videoData={this.props.videoData}
+                setCurrentPage={this.props.setCurrentPage}
               />
             )}
           />
