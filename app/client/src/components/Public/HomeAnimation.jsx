@@ -16,13 +16,13 @@ class HomeAnimation extends React.Component {
 
   AnimationStyle = {
     zIndex: "1",
+    filter: "grayscale(60%)",
     position: "absolute",
-    left: "0",
-    top: "0",
-    width: "67%",
-    height: "100%",
+    left: "23%",
+    width: "26%",
     transform: "scaleX(1.9)",
-    opacity: "0.4"
+    opacity: "0.2",
+    height: "53%"
   }
   
   render() {
