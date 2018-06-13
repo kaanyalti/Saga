@@ -19,7 +19,7 @@ class Home extends Component {
 
   splashImg = {
     backgroundImage:
-      "url(https://images.unsplash.com/photo-1465244085115-0c89caa46915?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1bc64c67c45a8dd5d5954183bbc1fd21&auto=format&fit=crop&w=1050&q=80)",
+      "url(https://images.unsplash.com/photo-1495707800306-e240c5a0d65f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c67444b12873fc59a464db7f7abda2a0&auto=format&fit=crop&w=1190&q=80)",
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "50vh",
