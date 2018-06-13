@@ -53,8 +53,8 @@ class VideoList extends React.Component {
           {this.props.videoData.map(video => {
             const { id, publishedAt, title, statistics, thumbnail } = video;
             return (
-              <Col md={{ size: 4 }} key={id}>
-                <Card style={this.cardStyle}>
+              <Col md={{ size: 4 }} key={id} id="list">
+                <Card style={this.cardStyle} class="videolist-card">
                   <CardHeader>{title}</CardHeader>
                   <CardImg
                     top
