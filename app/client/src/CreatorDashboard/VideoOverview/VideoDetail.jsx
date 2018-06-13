@@ -26,7 +26,7 @@ class VideoDetail extends React.Component {
         console.log("Data from VideoDetails :", res.data);
       })
       .catch(err => console.log("error: ", err));
-    
+
     document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
 
     // setTimeout(()=> {
@@ -64,7 +64,7 @@ class VideoDetail extends React.Component {
   render() {
     return (
 
-      <div className="container-fluid ">
+      <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10 col-sm-12">
             <div className="card bg-transparent" style={{"border-width": "0px"}}>
