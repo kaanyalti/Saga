@@ -39,7 +39,7 @@ class App extends Component {
       <div>
         <Navigation loggedIn={this.state.loggedIn} />
         <div className="wrapper">
-          {this.state.currentPage === "videoDetail" ? <Sidebar /> : <div></div>}
+          {this.state.currentPage === "videoDetail" ? <div></div> : <div></div>}
           <Main
             setCurrentPage={this.setCurrentPage}
             loggedIn={this.state.loggedIn}
