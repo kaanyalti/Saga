@@ -54,7 +54,7 @@ class VideoList extends React.Component {
             const { id, publishedAt, title, statistics, thumbnail } = video;
             return (
               <Col md={{ size: 4 }} key={id} id="list">
-                <Card style={this.cardStyle} class="videolist-card">
+                <Card style={this.cardStyle} >
                   <CardHeader>{title}</CardHeader>
                   <CardImg
                     top
