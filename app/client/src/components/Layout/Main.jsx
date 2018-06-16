@@ -60,7 +60,12 @@ class Main extends React.Component {
             )}
           />
           <Route path="/videos/:video_id" component={VideoComponent} />
-          <Route path="/v/:video_id" component={PublicVideo} />
+          <Route
+            exact path="/v/:video_id"
+            render={props => (
+                <PublicVideo videoData={this.props.videoData}{...props} />
+              )}
+          />
         </Switch>
       </main>
     );

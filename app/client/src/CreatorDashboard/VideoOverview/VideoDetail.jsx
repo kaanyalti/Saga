@@ -58,7 +58,7 @@ class VideoDetail extends React.Component {
   render() {
     return (
 
-      <div className="container-fluid ">
+      <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10 col-sm-12">
             <div className="card bg-transparent" style={{"border-width": "0px"}}>

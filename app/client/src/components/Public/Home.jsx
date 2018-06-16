@@ -38,14 +38,11 @@ class Home extends Component {
       <Container id="mainpage" style={this.containerStyle}>
         <Row >
           <Col md="8" style={this.splashImg} />
-          <HomeAnimation />
+          {/* <HomeAnimation /> */}
           <Col md="4" style={this.splashDescription}>
             <h1>Video analytics made easy.</h1>
             <p >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-              molestiae nostrum perspiciatis consequatur maxime nesciunt eaque!
-              Repudiandae a voluptates, nam sed dolorum, dicta officiis!
-              Incidunt explicabo eum quam placeat culpa.
+              Sága provides the content creators with these details so that they can understand what part of their videos work, what keeps the audience locked on to the screen.
             </p>
           </Col>
         </Row>
