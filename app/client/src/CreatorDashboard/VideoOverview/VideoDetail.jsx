@@ -7,7 +7,6 @@ import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
 import Sidebar from "../../components/Layout/Sidebar.jsx";
 // import * as Reactions from "../../modules/getVideoDataMethods";
-
 class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -62,6 +61,7 @@ class VideoDetail extends React.Component {
     marginBottom: "0"
   };
   render() {
+
     return (
 
       <div className="container-fluid">

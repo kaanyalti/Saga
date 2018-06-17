@@ -20,7 +20,7 @@ class SplineChart extends Component {
 
     };
   }
-
+  
   UpdateState = [
     {
       type: "line",
@@ -75,11 +75,13 @@ class SplineChart extends Component {
   ];
 
 
+
   // GraphStyle = {
   //   width: "100%",
   //   margin: "auto",
   //   marginTop: "15%"
   // };
+
 
 
   componentDidUpdate() {
@@ -142,7 +144,6 @@ class SplineChart extends Component {
       // }
     });
   }
-
 
   render() {
     return <div id="chartContainer"/>;
