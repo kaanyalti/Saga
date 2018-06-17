@@ -9,6 +9,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import Logo from "../../logo.svg"
 
 class Navigation extends Component {
   constructor(props) {
@@ -58,15 +59,8 @@ class Navigation extends Component {
     return (
       <Navbar color="faded" light expand="md" style={this.navStyle}>
         <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
-          Sága
+          <img src={Logo} style={{height: "30px", marginBottom: "6px"}}/>  Sága
         </NavbarBrand>
-        <button
-          type="button"
-          class="btn btn-info navbar-btn"
-          onClick={this.toggleSidebar.bind(this)}
-        >
-          <span>Toggle Sidebar</span>
-        </button>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar style={this.navLinks}>

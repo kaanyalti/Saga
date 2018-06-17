@@ -21,13 +21,18 @@ class VideoDetail extends React.Component {
     axios
       .get(`/api/videos/${videoID}/reactions`)
       .then(res => {
-        // console.log("Data from VideoDetails axios call :", res.data.length);
-        if (res.data.length > 0) this.setState({ loading: false });
+        this.setState({ data: res.data });
+        console.log("Data from VideoDetails :", res.data);
       })
-      .catch(err => {
-        this.setState({ loading: false, error: true });
-         console.log("error: ", err);
-        })
+      .catch(err => console.log("error: ", err));
+
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
+
+    // setTimeout(()=> {
+    //   document.getElementsByTagName("body")[0].classList.add('turn-white');
+    // }, 1000)
+
+    this.props.setCurrentPage("videoDetail")
   }
 
   NotFoundStyle = {
@@ -43,7 +48,7 @@ class VideoDetail extends React.Component {
     fontFamily: "Lato",
     textAlign: "center",
     position: "absolute",
-    top: "0px",
+    top: "0px"
   };
 
   P2Style = {
@@ -54,29 +59,12 @@ class VideoDetail extends React.Component {
     position: "absolute",
     top: "20%",
     marginBottom: "0"
-
-  }
+  };
   render() {
-    // if (this.state.error === true) {
-    //   return (
-    //     <div style={this.NotFoundStyle}>
-    //       <h1 style={this.PStyle}> Hmm...Check your server</h1>
-    //       <NotFoundAnimation />
-    //     </div>
-    //   );
-    // }
-    // if (this.state.loading === true) {
-    //   return (
-    //     <div>
-    //       <h1 style={this.P2Style}> Loading... </h1>
-    //       <LoadingAnimation />
-    //     </div>
-    //   );
-    // }
-    console.log( "render videotetails", this.state)
+
     return (
 
-      <div className="container-fluid ">
+      <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10 col-sm-12">
             <div className="card bg-transparent" style={{"border-width": "0px"}}>
@@ -94,7 +82,7 @@ class VideoDetail extends React.Component {
               <div className="card-block">
                 <div className="row mt-3">
                   <div className="col">
-                    <div style={{"min-height" : "400px"}}>
+                    <div className="mb-2" style={{"min-height" : "400px"}}>
                       <DonutChart
                         data={this.state.data}
                         videoData={this.props.videoData}
@@ -102,7 +90,7 @@ class VideoDetail extends React.Component {
                       />
                     </div>
                     <div className="col" >
-                      <div style={{"min-height" : "400px"}}>
+                      <div  className="mb-2"  style={{ widht:"100%", "min-height" : "400px"}}>
                         <SplineChart data={this.state} />
                       </div>
                     </div>
@@ -112,7 +100,6 @@ class VideoDetail extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     );
   }

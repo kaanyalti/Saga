@@ -5,8 +5,6 @@ class DonutChart extends Component {
     super(props);
   }
 
-  // GraphStyle = {};
-
   // Must use componentDidUpdate() since initial props of VideoDetail = null
   componentDidUpdate() {
     // Uses youtubeVideoID to find title in videoData array
@@ -34,7 +32,8 @@ class DonutChart extends Component {
   }
 
   getEmotionScores() {
-    const { data } = this.props;
+    const { data } = this.props
+
     const averageReactions = {
       anger: [],
       sadness: [],
@@ -43,16 +42,19 @@ class DonutChart extends Component {
       joy: [],
       surprise: []
     };
-    if (data)
-    data.map(averageReaction => {
-      averageReaction.average_reactions.impressions.map(averageEmotions => {
-        for (let emotion in averageEmotions.average_emotion) {
-          averageReactions[emotion].push(
-            averageEmotions.average_emotion[emotion]
-          );
-        }
+
+
+    if(data){
+      data.map(averageReaction => {
+        averageReaction.average_reactions.impressions.map(averageEmotions => {
+          for (const emotion in averageEmotions.average_emotion) {
+            averageReactions[emotion].push(
+              averageEmotions.average_emotion[emotion]
+            );
+          }
+        });
       });
-    });
+    }
     return averageReactions;
   }
 
@@ -103,14 +105,13 @@ class DonutChart extends Component {
       0
     );
   }
-  componentDidCatch(e){
-    console.log("error test: ", e)
-  }
+
   render() {
     return (
-      <div id="chartContainer-donut" style={{widht: "100%"}}/>
+      <div id="chartContainer-donut"/>
     )
   }
 }
+
 
 export default DonutChart;

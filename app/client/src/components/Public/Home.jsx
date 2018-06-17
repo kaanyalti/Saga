@@ -4,48 +4,13 @@ import { Container, Row, Col } from "reactstrap";
 class Home extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-
-    }
   }
-  // LeftSideStyle = {
-  //   height: "100%",
-  //   background:
-  //     "linear-gradient(90deg, rgba(215,236,239,1) 50%, rgba(255,255,255,1) 50%)",
-  //   borderRadius: "0",
-  //   position: "fixed",
-  //   width: "100%",
-  //   left: "0px",
-  //   top: "0px",
-  //   zIndex: "0"
-  // };
 
-  // TitleStyle = {
-  //   fontSize: "3em"
-  // };
+  componentDidMount() {
+    this.props.setCurrentPage("home")
+    document.getElementsByClassName("navbar-brand")[0].style.visibility="visible"
+  }
 
-  // VideoStyle = {
-  //   width: "75%",
-  //   backgroundColor: "rgb(220, 220, 220)",
-  //   height: "60%",
-  //   zIndex: "999",
-  //   position: "fixed",
-  //   top: "20%",
-  //   borderRadius: "0px",
-  //   marginBottom: "0",
-  //   padding: "0"
-  // };
-
-  // DescriptionStyle = {
-  //   backgroundColor: "#fcfcfc",
-  //   color: "black",
-  //   height: "100%",
-  //   width: "35%",
-  //   right: "0",
-  //   textAlign: "center",
-  //   position: "absolute",
-  //   borderRadius: "0"
-  // };
   containerStyle = {
     backgroundColor: "#fcfcfc",
     marginTop: "5vh",
@@ -54,7 +19,7 @@ class Home extends Component {
 
   splashImg = {
     backgroundImage:
-      "url(https://images.unsplash.com/photo-1465244085115-0c89caa46915?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1bc64c67c45a8dd5d5954183bbc1fd21&auto=format&fit=crop&w=1050&q=80)",
+      "url(https://images.unsplash.com/photo-1495707800306-e240c5a0d65f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c67444b12873fc59a464db7f7abda2a0&auto=format&fit=crop&w=1190&q=80)",
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "50vh",
@@ -74,10 +39,7 @@ class Home extends Component {
           <Col md="4" style={this.splashDescription}>
             <h1>Video analytics made easy.</h1>
             <p >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-              molestiae nostrum perspiciatis consequatur maxime nesciunt eaque!
-              Repudiandae a voluptates, nam sed dolorum, dicta officiis!
-              Incidunt explicabo eum quam placeat culpa.
+              Sága provides the content creators with these details so that they can understand what part of their videos work, what keeps the audience locked on to the screen.
             </p>
           </Col>
         </Row>
