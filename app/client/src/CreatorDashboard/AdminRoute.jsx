@@ -3,8 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import VideoList from "./VideoOverview/VideoList";
 import VideoDetail from "./VideoOverview/VideoDetail";
 
-// import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
-
 // The VideoList component matches one of two different routes
 // depending on the full pathname
 const VideosAll = () => <h1>VideosAll</h1>;
