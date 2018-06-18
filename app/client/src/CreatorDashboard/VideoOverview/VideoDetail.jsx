@@ -3,10 +3,9 @@ import axios from "axios";
 import SplineChart from "../VideoAnalytics/SplineChart.jsx";
 import DonutChart from "../VideoAnalytics/DonutChart.jsx";
 import LoadingAnimation from "../VideoAnalytics/LoadingAnimation.jsx";
-// import VideoComponent from "./VideoComponent";
 import NotFoundAnimation from "./NotFoundAnimation.jsx";
 import Sidebar from "../../components/Layout/Sidebar.jsx";
-// import * as Reactions from "../../modules/getVideoDataMethods";
+
 class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -27,10 +26,6 @@ class VideoDetail extends React.Component {
       .catch(err => console.log("error: ", err));
 
     document.getElementsByClassName("navbar-brand")[0].style.visibility="hidden"
-
-    // setTimeout(()=> {
-    //   document.getElementsByTagName("body")[0].classList.add('turn-white');
-    // }, 1000)
 
     this.props.setCurrentPage("videoDetail")
   }
