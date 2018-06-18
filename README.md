@@ -12,7 +12,7 @@ Video Analytics Made Easy
 4. Create a `local_env.yml` using `local_env.example.yml` as a template
 5. Run `bin/rake db:reset` in the root directory
 6. Sign up for a [Kairos](https://www.kairos.com/) API key
-7. Sign up for a [Ziggeo](https://ziggeo.com/)
+7. Sign up for a [Ziggeo](https://ziggeo.com/) API key
 8. Add the Kairos App ID and Ziggeo API keys into the appropriate `local_env.yml` variables
 9. Obtain OAuth 2.0 client credientials from the [Google API Console](https://console.developers.google.com/)
 10. Obtain a YouTube API key
