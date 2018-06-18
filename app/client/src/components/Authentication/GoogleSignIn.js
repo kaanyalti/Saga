@@ -5,7 +5,6 @@ import { Redirect } from "react-router-dom";
 import { SigninStyle } from "./SigninStyle";
 import lottie from "lottie-web";
 import { Container, Row, Col } from "reactstrap";
-// import GoogleButton from "../../btn_google_signin_light_normal_web.png";
 
 class googleSignIn extends React.Component {
   constructor(props) {
@@ -143,7 +142,6 @@ class googleSignIn extends React.Component {
     backgroundImage:
       "url(https://images.unsplash.com/photo-1488926445368-4a98469fbe38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d9d84d5e35f7496993138b4191281c20&auto=format&fit=crop&w=1050&q=80)",
     backgroundSize: "cover",
-    // backgroundPosition: "center",
     minHeight: "30vh"
   };
 
@@ -158,7 +156,6 @@ class googleSignIn extends React.Component {
     border: "none",
     width: "191px",
     height: "46px",
-    // backgroundImage: `url(${GoogleButton})`,
     backgroundPosition: "center"
   };
 
