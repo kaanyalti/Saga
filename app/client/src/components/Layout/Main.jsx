@@ -1,6 +1,6 @@
 // React and React Router
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 // Navbar components
 import Home from "../Public/Home";
@@ -12,9 +12,6 @@ import PublicVideo from "../Public/PublicVideo";
 import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent.jsx";
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   mainStyle = {
     width: "100%",
