@@ -1,11 +1,9 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-// import videoIDs from "../../fakeYouTubeRes.js";
 import ZiggeoRecorder from "./ZiggeoRecorder";
 import ZiggeoJSRecorder from "./ZiggeoJSRecorder";
 import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent";
-import { Container, Row, Col } from "reactstrap";
 import axios from 'axios';
+
 // The VideoList component matches one of two different routes
 // depending on the full pathname
 
@@ -45,9 +43,7 @@ class PublicVideo extends React.Component {
       const {
         channelTitle,
         description,
-        publishedAt,
-        title,
-        thumbnails
+        title
       } = item.snippet;
       this.setState({channelTitle: channelTitle, videoTitle: title, videoDesc: description});
     });

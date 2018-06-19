@@ -1,6 +1,6 @@
 // React and React Router
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 // Navbar components
 import Home from "../Public/Home";

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import LoadingAnimation from "./LoadingAnimation";
 // import { CSSTransition, transit } from "react-css-transition";
 
 class SplineChart extends Component {
@@ -20,7 +19,7 @@ class SplineChart extends Component {
 
     };
   }
-  
+
   UpdateState = [
     {
       type: "line",
@@ -74,18 +73,7 @@ class SplineChart extends Component {
     }
   ];
 
-
-
-  // GraphStyle = {
-  //   width: "100%",
-  //   margin: "auto",
-  //   marginTop: "15%"
-  // };
-
-
-
   componentDidUpdate() {
-    // console.log("Props in component did update", this.props);
     const chart = new window.CanvasJS.Chart("chartContainer", {
       theme: "light3",
       animationEnabled: true,
@@ -101,8 +89,6 @@ class SplineChart extends Component {
       legend: {
         cursor: "pointer",
         itemclick: function (e) {
-            // console.log("legend click: " + e.dataPointIndex);
-            // console.log(e);
             if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
                 e.dataSeries.visible = false;
             } else {

@@ -59,7 +59,7 @@ class Navigation extends Component {
     return (
       <Navbar color="faded" light expand="md" style={this.navStyle}>
         <NavbarBrand tag={RRNavLink} to="/" style={this.logoStyle}>
-          <img src={Logo} style={{height: "30px", marginBottom: "6px"}}/>  Sága
+          <img src={Logo} style={{height: "30px", marginBottom: "6px"}} alt="Saga logo"/>  Sága
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>

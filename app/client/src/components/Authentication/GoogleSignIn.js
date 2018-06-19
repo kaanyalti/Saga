@@ -18,10 +18,6 @@ class googleSignIn extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     this.setState({ redirect: true });
-    this.state = {
-      videoIDs: []
-    };
-    this.responseGoogle = this.responseGoogle.bind(this);
   }
   componentDidMount() {
     lottie.loadAnimation({
