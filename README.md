@@ -1,6 +1,6 @@
 # Sága
 
-###_Video Analytics Made Easy_
+_Video Analytics Made Easy_
 
 Sága is a capstone project for Lighthouse Labs by [Corrina Chow](https://github.com/corrinachow), [Kaan Yalti](https://github.com/kaanyalti), and [Steve Abouem](https://github.com/steveabouem)
 
