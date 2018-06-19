@@ -5,7 +5,6 @@ import VideoDetail from "./VideoOverview/VideoDetail";
 
 // The VideoList component matches one of two different routes
 // depending on the full pathname
-const VideosAll = () => <h1>VideosAll</h1>;
 class AdminRoute extends React.Component {
   constructor(props) {
     super(props);

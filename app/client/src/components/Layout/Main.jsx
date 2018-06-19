@@ -12,6 +12,9 @@ import PublicVideo from "../Public/PublicVideo";
 import VideoComponent from "../../CreatorDashboard/VideoOverview/VideoComponent.jsx";
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   mainStyle = {
     width: "100%",
