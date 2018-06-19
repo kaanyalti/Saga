@@ -1,6 +1,6 @@
 # Sága
 
-Video Analytics Made Easy
+###_Video Analytics Made Easy_
 
 Sága is a capstone project for Lighthouse Labs by [Corrina Chow](https://github.com/corrinachow), [Kaan Yalti](https://github.com/kaanyalti), and [Steve Abouem](https://github.com/steveabouem)
 
@@ -8,9 +8,9 @@ The project was split as follows:
 
 Fully collaborative effort in initial database planning (ERD), wireframing and design. Corrina focused primarily on the front-end logic and handling the video reactions logic on the back-end.  She set up the all front-end routes, views & navigation, configured OAuth2 to work with the YouTube API to receive the user's videos on login/registration, made initial calls to Kairos, and Ziggeo, manipulated the emotion analysis data in the server, as well as parsing the data to create the Overall Reactions donut chart.  She also created the mockups and leveraged the capabilities of Bootstrap 4 to produce fully responsive Home, Login, and Admin Dashboard pages.
 
-Steve focused on setting up CanvasJs, retrieve the data from the server and filter it to render the time stamped emotion data. He also worked on the initial style for the Home, Admin and Dashboard pages, as well as created components for front end animaitons and transitions ont the login and home pages. Like the other members he participated in keeping our Trello up to data.
+Steve focused on setting up CanvasJS, retrieve the data from the server and filter it to render the time stamped emotion data. He also worked on the initial style for the Home, Admin and Dashboard pages, as well as created components for front end animaitons and transitions ont the login and home pages. Like the other members he participated in keeping our Trello up to data.
 
-Kaan integrated the Kairos API, youtube Iframe API and the Ziggeo javascript recorder.  Created the public video page where the viewers' reactions are recorded.  Synchronized the video play and recording to collect accurate data.  Setup the logic in the server to make calls to the Kairos API and did prelimenary data cleaning upon receiving the analysed data.  Collaborated on the boilerplate.  Worked on the syling of the public video page and the video details page.
+Kaan integrated the Kairos API, youtube Iframe API and the Ziggeo javascript recorder. Created the public video page where the viewers' reactions are recorded.  Synchronized the video play and recording to collect accurate data.  Setup the logic in the server to make calls to the Kairos API and did prelimenary data cleaning upon receiving the analysed data.  Collaborated on the boilerplate. Worked on the syling of the public video page and the video details page.
 
 ## Final Product
 
