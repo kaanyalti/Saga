@@ -1,8 +1,6 @@
 import React from "react";
-import axios from "axios";
 import * as Kairos from "../../modules/kairosMethods";
 import { apiKeys } from "../../env.js";
-// import {ZiggeoRecorder} from 'react-ziggeo'
 
 class RecorderComponent extends React.Component {
   constructor(props) {
@@ -19,10 +17,8 @@ class RecorderComponent extends React.Component {
   }
 
   componentDidUpdate(){
-    console.log(this.props.youtubeVideoState);
     switch(this.props.youtubeVideoState){
       case "playing":
-        console.log("ZIGGEO SHOULD RECORD")
         this.recorderElement.record();
     }
   }
@@ -45,7 +41,6 @@ class RecorderComponent extends React.Component {
     this.node = this.ref.current;
     this.recorderElement = window.ZiggeoApi.V2.Recorder.findByElement(this.node);
     debugger;
-    console.log("GOT THE RECORDER ELEMENT", this.recorderElement);
   }
 
   render() {
@@ -57,7 +52,6 @@ class RecorderComponent extends React.Component {
         ziggeo-themecolor="red"
         ziggeo-countdown="0"
         ziggeo-skipinitial="true"
-        // onRef={ref = {this.ref}}
       >
         {" "}
       </ziggeorecorder>
