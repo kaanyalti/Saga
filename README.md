@@ -4,6 +4,15 @@ Video Analytics Made Easy
 
 ## Final Product
 
+![Sage Homepage](/docs/saga_home.png)
+Sage Homepage
+
+![Saga Login](/docs/saga_login.png)
+Sage Login
+
+![Saga Analytics](/docs/saga_analytics.png)
+Sage Overall and Filtered Analytics
+
 ## Setup
 
 1. Clone this repository
