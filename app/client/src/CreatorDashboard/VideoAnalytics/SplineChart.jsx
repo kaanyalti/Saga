@@ -104,7 +104,6 @@ class SplineChart extends Component {
   }
 
   PopulateGraph() {
-    console.log("props passed to graph ", this.props.data); //All reactions videos array
     if(this.props.data.data)
     this.props.data.data.forEach(recording => {
       recording.reactions.forEach(array => {
