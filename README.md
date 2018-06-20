@@ -2,9 +2,9 @@
 
 _Video Analytics Made Easy_
 
-Sága purports to provide content creators with an in-depth reporting tool on how their product is received by their viewers. Sága targets specifically online video content creators (YouTubers) and features visual representation of the average response from the audience.
+Sága purports to provide content creators with an in-depth reporting tool on how their product is received by their viewers. Sága targets specifically online video content creators (e.g YouTubers) and features visual representation of the average response from the audience.
 
-To that end, and with the viewers’ authorization, Sága captures emotional response to the content, and stores that data on the server, who then renders it to the content creator’s page.
+To that end, and with the viewer's authorization, Sága captures emotional response to the content, and stores that data on the server, who then renders it to the content creator’s page.
 
 The goal is to allow creators to have faster access to more accurate and better organized data on their viewers’ preferences, allowing them to better cater to said preferences.
 
