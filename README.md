@@ -14,14 +14,14 @@ Kaan integrated the Kairos API, youtube Iframe API and the Ziggeo javascript rec
 
 ## Final Product
 
-![Sage Homepage](/docs/saga_home.png)
-Sage Homepage
+![Sága Homepage](/docs/saga_home.png)
+Sága Homepage
 
 ![Saga Login](/docs/saga_login.png)
-Sage Login
+Sága Login
 
 ![Saga Analytics](/docs/saga_analytics.png)
-Sage Overall and Filtered Analytics
+Sága Overall and Filtered Analytics
 
 ## Setup
 
